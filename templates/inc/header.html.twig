@@ -1,0 +1,15 @@
+{#condition pour modifier le style et l'image du header selon la page sur laquelle nous nous trouvons#}
+<header class="{% if app.request.get("_route") == 'main_home' %}main_header{% else %}sub_header{% endif %}">
+    <div id="logo">
+    {% if app.request.get('_route') == 'main_home' %}
+        <img src="{{ asset('img/logo/logo_lpr1.png') }}" alt="Logo page d'accueil">
+    {% else %}
+        <img src="{{ asset('img/logo/logo_lpr2.png') }}" alt="Logo pages annexes">
+    {% endif %}
+    </div>
+
+    <h1 class="titre-site">DOMAINE LE PETIT ROCHER</h1>
+
+    {# {% include'inc/nav.html.twig' %} #}
+</header>
+

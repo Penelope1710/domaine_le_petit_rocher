@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Domaine Le Petit Rocher - Contact{% endblock %}
+
+{% block body %}
+
+
+    <div id="banniere">
+    <h2 class="titre-secondaire">CONTACT</h2>
+    </div>
+
+   {<section class="section-contact">
+        <h3>Parlons de vos envies...</h3>
+        <div class="contact-form">
+          {{ form_start(contactForm) }}
+          {{ form_widget(contactForm) }}
+          <button>Envoyer</button>
+          {{ form_end(contactForm) }}
+        </div>
+
+    </section>
+
+
+
+{% endblock %}

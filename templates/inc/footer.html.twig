@@ -1,0 +1,23 @@
+<footer class="{% if app.request.get("_route") == 'main_home' %}main_footer{% else %}sub_footer{% endif %}">
+    <div class="adresse-lpr">
+            <p>
+                <span>Domaine Le Petit Rocher</span><br>
+                Pénélope Bourg<br>
+                210, Le Pré Barré / 44850 LIGNÉ<br>
+                06-65-34-77-82
+            </p>
+            <a href="https://www.google.fr/maps/place/Le+Pr%C3%A9+Barr%C3%A9,+44850+Lign%C3%A9/@47.3917503,-1.434624,14z/data=!4m5!3m4!1s0x4805f9237180136b:0xc96f6a1cf453a5f1!8m2!3d47.3932356!4d-1.4184825"
+               target="_blank">
+                <div class="map-hover">Nous situer...</div>
+            </a>
+        </div>
+        <div class="liens-divers">
+            <a href="https://www.facebook.com/penelope.bourg" target="_blank"><img
+                        src="{{ asset('img/logo/logo_facebook.png') }}" alt="Logo Facebook"></a>
+
+            <a href="https://www.instagram.com/ecurie_le_petit_rocher_44/" target="_blank"><img
+                        src="{{ asset('img/logo/logo_instagram.png') }}" alt="Logo Instagram"></a>
+
+            <a href="mailto:penelope.bourg@orange.fr"><img src="{{ asset('img/logo/logo_mail.png') }}" alt="Logo Mail"></a>
+        </div>
+</footer>

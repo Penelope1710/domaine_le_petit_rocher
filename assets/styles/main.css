@@ -1,0 +1,162 @@
+
+@font-face {
+    font-family: 'refanearegular';
+    src: url('../font/refanea/refanea_2-webfont.woff2') format('woff2'),
+    url('../font/refanea/refanea_2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+head {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+}
+
+
+#bloc_page  {
+    width: 1300px;
+    margin: auto;
+    border: 2px solid #797979;
+    box-shadow: 0px 8px 12px #333333;
+}
+
+#logo {
+    margin-top: 15px;
+}
+
+body {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    background-image: url("../../public/img/fond_image_site.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0 20px 20px 20px;
+}
+
+
+ul {
+    list-style-type: none;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-size: 1.7em;
+    display: flex;
+    gap: 35px;
+}
+
+li:hover {
+    background-color: #808080;
+    box-shadow: 0px 8px 12px #333333;
+    border-radius: 50px;
+    padding: 5px 5px;
+}
+
+ul a {
+    color: black;
+    text-decoration: none;
+}
+
+.titre-site {
+    font-family: 'refanearegular';
+    letter-spacing: 4px;
+    font-size: 3.5em;
+    position: absolute;
+    right: 250px;
+    top: 40px;
+}
+
+
+.section-contact h3 {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.section-contact label {
+    display: flex;
+   justify-content: center;
+}
+
+label {
+    font-size: 1.3rem;
+}
+
+.section-contact {
+    text-align: center;
+}
+
+.contact-form input, textarea, button {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    width: 550px;
+    max-width: 50%;
+}
+
+.contact-form input, textarea {
+    padding: 15px;
+    border-radius: 3px;
+    border: none;
+    background-color: #aaaaaa;
+}
+
+.contact-form button {
+    font-size: 1.5rem;
+    background-color: #aaaaaa;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.contact-form button:hover {
+    background-color: #969696;
+    box-shadow: 0px 8px 12px #333333;
+}
+
+.flash-success {
+    width: 250px;
+    padding: 20px;
+    font-weight: bold;
+    color: darkviolet;
+    font-size: 1.4rem;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: #aaaaaa;
+    text-align: center;
+}
+
+.adresse-lpr {
+    position: relative;
+    justify-content: center;
+}
+
+.liens-divers {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+footer span {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-size: 2em;
+}
+
+.adresse-lpr:hover .map-hover {
+    display: flex;
+}
+
+.map-hover {
+    position: absolute;
+    border-radius: 50px;
+    top: 0;
+    left: 400px;
+    right: 400px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgba(54, 54, 54, 0.6);
+    display: none;
+}
+

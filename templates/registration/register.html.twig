@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">ECURIE LE PETIT ROCHER</h2>
+    </div>
+    <h3>Mon compte : accès réservé aux propriétaires</h3>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.customer.lastName) }}
+    {{ form_row(registrationForm.customer.firstName) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.customer.phoneNumber) }}
+    {{ form_row(registrationForm.customer.address) }}
+    {{ form_row(registrationForm.customer.zipCode) }}
+    {{ form_row(registrationForm.customer.city) }}
+    {{ form_row(registrationForm.customer.dateOfBirth) }}
+    {{ form_row(registrationForm.customer.horseName) }}
+    {{ form_row(registrationForm.plainPassword) }}
+{#    todo: confirmation MDP#}
+        <button type="submit" class="btn">Créer</button>
+    {{ form_end(registrationForm) }}
+{# todo:ajouter button annuler #}
+{% endblock %}
