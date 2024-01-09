@@ -1,0 +1,209 @@
+.main_header {
+    display: flex;
+    background: linear-gradient(to right,#333333, #cccccc);
+    height: 250px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub_header {
+    display: flex;
+    height: 180px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav  {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+}
+
+#banniere_image {
+    height: 180px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+}
+
+#citation {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-style: italic;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+#banniere_image img {
+    width: 100%;
+    height: 180px;
+}
+
+#banniere {
+    height: 130px;
+    border-radius: 5px;
+    position: relative;
+    background: linear-gradient(to right,#333333, #cccccc);
+    box-shadow: 0px 8px 12px #333333;
+}
+
+.titre-secondaire {
+    font-family: 'refanearegular';
+    letter-spacing: 3px;
+    font-size: 2.5em;
+    position: absolute;
+    right: 505px;
+    left: 555px;
+    top: 20px;
+    bottom: 20px;
+}
+
+.presentation1 {
+    display: flex;
+    margin: 150px 5%;
+    gap: 70px;
+}
+
+
+.presentation1 .article1 {
+    width: 450px;
+    height: 300px;
+    background-color: #808080;
+    box-shadow: 0px 2px 5px #1c1a19;
+    border-radius: 5px;
+    padding: 10px 40px 40px 40px;
+    color: white;
+    font-size: 1.3em;
+    text-align: justify;
+    overflow: scroll;
+}
+
+.besoins-chevaux {
+    font-family: 'refanearegular';
+    letter-spacing: 3px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.article1 img {
+    width: 80%;
+    height: auto;
+    margin: 20px 10%;
+}
+
+.presentation1 .article2 {
+    width: 450px;
+    height: 300px;
+    background-color: #808080;
+    box-shadow: 0px 2px 5px #1c1a19;
+    border-radius: 5px;
+    padding: 10px 40px 40px 40px;
+    color: white;
+    font-size: 1.3em;
+    text-align: justify;
+    overflow: scroll;
+}
+
+.relation-homme-cheval {
+    font-family: 'refanearegular';
+    letter-spacing: 3px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.article2 img {
+    width: 80%;
+    height: auto;
+    margin: 20px 10%;
+}
+
+.presentation2 {
+    display: flex;
+    flex-direction: row;
+    height: 450px;
+    gap: 80px;
+    text-align: center;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+.carre1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #797979;
+    border-radius: 8px;
+    box-shadow: 0px 8px 12px #333333;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.carre2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #797979;
+    border-radius: 8px;
+    box-shadow: 0px 8px 12px #333333;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.carre3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #797979;
+    border-radius: 8px;
+    box-shadow: 0px 8px 12px #333333;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.cta {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(to right,#546473, #83929e);
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+.cta:hover {
+    background: linear-gradient(#43505c, #657381);
+}
+
+.main_footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    background: linear-gradient(to right,#333333, #cccccc);
+    height: 200px;
+    margin-top: 100px;
+    padding: 20px;
+    gap: 5px;
+}
+
+.sub_footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border-top: 2px solid #797979;
+    height: 200px;
+    margin-top: 100px;
+    padding: 20px;
+    gap: 5px;
+}

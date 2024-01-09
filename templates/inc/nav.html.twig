@@ -1,0 +1,15 @@
+<nav>
+    <ul>
+        <li><a href="{{ path('main_home') }}" title="">Accueil</a></li>
+        <li><a href="{{ path('') }}" title="">L'écurie</a></li>
+        <li><a href="{{ path('') }}" title="">Le Gîte</a></li>
+        <li><a href="{{ path('') }}" title="">Contact</a></li>
+        <li><a href="{{ path('') }}" title="">Mon compte</a></li>
+        <li><a href="{{ path('app_logout') }}" title="Déconnexion">Se déconnecter</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+        {% endif %}
+    </ul>
+</nav>
+
+
+
