@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
 use Monolog\DateTimeImmutable;
+use PHPUnit\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class ContactController extends AbstractController
         $contactForm->handleRequest($request);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $contact = $contactForm->getData();
+//            $contact = $contactForm->getData();
 
             $entityManager->persist($contact);
             $entityManager->flush();
@@ -40,19 +41,22 @@ class ContactController extends AbstractController
 
             //Email
             $email = (new Email())
-                ->from('hello@example.com')
-                ->to('you@example.com')
+                ->from($this->getParameter('mail_from'))
+                ->to($this->getParameter('mail_to'))
                 //->cc('cc@example.com')
                 //->bcc('bcc@example.com')
                 //->replyTo('fabien@example.com')
                 //->priority(Email::PRIORITY_HIGH)
-                ->subject('Time for Symfony Mailer!')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->subject('Message reçu du formulaire contact')
+                ->html($contact->getMessage());
 
+            try {
             $mailer->send($email);
-
             $this->addFlash('success', 'Message envoyé !');
+            } catch (Exception $e) {
+                dd($e);
+            }
+
             return $this->redirectToRoute('contact_index');
         }
 

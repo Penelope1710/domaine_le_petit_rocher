@@ -6,10 +6,16 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-
 /* CSS files */
 import 'bootstrap'
+import './styles/nav_bar.css'
 import './styles/accueil.css'
 import './styles/main.css'
 import './styles/normalize.css'
 import './styles/sub_accueil.css'
+import './styles/form.css'
+import './styles/app.scss'
+
+
+
+

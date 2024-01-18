@@ -21,7 +21,8 @@ class Contact
     private string $fullName;
 
     #[ORM\Column(length: 180)]
-    #[Assert\Email()]
+    #[Assert\NotBlank(message: "L'adresse e-mail est requise")]
+    #[Assert\Email(message: "L'adresse e-mail '{{ value }}' n'est pas valide")]
     #[Assert\Length(min: 2, max: 180)]
     private string $email;
 

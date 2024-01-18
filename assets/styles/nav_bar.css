@@ -1,0 +1,83 @@
+nav  {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+}
+
+ul {
+    list-style-type: none;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-size: 1.7em;
+    display: flex;
+    gap: 35px;
+}
+
+ul a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+   color: #333333;
+   text-shadow: -1px -1px #333333, 0 -1px #333333;
+    /*color: darkviolet;
+    font-weight: bold;*/
+}
+
+.submenu {
+    display: none;
+    box-shadow: 0px 8px 12px #333333;
+    background-color: #808080;
+}
+
+nav > ul li:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    float: none;
+    width: 100%;
+    text-align: center;
+}
+
+.submenu a {
+    border-bottom: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.submenu a:hover {
+    border-bottom: none;
+    color: #333333;
+    text-shadow: -1px -1px #333333, 0 -1px #333333;
+}
+
+.submenu {
+    display: none;
+    padding-right: 6px;
+    padding-left: 6px;
+    padding-bottom: 4px;
+    position: absolute;
+    width: 125%;
+    z-index: 1000;
+}
+
+nav ul li {
+
+    text-align: left;
+    position: relative;
+}
+
+.dropdown {
+    border-radius: 50px;
+}
+
+.dropdown a {
+    text-align: left;
+}
+
+
+
+
+
+

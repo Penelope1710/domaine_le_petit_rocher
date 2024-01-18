@@ -8,8 +8,14 @@
     {% endif %}
     </div>
 
+    {% if app.user %}
+        <div class="affichage-prenom">
+            Bonjour {{ app.user.customer.firstName }} !
+        </div>
+    {% endif %}
+
     <h1 class="titre-site">DOMAINE LE PETIT ROCHER</h1>
 
-    {# {% include'inc/nav.html.twig' %} #}
+    {% include'inc/nav.html.twig' %}
 </header>
 

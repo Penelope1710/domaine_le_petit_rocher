@@ -53,8 +53,14 @@ Encore
         config.corejs = '3.23';
     })
 
+    /*.enableSassLoader(function (options) {
+        options.sassOptions = {
+            outputStyle: !Encore.isProduction(),
+                sourceComments: !Encore.isProduction()
+        }
+    })*/
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

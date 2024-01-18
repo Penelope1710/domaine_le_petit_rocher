@@ -1,4 +1,7 @@
 security:
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
@@ -26,7 +29,12 @@ security:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
-                always_remember_me: true
+#                always_remember_me: true
+        admin:
+            pattern: ^/admin
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -37,8 +45,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin/login, roles: PUBLIC_ACCESS }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/ecurie/mes_informations, roles: ROLE_USER }
+        - { path: ^/Ecurie/supprimer_mon_compte, roles: ROLE_USER }
+
 
 when@test:
     security:
