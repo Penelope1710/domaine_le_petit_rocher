@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Présentation de l'Ecurie!{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">L'ECURIE</h2>
+    </div>
+    <h3>Mes Informations</h3>
+    <section>
+
+            {{ form_start(profilForm) }}
+             {{ form_errors(profilForm) }}
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.lastName) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.firstName) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.email) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.phoneNumber) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.address) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.zipCode) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.city) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.birthDate) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.customer.horseName) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.plainPassword.first) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_row(profilForm.plainPassword.second) }}
+            </div>
+            <div class="row-cols-4">
+                {{ form_errors(profilForm.plainPassword) }}
+            </div>
+        <button type="submit" class="btn">Modifier</button>
+            {{ form_end(profilForm) }}
+
+        <li><a href="{{ path('main_home') }}" title="annuler">Annuler</a></li>
+        <li><a href="{{ path('ecurie_removeAccount') }}" title="supprimer">Supprimer</a></li>
+    </section>
+{% endblock %}

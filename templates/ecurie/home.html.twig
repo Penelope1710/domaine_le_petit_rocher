@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Présentation de l'Ecurie!{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">L'ECURIE</h2>
+    </div>
+    <h3>Mon Compte</h3>
+    <li>
+        <ul><a href="{{ path('ecurie_mes_informations') }}">Mes Informations</a></ul>
+        <ul><a href="#">Mon Contrat</a></ul>
+        <ul><a href="#">Les Evènements</a></ul>
+    </li>
+{% endblock %}

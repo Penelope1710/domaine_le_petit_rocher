@@ -9,17 +9,24 @@
 
 .sub_header {
     display: flex;
-    height: 180px;
+    height: 210px;
     position: relative;
     justify-content: space-between;
     align-items: center;
 }
 
-nav  {
-    display: flex;
-    position: absolute;
-    bottom: 0px;
-    right: 20px;
+.affichage-prenom {
+    font-size: 1.5rem;
+}
+
+.main_header .affichage-prenom {
+    padding-bottom: 160px;
+    padding-right: 15px;
+}
+
+.sub_header .affichage-prenom {
+    padding-bottom: 130px;
+    padding-right: 15px;
 }
 
 #banniere_image {
@@ -182,6 +189,7 @@ h3 {
 
 .cta:hover {
     background: linear-gradient(#43505c, #657381);
+    color: white;
 }
 
 .main_footer {
