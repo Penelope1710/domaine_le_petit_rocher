@@ -17,60 +17,53 @@ class CustomerType extends AbstractType
     {
         $builder
             ->add('lastName',TextType::class, [
-//                'attr' => ["class" => "col-auto form-control" ],
                 'label' => 'Nom',
-                /*'label_attr' => [
-                    'class' => 'col-form-label'
-                    ],*/
+                'attr' => ["class" => "form-control" ],
+                'row_attr' => ['class' => 'col-sm-6'],
+
             ])
             ->add('firstName', TextType::class,[
-//                'attr' => ["class" => "col-auto form-control" ],
-                'label' => 'Prénom',
-                /*'label_attr' => [
-                    'class' => 'col-form-label'
-                    ],*/
+                'attr' => ['class' => 'form-control'],
+                'label' => 'prénom',
+                'row_attr' => ['class' => 'col-sm-6'],
+
+
             ])
             ->add('phoneNumber', TextType::class,[
-//                'attr' => ["class" => "form-control" ],
+                'attr' => ['class' => 'form-control'],
                 'label' => 'Téléphone',
-               /* 'label_attr' => [
-                    'class' => 'form-label mt-4'
-                    ]*/
+                'row_attr' => ['class' => 'col-sm-6'],
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
             ])
             ->add('address', TextType::class, [
-//                'attr' => ["class" => "form-control" ],
+                'attr' => ['class' => 'form-control'],
                 'label' => 'Adresse',
-               /* 'label_attr' => [
-                    'class' => 'form-label mt-4'
-                    ]*/
+                'row_attr' => ['class' => 'row mb-3'],
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
             ])
             ->add('zipCode', textType::class, [
-//                'attr' => ["class" => "form-control" ],
+                'attr' => ['class' => 'form-control'],
                 'label' => 'Code Postal',
-                /*'label_attr' => [
-                    'class' => 'form-label mt-4'
-                    ]*/
+                'row_attr' => ['class' => 'row mb-3'],
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
             ])
             ->add('city', TextType::class, [
-//                'attr' => ["class" => "form-control" ],
+                'attr' => ['class' => 'form-control'],
                 'label' => 'Ville',
-               /* 'label_attr' => [
-                    'class' => 'form-label mt-4'
-                    ]*/
+                'row_attr' => ['class' => 'row mb-3'],
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
             ])
             ->add('horseName', TextType::class, [
-//                'attr' => ["class" => "form-control" ],
+                'attr' => ['class' => 'form-control'],
                 'label' => 'Nom du cheval',
-               /* 'label_attr' => [
-                    'class' => 'form-label mt-4'
-                    ]*/
+                'row_attr' => ['class' => 'row mb-3'],
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
             ])
             ->add('birthDate', BirthdayType::class, [
-//                'attr' => ["class" => "form-control" ],
+                'attr' => ['class' => 'form-control'],
                 'label' => 'Date de naissance',
-               /* 'label_attr' => [
-                    'class' => 'form-label mt-4'
-                    ]*/
+                'row_attr' => ['class' => 'row mb-3'],
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
             ])
         ;
     }
@@ -79,6 +72,7 @@ class CustomerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Customer::class,
+
         ]);
     }
 }

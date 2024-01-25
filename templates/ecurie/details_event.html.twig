@@ -1,0 +1,15 @@
+{% extends'base.html.twig' %}
+
+{% block title %}Détails évènement{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">L'ECURIE</h2>
+</div>
+<h3>Détails de l'évènement</h3>
+<div>{{ event.name }}</div>
+<div>{{ event.category }}</div>
+<div>{{ event.startDate }}</div>
+<div>{{ event.deadLine }}</div>
+<div>{{ event.eventDetails }}</div>
+{% endblock %}

@@ -8,52 +8,40 @@
     </div>
     <h3>Mon compte : accès réservé aux propriétaires</h3>
 
-
+<div class="container">
     {{ form_errors(registrationForm) }}
 
         {{ form_start(registrationForm) }}
-    <div class="row-cols-sm-2 col-form-label">
-        <label class="col-sm-10">
+
         {{ form_row(registrationForm.customer.lastName) }}
-        </label>
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.firstName) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.email) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.phoneNumber) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.address) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.zipCode) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.city) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.birthDate) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.customer.horseName) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.plainPassword.first) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_row(registrationForm.plainPassword.second) }}
-    </div>
-    <div class="row-cols-4">
+
         {{ form_errors(registrationForm.plainPassword) }}
-    </div>
+
 
 
         <button type="submit" class="btn">Créer</button>
     {{ form_end(registrationForm) }}
+</div>
 
     <a href="{{ path('main_home') }}" class="btn-modifier ml-16">Annuler</a>
 {% endblock %}
