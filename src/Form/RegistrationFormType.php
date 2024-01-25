@@ -22,11 +22,10 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class,[
-//                'attr' => ["class" => "form-control" ],
-                'label' => 'Adresse mail',
-                /*'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ]*/
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Email',
+                'label_attr' => ['class' => 'col-sm-2 col-form-label'],
+                'row_attr' => ['class' => 'row mb-3'],
             ])
             ->add('plainPassword', RepeatedType::class, [
                                 // instead of being set onto the object directly,
@@ -34,26 +33,23 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent être identiques',
                 'options' => [
-                    'attr' => [
-                        'class' => 'password-field'
-                    ]],
+                    'attr' => ['class' => 'form-control'
+                    ],
+                ],
                 'required' => true,
                 'first_options'  => [
-                   /* 'attr' => [
+                    'attr' => [
                         "class" => "form-control",
-                    ],*/
+                    ],
                     'label' => 'Mot de passe',
-                    /*'label_attr' => [
-                        'class' => 'form-label mt-4'
-                    ]*/
+                    'label_attr' => ['class' => 'col-sm-2 col-form-label'],
+                    'row_attr' => ['class' => 'row mb-3'],
                 ],
                 'second_options' => [
-                    /*'attr' => ["class" => "form-control"
-                    ],*/
+                    'attr' => ['class' => 'form-control'],
                     'label' => 'Confirmer le mot de passe',
-                   /* 'label_attr' => [
-                        'class' => 'form-label mt-4'
-                    ]*/
+                    'label_attr' => ['class' => 'col-sm-2 col-form-label'],
+                    'row_attr' => ['class' => 'row mb-3'],
                 ],
                 'mapped' => false,
                 'constraints' => [
@@ -80,6 +76,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+
         ]);
     }
 }

@@ -25,4 +25,10 @@ class AdminController extends AbstractController
 
         return $this->render('base_admin_login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
+    #[Route('/index', name: 'index')]
+    public function index(AuthenticationUtils $authenticationUtils): Response
+    {
+        return $this->render('admin/index.html.twig');
+    }
+
 }

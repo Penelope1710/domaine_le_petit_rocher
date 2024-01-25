@@ -1,4 +1,7 @@
-/*
+.section-contact {
+    text-align: center;
+}
+
 .section-contact h3 {
     color: black;
     font-size: 2em;
@@ -7,24 +10,40 @@
     margin-top: 50px;
 }
 
-.section-contact label {
+.contact-form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: auto;
+    color: black;
+    font-size: 1em;
 }
 
-label {
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: 1.3rem;
+    margin-bottom: 10px;
 }
 
-.section-contact {
-    text-align: center;
+.contact-form-nom-email {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-form-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .contact-form input, textarea, button {
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
     box-sizing: border-box;
-    width: 550px;
-    max-width: 50%;
+    width: 100%;
 }
 
 .contact-form input, textarea {
@@ -34,16 +53,29 @@ label {
     background-color: #aaaaaa;
 }
 
+.contact-form textarea {
+    height: 150px;
+    margin-bottom: 30px;
+}
+
 .contact-form button {
     font-size: 1.5rem;
+    color: #fff;
     background-color: #aaaaaa;
-    margin-top: 20px;
-    padding: 15px;
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
 }
 
 .contact-form button:hover {
     background-color: #969696;
-    box-shadow: 0px 8px 12px #333333;
+    box-shadow: 0 8px 12px #333333;
+}
+
+/* Ajustement de la largeur pour aligner avec la somme de "Nom Prénom" et "E-mail" */
+.contact-form .contact-form-column:nth-child(3) textarea,
+.contact-form .contact-form-column:nth-child(4) button {
+    width: calc(100% - 20px);
 }
 
 .flash-success {
@@ -58,4 +90,110 @@ label {
     border-radius: 5px;
     background-color: #aaaaaa;
     text-align: center;
-}*/
+}
+
+.section-connexion .login-form{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.section-connexion h3 {
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+.login-form {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.form-connexion {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-con-group {
+    margin-bottom: 16px;
+}
+
+.form-con-group label {
+    margin-bottom: 8px;
+}
+
+.form-con-group input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-check {
+
+    margin-bottom: 16px;
+}
+
+.form-check input {
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background-color: #aaaaaa;
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+.mdp-oublie a {
+    text-decoration: none;
+    color: black;
+}
+
+.bouton-con-inspt {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.bouton-con-inspt a {
+    background-color: #aaaaaa;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 25px 40px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.bouton-con-inspt a:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

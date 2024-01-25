@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CustomerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,38 +17,75 @@ class Customer
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
-    #[Assert\NotBlank(message: "Le nom ne peut pas être vide")]
+    //#[Assert\NotBlank(message: "Le nom ne peut pas être vide")]
+    #[Assert\Length(
+        min: 2,
+        max: 150,
+        minMessage: "Le nom doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le nom ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 150)]
-    #[Assert\NotBlank(message: "Le prénom ne peut pas être vide")]
+    //#[Assert\NotBlank(message: "Le prénom ne peut pas être vide")]
+    #[Assert\Length(
+        min: 2,
+        max: 150,
+        minMessage: "Le prénom doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le prénom ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Length(max: 50, maxMessage: "Le numéro de téléphone ne peut pas dépasser 50 caractères.")]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "L'adresse ne peut pas être vide")]
+    //#[Assert\NotBlank(message: "L'adresse ne peut pas être vide")]
+    #[Assert\Length(max: 255, maxMessage:"L'adresse ne peut pas dépasser {{ limit }} caractères.")]
     private ?string $address = null;
 
     #[ORM\Column(length: 10)]
-    #[Assert\NotBlank(message: "Le code postal ne peut pas être vide")]
+   // #[Assert\NotBlank(message: "Le code postal ne peut pas être vide")]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "La ville ne peut pas être vide")]
+    //#[Assert\NotBlank(message: "La ville ne peut pas être vide")]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: "La ville doit contenir au moins {{ limit }} carctères",
+        maxMessage:"La ville ne peut pas dépasser {{ limit }} caractères.")]
     private ?string $city = null;
 
     #[ORM\Column]
     private ?\DateTime $birthDate = null;
 
     #[ORM\Column(length: 150)]
-    #[Assert\NotBlank(message: "Le nom de votre cheval ne peut pas être vide")]
+    //#[Assert\NotBlank(message: "Le nom de votre cheval ne peut pas être vide")]
+    #[Assert\Length(
+        min: 2,
+        max: 150,
+        minMessage: "Le nom de votre cheval doit contenir au moins {{ limit }} caractères",
+        maxMessage: "Le nom de votre cheval ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $horseName = null;
 
     #[ORM\OneToOne(inversedBy: 'customer', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'customer')]
+    private Collection $event;
+
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: EventCustomer::class, orphanRemoval: true)]
+    private Collection $eventCustomer;
+
+    public function __construct()
+    {
+        $this->event = new ArrayCollection();
+        $this->eventCustomer = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -160,6 +199,60 @@ class Customer
     public function setUser(User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvent(): Collection
+    {
+        return $this->event;
+    }
+
+    public function addEvent(Event $event): static
+    {
+        if (!$this->event->contains($event)) {
+            $this->event->add($event);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): static
+    {
+        $this->event->removeElement($event);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EventCustomer>
+     */
+    public function getEventCustomer(): Collection
+    {
+        return $this->eventCustomer;
+    }
+
+    public function addEventCustomer(EventCustomer $eventCustomer): static
+    {
+        if (!$this->eventCustomer->contains($eventCustomer)) {
+            $this->eventCustomer->add($eventCustomer);
+            $eventCustomer->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventCustomer(EventCustomer $eventCustomer): static
+    {
+        if ($this->eventCustomer->removeElement($eventCustomer)) {
+            // set the owning side to null (unless already changed)
+            if ($eventCustomer->getCustomer() === $this) {
+                $eventCustomer->setCustomer(null);
+            }
+        }
 
         return $this;
     }

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig'  %}
+
+{% block title %}Présentation de l'Ecurie!{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">L'ECURIE</h2>
+</div>
+<h3>Les évènements aux Ecuries</h3>
+
+    {# todo include filtre #}
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom de la l'évènement
+                <a href="{{ path('ecurieevent_detail', {'id': event.id}) }}"></a></th>
+            <th>Catégorie</th>
+            <th>Date</th>
+            <th>Fin des Inscriptions</th>
+            <th>Les inscrits</th>
+            <th>Organisateur</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            {% for category in categories %}
+            <tr>
+                {# todo les conditions des différentes colonnes dans un autre fichier qu'on va include #}
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
@@ -19,11 +20,21 @@ class ContactType extends AbstractType
                 'label' => 'Nom Prénom'
             ])
             ->add('email', EmailType::class, [
-                'label' => 'E-mail'
+                'label' => 'E-mail',
+                'constraints' => [
+                    new NotBlank([
+                    'message' => 'Merci de bien vouloir renseigner votre adresse mail',
+        ])
+            ],
             ])
-            ->add('message', TextareaType::class)
+            ->add('message', TextareaType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de bien vouloir écrire un message.',
+                    ])
+                ],
+            ]);
 
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

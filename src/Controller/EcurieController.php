@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-
+#[Route('/profile')]
 class EcurieController extends AbstractController
 {
     #[Route('/ecurie', name: 'ecurie_home')]
@@ -51,7 +51,7 @@ class EcurieController extends AbstractController
             ]);
         }
 
-        #[Route('/ecurie/supprimer_mon_compte', name: 'ecurie_removeAccount')]
+        #[Route('/ecurie/mes_informations/supprimer_mon_compte', name: 'ecurie_removeAccount')]
         public function removeAccount(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager)
         {
             $user = $this->getUser();
