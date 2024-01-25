@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ecurie - Plannifier un évènement{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">ECURIE</h2>
+    </div>
+    <h3>Plannifier un évènement</h3>
+    <section class="create-event-form">
+        {{ form_start(createEventForm) }}
+        {{ form_row(createEventForm.name) }}
+        {{ form_row(createEventForm.category) }}
+        {{ form_row(createEventForm.startDate) }}
+        {{ form_row(createEventForm.deadLine) }}
+        {{ form_row(createEventForm.eventDetails) }}
+        <button class="btn-plannifier" type="submit">
+            Plannifier
+        </button>
+        {{ form_end(createEventForm) }}
+        <div class="btn-annuler">
+            <a href="{{ path('ecurieevent_show') }}" title="">Annuler</a>
+        </div>
+    </section>
+
+{% endblock %}
