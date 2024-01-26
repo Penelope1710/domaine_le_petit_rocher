@@ -14,17 +14,26 @@
         <thead>
         <tr>
             <th>Nom de la l'évènement
-                <a href="{{ path('ecurieevent_detail', {'id': event.id}) }}"></a></th>
+                <a href="{{ path('ecurieevent_details', {'id': event.id}) }}"></a></th>
             <th>Catégorie</th>
             <th>Date</th>
             <th>Fin des Inscriptions</th>
             <th>Les inscrits</th>
+            <th>Statut</th>
             <th>Organisateur</th>
         </tr>
         </thead>
         <tbody>
         {% for event in events %}
-            {% for category in categories %}
+            <tr>
+                <td>{{ event.name }}</td>
+                <td>{{ event.category.name }}</td>
+                <td>{{ event.startDate|date('Y-m-d H:i') }}</td>
+                <td>{{ event.deadLine|date('Y-m-d H:i') }}</td>
+                <td>{{ event.eventCustomer.count }}</td>
+                <td>{{ event.eventStatus.description }}</td>
+                <td>{{ event.organizerName }}</td>
+
             <tr>
                 {# todo les conditions des différentes colonnes dans un autre fichier qu'on va include #}
 

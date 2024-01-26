@@ -12,6 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
 {
+    public const OPENED_STATUS = 'opened';
+    public const CLOSED_STATUS = 'closed';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -35,8 +38,6 @@ class Event
     #[Assert\LessThan(propertyPath: "startDate", message: "La date limite de participation doit être antérieure à celle du début de l'évènement.")]
     private ?\DateTimeInterface $deadLine = null;
 
-    #[ORM\Column(length: 150)]
-    private ?string $organizerName = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Veuillez indiquer une description")]
@@ -51,21 +52,27 @@ class Event
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventCustomer::class, orphanRemoval: true)]
     private Collection $eventCustomer;
 
-    #[ORM\ManyToMany(targetEntity: Customer::class, mappedBy: 'event')]
-    private Collection $customer;
 
     #[ORM\ManyToOne(inversedBy: 'event')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[ORM\ManyToOne(inversedBy: 'event')]
+    #[ORM\Column(length: 100)]
+    private ?string $status = null;
+
+    #[ORM\ManyToOne(inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?EventStatus $eventStatus = null;
+    private ?User $createdBy = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $startTime = null;
+
 
     public function __construct()
     {
         $this->eventCustomer = new ArrayCollection();
         $this->customer = new ArrayCollection();
+        $this->status = self::OPENED_STATUS;
     }
 
     public function getId(): ?int
@@ -109,17 +116,6 @@ class Event
         return $this;
     }
 
-    public function getOrganizerName(): ?string
-    {
-        return $this->organizerName;
-    }
-
-    public function setOrganizerName(string $organizerName): static
-    {
-        $this->organizerName = $organizerName;
-
-        return $this;
-    }
 
     public function getEventDetails(): ?string
     {
@@ -163,33 +159,6 @@ class Event
         return $this;
     }
 
-    /**
-     * @return Collection<int, Customer>
-     */
-    public function getCustomer(): Collection
-    {
-        return $this->customer;
-    }
-
-    public function addCustomer(Customer $customer): static
-    {
-        if (!$this->customer->contains($customer)) {
-            $this->customer->add($customer);
-            $customer->addEvent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomer(Customer $customer): static
-    {
-        if ($this->customer->removeElement($customer)) {
-            $customer->removeEvent($this);
-        }
-
-        return $this;
-    }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -202,15 +171,40 @@ class Event
         return $this;
     }
 
-    public function getEventStatus(): ?EventStatus
+    public function getStatus(): ?string
     {
-        return $this->eventStatus;
+        return $this->status;
     }
 
-    public function setEventStatus(?EventStatus $eventStatus): static
+    public function setStatus(string $status): static
     {
-        $this->eventStatus = $eventStatus;
+        $this->status = $status;
 
         return $this;
     }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): static
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getStartTime(): ?\DateTimeInterface
+    {
+        return $this->startTime;
+    }
+
+    public function setStartTime(\DateTimeInterface $startTime): static
+    {
+        $this->startTime = $startTime;
+
+        return $this;
+    }
+
 }
