@@ -23,8 +23,8 @@ class ContactFixtures extends Fixture
         for ($i = 0; $i < 5; $i++) {
             $contact = new Contact();
             $contact->setFullName($this->faker->name())
-                ->setEmail($this->faker->email())
-                ->setMessage($this->faker->text());
+                    ->setEmail($this->faker->email())
+                    ->setMessage($this->faker->text());
 
             $manager->persist($contact);
         }

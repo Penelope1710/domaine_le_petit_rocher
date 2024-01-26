@@ -75,8 +75,6 @@ class Customer
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'customer')]
-    private Collection $event;
 
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: EventCustomer::class, orphanRemoval: true)]
     private Collection $eventCustomer;
@@ -203,29 +201,6 @@ class Customer
         return $this;
     }
 
-    /**
-     * @return Collection<int, Event>
-     */
-    public function getEvent(): Collection
-    {
-        return $this->event;
-    }
-
-    public function addEvent(Event $event): static
-    {
-        if (!$this->event->contains($event)) {
-            $this->event->add($event);
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Event $event): static
-    {
-        $this->event->removeElement($event);
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, EventCustomer>

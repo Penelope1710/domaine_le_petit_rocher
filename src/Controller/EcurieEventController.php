@@ -16,15 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/profile/ecurie/evenements')]
 class EcurieEventController extends AbstractController
 {
+
     #[Route('/affichage', name: 'ecurieevent_show')]
     public function show(
-        EntityManagerInterface $entityManager,
         EventRepository $eventRepository,
-        CategoryRepository $categoryRepository, int $id): Response
+        CategoryRepository $categoryRepository): Response
     {
-        //je récupère tous les évènement et catégories dans la BDD
+        //je récupère tous les évènements et catégories dans la BDD
         $events = $eventRepository->findBy([], ['startDate' => 'ASC']);
-        $categories = $categoryRepository->find($id);
+        $categories = $categoryRepository->findAll();
+
 
         return $this->render('ecurie/show_event.html.twig', [
             //je passe mes variables à la vue
@@ -32,6 +33,7 @@ class EcurieEventController extends AbstractController
             'category' => $categories
         ]);
     }
+
     #[Route('/creation', name: 'ecurieevent_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -40,21 +42,24 @@ class EcurieEventController extends AbstractController
         $createEventForm = $this->createForm(CreateEventFormType::class, $event);
 
         $createEventForm->handleRequest($request);
-        dump($event);
+
         if ($createEventForm->isSubmitted() && $createEventForm->isValid()) {
+
+            $event->setCreatedBy($this->getUser());
 
             $entityManager->persist($event);
             $entityManager->flush();
 
-            return $this->redirectToRoute('ecurieevent_show');
+            return $this->redirectToRoute('ecurie_home');
         }
         return $this->render('ecurie/create_event.html.twig', [
             'createEventForm' => $createEventForm->createView(),
-            'Event' => $event
+
+
         ]);
     }
 
-    #[Route('/details/{id}', name:'ecurieevent_details')]
+    #[Route('/details/{id}', name: 'ecurieevent_details')]
     public function details(int $id, EventRepository $eventRepository): Response
     {
         //je récupère le détail d'un évènement en BDD
