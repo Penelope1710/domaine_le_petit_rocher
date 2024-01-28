@@ -19,9 +19,13 @@ class EcurieEventController extends AbstractController
 
     #[Route('/affichage', name: 'ecurieevent_show')]
     public function show(
+        Request $request,
         EventRepository $eventRepository,
         CategoryRepository $categoryRepository): Response
     {
+        $currentDate = new \DateTime();
+        $user = $this->getUser();
+
         //je récupère tous les évènements et catégories dans la BDD
         $events = $eventRepository->findBy([], ['startDate' => 'ASC']);
         $categories = $categoryRepository->findAll();
@@ -29,8 +33,10 @@ class EcurieEventController extends AbstractController
 
         return $this->render('ecurie/show_event.html.twig', [
             //je passe mes variables à la vue
-            'event' => $events,
-            'category' => $categories
+            'events' => $events,
+            'categories' => $categories,
+            'currentDate' => $currentDate,
+            'user' => $user
         ]);
     }
 
