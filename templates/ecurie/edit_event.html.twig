@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ecurie - Modifier un évènement{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">ECURIE</h2>
+    </div>
+    <h3>Modifier un évènement</h3>
+    <section class="edit-event-form">
+        {{ form_start(editEventForm) }}
+        {{ form_row(editEventForm.name) }}
+        {{ form_row(editEventForm.category) }}
+        {{ form_row(editEventForm.startDate) }}
+        {{ form_row(editEventForm.startTime) }}
+        {{ form_row(editEventForm.deadLine) }}
+        {{ form_row(editEventForm.eventDetails) }}
+        <button class="btn-plannifier" type="submit">
+            Modifier
+        </button>
+        {{ form_end(editEventForm) }}
+        <div class="btn-annuler">
+            <a href="{{ path('ecurieevent_list') }}" title="">Annuler</a>
+        </div>
+    </section>
+
+{% endblock %}

@@ -6,16 +6,21 @@
 <div id="banniere">
     <h2 class="titre-secondaire">L'ECURIE</h2>
 </div>
-<h3>Les évènements aux Ecuries</h3>
-   <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
+    <div class="titre-tertiaire">
+        <h3>Les évènements aux Ecuries</h3>
+        <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
+    </div>
 
-    {# todo include filtre #}
+<section class="event-filtre-affichage">
 
-    <table>
+    {% include 'inc/_filter.html.twig' %}
+
+    <table class="events-list">
         <thead>
         <tr>
-            <th>Nom de l'évènement
-{#                <a href="{{ path('ecurieevent_details', {'id': event.id}) }}"></a></th>}#}
+
+            <th>Nom de l'évènement</th>
+
             <th>Catégorie</th>
             <th>Date</th>
             <th>Heure</th>
@@ -23,12 +28,19 @@
             <th>Les inscrits</th>
             <th>Statut</th>
             <th>Organisateur</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for event in events %}
             <tr>
-                <td>{{ event.name }}</td>
+                <td>
+                <div class="position-left">
+                    <a href="{{ path('ecurieevent_details', {'id': event.id}) }}">
+                        {{ event.name }}
+                </div>
+                    </a>
+                </td>
                 <td>{{ event.category.name }}</td>
                 <td>{{ event.startDate|date('d-m-y') }}</td>
                 <td>{{ event.startTime|date('H:i') }}</td>
@@ -37,14 +49,20 @@
                 <td>
                     {{ event.eventCustomer.count }}
                     <span class="info-bulle" title="Inscrits :
-                        {% for customer in event.eventCustomer %}
-                            {{ customer.firstName }} {{ customer.lastName[:1]|upper }}{% if not loop.last %}<br>{% endif %}
-
-                       {% endfor %}">
+                        {% for eventCustomer in event.eventCustomer %}
+                            {{ eventCustomer.customer.firstName }} {{ eventCustomer.customer.lastName[:1]|upper }}
+                            {% if not loop.last %}
+                                <br>
+                            {% endif %}
+                       {% endfor %}"
+                    >
                     </span>
                 </td>
                 <td>{{ event.deadLine > currentDate ? 'Ouvert' : 'Fermé' }}</td>
                 <td>{{ event.createdBy.customer.firstName ~ ' ' ~ event.createdBy.customer.lastName[:1]|upper }}</td>
+                <td>
+                    {% include('inc/_affichage_actions.html.twig') %}
+                </td>
 
             <tr>
                 {# todo les conditions des différentes colonnes dans un autre fichier qu'on va include #}
@@ -56,4 +74,5 @@
     <div class="btn-event-plan">
         <a href="{{ path('ecurieevent_create') }}">Plannifier un évènement</a>
     </div>
+</section>
 {% endblock %}

@@ -33,7 +33,8 @@ class ContactType extends AbstractType
                         'message' => 'Merci de bien vouloir écrire un message.',
                     ])
                 ],
-            ]);
+            ])
+        ;
 
     }
 

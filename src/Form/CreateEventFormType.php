@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Customer;
 use App\Entity\Event;
-use App\Entity\EventStatus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -37,7 +36,6 @@ class CreateEventFormType extends AbstractType
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'name',
                 'expanded' => false,
                 'multiple' => false,
                 'label' => 'Catégorie',
@@ -50,7 +48,6 @@ class CreateEventFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Event::class,
-
 
         ]);
     }

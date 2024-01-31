@@ -17,11 +17,9 @@ ul a {
     color: black;
     text-decoration: none;
 }
-a:hover {
+.nav-accueil a:hover {
    color: #333333;
    text-shadow: -1px -1px #333333, 0 -1px #333333;
-    /*color: darkviolet;
-    font-weight: bold;*/
 }
 
 .submenu {
@@ -30,7 +28,7 @@ a:hover {
     background-color: #808080;
 }
 
-nav > ul li:hover .submenu {
+.nav-accueil > ul li:hover .submenu {
     display: block;
 }
 
