@@ -132,7 +132,6 @@
 }
 
 .form-check {
-
     margin-bottom: 16px;
 }
 
@@ -180,6 +179,65 @@
     box-shadow: 0 8px 12px #333333;
 }
 
+.titre-tertiaire p {
+    font-size: 1.3em;
+}
+.events-list {
+    text-align: center;
+    align-content: center;
+    border-collapse: collapse;
+    height: 200px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    color: black;
+    overflow: scroll;
+}
+
+.position-left, a {
+    text-align: left;
+    text-decoration: none;
+    color: black;
+}
+
+.position-left, a:hover {
+    color: darkmagenta;
+    font-weight: bold;
+}
+
+td,
+th {
+    border: 2px solid #8E9B97;
+}
+
+th {
+    font-size: 1.3em;
+    padding: 15px;
+}
+
+td {
+    padding: 15px 10px;
+    font-size: 1.1em;
+}
+
+.btn-event-plan {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.btn-event-plan a {
+    background-color: #aaaaaa;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 25px 40px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn-event-plan a:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
 
 
 

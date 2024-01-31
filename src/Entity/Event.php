@@ -49,7 +49,7 @@ class Event
     )]
     private ?string $eventDetails = null;
 
-    #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventCustomer::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventCustomer::class, cascade: ["persist"], orphanRemoval: true)]
     private Collection $eventCustomer;
 
 
@@ -205,6 +205,17 @@ class Event
         $this->startTime = $startTime;
 
         return $this;
+    }
+
+    public function isUserSubscribed(User $user): bool
+    {
+        foreach ($this->eventCustomer as $eventCustomer) {
+            if ($eventCustomer->getCustomer()->getUser() === $user) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

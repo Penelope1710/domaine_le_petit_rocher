@@ -41,6 +41,16 @@ body {
     top: 40px;
 }
 
+h3 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.titre-tertiaire p {
+    text-align: center;
+}
+
 .adresse-lpr {
     position: relative;
     justify-content: center;

@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Event;
+use App\Entity\EventCustomer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,20 +23,27 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-//    /**
-//     * @return Event[] Returns an array of Event objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * récupère les évènements en lien avec une recherche
+     * @return Event[]
+     */
+    public function findSearch(SearchData $searchData): array
+    {
+        $query = $this
+            ->createQueryBuilder('e')
+            ->select('c', 'e')
+            ->leftJoin('e.category', 'c');
+
+
+        if (!empty($searchData->q))
+        {
+            $query = $query
+                ->andWhere('e.name LIKE :q')
+                ->setParameter('q', "%{$searchData->q}%");
+        }
+        return $query->getQuery()->getResult();
+    }
+
 
 //    public function findOneBySomeField($value): ?Event
 //    {
