@@ -13,9 +13,10 @@ class SearchData
     public $q = '';
 
     /**
-     * @var Category[]
+     * @var \App\Entity\Category|null
      */
-    public $categories = [];
+    public $categories;
+
 
     /**
      * @var \DateTime|null
@@ -28,19 +29,9 @@ class SearchData
     public $dateFin;
 
     /**
-     * @var boolean
+     * @var int
      */
-    //par défaut choix à false
-    public $choix1 = false;
-
-    /**
-     * @var boolean
-     */
-    public $choix2 = false;
-
-    /**
-     * @var boolean
-     */
-    public $choix3 = false;
+    //par défaut choix à 1 (toutes)
+    public $activite = 1;
 
 }

@@ -13,9 +13,6 @@ class EventCustomer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?bool $isOrganizer = null;
-
     #[ORM\ManyToOne(inversedBy: 'eventCustomer')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Event $event = null;
@@ -27,18 +24,6 @@ class EventCustomer
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function isIsOrganizer(): ?bool
-    {
-        return $this->isOrganizer;
-    }
-
-    public function setIsOrganizer(bool $isOrganizer): static
-    {
-        $this->isOrganizer = $isOrganizer;
-
-        return $this;
     }
 
     public function getEvent(): ?Event
