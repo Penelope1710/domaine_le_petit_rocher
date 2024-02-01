@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Customer;
 use App\Entity\Event;
 use App\Entity\EventCustomer;
+use App\Entity\User;
 use App\Form\CreateEventFormType;
 use App\Form\SearchFormType;
 use App\Repository\CategoryRepository;
@@ -30,7 +31,7 @@ class EcurieEventController extends AbstractController
     public function list(
         Request $request,
         EventRepository $eventRepository,
-        CategoryRepository $categoryRepository): Response
+        CategoryRepository $categoryRepository, Customer $customer): Response
     {
         $currentDate = new \DateTime();
         $user = $this->getUser();
@@ -41,14 +42,15 @@ class EcurieEventController extends AbstractController
 
         //Récupérer le searchForm pour le filtre de recherche
         $data = new SearchData();
-        $searchFormType = $this->createForm(SearchFormType::class);
+        $searchFormType = $this->createForm(SearchFormType::class, $data);
 
         $searchFormType->handleRequest($request);
 //        dd($data);
         //j'envoie les données de la recherche
-        $events = $eventRepository->findSearch($data);
         if ($searchFormType->isSubmitted() && $searchFormType->isValid()) {
             $data = $searchFormType->getData();
+
+        $events = $eventRepository->findSearch($data, $user, $customer);
         }
 
         return $this->render('ecurie/list_event.html.twig', [
@@ -58,6 +60,7 @@ class EcurieEventController extends AbstractController
             'currentDate' => $currentDate,
             'user' => $user,
             'searchFormType' => $searchFormType->createView(),
+
         ]);
     }
 
@@ -139,7 +142,7 @@ class EcurieEventController extends AbstractController
     }
 
     #[Route('/inscription/{id}', name: 'ecurieevent_subscribe')]
-    #[IsGranted('subscribe', 'event')]
+//    #[IsGranted('subscribe', 'event')]
     public function subscribe(
         Event $event,
         Request $request,
@@ -153,11 +156,9 @@ class EcurieEventController extends AbstractController
         $eventCustomer->setEvent($event);
         $eventCustomer->setCustomer($customer);
 
-        $eventCustomer->setIsOrganizer(false);
-
         $event->addEventCustomer($eventCustomer);
 
-        $entityManager->persist($event);
+        $entityManager->persist($eventCustomer);
         $entityManager->flush();
 
         return $this->redirectToRoute('ecurieevent_list', [

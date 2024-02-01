@@ -31,7 +31,8 @@ class SearchFormType extends AbstractType
                 'required' => false,
                 'class' => Category::class,
                 'expanded' => true,
-                'multiple' => false
+                'multiple' => false,
+                'placeholder' => 'Toutes',
             ])
             ->add('dateDebut', DateType::class, [
             'label' => 'Entre : ',
@@ -43,17 +44,17 @@ class SearchFormType extends AbstractType
                 'widget' => 'single_text',
                 'required' => false,
             ])
-            ->add('choix1', CheckboxType::class, [
-                'label' => false,
-                'required' => false
-            ])
-            ->add('choix2', CheckboxType::class, [
-                'label' => false,
-                'required' => false
-            ])
-            ->add('choix3', CheckboxType::class, [
-                'label' => false,
-                'required' => false
+            ->add('activite', ChoiceType::class, [
+                'label' => 'Evènements',
+                'required' => false,
+                'expanded' => true,
+                'multiple' => false,
+                'choices' => [
+                    'tous' => 1,
+                    'dont je suis l\'organisateur' => 2,
+                    'auxquels je suis inscrit(e)' => 3
+                ],
+                'placeholder' => false
             ])
         ;
 
