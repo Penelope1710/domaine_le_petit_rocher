@@ -50,7 +50,7 @@ class EcurieEventController extends AbstractController
         if ($searchFormType->isSubmitted() && $searchFormType->isValid()) {
             $data = $searchFormType->getData();
 
-        $events = $eventRepository->findSearch($data, $user, $customer);
+        $events = $eventRepository->findSearch($data, $user);
         }
 
         return $this->render('ecurie/list_event.html.twig', [
@@ -146,11 +146,10 @@ class EcurieEventController extends AbstractController
     public function subscribe(
         Event $event,
         Request $request,
-        EntityManagerInterface $entityManager,
-        UserInterface $user): Response
+        EntityManagerInterface $entityManager): Response
     {
         //je récupère l'objet Customer associé à l'utilisateur connecté
-        $customer = $user->getCustomer();
+        $customer = $this->getUser()->getCustomer();
 
         $eventCustomer = new EventCustomer();
         $eventCustomer->setEvent($event);
@@ -170,10 +169,9 @@ class EcurieEventController extends AbstractController
     #[IsGranted('unsubscribe', 'event')]
     public function unsubscribe(
         Event $event,
-        EntityManagerInterface $entityManager,
-        UserInterface $user): Response
+        EntityManagerInterface $entityManager): Response
     {
-        $customer = $user->getCustomer();
+        $customer = $this->getUser()->getCustomer();
 
         //je récupère l'EventCustomer correspondant à l'inscription
         $eventCustomer = $entityManager->getRepository(EventCustomer::class)->findOneBy([

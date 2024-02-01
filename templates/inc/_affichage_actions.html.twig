@@ -1,4 +1,5 @@
-    {# si l'utilisateur actuellement connecté est le même que celui qui a crée l'évènement alors... #}
+
+{# si l'utilisateur actuellement connecté est le même que celui qui a crée l'évènement alors... #}
     {% if app.user %}
         {% if event.createdBy.customer.id == app.user.id %}
         {# je crée un lien vers une route avec l'id de l'évènement #}
@@ -13,3 +14,4 @@
                 {% endif %}
         {% endif %}
     {% endif %}
+

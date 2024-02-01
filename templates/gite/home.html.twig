@@ -1,21 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GiteController!{% endblock %}
+{% block title %}Le Gîte{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/domaine_le_petit_rocher/src/Controller/GiteController.php'|file_link(0) }}">src/Controller/GiteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/domaine_le_petit_rocher/templates/gite/index.html.twig'|file_link(0) }}">templates/gite/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div id="banniere">
+        <h2 class="titre-secondaire">L'ECURIE</h2>
+    </div>
+    <h3>Présentation</h3>
+    <section class="presentation-gite">
+        <h2>Présentation</h2>
+        <p class="image-flottante">
+            <img src="photos/gite/hortensia1.jpeg" alt="hortensia">
+        </p>
+        <p>
+            Nous vous accueillons dans un écrin de verdure au calme, à 30 minutes du centre de Nantes et à 1 heure des
+            plages. <br>
+            Notre gîte équestre est composé de 2 chambres, 1 salle d'eau, une cuisine ouverte sur le séjour et un
+            jardinet avec vu sur les chevaux. Il peut ainsi accueillir 4 personnes. Nous vous accueillons avec votre
+            animal de compagnie. Les chiens de catégorie 4 ne sont malheureusement pas accéptés. <br>
+            Les prestations sont haut de gamme.
+            De nombreuses ballades entourent notre domaine que ce soit à pied,à cheval ou à vélo.
+            Un pré est à votre disposition si vous souhaitez venir avec votre cheval. Il pourra bénéficier des mêmes
+            prestations que les chevaux de la pension. Selon la saison, du foin à volonté lui sera servi. La capacité
+            maximale est de 4 chevaux...
+        </p>
+        <p>
+            Alors, n'hésitez plus et réservez sur notre site internet.
+        </p>
+        <p>
+            Au plaisir de vous accueillir... <br>
+            L'équipe du Domaine Le Petit Rocher
+        </p>
+    </section>
 {% endblock %}
 
