@@ -30,7 +30,7 @@ class EventRepository extends ServiceEntityRepository
      * récupère les évènements en lien avec une recherche
      * @return Event[]
      */
-    public function findSearch(SearchData $searchData, ?User $user, ?Customer $customer): array
+    public function findSearch(SearchData $searchData, ?User $user): array
     {
         $query = $this
             ->createQueryBuilder('e')
@@ -74,13 +74,12 @@ class EventRepository extends ServiceEntityRepository
                 ->setParameter('user', $this->security->getUser());
         }
 
-        if ($searchData->activite === 3 && $user !== null && $customer !== null)
+        if ($searchData->activite === 3 && $user !== null)
         {
-            $query = $this->createQueryBuilder('e')
-
+            $query
                 ->leftJoin('e.eventCustomer', 'ec')
-                ->leftJoin('ec.customer', 'c')
-                ->andWhere('c.user = :user')
+                ->leftJoin('ec.customer', 'cust')
+                ->andWhere('cust.user = :user')
                 ->setParameter('user', $this->security->getUser());
         }
         return $query->getQuery()->getResult();
