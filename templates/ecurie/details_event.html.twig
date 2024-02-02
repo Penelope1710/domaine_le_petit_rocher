@@ -8,47 +8,51 @@
 </div>
 <h3>Détails de l'évènement</h3>
 
-<div>
-    <p><span>Nom de l'évènement:</span>
-        {{ event.name }}
-    </p>
-</div>
-<div>
-    <p><span>Catégorie:</span>
-        {{ event.category.name }}
-    </p>
-</div>
-<div>
-    <p><span>Date de la sortie:</span>
-        {{ event.startDate|date('d-m-y') }}
-    </p>
-</div>
-<div>
-    <p><span>Heure de la sortie:</span>
-        {{ event.startTime.format('H:i') }}
-    </p>
-<div>
-    <p><span>Date limite d'inscription:</span>
-        {{ event.deadLine|date('d-m-y') }}
-    </p>
-</div>
-<div>
-    <p><span>Détails de l'évènement:</span>
-        {{ event.eventDetails }}
-    </p>
-</div>
-    {% if app.user %}
-        {% if event.createdBy.customer.id != app.user.id %}
-        {% if not event.isUserSubscribed(app.user) %}
-            <button class="btn-inscription">
-                <a href="{{ path('ecurieevent_subscribe', { id:event.id }) }}">M'inscrire</a>
-            </button>
-        {% else %}
-            <button class="btn-desinscription">
-                <a href="{{ path('ecurieevent_unsubscribe', {id:event.id}) }}">Me désinscrire</a>
-            </button>
+<table class="details-form">
+
+    <tr>
+        <th>Nom de l'évènement:</th>
+        <td>
+            {{ event.name }}
+        </td>
+    </tr>
+    <tr>
+        <th>Catégorie:</th>
+        <td>{{ event.category.name }}</td>
+    </tr>
+    <tr>
+        <th>Date de la sortie:</th>
+        <td>{{ event.startDate|date('d-m-y') }}</td>
+    </tr>
+    <tr>
+        <th>Heure de la sortie:</th>
+        <td>{{ event.startTime.format('H:i') }}</td>
+    </tr>
+    <tr>
+        <th>Date limite d'inscription:</th>
+        <td>{{ event.deadLine|date('d-m-y') }}</td>
+    </tr>
+    <tr>
+        <th>Détails de l'évènement:</th>
+        <td>{{ event.eventDetails }}</td>
+    </tr>
+</table>
+
+    <div class="btn-details-e">
+        {% if app.user %}
+            {% if event.createdBy.customer.id != app.user.id %}
+            {% if not event.isUserSubscribed(app.user) %}
+                <button class="btn-inscription">
+                    <a href="{{ path('ecurieevent_subscribe', { id:event.id }) }}">M'inscrire</a>
+                </button>
+            {% else %}
+                <button class="btn-desinscription">
+                    <a href="{{ path('ecurieevent_unsubscribe', {id:event.id}) }}">Me désinscrire</a>
+                </button>
+            {% endif %}
+            {% endif %}
         {% endif %}
-        {% endif %}
-    {% endif %}
-    <button class="btn-retour"><a href="{{ path('ecurieevent_list') }}">Retour</a></button>
+        <button class="btn-retour"><a href="{{ path('ecurieevent_list') }}">Retour</a></button>
+    </div>
+
 {% endblock %}

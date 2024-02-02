@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un utilisateur{% endblock %}
+
+{% block body %}
+
+<div id="banniere">
+    <h2 class="titre-secondaire">Créer un utilisateur</h2>
+</div>
+
+    {{ form_start(createUserForm) }}
+        {{ form_row(createUserForm.customer.lastName) }}
+        {{ form_row(createUserForm.customer.firstName) }}
+        {{ form_row(createUserForm.email) }}
+        {{ form_row(createUserForm.customer.phoneNumber) }}
+        {{ form_row(createUserForm.customer.address) }}
+        {{ form_row(createUserForm.customer.zipCode) }}
+        {{ form_row(createUserForm.customer.city) }}
+        {{ form_row(createUserForm.customer.birthDate) }}
+        {{ form_row(createUserForm.customer.horseName) }}
+        {{ form_row(createUserForm.roles) }}
+        {{ form_row(createUserForm.plainPassword.first) }}
+        {{ form_row(createUserForm.plainPassword.second) }}
+    {{ form_errors(createUserForm) }}
+    <button type="submit" class="btn">Créer</button>
+    {{ form_end(createUserForm) }}
+
+
+{% endblock %}

@@ -1,8 +1,10 @@
-{{ form_start(searchFormType, {attr: {class: 'filtre'}}) }}
-    {{ form_row(searchFormType.q) }}
-    {{ form_row(searchFormType.categories) }}
-    {{ form_row(searchFormType.dateDebut) }}
-    {{ form_row(searchFormType.dateFin) }}
-    {{ form_row(searchFormType.activite) }}
+<div class="filter-form">
+{{ form_start(searchFormType, {'attr': {'class': 'custom-form'}}) }}
+    {{ form_row(searchFormType.q, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(searchFormType.categories, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(searchFormType.dateDebut, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(searchFormType.dateFin, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(searchFormType.activite, {'attr': {'class': 'form-control'}}) }}
 <button type="submit" class="btn-filtre">Rechercher</button>
 {{ form_end(searchFormType) }}
+</div>

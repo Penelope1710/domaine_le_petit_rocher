@@ -7,9 +7,15 @@
         <h2 class="titre-secondaire">L'ECURIE</h2>
     </div>
     <h3>Mon Compte</h3>
-    <li>
-        <ul><a href="{{ path('ecurie_mes_informations') }}">Mes Informations</a></ul>
-        <ul><a href="#">Mon Contrat</a></ul>
-        <ul><a href="{{ path('ecurieevent_list') }}">Les Evènements</a></ul>
-    </li>
+    <section class="ecurie-home">
+        <div class="mes-infos">
+            <a href="{{ path('ecurie_mes_informations') }}">Mes Informations</a>
+        </div>
+        <div class="mon-contrat">
+            <a href="#">Mon Contrat</a>
+        </div>
+        <div class="mes-events">
+            <a href="{{ path('ecurieevent_list') }}">Mes Evènements</a>
+        </div>
+    </section>
 {% endblock %}

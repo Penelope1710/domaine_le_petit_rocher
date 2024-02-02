@@ -205,17 +205,16 @@
     font-weight: bold;
 }
 
-td,
-th {
-    border: 2px solid #8E9B97;
+.events-list td, th {
+    border: 2px solid darkgrey;
 }
 
-th {
+.events-list th {
     font-size: 1.3em;
     padding: 15px;
 }
 
-td {
+.events-list td {
     padding: 15px 10px;
     font-size: 1.1em;
 }
@@ -238,6 +237,40 @@ td {
     background-color: #969696;
     box-shadow: 0 8px 12px #333333;
 }
+
+.details-form {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    width: 50%;
+}
+
+.details-form th, td {
+    font-size: 1.3em;
+    text-align: left;
+    padding: 5px;
+}
+
+.details-form, th {
+    border: none;
+}
+
+.details-form td {
+    border: 2px solid darkgrey;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+
+
 
 
 
