@@ -23,12 +23,6 @@ security:
             pattern: ^/
             provider: app_user_provider
             custom_authenticator: App\Security\AppAuthenticator
-            form_login:
-                username_parameter: email
-                password_parameter: password
-                login_path: app_login
-                check_path: app_login
-            entry_point: form_login
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
@@ -36,18 +30,7 @@ security:
 #                always_remember_me: true
             logout:
                 path: app_logout
-        profile:
-            pattern: ^/profile
-        admin:
-            pattern: ^/admin
-            provider: app_user_provider
-            custom_authenticator: App\Security\AppAuthenticator
-            form_login:
-                username_parameter: email
-                password_parameter: password
-                login_path: admin_login
-                check_path: admin_login
-            entry_point: form_login
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

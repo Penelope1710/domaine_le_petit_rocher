@@ -14,6 +14,8 @@ import './styles/normalize.css'
 import './styles/sub_accueil.css'
 import './styles/form.css'
 import './styles/app.scss'
+import './styles/main_ecurie.css'
+import './styles/main_gite.css'
 
 
 

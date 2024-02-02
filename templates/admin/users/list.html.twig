@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div id="banniere">
+        <h2 class="titre-secondaire">Liste des utilisateurs</h2>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>E-mail</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.customer.lastName }}</td>
+                        <td>{{ user.customer.firstName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="{{ path('admin_user_edit', { id: user.id }) }}">Modifier</a>
+{#                            <a href="{{ path('admin_user_remove', { id: user.id}) }}">Supprimer</a>#}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('admin_user_create') }}">Créer un nouvel utilisateur</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+.presentation-gite {
+    margin: 40px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 50px;
+}
+
+.image-flottante {
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+
+.presentation-gite p {
+    font-size: 1.4em;
+    text-align: justify;
+}

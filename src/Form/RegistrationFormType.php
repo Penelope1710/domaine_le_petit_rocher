@@ -6,6 +6,7 @@ use App\Entity\User;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -67,6 +68,16 @@ class RegistrationFormType extends AbstractType
                         'message' => "Le mot de passe doit contenir au moins une lettre majuscule ou minuscule, un chiffre et un caractère spécial"
                     ])
                 ],
+            ])
+            ->add('roles', ChoiceType::class, [
+                'label' => 'Rôles',
+                'choices' => [
+                    'Ecurie' => 'ROLE_ECURIE',
+                    'Gîte' => 'ROLE_GITE',
+                ],
+                'expanded' => false,
+                'multiple' => true,
+                'required' => true,
             ])
             ->add('customer', CustomerType::class)
         ;

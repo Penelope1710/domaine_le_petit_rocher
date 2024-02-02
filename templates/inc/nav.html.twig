@@ -11,12 +11,22 @@
                 {% endif %}
             </ul>
         </li>
-         {#<li class="dropdown"><a href="#">Le Gîte</a></li>}
+         <li class="dropdown"><a href="#">Le Gîte</a>
             <ul class="submenu">
                 <li><a href="{{ path('gite_home') }}">Présentation</a></li>
-                <li><a href="{{ path('reservation') }}">Réserver en ligne</a></li>
-                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-            </ul>#}
+{#                <li><a href="{{ path('reservation') }}">Réserver en ligne</a></li>#}
+{#                <li><a href="{{ path('app_login') }}">Se connecter</a></li>#}
+            </ul>
+         </li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="dropdown"><a href="#">Administration</a>
+                <ul class="submenu">
+                    <li><a href="{{ path('admin_user_list') }}">Utilisateurs</a></li>
+                    {#                <li><a href="{{ path('reservation') }}">Réserver en ligne</a></li>#}
+                    {#                <li><a href="{{ path('app_login') }}">Se connecter</a></li>#}
+                </ul>
+            </li>
+        {% endif %}
         <li><a href="{{ path('contact_index') }}" title="">Contact</a></li>
         {% if app.user %}
         <li><a href="{{ path('ecurie_home') }}" title="Compte">Mon Compte</a></li>

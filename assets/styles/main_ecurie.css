@@ -1,0 +1,87 @@
+.presentation-ecuries {
+    margin: 40px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 50px;
+    font-size: 1.3em;
+    text-align: justify;
+}
+
+.presentation-ecuries p {
+    margin-bottom: 20px;
+}
+
+.presentation-photos {
+    margin: 60px;
+    padding-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.image-flottante {
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+
+hr {
+    text-align: center;
+    height: 1px;
+    width: 200px;
+    background-color: #787878;
+}
+
+.ecurie-home {
+    display: flex;
+    margin-top: 80px;
+    margin-bottom: 120px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 250px;
+    justify-content: space-evenly;
+
+}
+
+.mes-infos, .mon-contrat, .mes-events {
+    display: flex;
+    background-color: #aaaaaa;
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.mes-infos a {
+    padding: 110px 22px;
+    color: white;
+}
+
+.mes-infos a:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+.mon-contrat a {
+    padding: 110px 40px;
+    color: white;
+}
+
+.mon-contrat a:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+.mes-events a {
+    padding: 110px 24px;
+    color: white;
+}
+
+.mes-events a:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+
