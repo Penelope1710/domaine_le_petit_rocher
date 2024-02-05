@@ -21,7 +21,7 @@ class ProfilFormType extends AbstractType
 
         $builder
             ->add('email', EmailType::class,[
-                'label' => 'Adresse mail',
+                'label' => 'Adresse mail *',
                 'attr' => [
                     'readonly' => true,
                 ]
@@ -38,10 +38,10 @@ class ProfilFormType extends AbstractType
                     ]],
                 'required' => true,
                 'first_options'  => [
-                    'label' => 'Mot de passe'
+                    'label' => 'Mot de passe *'
                 ],
                 'second_options' => [
-                    'label' => 'Confirmer le mot de passe'
+                    'label' => 'Confirmer le mot de passe *'
                 ],
                 'mapped' => false,
                 'constraints' => [

@@ -1,10 +1,13 @@
-<div class="filter-form">
-{{ form_start(searchFormType, {'attr': {'class': 'custom-form'}}) }}
+
+{{ form_start(searchFormType, {'attr': {'class': 'filter-form'}}) }}
+<div class="categories1-wrapper">
     {{ form_row(searchFormType.q, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(searchFormType.categories, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(searchFormType.dateDebut, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(searchFormType.dateFin, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(searchFormType.activite, {'attr': {'class': 'form-control'}}) }}
-<button type="submit" class="btn-filtre">Rechercher</button>
-{{ form_end(searchFormType) }}
+    <button type="submit" class="btn-filtre">Rechercher</button>
 </div>
+<div class="categories2-wrapper">
+    {{ form_row(searchFormType.categories, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(searchFormType.activite, {'attr': {'class': 'form-control'}}) }}
+</div>
+{{ form_end(searchFormType) }}

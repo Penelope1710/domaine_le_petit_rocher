@@ -31,10 +31,10 @@ class RemoveAccountFormType extends AbstractType
                     ]],
                 'required' => true,
                 'first_options'  => [
-                    'label' => 'nouveau mot de passe'
+                    'label' => 'nouveau mot de passe *'
                 ],
                 'second_options' => [
-                    'label' => 'Confirmer le nouveau mot de passe'
+                    'label' => 'Confirmer le nouveau mot de passe *'
                 ],
                 'mapped' => false,
                 'constraints' => [

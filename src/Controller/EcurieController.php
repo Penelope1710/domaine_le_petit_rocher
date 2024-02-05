@@ -10,24 +10,24 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-#[Route('/profile')]
+#[Route('/')]
 class EcurieController extends AbstractController
 {
-    #[Route('/ecurie', name: 'ecurie_home')]
-    public function home(): Response
-    {
-        return $this->render('ecurie/home.html.twig');
-    }
-
     #[Route('/ecurie/presentation', name: 'ecurie_presentation')]
     public function presentation(): Response
     {
-        return $this->render('ecurie/presentation.html.twig');
+        return $this->render('ecurie/public/presentation.html.twig');
     }
 
-    #[Route('/ecurie/mes_informations', name: 'ecurie_mes_informations')]
+    #[Route('/prive/ecurie', name: 'ecurie_home')]
+    public function home(): Response
+    {
+        return $this->render('ecurie/prive/home.html.twig');
+    }
+
+    #[Route('/prive/ecurie/mes_informations', name: 'ecurie_mes_informations')]
     public function Informations(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
@@ -44,14 +44,14 @@ class EcurieController extends AbstractController
            return $this->redirectToRoute('ecurie_mes_informations');
         }
 
-            return $this->render('ecurie/mes_informations.html.twig', [
+            return $this->render('ecurie/prive/mes_informations.html.twig', [
                 'profilForm' => $profilForm->createView(),
                 "user" => $user
 
             ]);
         }
 
-        #[Route('/ecurie/mes_informations/supprimer_mon_compte', name: 'ecurie_removeAccount')]
+        #[Route('/prive/ecurie/mes_informations/supprimer_mon_compte', name: 'ecurie_removeAccount')]
         public function removeAccount(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager)
         {
             $user = $this->getUser();
@@ -69,7 +69,7 @@ class EcurieController extends AbstractController
 
                 return $this->redirectToRoute('ecurie_removeAccount');
             }
-         return  $this->render('ecurie/removeAccount.html.twig', [
+         return  $this->render('ecurie/prive/removeAccount.html.twig', [
             'removeAccountForm' => $removeAccountForm->createView(),
              ]);
 

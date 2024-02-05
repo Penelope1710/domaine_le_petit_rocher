@@ -20,25 +20,25 @@ class CreateEventFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom de l\'évènement'
+                'label' => 'Nom de l\'évènement *'
         ])
             ->add('startDate', DateType::class, [
-                'label' => 'Date de l\'évènement'
+                'label' => 'Date de l\'évènement *'
             ])
             ->add('startTime', TimeType::class, [
-                'label' => 'Heure de de l\'évènement'
+                'label' => 'Heure de de l\'évènement *'
             ])
             ->add('deadLine', DateType::class, [
-                'label' => 'Date limite d\'inscription'
+                'label' => 'Date limite d\'inscription *'
             ])
             ->add('eventDetails', TextareaType::class, [
-                'label' => 'Détails de l\'évènement'
+                'label' => 'Détails de l\'évènement *'
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'expanded' => false,
                 'multiple' => false,
-                'label' => 'Catégorie',
+                'label' => 'Catégorie *',
                 'placeholder' => 'Choisissez une catégorie'
             ])
         ;

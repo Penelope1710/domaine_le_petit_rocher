@@ -6,24 +6,24 @@
             <ul class="submenu">
                 <li><a href="{{ path('ecurie_presentation') }}">Présentation</a></li>
                 {% if not app.user %}
-                <li><a href="{{ path('app_login') }}">Mon compte</a></li>
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                 <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
                 {% endif %}
             </ul>
         </li>
          <li class="dropdown"><a href="#">Le Gîte</a>
             <ul class="submenu">
-                <li><a href="{{ path('gite_home') }}">Présentation</a></li>
-{#                <li><a href="{{ path('reservation') }}">Réserver en ligne</a></li>#}
-{#                <li><a href="{{ path('app_login') }}">Se connecter</a></li>#}
+                <li><a href="{{ path('gite_presentation') }}">Présentation</a></li>
+                <li><a href="{{ path('gite_reservation') }}">Réserver en ligne</a></li>
+{#                <li><a href="{{ path('reservation') }}">Mes réservations</a></li>#}
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
             </ul>
          </li>
         {% if is_granted('ROLE_ADMIN') %}
             <li class="dropdown"><a href="#">Administration</a>
                 <ul class="submenu">
                     <li><a href="{{ path('admin_user_list') }}">Utilisateurs</a></li>
-                    {#                <li><a href="{{ path('reservation') }}">Réserver en ligne</a></li>#}
-                    {#                <li><a href="{{ path('app_login') }}">Se connecter</a></li>#}
+                    {#                <li><a href="{{ path('reservation') }}">Evènements</a></li>#}
                 </ul>
             </li>
         {% endif %}
