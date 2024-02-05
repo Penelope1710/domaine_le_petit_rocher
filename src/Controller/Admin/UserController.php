@@ -55,16 +55,20 @@ class UserController extends AbstractController
         ]);
 
     }
-    /*#[Route('/supprimer/{id}', name: 'user_remove')]
+    #[Route('/supprimer/{id}', name: 'user_remove')]
     public function remove(
         User $user,
         EntityManagerInterface $entityManager) {
 
-        $entityManager->remove($user);
-        $entityManager->flush();
+        try {
+            $entityManager->remove($user);
+            $entityManager->flush();
+        } catch (\Exception $exception) {
+            $this->addFlash('danger', 'suppression impossible : ' .$exception->getMessage());
+        }
 
         return $this->redirectToRoute('admin_user_list');
-    }*/
+    }
 
     #[Route('/creer', name: 'user_create')]
     public function create(
@@ -81,10 +85,13 @@ class UserController extends AbstractController
 
         if($createUserForm->isSubmitted() && $createUserForm->isValid()) {
 
+        //récupère le mot de passe brut depuis le champ plainPassword
         $inputPassword = $createUserForm->get('plainPassword')->getData();
             $role = $createUserForm->get('roles')->getData();
 
+            //utilisise le service de hachage
             $hashedPassword = $passwordHasher->hashPassword($user, plainPassword: $inputPassword);
+            //met à jour l'objet User avec le MDP haché
             $user->setPassword($hashedPassword);
             $user->setRoles($role);
 

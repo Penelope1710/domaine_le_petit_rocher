@@ -24,7 +24,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class,[
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Email',
+                'label' => 'Email *',
                 'label_attr' => ['class' => 'col-sm-2 col-form-label'],
                 'row_attr' => ['class' => 'row mb-3'],
             ])
@@ -42,13 +42,13 @@ class RegistrationFormType extends AbstractType
                     'attr' => [
                         "class" => "form-control",
                     ],
-                    'label' => 'Mot de passe',
+                    'label' => 'Mot de passe *',
                     'label_attr' => ['class' => 'col-sm-2 col-form-label'],
                     'row_attr' => ['class' => 'row mb-3'],
                 ],
                 'second_options' => [
                     'attr' => ['class' => 'form-control'],
-                    'label' => 'Confirmer le mot de passe',
+                    'label' => 'Confirmer le mot de passe *',
                     'label_attr' => ['class' => 'col-sm-2 col-form-label'],
                     'row_attr' => ['class' => 'row mb-3'],
                 ],
@@ -70,12 +70,13 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('roles', ChoiceType::class, [
-                'label' => 'Rôles',
+                'label' => 'Rôles *',
                 'choices' => [
+                    'Admin' => 'ROLE_ADMIN',
                     'Ecurie' => 'ROLE_ECURIE',
                     'Gîte' => 'ROLE_GITE',
                 ],
-                'expanded' => false,
+                'expanded' => true,
                 'multiple' => true,
                 'required' => true,
             ])

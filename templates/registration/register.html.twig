@@ -29,7 +29,9 @@
 
         {{ form_row(registrationForm.customer.birthDate) }}
 
+        {% if is_granted('ROLE_ECURIE') %}
         {{ form_row(registrationForm.customer.horseName) }}
+        {% endif %}
 
         {{ form_row(registrationForm.plainPassword.first) }}
 

@@ -63,6 +63,7 @@ class Customer
 
     #[ORM\Column(length: 150)]
     //#[Assert\NotBlank(message: "Le nom de votre cheval ne peut pas être vide")]
+    #[is_granted]
     #[Assert\Length(
         min: 2,
         max: 150,
@@ -79,10 +80,14 @@ class Customer
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: EventCustomer::class, orphanRemoval: true)]
     private Collection $eventCustomer;
 
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Reservation::class, orphanRemoval: true)]
+    private Collection $reservations;
+
     public function __construct()
     {
         $this->event = new ArrayCollection();
         $this->eventCustomer = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
 
@@ -226,6 +231,36 @@ class Customer
             // set the owning side to null (unless already changed)
             if ($eventCustomer->getCustomer() === $this) {
                 $eventCustomer->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): static
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): static
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getCustomer() === $this) {
+                $reservation->setCustomer(null);
             }
         }
 

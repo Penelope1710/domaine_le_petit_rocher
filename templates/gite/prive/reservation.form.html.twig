@@ -1,0 +1,38 @@
+{% extends'base.html.twig' %}
+
+{% block title %}Le Gîte{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">LE GITE</h2>
+</div>
+<h3>Réservation</h3>
+<section class="reservation-form">
+{{ form_start(reservationForm) }}
+    <div class="resa-gpe">
+        {{ form_row(reservationForm.startDate, {
+            'attr': {'class': 'resa-input'},
+            'label_attr': {'class': 'resa-lab'}
+        }) }}
+    </div>
+    <div class="resa-gpe">
+    {{ form_row(reservationForm.endDate, {
+        'attr': {'class': 'resa-input'},
+        'label_attr': {'class': 'resa-lab'}
+    }) }}
+    </div>
+    <div class="resa-gpe">
+    {{ form_row(reservationForm.horseNb, {
+        'attr': {'class': 'resa-input'},
+        'label_attr': {'class': 'resa-lab'}
+    }) }}
+    </div>
+    {{ form_errors(reservationForm) }}
+
+    <button class="btn-submit" type="submit">
+        Réserver
+    </button>
+{{ form_end(reservationForm) }}
+</section>
+
+{% endblock %}

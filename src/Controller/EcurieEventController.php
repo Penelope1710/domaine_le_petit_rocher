@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
-#[Route('/profile/ecurie/evenements')]
+#[Route('/prive/ecurie/evenements')]
 class EcurieEventController extends AbstractController
 {
 
@@ -53,7 +53,7 @@ class EcurieEventController extends AbstractController
         $events = $eventRepository->findSearch($data, $user);
         }
 
-        return $this->render('ecurie/list_event.html.twig', [
+        return $this->render('ecurie/prive/list_event.html.twig', [
             //je passe mes variables à la vue
             'events' => $events,
             'categories' => $categories,
@@ -82,7 +82,7 @@ class EcurieEventController extends AbstractController
 
             return $this->redirectToRoute('ecurieevent_list');
         }
-        return $this->render('ecurie/create_event.html.twig', [
+        return $this->render('ecurie/prive/create_event.html.twig', [
             'createEventForm' => $createEventForm->createView(),
 
 
@@ -90,14 +90,16 @@ class EcurieEventController extends AbstractController
     }
 
     #[Route('/details/{id}', name: 'ecurieevent_details')]
-    public function details(int $id,
-           EventRepository $eventRepository, CategoryRepository $categoryRepository): Response
+    public function details(
+        int $id,
+        EventRepository $eventRepository,
+        CategoryRepository $categoryRepository): Response
     {
         //je récupère le détail d'un évènement en BDD
         $event = $eventRepository->find($id);
         $category = $categoryRepository->findAll();
 
-        return $this->render('ecurie/details_event.html.twig', [
+        return $this->render('ecurie/prive/details_event.html.twig', [
             'event' => $event,
             'category' => $category
         ]);
@@ -136,7 +138,7 @@ class EcurieEventController extends AbstractController
             return $this->redirectToRoute('ecurieevent_list');
         }
 
-        return $this->render('ecurie/edit_event.html.twig', [
+        return $this->render('ecurie/prive/edit_event.html.twig', [
             'editEventForm' => $editEventForm->createView(),
         ]);
     }

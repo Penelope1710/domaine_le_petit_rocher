@@ -17,10 +17,10 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('fullName', TextType::class, [
-                'label' => 'Nom Prénom'
+                'label' => 'Nom Prénom *'
             ])
             ->add('email', EmailType::class, [
-                'label' => 'E-mail',
+                'label' => 'E-mail *',
                 'constraints' => [
                     new NotBlank([
                     'message' => 'Merci de bien vouloir renseigner votre adresse mail',
@@ -28,6 +28,7 @@ class ContactType extends AbstractType
             ],
             ])
             ->add('message', TextareaType::class, [
+                'label' => 'Message *',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de bien vouloir écrire un message.',

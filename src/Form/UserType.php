@@ -25,7 +25,7 @@ class UserType extends AbstractType
                     'minlength' => '2',
                     'maxLength' => '180',
                 ],
-                'label' => 'E-mail',
+                'label' => 'E-mail *',
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
@@ -40,7 +40,7 @@ class UserType extends AbstractType
             ])
             ->add('roles')
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe',
+                'label' => 'Mot de passe *',
             ])
             ->add('customer', EntityType::class, [
                 'class' => Customer::class,
