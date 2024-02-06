@@ -17,7 +17,8 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
+    #[Route('/register/ecurie', name: 'app_register_ecurie')]
+    #[Route('/register/gite', name: 'app_register_gite')]
     public function register(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
@@ -26,13 +27,24 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $user->setRoles(["ROLE_ECURIE"]);
+        $context = null;
+        if($request->attributes->get('_route') === 'app_register_ecurie')
+        {
+            $context = 'ecurie';
+        } else {
+            $context = 'gite';
+        }
 
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user, ['context'=>$context] );
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if($context === 'gite'){
+                $user->setRoles(['ROLE_GITE']);
+            } else {
+                $user->setRoles(['ROLE_ECURIE']);
+            }
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(

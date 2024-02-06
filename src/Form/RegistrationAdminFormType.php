@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class RegistrationFormType extends AbstractType
+class RegistrationAdminFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -69,6 +69,17 @@ class RegistrationFormType extends AbstractType
                     ])
                 ],
             ])
+            ->add('roles', ChoiceType::class, [
+                'label' => 'Rôles *',
+                'choices' => [
+                    'Admin' => 'ROLE_ADMIN',
+                    'Ecurie' => 'ROLE_ECURIE',
+                    'Gîte' => 'ROLE_GITE',
+                ],
+                'expanded' => true,
+                'multiple' => true,
+                'required' => true,
+            ])
             ->add('customer', CustomerType::class)
         ;
     }
@@ -77,7 +88,6 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'context' => null,
 
         ]);
     }
