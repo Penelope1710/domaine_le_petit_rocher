@@ -7,7 +7,7 @@
                 <li><a href="{{ path('ecurie_presentation') }}">Présentation</a></li>
                 {% if not app.user %}
                 <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-                <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                <li><a href="{{ path('app_register_ecurie') }}">S'inscrire</a></li>
                 {% endif %}
             </ul>
         </li>
@@ -16,7 +16,10 @@
                 <li><a href="{{ path('gite_presentation') }}">Présentation</a></li>
                 <li><a href="{{ path('gite_reservation') }}">Réserver en ligne</a></li>
 {#                <li><a href="{{ path('reservation') }}">Mes réservations</a></li>#}
-                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                {% if not app.user %}
+                    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                    <li><a href="{{ path('app_register_gite') }}">S'inscrire'</a></li>
+                {% endif %}
             </ul>
          </li>
         {% if is_granted('ROLE_ADMIN') %}
