@@ -7,7 +7,11 @@
     <button type="submit" class="btn-filtre">Rechercher</button>
 </div>
 <div class="categories2-wrapper">
-    {{ form_row(searchFormType.categories, {'attr': {'class': 'form-control'}}) }}
-    {{ form_row(searchFormType.activite, {'attr': {'class': 'form-control'}}) }}
+    <div class="checkbox-group">
+        {{ form_row(searchFormType.categories, {'label_attr': {'class': 'group-label'}, 'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="checkbox-group">
+        {{ form_row(searchFormType.activite, {'label_attr': {'class': 'group-label'}, 'attr': {'class': 'form-control'}}) }}
+    </div>
 </div>
 {{ form_end(searchFormType) }}

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Customer;
 use App\Entity\User;
 use App\Form\ProfilFormType;
+use App\Form\RegistrationAdminFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,7 +39,7 @@ class UserController extends AbstractController
         EntityManagerInterface $entityManager,
         Request $request) {
 
-        $editUserForm = $this->createForm(ProfilFormType::class, $user);
+        $editUserForm = $this->createForm(RegistrationAdminFormType::class, $user);
 
         $editUserForm->handleRequest($request);
 
@@ -79,14 +80,14 @@ class UserController extends AbstractController
 
         $user = new User();
 
-        $createUserForm = $this->createForm(RegistrationFormType::class, $user);
+        $createUserForm = $this->createForm(RegistrationAdminFormType::class, $user);
 
         $createUserForm->handleRequest($request);
 
         if($createUserForm->isSubmitted() && $createUserForm->isValid()) {
 
-        //récupère le mot de passe brut depuis le champ plainPassword
-        $inputPassword = $createUserForm->get('plainPassword')->getData();
+            //récupère le mot de passe brut depuis le champ plainPassword ainsi que les roles
+            $inputPassword = $createUserForm->get('plainPassword')->getData();
             $role = $createUserForm->get('roles')->getData();
 
             //utilisise le service de hachage

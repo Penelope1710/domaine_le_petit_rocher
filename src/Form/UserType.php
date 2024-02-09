@@ -21,14 +21,10 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control',
                     'minlength' => '2',
                     'maxLength' => '180',
                 ],
                 'label' => 'E-mail *',
-                'label_attr' => [
-                    'class' => 'form-label'
-                ],
                 'constraints' => [
                     new NotBlank(),
                     new Email(),

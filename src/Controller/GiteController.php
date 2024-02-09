@@ -30,6 +30,11 @@ class GiteController extends AbstractController
         $reservationForm->handleRequest($request);
 
         if ($reservationForm->isSubmitted() && $reservationForm->isValid()) {
+
+            $reservation->setCustomer(
+                $this->getUser()->getCustomer()
+            );
+
             $entityManager->persist($reservation);
             $entityManager->flush();
         }
