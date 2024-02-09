@@ -45,7 +45,10 @@
         const options = {
             type: 'default'
         }
-        const calendar = new VanillaCalendar('#calendar', options)
-        calendar.init()
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendar = new VanillaCalendar('#calendar');
+            calendar.init();
+        });
+
     </script>
 {% endblock %}
