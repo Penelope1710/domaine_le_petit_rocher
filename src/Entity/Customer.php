@@ -61,9 +61,7 @@ class Customer
     #[ORM\Column]
     private ?\DateTime $birthDate = null;
 
-    #[ORM\Column(length: 150)]
-    //#[Assert\NotBlank(message: "Le nom de votre cheval ne peut pas être vide")]
-    #[is_granted]
+    #[ORM\Column(length: 150, nullable: true)]
     #[Assert\Length(
         min: 2,
         max: 150,
@@ -192,7 +190,6 @@ class Customer
 
         return $this;
     }
-
 
     public function getUser(): ?User
     {

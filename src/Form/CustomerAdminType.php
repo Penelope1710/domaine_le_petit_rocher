@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CustomerType extends AbstractType
+class CustomerAdminType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -20,7 +20,7 @@ class CustomerType extends AbstractType
                 'label' => 'Nom *',
             ])
             ->add('firstName', TextType::class,[
-                'label' => 'Prénom *',
+                'label' => 'prénom *',
             ])
             ->add('phoneNumber', TextType::class,[
                 'label' => 'Téléphone *',
@@ -36,21 +36,18 @@ class CustomerType extends AbstractType
             ])
             ->add('birthDate', BirthdayType::class, [
                 'label' => 'Date de naissance *',
-            ]);
-
-            if($options['context'] === 'ecurie') {
-                $builder->add('horseName', TextType::class, [
+            ])
+            ->add('horseName', TextType::class, [
                     'label' => 'Nom du cheval *',
-                    'required' => true,
+                    'required' => false,
                 ]);
-            }
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Customer::class,
-            'context' => null,
         ]);
     }
 }

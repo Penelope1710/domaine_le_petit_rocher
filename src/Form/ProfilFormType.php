@@ -60,7 +60,9 @@ class ProfilFormType extends AbstractType
                     ])
                 ],
             ])
-            ->add('customer', CustomerType::class)
+            ->add('customer', CustomerType::class, [
+            'context' => $options['context']
+            ])
         ;
     }
 
@@ -69,6 +71,7 @@ class ProfilFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
             'user' => null,
+            'context' => null
         ]);
     }
 }

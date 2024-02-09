@@ -7,6 +7,9 @@
     <h2 class="titre-secondaire">LE GITE</h2>
 </div>
 <h3>Réservation</h3>
+
+    <div id="calendar"></div>
+
 <section class="reservation-form">
 {{ form_start(reservationForm) }}
     <div class="resa-gpe">
@@ -35,4 +38,14 @@
 {{ form_end(reservationForm) }}
 </section>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const options = {
+            type: 'default'
+        }
+        const calendar = new VanillaCalendar('#calendar', options)
+        calendar.init()
+    </script>
 {% endblock %}

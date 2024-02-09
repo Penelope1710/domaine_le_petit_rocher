@@ -1,3 +1,4 @@
+/*Formulaire de contact*/
 .section-contact {
     text-align: center;
 }
@@ -40,7 +41,7 @@
     margin-bottom: 10px;
 }
 
-.contact-form input, textarea, button {
+.contact-form input, textarea, .btn-contact-env {
     margin-bottom: 15px;
     font-size: 1.4em;
     box-sizing: border-box;
@@ -92,7 +93,7 @@
     background-color: #aaaaaa;
     text-align: center;
 }
-
+/*Formulaire de login*/
 .section-connexion .login-form{
   margin-right: auto;
   margin-left: auto;
@@ -160,37 +161,23 @@
     color: black;
 }
 
-.bouton-con-inspt {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.bouton-con-inspt a {
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.5em;
-    padding: 25px 40px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.bouton-con-inspt a:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
 .titre-tertiaire p {
     font-size: 1.3em;
 }
+/*tableau liste des évènements*/
+
+.event-filtre-affichage {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .events-list {
     text-align: center;
     align-content: center;
     border-collapse: collapse;
+    width: 100%;
     height: 200px;
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
     color: black;
     overflow: scroll;
 }
@@ -206,11 +193,11 @@
     font-weight: bold;
 }
 
-.events-list td, th {
+.events-list td, .events-list th, .admin-list td, .admin-list th {
     border: 2px solid darkgrey;
 }
 
-.events-list th {
+.events-list th, .admin-list th {
     font-size: 1.3em;
     padding: 15px;
 }
@@ -239,21 +226,26 @@
     box-shadow: 0 8px 12px #333333;
 }
 
+/*Tableau détails évènements*/
 .details-form {
     display: flex;
     margin-right: auto;
     margin-left: auto;
     margin-top: 50px;
-    width: 50%;
+    width:60%;
+    box-sizing: border-box;
+    border-spacing: 30px;
 }
 
 .details-form th, td {
     font-size: 1.3em;
     text-align: left;
-    padding: 5px;
+    padding: 10px;
 }
 
-.details-form, th {
+.details-form th {
+    display: inline-block;
+    width: 180px;
     border: none;
 }
 
@@ -261,22 +253,51 @@
     border: 2px solid darkgrey;
 }
 
+.btn-details-e {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn-details-e a {
+    color: white;
+    font-size: 1.4em;
+}
+
+.btn-inscription, .btn-desinscription, .btn-retour {
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #aaaaaa;
+}
+
+.btn-inscription:hover, .btn-desinscription:hover, .btn-retour:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+.description p {
+    overflow-y: scroll;
+    max-height: 70px;
+    margin: 0;
+}
+
+/*Filtre*/
 .filter-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    padding: 15px;
-}
-
-.filter-form, .form-control {
-    margin: 20px;
+    width: 100%;
+   margin: 50px 0;
 }
 
 .categories1-wrapper {
     display: flex;
     width: 80%;
     justify-content: space-evenly;
+    align-items: center;
     margin-bottom: 15px;
 }
 
@@ -288,28 +309,36 @@
     display: flex;
     width: 80%;
     justify-content: space-evenly;
+    padding-top: 20px;
 }
 
 .categories2-wrapper label {
     font-size: 1.2em;
+    padding: 5px;
+    margin-right: 10px;
 }
+.categories2-wrapper .checkbox-group{
+    align-content: flex-start;
+}
+
 
 #categories label, #activite label {
     font-size: 1em;
 }
 
-
-.categories2-wrapper .form-control input {
-    display: flex;
-    flex-direction: column;
+.categories2-wrapper .form-control {
+    padding-top: 20px;
 }
 
 .btn-filtre {
-    width: 100px;
-    margin-top: 15px;
-    margin-left: 15px;
+    width: 150px;
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
+/*Formulaire de réservation Gite*/
 .reservation-form {
     max-width: 300px;
     margin: auto;
@@ -336,20 +365,96 @@
     margin-bottom: 5px;
 }
 
-.btn-submit {
+.reservation-form .btn-submit {
     background-color: #aaaaaa;
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.4em;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 15px;
+    width: 300px;
+
 }
 
-.btn-submit:hover {
+.btn-submit:hover, .btn-annuler:hover, .btn-creer-utilisateur:hover {
     background-color: #969696;
     box-shadow: 0 8px 12px #333333;
 }
+
+/*Formulaire d'inscription*/
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    font-size: 1.3em;
+}
+
+.registration-form label {
+    display: block;
+}
+
+.btn-annuler, #registration_form_customer_birthDate, .registration-form input, textarea {
+    margin-bottom: 15px;
+    width: 400px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.btn-annuler {
+   text-align: center;
+    font-size: 1.4em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #aaaaaa;
+    margin-top: 15px;
+}
+
+.btn-annuler a {
+    color: #fff;
+}
+
+/*liste utilisateurs admin*/
+.admin-list {
+    text-align: center;
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 200px;
+    color: black;
+    overflow: scroll;
+}
+.btn-creer-utilisateur {
+    text-align: center;
+    font-size: 1.4em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #aaaaaa;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+ .btn-creer-utilisateur a {
+     color: white;
+ }
+
+
+
+
+
 
 
 

@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
             $context = 'gite';
         }
 
-        $form = $this->createForm(RegistrationFormType::class, $user, ['context'=>$context] );
+        $form = $this->createForm(RegistrationFormType::class, $user, ['context' => $context] );
 
         $form->handleRequest($request);
 

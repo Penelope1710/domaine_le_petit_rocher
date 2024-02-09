@@ -4,11 +4,16 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">ECURIE LE PETIT ROCHER</h2>
+        <h2 class="{% if app.request.get("_route") == 'app_register_ecurie' %}titre-secondaire{% endif %}">
+            {% if app.request.get("_route") == 'app_register_ecurie' %}ECURIE{% endif %}
+        </h2>
+        <h2 class="{% if app.request.get("_route") == 'app_register_gite' %}titre-secondaire{% endif %}">
+            {% if app.request.get("_route") == 'app_register_gite' %}GITE{% endif %}
+        </h2>
     </div>
-    <h3>Mon compte : accès réservé aux propriétaires</h3>
+    <h3>Mon compte</h3>
 
-<div class="container">
+<div class="registration-form">
     {{ form_errors(registrationForm) }}
 
         {{ form_start(registrationForm) }}
@@ -29,8 +34,9 @@
 
         {{ form_row(registrationForm.customer.birthDate) }}
 
-        {% if is_granted('ROLE_ECURIE') %}
-        {{ form_row(registrationForm.customer.horseName) }}
+{#        test si la variable existe et si oui je l'affiche#}
+        {% if registrationForm.customer.horseName is defined %}
+            {{ form_row(registrationForm.customer.horseName) }}
         {% endif %}
 
         {{ form_row(registrationForm.plainPassword.first) }}
@@ -39,11 +45,10 @@
 
         {{ form_errors(registrationForm.plainPassword) }}
 
-
-
-        <button type="submit" class="btn">Créer</button>
+        <button type="submit" class="btn-submit">Créer</button>
     {{ form_end(registrationForm) }}
+    <div class="btn-annuler">
+        <a href="{{ path('main_home') }}">Annuler</a>
+    </div>
 </div>
-
-    <a href="{{ path('main_home') }}" class="btn-modifier ml-16">Annuler</a>
 {% endblock %}

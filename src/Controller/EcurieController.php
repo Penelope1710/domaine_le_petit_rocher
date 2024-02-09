@@ -32,7 +32,7 @@ class EcurieController extends AbstractController
     {
         $user = $this->getUser();
 
-        $profilForm = $this->createForm(ProfilFormType::class, $user);
+        $profilForm = $this->createForm(ProfilFormType::class, $user, ['context' => 'ecurie']);
 
         $profilForm->handleRequest($request);
 
