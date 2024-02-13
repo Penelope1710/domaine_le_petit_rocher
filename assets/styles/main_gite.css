@@ -15,3 +15,13 @@
     font-size: 1.4em;
     text-align: justify;
 }
+
+#calendar {
+    background-color: grey;
+    justify-content: center;
+}
+
+#calendar button {
+    background-color: grey;
+    color: white;
+}

@@ -22,8 +22,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 #[Route('/admin/utilisateurs', name: 'admin_')]
 class UserController extends AbstractController
 {
-    #[Route('/list', name: 'user_list')]
-    public function list(UserRepository $userRepository) {
+    #[Route('/liste', name: 'utilisateurs_liste')]
+    public function liste(UserRepository $userRepository) {
         //TODO ajouter la pagination
         $users = $userRepository->findAll();
 
@@ -32,14 +32,14 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/modifier/{id}', name: 'user_edit')]
+    #[Route('/modifier/{id}', name: 'utilisateur_modifier')]
     #[IsGranted('ROLE_ADMIN')]
-    public function edit(
+    public function modifier(
         User $user,
         EntityManagerInterface $entityManager,
         Request $request) {
 
-        $editUserForm = $this->createForm(RegistrationAdminFormType::class, $user);
+        $editUserForm = $this->createForm(RegistrationAdminFormType::class, $user, ['context' => 'ecurie']);
 
         $editUserForm->handleRequest($request);
 
@@ -48,7 +48,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_user_list');
+            return $this->redirectToRoute('admin_utilisateurs_liste');
         }
 
         return $this->render('admin/users/edit.html.twig', [
@@ -56,8 +56,8 @@ class UserController extends AbstractController
         ]);
 
     }
-    #[Route('/supprimer/{id}', name: 'user_remove')]
-    public function remove(
+    #[Route('/supprimer/{id}', name: 'utilisateur_supprimer')]
+    public function supprimer(
         User $user,
         EntityManagerInterface $entityManager) {
 
@@ -68,11 +68,11 @@ class UserController extends AbstractController
             $this->addFlash('danger', 'suppression impossible : ' .$exception->getMessage());
         }
 
-        return $this->redirectToRoute('admin_user_list');
+        return $this->redirectToRoute('admin_utilisateurs_liste');
     }
 
-    #[Route('/creer', name: 'user_create')]
-    public function create(
+    #[Route('/creer', name: 'utilisateur_creer')]
+    public function creer(
         Request $request,
         User $user,
         EntityManagerInterface $entityManager,
@@ -80,7 +80,7 @@ class UserController extends AbstractController
 
         $user = new User();
 
-        $createUserForm = $this->createForm(RegistrationAdminFormType::class, $user);
+        $createUserForm = $this->createForm(RegistrationAdminFormType::class, $user, ['context' => 'ecurie']);
 
         $createUserForm->handleRequest($request);
 
@@ -99,7 +99,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_user_list');
+            return $this->redirectToRoute('admin_utilisateurs_liste');
         }
 
         return $this->render('admin/users/create.html.twig', [
@@ -107,7 +107,5 @@ class UserController extends AbstractController
         ]);
 
     }
-
-
 
 }

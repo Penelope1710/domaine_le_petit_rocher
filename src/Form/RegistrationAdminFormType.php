@@ -65,7 +65,10 @@ class RegistrationAdminFormType extends AbstractType
                 'multiple' => true,
                 'required' => true,
             ])
-            ->add('customer', CustomerAdminType::class)
+            ->add('customer', CustomerType::class, [
+                'context' => $options['context']
+            ])
+
         ;
     }
 
@@ -73,6 +76,7 @@ class RegistrationAdminFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'context' => null,
 
         ]);
     }

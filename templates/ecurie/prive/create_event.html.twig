@@ -6,7 +6,11 @@
     <div id="banniere">
         <h2 class="titre-secondaire">ECURIE</h2>
     </div>
-    <h3>Plannifier un évènement</h3>
+    <div class="titre-tertiaire">
+        <h3>Plannifier un évènement</h3>
+        <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
+    </div>
+
     <section class="create-event-form">
         {{ form_start(createEventForm) }}
         {{ form_row(createEventForm.name) }}
@@ -18,9 +22,10 @@
         <button class="btn-plannifier" type="submit">
             Plannifier
         </button>
+        {{ form_errors(createEventForm) }}
         {{ form_end(createEventForm) }}
-        <div class="btn-annuler">
-            <a href="{{ path('ecurieevent_list') }}" title="">Annuler</a>
+        <div class="btn-create-event-form-annuler">
+            <a href="{{ path('ecurieevenement_liste') }}" title="">Annuler</a>
         </div>
     </section>
 

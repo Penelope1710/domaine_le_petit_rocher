@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\LessThan;
 
 class CreateEventFormType extends AbstractType
 {
@@ -20,26 +22,34 @@ class CreateEventFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom de l\'évènement *'
+                'label' => 'Nom de l\'évènement *',
+                'required' => true
         ])
             ->add('startDate', DateType::class, [
-                'label' => 'Date de l\'évènement *'
+                'label' => 'Date de l\'évènement *',
+                'required' => true,
+                'widget' => 'single_text'
             ])
             ->add('startTime', TimeType::class, [
-                'label' => 'Heure de de l\'évènement *'
+                'label' => 'Heure de de l\'évènement *',
+                'required' => true,
             ])
             ->add('deadLine', DateType::class, [
-                'label' => 'Date limite d\'inscription *'
+                'label' => 'Date limite d\'inscription *',
+                'required' => true,
+                'widget' => 'single_text'
             ])
             ->add('eventDetails', TextareaType::class, [
-                'label' => 'Détails de l\'évènement *'
+                'label' => 'Détails de l\'évènement *',
+                'required' => true
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'expanded' => false,
                 'multiple' => false,
                 'label' => 'Catégorie *',
-                'placeholder' => 'Choisissez une catégorie'
+                'placeholder' => 'Choisissez une catégorie',
+                'required' => true
             ])
         ;
     }

@@ -27,8 +27,8 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class EcurieEventController extends AbstractController
 {
 
-    #[Route('/liste', name: 'ecurieevent_list')]
-    public function list(
+    #[Route('/liste', name: 'ecurieevenement_liste')]
+    public function liste(
         Request $request,
         EventRepository $eventRepository,
         CategoryRepository $categoryRepository, Customer $customer): Response
@@ -64,10 +64,11 @@ class EcurieEventController extends AbstractController
         ]);
     }
 
-    #[Route('/creation', name: 'ecurieevent_create')]
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/creation', name: 'ecurieevenement_creer')]
+    public function creer(Request $request, EntityManagerInterface $entityManager): Response
     {
         $event = new Event();
+        $currentDate = new \DateTime();
 
         $createEventForm = $this->createForm(CreateEventFormType::class, $event);
 
@@ -80,16 +81,17 @@ class EcurieEventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
-            return $this->redirectToRoute('ecurieevent_list');
+            return $this->redirectToRoute('ecurieevenement_liste');
         }
         return $this->render('ecurie/prive/create_event.html.twig', [
             'createEventForm' => $createEventForm->createView(),
+            'currentDate' => $currentDate,
 
 
         ]);
     }
 
-    #[Route('/details/{id}', name: 'ecurieevent_details')]
+    #[Route('/details/{id}', name: 'ecurieevenement_details')]
     public function details(
         int $id,
         EventRepository $eventRepository,
@@ -105,21 +107,21 @@ class EcurieEventController extends AbstractController
         ]);
     }
 
-    #[Route('/supprimer/{id}', name: 'ecurieevent_remove')]
+    #[Route('/supprimer/{id}', name: 'ecurieevenement_supprimer')]
     #[IsGranted('delete', 'event')]
-    public function remove(
+    public function supprimer(
         Event $event,
         EntityManagerInterface $entityManager): Response
     {
 
         $entityManager->remove($event);
         $entityManager->flush();
-        return $this->redirectToRoute('ecurieevent_list');
+        return $this->redirectToRoute('ecurieevenement_liste');
     }
 
-    #[Route('/modifier/{id}', name: 'ecurieevent_edit')]
+    #[Route('/modifier/{id}', name: 'ecurieevenement_modifier')]
     #[IsGranted('edit', 'event')]
-    public function edit(
+    public function modifier(
         Event $event,
         Request $request,
         EntityManagerInterface $entityManager,
@@ -135,7 +137,7 @@ class EcurieEventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
-            return $this->redirectToRoute('ecurieevent_list');
+            return $this->redirectToRoute('ecurieevenement_liste');
         }
 
         return $this->render('ecurie/prive/edit_event.html.twig', [
@@ -143,9 +145,9 @@ class EcurieEventController extends AbstractController
         ]);
     }
 
-    #[Route('/inscription/{id}', name: 'ecurieevent_subscribe')]
+    #[Route('/inscription/{id}', name: 'ecurieevenement_inscrire')]
 //    #[IsGranted('subscribe', 'event')]
-    public function subscribe(
+    public function inscrire(
         Event $event,
         Request $request,
         EntityManagerInterface $entityManager): Response
@@ -162,14 +164,14 @@ class EcurieEventController extends AbstractController
         $entityManager->persist($eventCustomer);
         $entityManager->flush();
 
-        return $this->redirectToRoute('ecurieevent_list', [
+        return $this->redirectToRoute('ecurieevenement_liste', [
 
         ]);
 
     }
-    #[Route('/desinscription/{id}', name: 'ecurieevent_unsubscribe')]
+    #[Route('/desinscription/{id}', name: 'ecurieevenement_desinscrire')]
     #[IsGranted('unsubscribe', 'event')]
-    public function unsubscribe(
+    public function desinscrire(
         Event $event,
         EntityManagerInterface $entityManager): Response
     {
@@ -184,7 +186,7 @@ class EcurieEventController extends AbstractController
         $entityManager->remove($eventCustomer);
         $entityManager->flush();
 
-        return $this->redirectToRoute('ecurieevent_list');
+        return $this->redirectToRoute('ecurieevenement_liste');
     }
 
 }
