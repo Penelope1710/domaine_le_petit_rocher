@@ -6,9 +6,10 @@
 <div id="banniere">
     <h2 class="titre-secondaire">LE GITE</h2>
 </div>
-<h3>Réservation</h3>
-
-    <div id="calendar"></div>
+    <div class="titre-tertiaire">
+        <h3>Réservation</h3>
+            <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
+    </div>
 
 <section class="reservation-form">
 {{ form_start(reservationForm) }}
@@ -37,6 +38,9 @@
     </button>
 {{ form_end(reservationForm) }}
 </section>
+    <div id="calendar" style="display: none;">
+    </div>
+    <div class="loader"></div>
 
 {% endblock %}
 

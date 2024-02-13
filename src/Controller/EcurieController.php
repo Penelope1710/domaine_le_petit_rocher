@@ -51,8 +51,8 @@ class EcurieController extends AbstractController
             ]);
         }
 
-        #[Route('/prive/ecurie/mes_informations/supprimer_mon_compte', name: 'ecurie_removeAccount')]
-        public function removeAccount(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager)
+        #[Route('/prive/ecurie/mes_informations/supprimer_mon_compte', name: 'ecurie_supprimer_compte')]
+        public function supprimerCompte(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager)
         {
             $user = $this->getUser();
 
@@ -67,7 +67,7 @@ class EcurieController extends AbstractController
 
                 $this->addFlash('success', 'Votre compte a été supprimé avec succès !');
 
-                return $this->redirectToRoute('ecurie_removeAccount');
+                return $this->redirectToRoute('ecurie_supprimer_compte');
             }
          return  $this->render('ecurie/prive/removeAccount.html.twig', [
             'removeAccountForm' => $removeAccountForm->createView(),

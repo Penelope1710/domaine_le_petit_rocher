@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Form\ReservationFormType;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +23,7 @@ class GiteController extends AbstractController
     #[Route('/prive/gite/reservation', name: 'gite_reservation')]
     public function reservation (Request $request, EntityManagerInterface $entityManager) : Response
     {
+        $currentDate = new \DateTime();
 
         $reservation = new Reservation();
 
@@ -30,7 +32,7 @@ class GiteController extends AbstractController
         $reservationForm->handleRequest($request);
 
         if ($reservationForm->isSubmitted() && $reservationForm->isValid()) {
-
+            //Affecter la reservation au customer qui est l'utilisateur actuellement connecté
             $reservation->setCustomer(
                 $this->getUser()->getCustomer()
             );
@@ -40,7 +42,16 @@ class GiteController extends AbstractController
         }
 
         return $this->render('gite/prive/reservation.form.html.twig', [
-            'reservationForm' => $reservationForm->createView()
+            'reservationForm' => $reservationForm->createView(),
+            'currentDate' => $currentDate,
         ]);
     }
+
+    #[Route('/prive/gite/reservation/dates', name: 'gite_reservation_date')]
+    public function listeDate(ReservationRepository $reservationRepository) {
+
+        $reservations = $reservationRepository->findAllDate();
+
+    }
+
 }

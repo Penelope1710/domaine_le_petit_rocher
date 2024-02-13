@@ -7,7 +7,7 @@
         <h2 class="titre-secondaire">L'ECURIE</h2>
     </div>
     <h3>Mes Informations</h3>
-    <section>
+    <section class="form-infos">
 
             {{ form_start(profilForm) }}
              {{ form_errors(profilForm) }}
@@ -36,10 +36,12 @@
 
                 {{ form_errors(profilForm.plainPassword) }}
 
-        <button type="submit" class="btn">Modifier</button>
-            {{ form_end(profilForm) }}
+        <div class="btns-divers">
+                <button type="submit" class="btn">Modifier</button>
+                    {{ form_end(profilForm) }}
 
-        <li><a href="{{ path('ecurie_home') }}" title="annuler">Annuler</a></li>
-        <li><a href="{{ path('ecurie_removeAccount') }}" title="supprimer">Supprimer</a></li>
+                <li><a href="{{ path('ecurie_home') }}" title="annuler">Annuler</a></li>
+                <li><a href="{{ path('ecurie_supprimer_compte') }}" title="supprimer">Supprimer</a></li>
+        </div>
     </section>
 {% endblock %}

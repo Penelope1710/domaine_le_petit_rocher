@@ -35,7 +35,7 @@
             <tr>
                 <td>
                 <div class="position-left">
-                    <a href="{{ path('ecurieevent_details', {'id': event.id}) }}">
+                    <a href="{{ path('ecurieevenement_details', {'id': event.id}) }}">
                         {{ event.name }}
                 </div>
                     </a>
@@ -71,7 +71,7 @@
         </tbody>
     </table>
     <div class="btn-event-plan">
-        <a href="{{ path('ecurieevent_create') }}">Plannifier un évènement</a>
+        <a href="{{ path('ecurieevenement_creer') }}">Plannifier un évènement</a>
     </div>
 </section>
 {% endblock %}

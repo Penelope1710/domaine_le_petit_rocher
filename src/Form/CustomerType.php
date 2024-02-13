@@ -18,24 +18,31 @@ class CustomerType extends AbstractType
         $builder
             ->add('lastName',TextType::class, [
                 'label' => 'Nom *',
+                'required' => true
             ])
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom *',
+                'required' => true
             ])
             ->add('phoneNumber', TextType::class,[
                 'label' => 'Téléphone *',
+                'required' => true
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse *',
+                'required' => true
             ])
             ->add('zipCode', textType::class, [
                 'label' => 'Code Postal *',
+                'required' => true
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville *',
+                'required' => true
             ])
             ->add('birthDate', BirthdayType::class, [
                 'label' => 'Date de naissance *',
+                'required' => true
             ]);
 
             if($options['context'] === 'ecurie') {

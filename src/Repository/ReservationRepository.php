@@ -21,6 +21,15 @@ class ReservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reservation::class);
     }
 
+    public function findAllDate() {
+        return $this->createQueryBuilder('r')
+            ->select('r.startDate, r.endDate')
+            ->orderBy('r.startDate')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Reservation[] Returns an array of Reservation objects
 //     */

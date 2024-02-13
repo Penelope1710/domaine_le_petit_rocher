@@ -45,16 +45,16 @@
             {% if event.createdBy.customer.id != app.user.id %}
             {% if not event.isUserSubscribed(app.user) %}
                 <button class="btn-inscription">
-                    <a href="{{ path('ecurieevent_subscribe', { id:event.id }) }}">M'inscrire</a>
+                    <a href="{{ path('ecurieevenement_inscrire', { id:event.id }) }}">M'inscrire</a>
                 </button>
             {% else %}
                 <button class="btn-desinscription">
-                    <a href="{{ path('ecurieevent_unsubscribe', {id:event.id}) }}">Me désinscrire</a>
+                    <a href="{{ path('ecurieevenement_desinscrire', {id:event.id}) }}">Me désinscrire</a>
                 </button>
             {% endif %}
             {% endif %}
         {% endif %}
-        <button class="btn-retour"><a href="{{ path('ecurieevent_list') }}">Retour</a></button>
+        <button class="btn-retour"><a href="{{ path('ecurieevenement_liste') }}">Retour</a></button>
     </div>
 
 {% endblock %}

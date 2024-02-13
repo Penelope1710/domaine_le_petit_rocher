@@ -27,7 +27,7 @@ class Customer
     private ?string $lastName = null;
 
     #[ORM\Column(length: 150)]
-    //#[Assert\NotBlank(message: "Le prénom ne peut pas être vide")]
+    #[Assert\NotBlank(message: "Le prénom ne peut pas être vide")]
     #[Assert\Length(
         min: 2,
         max: 150,
@@ -46,11 +46,11 @@ class Customer
     private ?string $address = null;
 
     #[ORM\Column(length: 10)]
-   // #[Assert\NotBlank(message: "Le code postal ne peut pas être vide")]
+   #[Assert\NotBlank(message: "Le code postal ne peut pas être vide")]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 255)]
-    //#[Assert\NotBlank(message: "La ville ne peut pas être vide")]
+    #[Assert\NotBlank(message: "La ville ne peut pas être vide")]
     #[Assert\Length(
         min: 2,
         max: 255,

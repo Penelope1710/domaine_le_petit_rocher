@@ -25,15 +25,15 @@
                         <td>{{ user.customer.firstName }}</td>
                         <td>{{ user.email }}</td>
                         <td>
-                            <a href="{{ path('admin_user_edit', { id: user.id }) }}">Modifier - </a>
-                            <a href="{{ path('admin_user_remove', { id: user.id}) }}">Supprimer</a>
+                            <a href="{{ path('admin_utilisateur_modifier', { id: user.id }) }}">Modifier - </a>
+                            <a href="{{ path('admin_utilisateur_supprimer', { id: user.id}) }}">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
         <div class="btn-creer-utilisateur">
-            <a href="{{ path('admin_user_create') }}">Créer un nouvel utilisateur</a>
+            <a href="{{ path('admin_utilisateur_creer') }}">Créer un nouvel utilisateur</a>
         </div>
     </div>
 {% endblock %}
