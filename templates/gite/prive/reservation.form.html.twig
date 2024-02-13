@@ -13,6 +13,9 @@
 
 <section class="reservation-form">
 {{ form_start(reservationForm) }}
+    <div id="calendar">
+    </div>
+    <div class="loader" style="display: none;"></div>
     <div class="resa-gpe">
         {{ form_row(reservationForm.startDate, {
             'attr': {'class': 'resa-input'},
@@ -38,19 +41,19 @@
     </button>
 {{ form_end(reservationForm) }}
 </section>
-    <div id="calendar" style="display: none;">
-    </div>
-    <div class="loader"></div>
 
 {% endblock %}
 
 {% block javascripts %}
     <script>
         const options = {
-            type: 'default'
+            settings: {
+                lang: 'fr-FR',
+            },
+            type: 'default',
         }
         document.addEventListener('DOMContentLoaded', () => {
-            const calendar = new VanillaCalendar('#calendar');
+            const calendar = new VanillaCalendar('#calendar', options);
             calendar.init();
         });
 
