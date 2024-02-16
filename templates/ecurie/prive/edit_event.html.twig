@@ -15,11 +15,12 @@
         {{ form_row(editEventForm.startTime) }}
         {{ form_row(editEventForm.deadLine) }}
         {{ form_row(editEventForm.eventDetails) }}
-        <button class="btn-plannifier" type="submit">
+        <button class="btn-modifier" type="submit">
             Modifier
         </button>
+        {{ form_errors(editEventForm) }}
         {{ form_end(editEventForm) }}
-        <div class="btn-annuler">
+        <div class="btn-edit-event">
             <a href="{{ path('ecurieevenement_liste') }}" title="">Annuler</a>
         </div>
     </section>

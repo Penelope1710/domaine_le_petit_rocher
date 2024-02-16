@@ -16,12 +16,20 @@
     text-align: justify;
 }
 
-#calendar {
-    background-color: grey;
-    justify-content: center;
+.disponibilites .legend {
+    font-size: 1.2em;
+    font-style: italic;
 }
 
-#calendar button {
-    background-color: grey;
-    color: white;
+.disponibilites p {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.disponibilites a {
+    color: grey;
+}
+
+.disponibilites a:hover {
+    color: purple;
 }

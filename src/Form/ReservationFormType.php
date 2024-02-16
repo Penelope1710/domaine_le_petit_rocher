@@ -19,26 +19,26 @@ class ReservationFormType extends AbstractType
     {
         $builder
             ->add('startDate', DateType::class, [
-                'label' => 'Date de début * :',
+                'label' => 'Date d\'arrivée * :',
                 'required' => true,
                 'widget' => 'single_text',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de bien vouloir entrer une date de début',
         ]),
-                    new GreaterThanOrEqual(['value' => 'today', 'message' => 'La date de début doit être ultérieure à la date actuelle.'])
+//                    new GreaterThanOrEqual(['value' => 'today', 'message' => 'La date de début doit être ultérieure à la date actuelle.'])
                 ],
             ])
 
             ->add('endDate', DateType::class, [
-                'label' => 'Date de fin * : ',
+                'label' => 'Date de départ * : ',
                 'required' => true,
                 'widget' => 'single_text',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de bien vouloir entrer une date de fin',
         ]),
-                    new GreaterThanOrEqual(['propertyPath' => 'startDate', 'message' => 'La date de fin doit être ultérieure à la date de début.'])
+//                    new GreaterThanOrEqual(['propertyPath' => 'startDate', 'message' => 'La date de fin doit être ultérieure à la date de début.'])
     ],
             ])
             ->add('horseNb', IntegerType::class, [
