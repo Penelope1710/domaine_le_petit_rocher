@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les disponibilités du gîte{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">LE GITE</h2>
+</div>
+<div class="titre-tertiaire">
+<h3>Les disponibilités : Gîte 4 personnes</h3>
+    <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
+</div>
+
+    <section class="disponibilites">
+
+        <div id="calendar" style="display: none;">
+        </div>
+        <div id="loader"></div>
+
+        <p class="legend">
+            Dates en noir : indisponible <br>
+            Dates en blanc : disponible
+        </p>
+        <p>
+            Pour réserver, merci de bien vouloir <a href="{{ path('app_login') }}">vous connecter</a> ou <a href="{{ path('app_register_gite') }}">vous inscire</a>
+        </p>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        //async permet de déclarer la fonction comme asynchrone et donc d'utiliser await
+        document.addEventListener('DOMContentLoaded', async () => {
+
+            // envoie la requete et attente de la réponse grâce à await
+            const response = await fetch('/gite/disponibilites/dates')
+            const result = await response.json()
+            console.log(result)
+            const options = {
+                settings: {
+                    range: {
+                        disabled: [result],
+                        min: '2023-01-01',
+                        max: '2025-01-01'
+                    },
+                    lang: 'fr-FR',
+                },
+                type: 'default',
+            }
+            const calendar = new VanillaCalendar('#calendar', options);
+            calendar.init();
+            //cache le loader et affiche le calendrier
+            document.getElementById('loader').style.display = 'none'
+            document.getElementById('calendar').style.display = 'block'
+        });
+
+    </script>
+{% endblock %}

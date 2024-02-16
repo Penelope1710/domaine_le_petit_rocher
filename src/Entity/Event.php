@@ -31,11 +31,9 @@ class Event
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\GreaterThanOrEqual("today", message: "La date et l'heure de début doivent être ultérieures à la date actuelle.")]
     private ?\DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\LessThan(propertyPath: "startDate", message: "La date limite de participation doit être antérieure à celle du début de l'évènement.")]
     private ?\DateTimeInterface $deadLine = null;
 
 

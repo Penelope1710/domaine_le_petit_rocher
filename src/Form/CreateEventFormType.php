@@ -28,7 +28,11 @@ class CreateEventFormType extends AbstractType
             ->add('startDate', DateType::class, [
                 'label' => 'Date de l\'évènement *',
                 'required' => true,
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'constraints' => new GreaterThanOrEqual([
+                    'value' => 'today',
+                    'message' => 'La date et l\'heure de début doivent être ultérieures à la date actuelle.'
+                ])
             ])
             ->add('startTime', TimeType::class, [
                 'label' => 'Heure de de l\'évènement *',
@@ -37,7 +41,11 @@ class CreateEventFormType extends AbstractType
             ->add('deadLine', DateType::class, [
                 'label' => 'Date limite d\'inscription *',
                 'required' => true,
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'constraints' => new GreaterThanOrEqual([
+                    'value' => 'startDate',
+                    'message' => 'La date limite de participation doit être antérieure à celle du début de l\'évènement.'
+                ])
             ])
             ->add('eventDetails', TextareaType::class, [
                 'label' => 'Détails de l\'évènement *',

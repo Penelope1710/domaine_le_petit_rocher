@@ -37,8 +37,8 @@
                 <div class="position-left">
                     <a href="{{ path('ecurieevenement_details', {'id': event.id}) }}">
                         {{ event.name }}
-                </div>
                     </a>
+                </div>
                 </td>
                 <td>{{ event.category.name }}</td>
                 <td>{{ event.startDate|date('d-m-y') }}</td>
@@ -46,25 +46,23 @@
                 <td>{{ event.deadLine|date('d-m-y') }}</td>
                 {# Afficher la liste des inscrits en info bulle #}
                 <td>
-                    {{ event.eventCustomer.count }}
-                    <span class="info-bulle" title="Inscrits :
-                        {% for eventCustomer in event.eventCustomer %}
-                            {{ eventCustomer.customer.firstName }} {{ eventCustomer.customer.lastName[:1]|upper }}
-                            {% if not loop.last %}
-                                <br>
-                            {% endif %}
-                       {% endfor %}"
-                    >
-                    </span>
+
+                    <div class="tooltip">{{ event.eventCustomer.count }}
+                        <span class="tooltiptext">
+                            {% for eventCustomer in event.eventCustomer %}
+                                {{ eventCustomer.customer.firstName }} {{ eventCustomer.customer.lastName[:1]|upper }}
+                                {% if not loop.last %}
+                                    <br>
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
                 </td>
                 <td>{{ event.deadLine > currentDate ? 'Ouvert' : 'Fermé' }}</td>
                 <td>{{ event.createdBy.customer.firstName ~ ' ' ~ event.createdBy.customer.lastName[:1]|upper }}</td>
                 <td>
                     {% include('inc/_affichage_actions.html.twig') %}
                 </td>
-
-            <tr>
-                {# todo les conditions des différentes colonnes dans un autre fichier qu'on va include #}
 
             </tr>
         {% endfor %}

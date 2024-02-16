@@ -84,4 +84,8 @@ hr {
     box-shadow: 0 8px 12px #333333;
 }
 
-
+@media screen and (max-width: 768px) {
+    .mes-infos, .mon-contrat, .mes-events {
+        width: 30%;
+    }
+}

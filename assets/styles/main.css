@@ -87,3 +87,24 @@ footer span {
     display: none;
 }
 
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    #bloc_page {
+        width: 100%;
+        border: none;
+    }
+
+    .titre-site{
+        font-size: 2.5em;
+        right: 60px;
+        top: 30px;
+    }
+
+    #logo img {
+        height: 150px;
+        width: auto;
+    }
+}
+

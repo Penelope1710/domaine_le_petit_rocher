@@ -17,57 +17,32 @@ class Customer
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
-    //#[Assert\NotBlank(message: "Le nom ne peut pas être vide")]
-    #[Assert\Length(
-        min: 2,
-        max: 150,
-        minMessage: "Le nom doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le nom ne peut pas dépasser {{ limit }} caractères."
-    )]
+    #[Assert\NotBlank(message: "Le nom ne peut pas être vide")]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 150)]
     #[Assert\NotBlank(message: "Le prénom ne peut pas être vide")]
-    #[Assert\Length(
-        min: 2,
-        max: 150,
-        minMessage: "Le prénom doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le prénom ne peut pas dépasser {{ limit }} caractères."
-    )]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\Length(max: 50, maxMessage: "Le numéro de téléphone ne peut pas dépasser 50 caractères.")]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 255)]
-    //#[Assert\NotBlank(message: "L'adresse ne peut pas être vide")]
-    #[Assert\Length(max: 255, maxMessage:"L'adresse ne peut pas dépasser {{ limit }} caractères.")]
+    #[Assert\NotBlank(message: "L'adresse ne peut pas être vide")]
     private ?string $address = null;
 
     #[ORM\Column(length: 10)]
-   #[Assert\NotBlank(message: "Le code postal ne peut pas être vide")]
+    #[Assert\NotBlank(message: "Le code postal ne peut pas être vide")]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "La ville ne peut pas être vide")]
-    #[Assert\Length(
-        min: 2,
-        max: 255,
-        minMessage: "La ville doit contenir au moins {{ limit }} carctères",
-        maxMessage:"La ville ne peut pas dépasser {{ limit }} caractères.")]
     private ?string $city = null;
 
     #[ORM\Column]
     private ?\DateTime $birthDate = null;
 
     #[ORM\Column(length: 150, nullable: true)]
-    #[Assert\Length(
-        min: 2,
-        max: 150,
-        minMessage: "Le nom de votre cheval doit contenir au moins {{ limit }} caractères",
-        maxMessage: "Le nom de votre cheval ne peut pas dépasser {{ limit }} caractères."
-    )]
     private ?string $horseName = null;
 
     #[ORM\OneToOne(inversedBy: 'customer', cascade: ['persist', 'remove'])]

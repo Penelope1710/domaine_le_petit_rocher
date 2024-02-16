@@ -214,3 +214,69 @@ h4 {
     padding: 20px;
     gap: 5px;
 }
+
+@media screen and (max-width: 768px) {
+    #banniere_image {
+        display: none;
+    }
+
+    ul  {
+        margin-left: 50px;
+        margin-right: 5px;
+        gap: 20px;
+        font-size: 1.5em;
+    }
+
+    .presentation1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .presentation1 .article1{
+        width: 90%;
+        height: 600px;
+        overflow: scroll;
+    }
+
+    .presentation1 .article2 {
+        width: 90%;
+        height: 600px;
+        overflow: scroll;
+    }
+
+    .presentation2 {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        margin-top: 600px;
+    }
+
+    .presentation2 img {
+        width: 40%;
+    }
+
+    .carre1, .carre2, .carre3 {
+        width: 50%;
+    }
+
+    .cta  {
+        text-align: center;
+    }
+
+    .main_footer {
+        margin-top: 600px;
+    }
+
+    .main_header {
+        height: 180px;
+    }
+
+    .main_header .affichage-prenom {
+        padding-bottom: 140px;
+    }
+
+    .sub_header, .main_header {
+        width: 100%;
+    }
+
+}
