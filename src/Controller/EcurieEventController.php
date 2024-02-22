@@ -31,7 +31,7 @@ class EcurieEventController extends AbstractController
     public function liste(
         Request $request,
         EventRepository $eventRepository,
-        CategoryRepository $categoryRepository, Customer $customer): Response
+        CategoryRepository $categoryRepository): Response
     {
         $currentDate = new \DateTime();
         $user = $this->getUser();

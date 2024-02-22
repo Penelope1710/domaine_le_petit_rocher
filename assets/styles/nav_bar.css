@@ -74,154 +74,97 @@ nav ul li {
     text-align: left;
 }
 
-@media screen and (max-width: 768px) {
-
-
-    #menuToggle
-    {
-        display: block;
-        position: relative;
-        top: 50px;
-        left: 50px;
-
-        z-index: 1;
-
-        -webkit-user-select: none;
-        user-select: none;
-    }
-
-    #menuToggle a
-    {
-        text-decoration: none;
-        color: #232323;
-
-        transition: color 0.3s ease;
-    }
-
-    #menuToggle a:hover
-    {
-        color: tomato;
-    }
-
-
-    #menuToggle input
-    {
-        display: block;
-        width: 40px;
-        height: 32px;
-        position: absolute;
-        top: -7px;
-        left: -5px;
-
-        cursor: pointer;
-
-        opacity: 0; /* hide this */
-        z-index: 2; /* and place it over the hamburger */
-
-        -webkit-touch-callout: none;
-    }
-
-    /*
-     * Just a quick hamburger
-     */
-    #menuToggle span
-    {
-        display: block;
-        width: 33px;
-        height: 4px;
-        margin-bottom: 5px;
-        position: relative;
-
-        background: #cdcdcd;
-        border-radius: 3px;
-
-        z-index: 1;
-
-        transform-origin: 4px 0px;
-
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-        opacity 0.55s ease;
-    }
-
-    #menuToggle span:first-child
-    {
-        transform-origin: 0 0;
-    }
-
-    #menuToggle span:nth-last-child(2)
-    {
-        transform-origin: 0 100%;
-    }
-
-    /*
-     * Transform all the slices of hamburger
-     * into a crossmark.
-     */
-    #menuToggle input:checked ~ span
-    {
-        opacity: 1;
-        transform: rotate(45deg) translate(-2px, -1px);
-        background: #232323;
-    }
-
-    /*
-     * But let's hide the middle one.
-     */
-    #menuToggle input:checked ~ span:nth-last-child(3)
-    {
-        opacity: 0;
-        transform: rotate(0deg) scale(0.2, 0.2);
-    }
-
-    /*
-     * Ohyeah and the last one should go the other direction
-     */
-    #menuToggle input:checked ~ span:nth-last-child(2)
-    {
-        transform: rotate(-45deg) translate(0, -1px);
-    }
-
-    /*
-     * Make this absolute positioned
-     * at the top left of the screen
-     */
-    #menu
-    {
-        position: absolute;
-        width: 300px;
-        margin: -100px 0 0 -50px;
-        padding: 50px;
-        padding-top: 125px;
-
-        background: #ededed;
-        list-style-type: none;
-        -webkit-font-smoothing: antialiased;
-        /* to stop flickering of text in safari */
-
-        transform-origin: 0% 0%;
-        transform: translate(-100%, 0);
-
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-    }
-
-    #menu li
-    {
-        padding: 10px 0;
-        font-size: 22px;
-    }
-
-    /*
-     * And let's slide it in from the left
-     */
-    #menuToggle input:checked ~ ul
-    {
-        transform: none;
-    }
+.header-burger {
+    display: none;
 }
 
+.header-burger svg {
+    stroke: black;
+    width: 40px;
+    height: 40px;
+    margin-top: 80px;
+    margin-right: 25px;
+}
 
+.header-nav-close {
+    display: none;
+}
 
+@media screen and (max-width: 768px) {
+
+    .header-burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .nav-accueil {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 100vh;
+        background-color: #666666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        z-index: 1;
+    }
+
+    .nav-accueil.open {
+        display: flex;
+        animation: transformMenu 300ms ease-in-out forwards;
+    }
+    
+    @keyframes transformMenu {
+        0% {
+            transform: translateX(100%);
+        }
+        100%{
+            transform: initial;
+        }
+    }
+
+    .nav-accueil ul {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .nav-accueil li {
+        margin-bottom: 30px;
+        font-size: 1.5em;
+    }
+
+    .header-nav-close {
+        display: block;
+        cursor: pointer;
+    }
+
+    .header-nav-close svg {
+        stroke: black;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    .overlay-menu-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vh;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.4);
+        display: none;
+    }
+
+    .overlay-menu-mobile.open {
+        display: block;
+    }
+}
 
 
 

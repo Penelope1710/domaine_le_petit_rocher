@@ -74,7 +74,6 @@ class UserController extends AbstractController
     #[Route('/creer', name: 'utilisateur_creer')]
     public function creer(
         Request $request,
-        User $user,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher) {
 

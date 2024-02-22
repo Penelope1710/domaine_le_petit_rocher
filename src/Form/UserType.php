@@ -20,23 +20,18 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'attr' => [
-                    'minlength' => '2',
-                    'maxLength' => '180',
-                ],
                 'label' => 'E-mail *',
                 'constraints' => [
                     new NotBlank(),
-                    new Email(),
-                    new Length([
-                        'min' => 2,
-                        'max'=> 180
-                    ])
-                ]
+                ],
             ])
             ->add('roles')
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe *',
+                'required' =>true,
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('customer', EntityType::class, [
                 'class' => Customer::class,

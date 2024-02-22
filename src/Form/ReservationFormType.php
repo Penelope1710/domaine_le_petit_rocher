@@ -10,7 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ReservationFormType extends AbstractType
@@ -20,26 +22,25 @@ class ReservationFormType extends AbstractType
         $builder
             ->add('startDate', DateType::class, [
                 'label' => 'Date d\'arrivée * :',
-                'required' => true,
                 'widget' => 'single_text',
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de bien vouloir entrer une date de début',
-        ]),
-//                    new GreaterThanOrEqual(['value' => 'today', 'message' => 'La date de début doit être ultérieure à la date actuelle.'])
+                    new GreaterThanOrEqual([
+                        'value' => 'today',
+                        'message' => "La date et l\'heure de début doivent être ultérieures à {{ value }}."
+                    ]),
+                    new NotBlank()
                 ],
             ])
-
             ->add('endDate', DateType::class, [
                 'label' => 'Date de départ * : ',
-                'required' => true,
                 'widget' => 'single_text',
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de bien vouloir entrer une date de fin',
-        ]),
-//                    new GreaterThanOrEqual(['propertyPath' => 'startDate', 'message' => 'La date de fin doit être ultérieure à la date de début.'])
-    ],
+                    new GreaterThanOrEqual([
+                        'propertyPath' => "parent.all[startDate].data",
+                        'message' => 'La date de fin doit être ultérieure à la date d\'arrivée.'
+                    ]),
+                    new NotBlank(),
+                ],
             ])
             ->add('horseNb', IntegerType::class, [
                 'label' =>'Nb de chevaux : ',

@@ -25,6 +25,7 @@ class Customer
     private ?string $firstName = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le numéro de téléphone ne peut pas être vide")]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 255)]
@@ -40,6 +41,7 @@ class Customer
     private ?string $city = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Le date de naissance ne peut pas être vide")]
     private ?\DateTime $birthDate = null;
 
     #[ORM\Column(length: 150, nullable: true)]

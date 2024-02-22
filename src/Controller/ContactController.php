@@ -19,25 +19,14 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'contact_index')]
     public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
-        $contact = new Contact();
 
-        //remplissage automatique si user connecté
-        /*if ($this->getUser()){
-            $contact->setFullName($this->getUser()->getFullName())
-            ->setEmail($this->getUser()->getEmail());
-        }*/
 
-        $contact->setCreatedAt(new \DateTimeImmutable);
-        $contactForm = $this->createForm(ContactType::class, $contact);
+        $contactForm = $this->createForm(ContactType::class);
 
         $contactForm->handleRequest($request);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-//            $contact = $contactForm->getData();
-
-            $entityManager->persist($contact);
-            $entityManager->flush();
-
+            $contact = $contactForm->getData();
 
             //Email
             $email = (new Email())
@@ -48,7 +37,11 @@ class ContactController extends AbstractController
                 //->replyTo('fabien@example.com')
                 //->priority(Email::PRIORITY_HIGH)
                 ->subject('Message reçu du formulaire contact')
-                ->html($contact->getMessage());
+                ->html(
+                    'Vous avez reçu un message de : ' . $contact['fullName'] . ' (' . $contact['email'] . ')<br>' .
+                    $contact['message']
+                )
+            ;
 
             try {
             $mailer->send($email);

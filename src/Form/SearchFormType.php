@@ -35,9 +35,9 @@ class SearchFormType extends AbstractType
                 'placeholder' => 'Toutes',
             ])
             ->add('dateDebut', DateType::class, [
-            'label' => 'Entre : ',
-            'widget' => 'single_text',
-            'required' => false,
+                'label' => 'Entre : ',
+                'widget' => 'single_text',
+                'required' => false,
             ])
             ->add('dateFin', DateType::class, [
                 'label' => 'Et : ',
