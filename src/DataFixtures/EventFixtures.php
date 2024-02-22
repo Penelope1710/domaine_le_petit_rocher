@@ -23,14 +23,18 @@ class EventFixtures extends Fixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $categories = $manager->getRepository(Category::class)->findAll();
+        $categoriesNames = ['Ballades à cheval','Festivités'];
+
+
+
 
 
         // Event
         $users = $manager->getRepository(User::class)->findAll();
         foreach ($users as $user) {
-
             for ($i = 0; $i < 4; $i++) {
+                shuffle($categoriesNames);
+                $category =  $manager->getRepository(Category::class)->findOneBy(['name' => $categoriesNames[0]]);
                 $event = new Event();
                 $event->setCreatedBy($user);
                 $event->setName($this->faker->words(3, 5));
@@ -38,6 +42,7 @@ class EventFixtures extends Fixture implements OrderedFixtureInterface
                 $event->setDeadLine($this->faker->dateTimeBetween('-2 days', $event->getStartDate()));
                 $event->setStartTime($this->faker->dateTime());
                 $event->setEventDetails($this->faker->text(50));
+                $event->setCategory($category);
                 $manager->persist($event);
             }
         }
