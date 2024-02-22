@@ -22,29 +22,19 @@ class Event
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Veuillez indiquer un nom pour l'évènement")]
-    #[Assert\Length(
-        min: 2,
-        max: 255,
-        minMessage: "Le nom doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le nom ne peut pas dépasser {{ limit }} caractères."
-    )]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: "Veuillez indiquer une date de début")]
     private ?\DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: "Veuillez indiquer une date limite")]
     private ?\DateTimeInterface $deadLine = null;
 
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Veuillez indiquer une description")]
-    #[Assert\Length(
-        min: 2,
-        max: 255,
-        minMessage: "La description doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "La description ne doit pas dépasser {{ limit }} caractères."
-    )]
     private ?string $eventDetails = null;
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventCustomer::class, cascade: ["persist"], orphanRemoval: true)]

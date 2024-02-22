@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CustomerType extends AbstractType
 {
@@ -18,37 +19,50 @@ class CustomerType extends AbstractType
         $builder
             ->add('lastName',TextType::class, [
                 'label' => 'Nom *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('firstName', TextType::class,[
                 'label' => 'Prénom *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('phoneNumber', TextType::class,[
                 'label' => 'Téléphone *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('zipCode', textType::class, [
                 'label' => 'Code Postal *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('birthDate', BirthdayType::class, [
                 'label' => 'Date de naissance *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ]);
 
             if($options['context'] === 'ecurie') {
                 $builder->add('horseName', TextType::class, [
-                    'label' => 'Nom du cheval *',
-                    'required' => true,
+                    'label' => 'Nom du cheval *'
                 ]);
             }
     }

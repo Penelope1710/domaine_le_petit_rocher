@@ -384,6 +384,7 @@
 .create-event-form .btn-plannifier:hover,
 .btns-divers .btn:hover,
 .btns-divers a:hover,
+.creer-utilisateur-form .btn-creer:hover,
 .btn-modifier,
 .btn-edit-event
 {
@@ -426,7 +427,9 @@
     margin-top: 15px;
 }
 
-.btn-annuler a, .registration-form .btn-submit {
+.btn-annuler a,
+.registration-form .btn-submit,
+.creer-utilisateur-form .btn-creer  {
     color: #fff;
 }
 
@@ -580,6 +583,62 @@
     font-size: 1.4em;
     padding: 15px 25px;
     color: white;
+}
+
+/*Formulaire création utilisateur*/
+.creer-utilisateur-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.3em;
+}
+
+.creer-utilisateur-form .form-range {
+    width: 400px;
+}
+
+.creer-utilisateur-form form{
+    width: 400px;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 1.3em;
+}
+.creer-utilisateur-form label {
+    display: flex;
+    width: 400px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+
+}
+
+#registration_admin_form_roles {
+    display: flex;
+    gap: 10px;
+    font-size: 1em;
+}
+
+
+.creer-utilisateur-form input {
+    width: 400px;
+    height: 40px;
+}
+
+.creer-utilisateur-form input[type="checkbox" i] {
+    font-size: 1em;
+}
+
+.creer-utilisateur-form .btn-creer {
+    width: 410px;
+    margin-top: 40px;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    background-color: #aaaaaa ;
+    height: 50px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

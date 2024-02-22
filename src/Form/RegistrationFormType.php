@@ -24,14 +24,15 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class,[
                 'label' => 'Email *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('plainPassword', RepeatedType::class, [
                                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent être identiques',
-                'required' => true,
                 'first_options'  => [
                     'label' => 'Mot de passe *',
                 ],

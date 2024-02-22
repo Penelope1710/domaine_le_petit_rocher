@@ -7,23 +7,52 @@
 <div id="banniere">
     <h2 class="titre-secondaire">Créer un utilisateur</h2>
 </div>
+<div class="creer-utilisateur-form">
 
     {{ form_start(createUserForm) }}
+    <div class="form-range">
         {{ form_row(createUserForm.customer.lastName) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.firstName) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.email) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.phoneNumber) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.address) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.zipCode) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.city) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.birthDate) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.customer.horseName) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.roles) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.plainPassword.first) }}
+    </div>
+    <div class="form-range">
         {{ form_row(createUserForm.plainPassword.second) }}
+    </div>
+
+    <button type="submit" class="btn-creer">Créer</button>
+
     {{ form_errors(createUserForm) }}
-    <button type="submit" class="btn">Créer</button>
     {{ form_end(createUserForm) }}
+
+    </div>
 
 
 {% endblock %}

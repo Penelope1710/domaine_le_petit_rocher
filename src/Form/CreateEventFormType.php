@@ -15,6 +15,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\LessThan;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CreateEventFormType extends AbstractType
 {
@@ -23,33 +25,41 @@ class CreateEventFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom de l\'évènement *',
-                'required' => true
-        ])
+                'constraints' => [
+                    new NotBlank(),
+                ]
+         ])
             ->add('startDate', DateType::class, [
                 'label' => 'Date de l\'évènement *',
                 'required' => true,
                 'widget' => 'single_text',
-                'constraints' => new GreaterThanOrEqual([
-                    'value' => 'today',
+                'constraints' => [
+                    new NotBlank(),
+                    new GreaterThanOrEqual([
+                    'value' => "today",
                     'message' => 'La date et l\'heure de début doivent être ultérieures à la date actuelle.'
-                ])
+                    ])
+                ]
             ])
             ->add('startTime', TimeType::class, [
                 'label' => 'Heure de de l\'évènement *',
-                'required' => true,
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('deadLine', DateType::class, [
                 'label' => 'Date limite d\'inscription *',
-                'required' => true,
                 'widget' => 'single_text',
-                'constraints' => new GreaterThanOrEqual([
-                    'value' => 'startDate',
+                'constraints' => new LessThanOrEqual([
+                    'propertyPath' => 'parent.all[startDate].data',
                     'message' => 'La date limite de participation doit être antérieure à celle du début de l\'évènement.'
                 ])
             ])
             ->add('eventDetails', TextareaType::class, [
                 'label' => 'Détails de l\'évènement *',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
@@ -57,7 +67,9 @@ class CreateEventFormType extends AbstractType
                 'multiple' => false,
                 'label' => 'Catégorie *',
                 'placeholder' => 'Choisissez une catégorie',
-                'required' => true
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
         ;
     }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -15,9 +16,13 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: 'Veuillez indiquer une date d\'arrivée')]
+//    #[Assert\GreaterThanOrEqual('today', message: 'La date et l\'heure de début doivent être ultérieures à la date actuelle')]
     private ?\DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: 'Veuillez indiquer une date de départ')]
+//    #[Assert\GreaterThan(propertyPath: 'startDate', message: 'La date de fin doit être ultérieure à la date d\'arrivée')]
     private ?\DateTimeInterface $endDate = null;
 
     #[ORM\Column(nullable: true)]

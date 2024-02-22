@@ -63,7 +63,11 @@ class RegistrationAdminFormType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'required' => true,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de bien vouloir assigner un rôle'
+                    ]),
+                ],
             ])
             ->add('customer', CustomerType::class, [
                 'context' => $options['context']

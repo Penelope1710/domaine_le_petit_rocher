@@ -32,30 +32,6 @@ class GiteController extends AbstractController
         ]);
     }
 
-    #[Route('/gite/disponibilites/dates', name: 'gite_disponibilites_dates')]
-    public function listeDispoDate(ReservationRepository $reservationRepository) {
-
-        $reservations = $reservationRepository->findAllDate();
-        $dates = [];
-
-
-        //itération sur chaque réservation
-        foreach ($reservations as $reservation) {
-            $startDate = $reservation['startDate']->format('Y-m-d');
-            $endDate = $reservation['endDate']->format('Y-m-d');
-
-            /*$startDate = $reservation->getStartDate()->format('Y-m-d');
-            $endDate = $reservation->getEndDate()->format('Y-m-d');*/
-
-            //Ajout dans le tableau
-            $dates[] = $startDate . ':' . $endDate;
-
-        }
-
-        return new JsonResponse (implode(", ", $dates));
-
-    }
-
     #[Route('prive/gite/reservation', name: 'gite_reservation')]
     public function reservation (
         Request $request,
@@ -77,7 +53,6 @@ class GiteController extends AbstractController
             );
             $entityManager->persist($reservation);
             $entityManager->flush();
-
         }
 
         return $this->render('gite/prive/reservation.form.html.twig', [
@@ -87,12 +62,11 @@ class GiteController extends AbstractController
     }
 
 
-    #[Route('/prive/gite/reservation/dates', name: 'gite_reservation_dates')]
+    #[Route('/gite/reservation/dates', name: 'gite_reservation_dates')]
     public function listeDate(ReservationRepository $reservationRepository) {
 
         $reservations = $reservationRepository->findAllDate();
         $dates = [];
-
 
         //itération sur chaque réservation
         foreach ($reservations as $reservation) {
