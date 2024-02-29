@@ -5,6 +5,7 @@ use App\Entity\Customer;
 use App\Entity\Event;
 use App\Entity\EventCustomer;
 use App\Entity\User;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -15,6 +16,12 @@ class EventVoter extends Voter {
     const SUBSCRIBE = 'subscribe';
     const UNSUBSCRIBE = 'unsubscribe';
 
+    private $security;
+    public function __construct(Security $security) {
+        $this->security = $security;
+    }
+
+    //support va nous indiquer si nous avons le droit de voter en fonction de l'objet et de l'action
     protected function supports(string $attribute, mixed $subject): bool
     {
         //si l'action n'est pas delete OU edit, return false
@@ -63,6 +70,9 @@ class EventVoter extends Voter {
         if ($event->getCreatedBy() === $user) {
             return true;
         }
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            return true;
+        }
 
         return false;
     }
@@ -78,6 +88,10 @@ class EventVoter extends Voter {
 
     private function canSubscribe(Event $event, User $user)
     {
+        //l'évènement doit être ouvert
+        if ($event->getStatus() !== Event::OPENED_STATUS) {
+            return false;
+        }
         //l'utilisateur ne doit pas être à l'initiative de l'évènement
         if ($event->getCreatedBy() === $user) {
             return false;
@@ -89,15 +103,14 @@ class EventVoter extends Voter {
                 return false;
             }
         }
-        //l'évènement doit être ouvert
-        if ($event->getStatus() !== Event::OPENED_STATUS) {
-            return false;
-        }
         return true;
     }
 
     private function canUnsubscribe(Event $event, User $user)
     {
+        if ($event->getStatus() !== Event::OPENED_STATUS) {
+            return false;
+        }
 
         $isUserSubscribed = false;
         //itération pour rechercher un eventCustomer(=inscrit)
@@ -106,7 +119,6 @@ class EventVoter extends Voter {
             //verifie si le user est bien un eventCustomer
             if ($eventCustomer->getCustomer() === $user->getCustomer()) {
                 $isUserSubscribed = true;
-                break;
             }
         }
         //si le user n'est pas inscrit, on ne peut pas le désinscrire
@@ -114,9 +126,6 @@ class EventVoter extends Voter {
             return false;
         }
 
-        if ($event->getStatus() !== Event::OPENED_STATUS) {
-            return false;
-        }
         return  true;
     }
 }

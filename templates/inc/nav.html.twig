@@ -27,7 +27,6 @@
                     <li><a href="{{ path('gite_presentation') }}">Présentation</a></li>
                     <li><a href="{{ path('gite_disponibilites') }}">Disponibilités</a></li>
                     <li><a href="{{ path('gite_reservation') }}">Réserver</a></li>
-    {#                <li><a href="{{ path('reservation') }}">Mes réservations</a></li>#}
                     {% if not app.user %}
                         <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                         <li><a href="{{ path('app_register_gite') }}">S'inscrire</a></li>
@@ -38,7 +37,6 @@
                 <li class="dropdown"><a href="#">Administration</a>
                     <ul class="submenu">
                         <li><a href="{{ path('admin_utilisateurs_liste') }}">Utilisateurs</a></li>
-                        {#                <li><a href="{{ path('reservation') }}">Evènements</a></li>#}
                     </ul>
                 </li>
             {% endif %}

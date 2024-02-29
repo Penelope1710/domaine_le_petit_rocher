@@ -60,7 +60,6 @@ class EcurieEventController extends AbstractController
             'currentDate' => $currentDate,
             'user' => $user,
             'searchFormType' => $searchFormType->createView(),
-
         ]);
     }
 
@@ -86,8 +85,6 @@ class EcurieEventController extends AbstractController
         return $this->render('ecurie/prive/create_event.html.twig', [
             'createEventForm' => $createEventForm->createView(),
             'currentDate' => $currentDate,
-
-
         ]);
     }
 
@@ -134,7 +131,6 @@ class EcurieEventController extends AbstractController
 
         if ($editEventForm->isSubmitted() && $editEventForm->isValid()) {
 
-            $entityManager->persist($event);
             $entityManager->flush();
 
             return $this->redirectToRoute('ecurieevenement_liste');
@@ -146,10 +142,8 @@ class EcurieEventController extends AbstractController
     }
 
     #[Route('/inscription/{id}', name: 'ecurieevenement_inscrire')]
-//    #[IsGranted('subscribe', 'event')]
     public function inscrire(
         Event $event,
-        Request $request,
         EntityManagerInterface $entityManager): Response
     {
         //je récupère l'objet Customer associé à l'utilisateur connecté
@@ -164,13 +158,10 @@ class EcurieEventController extends AbstractController
         $entityManager->persist($eventCustomer);
         $entityManager->flush();
 
-        return $this->redirectToRoute('ecurieevenement_liste', [
-
-        ]);
+        return $this->redirectToRoute('ecurieevenement_liste');
 
     }
     #[Route('/desinscription/{id}', name: 'ecurieevenement_desinscrire')]
-    #[IsGranted('unsubscribe', 'event')]
     public function desinscrire(
         Event $event,
         EntityManagerInterface $entityManager): Response

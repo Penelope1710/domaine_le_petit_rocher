@@ -56,7 +56,6 @@ class UserCustomerFixtures extends Fixture implements OrderedFixtureInterface
             $customer->setAddress($this->faker->streetAddress);
             $customer->setZipCode($this->faker->postcode);
             $customer->setBirthDate(new \DateTime());
-            $customer->setHorseName($this->faker->word);
             $customer->setCity($this->faker->city);
 
             $user->setCustomer($customer);
@@ -64,6 +63,12 @@ class UserCustomerFixtures extends Fixture implements OrderedFixtureInterface
             //mélange les éléments d'un tableau
             shuffle($roles);
             $user->setRoles([$roles[0]]);
+
+            //est ce que $userRoles contient le rôle ecurie
+            $userRoles = $user->getRoles();
+            if(in_array('ROLE_ECURIE', $userRoles)) {
+                $customer->setHorseName($this->faker->word);
+            }
 
             $manager->persist($user);
         }

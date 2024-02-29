@@ -11,29 +11,33 @@
     <div>
         <table class="admin-list">
             <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>E-mail</th>
-                    <th>Actions</th>
-                </tr>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>E-mail</th>
+                <th>Actions</th>
+            </tr>
             </thead>
             <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.customer.lastName }}</td>
-                        <td>{{ user.customer.firstName }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <a href="{{ path('admin_utilisateur_modifier', { id: user.id }) }}">Modifier - </a>
-                            <a href="{{ path('admin_utilisateur_supprimer', { id: user.id}) }}">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.customer.lastName }}</td>
+                    <td>{{ user.customer.firstName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a href="{{ path('admin_utilisateur_modifier', { id: user.id }) }}">Modifier - </a>
+                        <a href="{{ path('admin_utilisateur_supprimer', { id: user.id}) }}"
+                           onClick="return window.confirm('Etes vous sûr de vouloir supprimer cet utilisateur?');">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
         <div class="btn-creer-utilisateur">
-            <a href="{{ path('admin_utilisateur_creer') }}">Créer un nouvel utilisateur</a>
+            <a href="{{ path('admin_utilisateur_creer_gite') }}">Créer un nouvel utilisateur Gîte</a>
+        </div>
+        <div class="btn-creer-utilisateur">
+            <a href="{{ path('admin_utilisateur_creer_ecurie') }}">Créer un nouvel utilisateur Ecurie</a>
         </div>
     </div>
 {% endblock %}

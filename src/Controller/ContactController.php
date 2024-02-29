@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'contact_index')]
-    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function index(Request $request, MailerInterface $mailer): Response
     {
 
 
@@ -32,10 +32,6 @@ class ContactController extends AbstractController
             $email = (new Email())
                 ->from($this->getParameter('mail_from'))
                 ->to($this->getParameter('mail_to'))
-                //->cc('cc@example.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
                 ->subject('Message reçu du formulaire contact')
                 ->html(
                     'Vous avez reçu un message de : ' . $contact['fullName'] . ' (' . $contact['email'] . ')<br>' .

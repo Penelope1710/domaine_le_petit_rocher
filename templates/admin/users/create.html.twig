@@ -3,7 +3,6 @@
 {% block title %}Créer un utilisateur{% endblock %}
 
 {% block body %}
-
 <div id="banniere">
     <h2 class="titre-secondaire">Créer un utilisateur</h2>
 </div>
@@ -34,9 +33,11 @@
     <div class="form-range">
         {{ form_row(createUserForm.customer.birthDate) }}
     </div>
+    {% if createUserForm.customer.horseName is defined %}
     <div class="form-range">
         {{ form_row(createUserForm.customer.horseName) }}
     </div>
+    {% endif %}
     <div class="form-range">
         {{ form_row(createUserForm.roles) }}
     </div>
