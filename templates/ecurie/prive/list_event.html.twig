@@ -18,7 +18,6 @@
     <table class="events-list">
         <thead>
         <tr>
-
             <th>Nom de l'évènement</th>
             <th>Catégorie</th>
             <th>Date</th>
@@ -46,7 +45,6 @@
                 <td>{{ event.deadLine|date('d-m-y') }}</td>
                 {# Afficher la liste des inscrits en info bulle #}
                 <td>
-
                     <div class="tooltip">{{ event.eventCustomer.count }}
                         <span class="tooltiptext">
                             {% for eventCustomer in event.eventCustomer %}

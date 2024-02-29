@@ -71,15 +71,23 @@ class UserController extends AbstractController
         return $this->redirectToRoute('admin_utilisateurs_liste');
     }
 
-    #[Route('/creer', name: 'utilisateur_creer')]
+    #[Route('/creer/ecurie', name: 'utilisateur_creer_ecurie')]
+    #[Route('/creer/gite', name: 'utilisateur_creer_gite')]
     public function creer(
         Request $request,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher) {
 
         $user = new User();
-
-        $createUserForm = $this->createForm(RegistrationAdminFormType::class, $user, ['context' => 'ecurie']);
+        $context = null;
+        if($request->attributes->get('_route') === 'admin_utilisateur_creer_ecurie')
+        {
+            $context = 'ecurie';
+        } else {
+            $context = 'gite';
+        }
+       
+        $createUserForm = $this->createForm(RegistrationAdminFormType::class, $user, ['context' => $context]);
 
         $createUserForm->handleRequest($request);
 
@@ -106,5 +114,6 @@ class UserController extends AbstractController
         ]);
 
     }
+
 
 }

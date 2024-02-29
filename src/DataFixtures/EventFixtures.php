@@ -26,20 +26,19 @@ class EventFixtures extends Fixture implements OrderedFixtureInterface
         $categoriesNames = ['Ballades à cheval','Festivités'];
 
 
-
-
-
         // Event
         $users = $manager->getRepository(User::class)->findAll();
         foreach ($users as $user) {
             for ($i = 0; $i < 4; $i++) {
+                //mélange à chaque itération
                 shuffle($categoriesNames);
                 $category =  $manager->getRepository(Category::class)->findOneBy(['name' => $categoriesNames[0]]);
                 $event = new Event();
                 $event->setCreatedBy($user);
                 $event->setName($this->faker->words(3, 5));
                 $event->setStartDate($this->faker->dateTimeBetween('2024-03-20', '2024-06-20'));
-                $event->setDeadLine($this->faker->dateTimeBetween('-2 days', $event->getStartDate()));
+                $startDate = $event->getStartDate();
+                $event->setDeadLine($this->faker->dateTimeBetween($startDate->modify('-2 days')->format('Y-m-d'), $event->getStartDate()->format('Y-m-d')));
                 $event->setStartTime($this->faker->dateTime());
                 $event->setEventDetails($this->faker->text(50));
                 $event->setCategory($category);

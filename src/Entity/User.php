@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $isValid = false;
 
-    #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Event::class)]
+    #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Event::class, cascade: ['persist', 'remove'])]
     private Collection $events;
 
     public function __construct()

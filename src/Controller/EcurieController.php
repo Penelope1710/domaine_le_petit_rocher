@@ -52,7 +52,10 @@ class EcurieController extends AbstractController
         }
 
         #[Route('/prive/ecurie/mes_informations/supprimer_mon_compte', name: 'ecurie_supprimer_compte')]
-        public function supprimerCompte(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager)
+        public function supprimerCompte(
+            Request $request,
+            TokenStorageInterface $tokenStorage,
+            EntityManagerInterface $entityManager)
         {
             $user = $this->getUser();
 

@@ -1,10 +1,10 @@
 
 {# si l'utilisateur actuellement connecté est le même que celui qui a crée l'évènement alors... #}
     {% if app.user %}
-        {% if event.createdBy.customer.id == app.user.id %}
-        {# je crée un lien vers une route avec l'id de l'évènement #}
-        <a href="{{ path('ecurieevenement_supprimer', { id:event.id }) }}">Supprimer</a> -
-        <a href="{{ path('ecurieevenement_modifier', { id:event.id }) }}">Modifier</a>
+        {% if event.createdBy.customer.id == app.user.id or is_granted('ROLE_ADMIN') %}
+            {# je crée un lien vers une route avec l'id de l'évènement #}
+            <a href="{{ path('ecurieevenement_supprimer', { id:event.id }) }}" onClick="return window.confirm('Etes vous sûr de vouloir supprimer l\'évènement ?')">Supprimer</a> -
+            <a href="{{ path('ecurieevenement_modifier', { id:event.id }) }}">Modifier</a>
         {% else %}
             {# I l'utilisateur connecté n'est pas inscrit et n'est pas l'organisateur alors... #}
             {% if not event.isUserSubscribed(app.user) %}
