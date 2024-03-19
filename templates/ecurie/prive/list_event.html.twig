@@ -43,7 +43,6 @@
                 <td>{{ event.startDate|date('d-m-y') }}</td>
                 <td>{{ event.startTime|date('H') }}h{{ event.startTime| date('i') }}</td>
                 <td>{{ event.deadLine|date('d-m-y') }}</td>
-                {# Afficher la liste des inscrits en info bulle #}
                 <td>
                     <div class="tooltip">{{ event.eventCustomer.count }}
                         <span class="tooltiptext">

@@ -10,6 +10,7 @@ use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Id;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,12 +24,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class UserController extends AbstractController
 {
     #[Route('/liste', name: 'utilisateurs_liste')]
-    public function liste(UserRepository $userRepository) {
-        //TODO ajouter la pagination
-        $users = $userRepository->findAll();
+    public function liste(UserRepository $userRepository, Request $request){
+
+    $pagination = $userRepository->paginationQuery($request->query->get('page', 1));
 
         return $this->render('admin/users/list.html.twig', [
-           'users'=>$users
+            'pagination' => $pagination
         ]);
     }
 

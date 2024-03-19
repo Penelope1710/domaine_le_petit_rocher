@@ -1,7 +1,6 @@
-<script>
-    //async permet de déclarer la fonction comme asynchrone et donc d'utiliser await
-    document.addEventListener('DOMContentLoaded', async () => {
 
+document.addEventListener('DOMContentLoaded', async () => {
+    if(document.getElementById('calendar')){
         // envoie la requete et attente de la réponse grâce à await
         const response = await fetch('/gite/reservation/dates')
         const result = await response.json()
@@ -17,10 +16,11 @@
             },
             type: 'default',
         }
-        const calendar = new VanillaCalendar('#calendar', options);
-        calendar.init();
+        const calendar = new VanillaCalendar('#calendar', options)
+        calendar.init()
         //cache le loader et affiche le calendrier
         document.getElementById('loader').style.display = 'none'
         document.getElementById('calendar').style.display = 'block'
-    });
-</script>
+    }
+})
+

@@ -14,6 +14,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\CustomerRepository;
 use App\Repository\EventCustomerRepository;
 use App\Repository\EventRepository;
+use App\Security\EventVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,7 +69,6 @@ class EcurieEventController extends AbstractController
     {
         $event = new Event();
         $currentDate = new \DateTime();
-
         $createEventForm = $this->createForm(CreateEventFormType::class, $event);
 
         $createEventForm->handleRequest($request);
@@ -79,6 +79,8 @@ class EcurieEventController extends AbstractController
 
             $entityManager->persist($event);
             $entityManager->flush();
+
+            $this->addFlash('success', 'votre évènement a bien été créé!');
 
             return $this->redirectToRoute('ecurieevenement_liste');
         }
@@ -105,7 +107,7 @@ class EcurieEventController extends AbstractController
     }
 
     #[Route('/supprimer/{id}', name: 'ecurieevenement_supprimer')]
-    #[IsGranted('delete', 'event')]
+    #[IsGranted(EventVoter::DELETE, subject: 'event')]
     public function supprimer(
         Event $event,
         EntityManagerInterface $entityManager): Response
@@ -121,8 +123,7 @@ class EcurieEventController extends AbstractController
     public function modifier(
         Event $event,
         Request $request,
-        EntityManagerInterface $entityManager,
-        EventRepository $eventRepository): Response
+        EntityManagerInterface $entityManager): Response
     {
         //je récupère mon createForm
         $editEventForm = $this->createForm(CreateEventFormType::class, $event);
