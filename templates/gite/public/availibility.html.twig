@@ -10,7 +10,6 @@
 <h3>Les disponibilités : Gîte 4 personnes</h3>
     <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
 </div>
-
     <section class="disponibilites">
 
         <div id="calendar" style="display: none;">
@@ -25,9 +24,5 @@
             Pour réserver, merci de bien vouloir <a href="{{ path('app_login') }}">vous connecter</a> ou <a href="{{ path('app_register_gite') }}">vous inscire</a>
         </p>
     </section>
-
 {% endblock %}
 
-{% block javascripts %}
-    {% include'inc/_calendar.html.twig' %}
-{% endblock %}

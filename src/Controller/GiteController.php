@@ -84,6 +84,7 @@ class GiteController extends AbstractController
 
         //itération sur chaque réservation
         foreach ($reservations as $reservation) {
+            //startDate est un objet DateTime dans le tableau $reservation
             $startDate = $reservation['startDate']->format('Y-m-d');
             $endDate = $reservation['endDate']->format('Y-m-d');
 

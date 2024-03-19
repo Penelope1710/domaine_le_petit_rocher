@@ -12,7 +12,6 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
-
 class EventFixtures extends Fixture implements OrderedFixtureInterface
 {
     private Generator $faker;
@@ -24,8 +23,6 @@ class EventFixtures extends Fixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $categoriesNames = ['Ballades à cheval','Festivités'];
-
-
         // Event
         $users = $manager->getRepository(User::class)->findAll();
         foreach ($users as $user) {
@@ -48,7 +45,6 @@ class EventFixtures extends Fixture implements OrderedFixtureInterface
                 $manager->persist($event);
             }
         }
-
         $manager->flush();
     }
 

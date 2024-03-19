@@ -78,6 +78,7 @@ class EventRepository extends ServiceEntityRepository
         {
             $query
                 ->leftJoin('e.eventCustomer', 'ec')
+                // ->addSelect('ec');
                 ->leftJoin('ec.customer', 'cust')
                 ->andWhere('cust.user = :user')
                 ->setParameter('user', $this->security->getUser());

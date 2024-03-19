@@ -27,7 +27,6 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $context = null;
         if($request->attributes->get('_route') === 'app_register_ecurie')
         {
             $context = 'ecurie';
