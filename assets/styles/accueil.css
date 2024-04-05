@@ -227,7 +227,16 @@ h4 {
         font-size: 1.5em;
     }
 
+    .affichage-prenom {
+        font-size: 1.5rem;
+    }
+
+    .main_header .affichage-prenom {
+        padding-bottom: 120px;
+    }
+
     .presentation1 {
+        margin: 100px 0 0 0;
         flex-direction: column;
         align-items: center;
     }
@@ -248,7 +257,8 @@ h4 {
         flex-direction: column;
         align-items: center;
         align-content: center;
-        margin-top: 600px;
+        margin-top: 650px;
+
     }
 
     .presentation2 img {
@@ -256,7 +266,7 @@ h4 {
     }
 
     .carre1, .carre2, .carre3 {
-        width: 50%;
+        width: 70%;
     }
 
     .cta  {
@@ -271,12 +281,46 @@ h4 {
         height: 180px;
     }
 
-    .main_header .affichage-prenom {
-        padding-bottom: 140px;
-    }
-
     .sub_header, .main_header {
         width: 100%;
     }
+
+}
+
+@media screen and (max-width: 393px) {
+    .main_header {
+        height: 140px;
+        align-items: flex-start;
+    }
+
+    .affichage-prenom {
+        font-size: 1rem;
+    }
+
+    .main_header .affichage-prenom {
+        padding-bottom: 0;
+        margin-top: 10px;
+    }
+
+    .presentation1 .article1{
+        width: 80%;
+        height: 600px;
+        overflow: scroll;
+    }
+
+    .presentation1 .article2 {
+        width: 80%;
+        height: 600px;
+        overflow: scroll;
+    }
+
+    .presentation2 {
+        margin-top: 450px;
+    }
+
+    .main_footer {
+        margin-top: 500px;
+    }
+
 
 }

@@ -288,7 +288,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-   margin: 50px 0;
+    margin: 50px 0;
 }
 
 .categories1-wrapper {
@@ -465,9 +465,16 @@
  .pagination {
      text-align: center;
      margin: 15px 0;
+     font-size: 1.2em;
+     color: darkmagenta;
+ }
 
+ span.page, span.current {
+     padding: 4px;
+ }
 
-
+ .pagination a:visited {
+     color: black;
  }
 
  /*formulaire création évènement*/
@@ -514,7 +521,9 @@
 }
 
 .create-event-form .btn-plannifier,
-.create-event-form .btn-create-event-form-annuler {
+.create-event-form .btn-create-event-form-annuler,
+.edit-event-form .btn-edit-event,
+.edit-event-form .btn-modifier {
     width: 470px;
     box-sizing: border-box;
     font-size: 1.4em;
@@ -530,21 +539,6 @@
 
 }
 
-.edit-event-form .btn-edit-event,
-.edit-event-form .btn-modifier {
-    width: 420px;
-    box-sizing: border-box;
-    font-size: 1.4em;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    background-color: #aaaaaa;
-    text-align: center;
-    color: white;
-}
 .create-event-form ul {
     font-size: 1em;
     color: red;

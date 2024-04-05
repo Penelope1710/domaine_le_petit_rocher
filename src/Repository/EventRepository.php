@@ -3,12 +3,11 @@
 namespace App\Repository;
 
 use App\Data\SearchData;
-use App\Entity\Customer;
 use App\Entity\Event;
-use App\Entity\EventCustomer;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 
 /**
@@ -21,7 +20,7 @@ use Symfony\Bundle\SecurityBundle\Security;
  */
 class EventRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry, private Security $security)
+    public function __construct(ManagerRegistry $registry, private Security $security, private PaginatorInterface $paginator)
     {
         parent::__construct($registry, Event::class);
     }
@@ -85,6 +84,26 @@ class EventRepository extends ServiceEntityRepository
         }
         return $query->getQuery()->getResult();
 
+    }
+
+    public function paginationQuery($page = 1)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->addSelect('CASE WHEN e.status = :opened THEN 1 ELSE 2 END AS HIDDEN statusOrder')
+            ->orderBy('statusOrder', 'ASC')
+            ->addOrderBy('e.deadLine', 'ASC')
+            ->setParameter('opened', Event::OPENED_STATUS)
+            ->getQuery()
+        ;
+
+        $pagination = $this->paginator->paginate(
+            $query,
+            $page,
+            10
+        );
+
+        return $pagination;
     }
 
 

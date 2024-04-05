@@ -55,6 +55,9 @@ class GiteController extends AbstractController
             );
             $entityManager->persist($reservation);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre demande de réservation a bien été envoyée');
+
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('mail_from'))
                 ->to($this->getParameter('mail_to'))

@@ -155,5 +155,13 @@ nav ul li {
     }
 }
 
+@media screen and (max-width: 393px) {
+    .header-burger svg {
+        margin-top: 80px;
+        margin-right: 25px;
+    }
+
+}
+
 
 
