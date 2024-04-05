@@ -14,6 +14,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\CustomerRepository;
 use App\Repository\EventCustomerRepository;
 use App\Repository\EventRepository;
+use App\Security\EventCustomerVoter;
 use App\Security\EventVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,6 +55,8 @@ class EcurieEventController extends AbstractController
         $events = $eventRepository->findSearch($data, $user);
         }
 
+        $pagination = $eventRepository->paginationQuery($request->query->get('page', 1));
+
         return $this->render('ecurie/prive/list_event.html.twig', [
             //je passe mes variables à la vue
             'events' => $events,
@@ -61,6 +64,7 @@ class EcurieEventController extends AbstractController
             'currentDate' => $currentDate,
             'user' => $user,
             'searchFormType' => $searchFormType->createView(),
+            'pagination' => $pagination
         ]);
     }
 
@@ -119,7 +123,7 @@ class EcurieEventController extends AbstractController
     }
 
     #[Route('/modifier/{id}', name: 'ecurieevenement_modifier')]
-    #[IsGranted('edit', 'event')]
+    #[IsGranted(EventVoter::EDIT, subject: 'event')]
     public function modifier(
         Event $event,
         Request $request,
@@ -134,6 +138,8 @@ class EcurieEventController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre évènement a bien été modifié');
+
             return $this->redirectToRoute('ecurieevenement_liste');
         }
 
@@ -143,6 +149,7 @@ class EcurieEventController extends AbstractController
     }
 
     #[Route('/inscription/{id}', name: 'ecurieevenement_inscrire')]
+    #[IsGranted(EventVoter::SUBSCRIBE, subject: 'event')]
     public function inscrire(
         Event $event,
         EntityManagerInterface $entityManager): Response
@@ -160,20 +167,14 @@ class EcurieEventController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('ecurieevenement_liste');
-
     }
+
     #[Route('/desinscription/{id}', name: 'ecurieevenement_desinscrire')]
+    #[IsGranted(EventCustomerVoter::UNSUBSCRIBE, subject: 'eventCustomer' )]
     public function desinscrire(
-        Event $event,
+        EventCustomer $eventCustomer,
         EntityManagerInterface $entityManager): Response
     {
-        $customer = $this->getUser()->getCustomer();
-
-        //je récupère l'EventCustomer correspondant à l'inscription
-        $eventCustomer = $entityManager->getRepository(EventCustomer::class)->findOneBy([
-            'event' => $event,
-            'customer' => $customer,
-        ]);
 
         $entityManager->remove($eventCustomer);
         $entityManager->flush();

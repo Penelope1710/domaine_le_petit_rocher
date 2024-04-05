@@ -30,7 +30,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for event in events %}
+        {% for event in pagination %}
             <tr>
                 <td>
                 <div class="position-left">
@@ -55,7 +55,8 @@
                         </span>
                     </div>
                 </td>
-                <td>{{ event.deadLine > currentDate ? 'Ouvert' : 'Fermé' }}</td>
+                {# Appelle la constante depuis l'entité Event #}
+                <td>{{ event.status == constant('App\\Entity\\Event::OPENED_STATUS') ? 'Ouvert' : 'Fermé' }}</td>
                 <td>{{ event.createdBy.customer.firstName ~ ' ' ~ event.createdBy.customer.lastName[:1]|upper }}</td>
                 <td>
                     {% include('inc/_affichage_actions.html.twig') %}
@@ -65,6 +66,9 @@
         {% endfor %}
         </tbody>
     </table>
+
+    {{ knp_pagination_render(pagination) }}
+
     <div class="btn-event-plan">
         <a href="{{ path('ecurieevenement_creer') }}">Plannifier un évènement</a>
     </div>

@@ -10,12 +10,16 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 
-class EventVoter extends Voter {
+class EventVoter extends Voter
+{
     const DELETE = 'delete';
     const EDIT = 'edit';
+    const SUBSCRIBE = 'subscribe';
 
     private $security;
-    public function __construct(Security $security) {
+
+    public function __construct(Security $security)
+    {
         $this->security = $security;
     }
 
@@ -23,7 +27,7 @@ class EventVoter extends Voter {
     protected function supports(string $attribute, mixed $subject): bool
     {
         //si l'action n'est pas delete, edit, subscribe ou unsubscribe return false
-        if (!in_array($attribute, [self::DELETE, self::EDIT])) {
+        if (!in_array($attribute, [self::DELETE, self::EDIT, self::SUBSCRIBE])) {
             return false;
         }
         //si le subject n'est pas une instance de la classe Event, return false
@@ -33,6 +37,7 @@ class EventVoter extends Voter {
 
         return true;
     }
+
     //fait le lien entre support et canDelete
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
@@ -52,10 +57,16 @@ class EventVoter extends Voter {
             return $this->canEdit($subject, $user);
         }
 
+        // si l'attribut est bien 'SUBSCRIBE', la méthode canSubscribe est alors appelée
+        if ($attribute === self::SUBSCRIBE) {
+            return $this->canSubscribe($subject, $user);
+        }
+
         return true;
     }
 
-    private function canDelete(Event $event, User $user) {
+    private function canDelete(Event $event, User $user)
+    {
 
         //l'utilisateur peut supprimer s'il a crée l'évènement
         if ($event->getCreatedBy() === $user) {
@@ -67,7 +78,9 @@ class EventVoter extends Voter {
 
         return false;
     }
-    private function canEdit(Event $event, User $user) {
+
+    private function canEdit(Event $event, User $user)
+    {
 
         //l'utilisateur peut modifier s'il a crée l'évènement
         if ($event->getCreatedBy() === $user) {
@@ -76,4 +89,26 @@ class EventVoter extends Voter {
 
         return false;
     }
+
+    private function canSubscribe(Event $event, User $user)
+    {
+        //l'utilisateur ne doit pas déjà être inscrit
+        $isSubscribe = false;
+        foreach ($event->getEventCustomer() as $eventCustomer) {
+            if($eventCustomer->getCustomer() === $user->getCustomer()) {
+                $isSubscribe = true;
+            }
+        }
+
+        if (
+            $event->getStatus() === Event::OPENED_STATUS &&
+            !$isSubscribe
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    //TODO empêcher la modification quand le statut de l'évènement est fermé
 }

@@ -1,7 +1,6 @@
 <?php
 namespace App\Security;
 
-use App\Entity\Customer;
 use App\Entity\Event;
 use App\Entity\EventCustomer;
 use App\Entity\User;
@@ -11,7 +10,6 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 
 class EventCustomerVoter extends Voter {
-    const SUBSCRIBE = 'subscribe';
     const UNSUBSCRIBE = 'unsubscribe';
 
     private $security;
@@ -23,7 +21,7 @@ class EventCustomerVoter extends Voter {
     protected function supports(string $attribute, mixed $subject): bool
     {
         //si l'action n'est pas subscribe ou unsubscribe return false
-        if (!in_array($attribute, [self::SUBSCRIBE, self::UNSUBSCRIBE])) {
+        if (!in_array($attribute, [self::UNSUBSCRIBE])) {
             return false;
         }
         //si le subject n'est pas une instance de la classe EventCustomer, return false
@@ -43,10 +41,6 @@ class EventCustomerVoter extends Voter {
         if (!$user instanceof User) {
             return false;
         }
-        // si l'attribut est bien 'SUBSCRIBE', la méthode canSubscribe est alors appelée
-        if ($attribute === self::SUBSCRIBE) {
-            return $this->canSubscribe($subject, $user);
-        }
 
         if ($attribute === self::UNSUBSCRIBE) {
             return $this->canUnsubscribe($subject, $user);
@@ -54,36 +48,16 @@ class EventCustomerVoter extends Voter {
         return true;
     }
 
-    private function canSubscribe(EventCustomer $eventCustomer, Event $event, User $user)
+
+    private function canUnsubscribe(EventCustomer $eventCustomer, User $user): bool
     {
-
-        //l'utilisateur ne doit pas déjà être inscrit
-        $isSubscribe = false;
-        foreach ($event->getEventCustomer() as $eventCustomer) {
-            if ($eventCustomer->getCustomer() === $user->getCustomer()) {
-                $isSubscribe = true;
-            }
-        }
-        // si je ne suis pas inscrite et que l'évènement est ouvert alors je peux m'inscrire
-        if ($isSubscribe === false && $event->getStatus() === Event::OPENED_STATUS) {
+        // Je peux me désinscrire si l'évènement est ouvert et si l'inscription appartient à l'utilisateur connecté (dénominateur commun : customer)
+        $event = $eventCustomer->getEvent();
+        if (
+            $event->getStatus() === Event::OPENED_STATUS &&
+            $eventCustomer->getCustomer() === $user->getCustomer()
+        ) {
             return true;
-        }
-        return false;
-    }
-
-    private function canUnsubscribe(EventCustomer $eventCustomer, Event $event, User $user)
-    {
-        $isUnsubscribe = false;
-        if ($event->getStatus() === Event::OPENED_STATUS) {
-            return true;
-        }
-
-        //itération pour rechercher un eventCustomer(=inscrit)
-        foreach ($event->getEventCustomer() as $eventCustomer) {
-            //verifie si le user est bien l'eventCustomer
-            if ($eventCustomer->getCustomer() === $user->getCustomer()) {
-                return true;
-            }
         }
 
         return  false;

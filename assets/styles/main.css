@@ -11,7 +11,6 @@ head {
     font-family: 'Edu NSW ACT Foundation', cursive;
 }
 
-
 #bloc_page  {
     width: 1300px;
     margin: auto;
@@ -96,7 +95,7 @@ footer span {
         border: none;
     }
 
-    .titre-site{
+    .titre-site {
         font-size: 2.5em;
         right: 60px;
         top: 30px;
@@ -106,5 +105,21 @@ footer span {
         height: 150px;
         width: auto;
     }
+}
+
+@media screen and (max-width: 393px) {
+    .titre-site{
+        font-size: 1.3em;
+        right: 20px;
+        top: 30px;
+    }
+
+    #logo img {
+        height: 80px;
+        width: auto;
+
+    }
+
+
 }
 
