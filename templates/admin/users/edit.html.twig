@@ -7,23 +7,23 @@
     <div id="banniere">
         <h2 class="titre-secondaire">Modifier un utilisateur</h2>
     </div>
-
-    {{ form_start(editUserForm) }}
-        {{ form_widget(editUserForm._token) }}
-        {{ form_row(editUserForm.customer.lastName) }}
-        {{ form_row(editUserForm.customer.firstName) }}
-        {{ form_row(editUserForm.email) }}
-        {{ form_row(editUserForm.customer.phoneNumber) }}
-        {{ form_row(editUserForm.customer.address) }}
-        {{ form_row(editUserForm.customer.zipCode) }}
-        {{ form_row(editUserForm.customer.city) }}
-        {{ form_row(editUserForm.customer.birthDate) }}
-        {{ form_row(editUserForm.customer.horseName) }}
-        {{ form_row(editUserForm.roles) }}
-        {{ form_row(editUserForm.plainPassword.first) }}
-        {{ form_row(editUserForm.plainPassword.second) }}
-        {{ form_errors(editUserForm) }}
-    <button type="submit" class="btn">Modifier</button
-    {{ form_end(editUserForm) }}
+    <div class="modifier-utilisateur-form">
+        {{ form_start(editUserForm) }}
+            {{ form_widget(editUserForm._token) }}
+            {{ form_row(editUserForm.customer.lastName) }}
+            {{ form_row(editUserForm.customer.firstName) }}
+            {{ form_row(editUserForm.email) }}
+            {{ form_row(editUserForm.customer.phoneNumber) }}
+            {{ form_row(editUserForm.customer.address) }}
+            {{ form_row(editUserForm.customer.zipCode) }}
+            {{ form_row(editUserForm.customer.city) }}
+            {{ form_row(editUserForm.customer.birthDate) }}
+            {{ form_row(editUserForm.customer.horseName) }}
+            {{ form_row(editUserForm.roles) }}
+            {{ form_row(editUserForm.isValid) }}
+            {{ form_errors(editUserForm) }}
+        <button type="submit" class="btn">Modifier</button
+        {{ form_end(editUserForm) }}
+    </div>
 
 {% endblock %}

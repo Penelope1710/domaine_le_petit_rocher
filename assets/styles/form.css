@@ -606,7 +606,8 @@
 }
 
 /*Formulaire création utilisateur*/
-.creer-utilisateur-form {
+.creer-utilisateur-form,
+.modifier-utilisateur-form {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -617,17 +618,20 @@
     font-size: 1.3em;
 }
 
-.creer-utilisateur-form .form-range {
+.creer-utilisateur-form .form-range,
+.modifier-utilisateur-form .form-range {
     width: 400px;
 }
 
-.creer-utilisateur-form form{
-    width: 400px;
+.creer-utilisateur-form form,
+.modifier-utilisateur-form form {
+    width: 405px;
     justify-content: center;
     box-sizing: border-box;
     font-size: 1.3em;
 }
-.creer-utilisateur-form label {
+.creer-utilisateur-form label,
+.modifier-utilisateur-form label {
     display: flex;
     width: 400px;
     margin-top: 10px;
@@ -642,7 +646,8 @@
 }
 
 
-.creer-utilisateur-form input {
+.creer-utilisateur-form input,
+.modifier-utilisateur-form input {
     width: 400px;
     height: 40px;
 }

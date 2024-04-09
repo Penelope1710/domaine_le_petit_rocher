@@ -15,6 +15,7 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>E-mail</th>
+                <th>IsValid</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{ user.customer.lastName }}</td>
                     <td>{{ user.customer.firstName }}</td>
                     <td>{{ user.email }}</td>
+                    <td>{{ user.isValid }}</td>
                     <td>
                         <a href="{{ path('admin_utilisateur_modifier', { id: user.id }) }}">Modifier - </a>
                         <a href="{{ path('admin_utilisateur_supprimer', { id: user.id}) }}"

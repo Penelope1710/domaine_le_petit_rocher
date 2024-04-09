@@ -54,6 +54,14 @@ class RegistrationAdminFormType extends AbstractType
                     ])
                 ],
             ])
+            ->add('isValid', CheckboxType::class, [
+                'label' => 'Actif',
+              /*  'expanded' => true,
+                'multiple' => true,
+                'choices' => [
+                    'actif' => 1
+                ]*/
+            ])
             ->add('roles', ChoiceType::class, [
                 'label' => 'Rôles *',
                 'choices' => [
