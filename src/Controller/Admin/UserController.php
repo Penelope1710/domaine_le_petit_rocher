@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Customer;
 use App\Entity\User;
+use App\Form\AdminUserFormType;
 use App\Form\ProfilFormType;
 use App\Form\RegistrationAdminFormType;
 use App\Form\RegistrationFormType;
@@ -39,8 +40,7 @@ class UserController extends AbstractController
         User $user,
         EntityManagerInterface $entityManager,
         Request $request) {
-
-        $editUserForm = $this->createForm(RegistrationAdminFormType::class, $user, ['context' => 'ecurie']);
+        $editUserForm = $this->createForm(AdminUserFormType::class, $user, ['context' => 'ecurie']);
 
         $editUserForm->handleRequest($request);
 

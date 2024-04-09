@@ -8,9 +8,11 @@ use App\Form\CustomerType;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
@@ -22,8 +24,7 @@ class RegistrationController extends AbstractController
     public function register(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
-        UserAuthenticatorInterface $userAuthenticator,
-        AppAuthenticator $authenticator,
+        MailerInterface $mailer,
         EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -44,6 +45,8 @@ class RegistrationController extends AbstractController
             } else {
                 $user->setRoles(['ROLE_ECURIE']);
             }
+            $user->setIsValid(false);
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -54,13 +57,14 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+            $mail = (new TemplatedEmail())
+                ->from($this->getParameter('mail_from'))
+                ->to($this->getParameter('mail_to'))
+                ->subject('Vous avez une nouvelle demande de validation de compte')
+                ->htmlTemplate('mails/registration.html.twig');
+
+            $mailer->send($mail);
 
             return $this->redirectToRoute('app_login');
         }
