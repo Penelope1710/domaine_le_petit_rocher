@@ -38,9 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Customer $customer = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $validationToken = null;
-
     #[ORM\Column]
     private ?bool $isValid = false;
 
@@ -135,19 +132,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getValidationToken(): ?string
-    {
-        return $this->validationToken;
-    }
-
-    public function setValidationToken(?string $validationToken): static
-    {
-        $this->validationToken = $validationToken;
-
-        return $this;
-    }
-
-    public function isIsValid(): ?bool
+    public function isValid(): ?bool
     {
         return $this->isValid;
     }

@@ -13,11 +13,11 @@ class EventCustomer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'eventCustomer')]
+    #[ORM\ManyToOne(inversedBy: 'eventCustomers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Event $event = null;
 
-    #[ORM\ManyToOne(inversedBy: 'eventCustomer')]
+    #[ORM\ManyToOne(inversedBy: 'eventCustomers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 

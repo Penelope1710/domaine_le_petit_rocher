@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
 use App\Entity\Customer;
-use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -12,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class CustomerType extends AbstractType
+class AdminCustomerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -55,24 +53,21 @@ class CustomerType extends AbstractType
             ])
             ->add('birthDate', BirthdayType::class, [
                 'label' => 'Date de naissance *',
-                'html5' => true,
+                'widget' => 'single_text',
                 'constraints' => [
                     new NotBlank(),
                 ],
             ]);
-
-            if($options['context'] === 'ecurie') {
-                $builder->add('horseName', TextType::class, [
-                    'label' => 'Nom du cheval *'
-                ]);
-            }
+            $builder->add('horseName', TextType::class, [
+                'label' => 'Nom du cheval *',
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Customer::class,
-            'context' => null,
         ]);
     }
 }

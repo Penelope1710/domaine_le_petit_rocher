@@ -76,7 +76,7 @@ class EventRepository extends ServiceEntityRepository
         if ($searchData->activite === 3 && $user !== null)
         {
             $query
-                ->leftJoin('e.eventCustomer', 'ec')
+                ->leftJoin('e.eventCustomers', 'ec')
                 // ->addSelect('ec');
                 ->leftJoin('ec.customer', 'cust')
                 ->andWhere('cust.user = :user')
@@ -86,7 +86,7 @@ class EventRepository extends ServiceEntityRepository
 
     }
 
-    public function paginationQuery($page = 1)
+    /*public function paginationQuery($page = 1)
     {
         $query = $this->createQueryBuilder('e')
             ->select('e')
@@ -104,7 +104,7 @@ class EventRepository extends ServiceEntityRepository
         );
 
         return $pagination;
-    }
+    }*/
 
 
 

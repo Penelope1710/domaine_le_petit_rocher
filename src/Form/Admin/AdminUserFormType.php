@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
-use App\Entity\Customer;
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -25,20 +23,21 @@ class AdminUserFormType extends AbstractType
                 'choices' => [
                     'Ecurie' => 'ROLE_ECURIE',
                     'Gîte' => 'ROLE_GITE',
-                    'Admin' => 'ROLE_ADMIN'
-                ]
+                    'Admin' => 'ROLE_ADMIN',
+                ],
+                'expanded' => true,
+                'multiple' => true,
             ])
             ->add('isValid', CheckboxType::class, [
                 'label' => 'Actif',
+                'required' => false,
                 /*  'expanded' => true,
                   'multiple' => true,
                   'choices' => [
                       'actif' => 1
                   ]*/
             ])
-            ->add('customer', CustomerType::class, [
-                'context' => $options['context']
-            ])
+            ->add('customer', AdminCustomerType::class)
         ;
     }
 
@@ -46,7 +45,6 @@ class AdminUserFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'context' => null,
         ]);
     }
 }

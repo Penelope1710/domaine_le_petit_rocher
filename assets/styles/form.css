@@ -649,12 +649,26 @@
 .creer-utilisateur-form input,
 .modifier-utilisateur-form input {
     width: 400px;
-    height: 40px;
+    height: 30px;
 }
 
-.creer-utilisateur-form input[type="checkbox" i] {
-    font-size: 1em;
+.admin-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
+
+#admin_user_form_roles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.is-valid-admin-checkbox label, #admin_user_form_isValid {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
 
 .creer-utilisateur-form .btn-creer {
     width: 410px;
