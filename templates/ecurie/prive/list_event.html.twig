@@ -30,7 +30,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for event in pagination %}
+        {% for event in events %}
             <tr>
                 <td>
                 <div class="position-left">
@@ -44,9 +44,9 @@
                 <td>{{ event.startTime|date('H') }}h{{ event.startTime| date('i') }}</td>
                 <td>{{ event.deadLine|date('d-m-y') }}</td>
                 <td>
-                    <div class="tooltip">{{ event.eventCustomer.count }}
+                    <div class="tooltip">{{ event.eventCustomers.count }}
                         <span class="tooltiptext">
-                            {% for eventCustomer in event.eventCustomer %}
+                            {% for eventCustomer in event.eventCustomers %}
                                 {{ eventCustomer.customer.firstName }} {{ eventCustomer.customer.lastName[:1]|upper }}
                                 {% if not loop.last %}
                                     <br>
@@ -67,7 +67,7 @@
         </tbody>
     </table>
 
-    {{ knp_pagination_render(pagination) }}
+    {# {{ knp_pagination_render(pagination) }} #}
 
     <div class="btn-event-plan">
         <a href="{{ path('ecurieevenement_creer') }}">Plannifier un évènement</a>

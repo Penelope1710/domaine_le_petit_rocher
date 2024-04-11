@@ -21,11 +21,11 @@ class Category
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Event::class, orphanRemoval: true)]
-    private Collection $event;
+    private Collection $events;
 
     public function __construct()
     {
-        $this->event = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,15 +48,15 @@ class Category
     /**
      * @return Collection<int, Event>
      */
-    public function getEvent(): Collection
+    public function getEvents(): Collection
     {
-        return $this->event;
+        return $this->events;
     }
 
     public function addEvent(Event $event): static
     {
-        if (!$this->event->contains($event)) {
-            $this->event->add($event);
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
             $event->setCategory($this);
         }
 
@@ -65,7 +65,7 @@ class Category
 
     public function removeEvent(Event $event): static
     {
-        if ($this->event->removeElement($event)) {
+        if ($this->events->removeElement($event)) {
             // set the owning side to null (unless already changed)
             if ($event->getCategory() === $this) {
                 $event->setCategory(null);

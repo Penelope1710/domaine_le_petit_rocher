@@ -9,44 +9,27 @@
 <div class="creer-utilisateur-form">
 
     {{ form_start(createUserForm) }}
-    <div class="form-range">
+
         {{ form_row(createUserForm.customer.lastName) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.customer.firstName) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.email) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.customer.phoneNumber) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.customer.address) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.customer.zipCode) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.customer.city) }}
-    </div>
-    <div class="form-range">
         {{ form_row(createUserForm.customer.birthDate) }}
-    </div>
-    {% if createUserForm.customer.horseName is defined %}
-    <div class="form-range">
-        {{ form_row(createUserForm.customer.horseName) }}
-    </div>
-    {% endif %}
-    <div class="form-range">
-        {{ form_row(createUserForm.roles) }}
-    </div>
-    <div class="form-range">
-        {{ form_row(createUserForm.plainPassword.first) }}
-    </div>
-    <div class="form-range">
-        {{ form_row(createUserForm.plainPassword.second) }}
-    </div>
+        {% if createUserForm.customer.horseName is defined %}
+            {{ form_row(createUserForm.customer.horseName) }}
+        {% endif %}
+        <div class="admin-checkbox">
+            <div class="role-admin-checkbox">
+                {{ form_row(createUserForm.roles) }}
+            </div>
+            <div class="is-valid-admin-checkbox">
+                {{ form_row(createUserForm.isValid) }}
+            </div>
+        </div>
+
 
     <button type="submit" class="btn-creer">Créer</button>
 

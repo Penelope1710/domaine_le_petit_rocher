@@ -86,6 +86,9 @@ class EventVoter extends Voter
         if ($event->getCreatedBy() === $user) {
             return true;
         }
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            return true;
+        }
 
         return false;
     }
@@ -94,7 +97,7 @@ class EventVoter extends Voter
     {
         //l'utilisateur ne doit pas déjà être inscrit
         $isSubscribe = false;
-        foreach ($event->getEventCustomer() as $eventCustomer) {
+        foreach ($event->getEventCustomers() as $eventCustomer) {
             if($eventCustomer->getCustomer() === $user->getCustomer()) {
                 $isSubscribe = true;
             }

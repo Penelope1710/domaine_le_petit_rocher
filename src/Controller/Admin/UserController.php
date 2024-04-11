@@ -2,24 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Customer;
 use App\Entity\User;
-use App\Form\AdminUserFormType;
-use App\Form\ProfilFormType;
+use App\Form\Admin\AdminUserFormType;
 use App\Form\RegistrationAdminFormType;
-use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
-use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 #[Route('/admin/utilisateurs', name: 'admin_')]
 class UserController extends AbstractController
@@ -39,8 +33,10 @@ class UserController extends AbstractController
     public function modifier(
         User $user,
         EntityManagerInterface $entityManager,
-        Request $request) {
-        $editUserForm = $this->createForm(AdminUserFormType::class, $user, ['context' => 'ecurie']);
+        Request $request,
+        MailerInterface $mailer) {
+
+        $editUserForm = $this->createForm(AdminUserFormType::class, $user);
 
         $editUserForm->handleRequest($request);
 
@@ -48,6 +44,17 @@ class UserController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+                ->from($this->getParameter('mail_from'))
+                ->to($this->getParameter('mail_to'))
+                ->subject('Votre compte est à présent actif')
+                ->htmlTemplate('mails/activationCompte.html.twig')
+                ->context([
+                    'firstName'=> $user->getCustomer()->getFirstName(),
+                    'lastName'=> $user->getCustomer()->getLastName()
+                ]);
+            $mailer->send($email);
 
             return $this->redirectToRoute('admin_utilisateurs_liste');
         }
@@ -72,37 +79,19 @@ class UserController extends AbstractController
         return $this->redirectToRoute('admin_utilisateurs_liste');
     }
 
-    #[Route('/creer/ecurie', name: 'utilisateur_creer_ecurie')]
-    #[Route('/creer/gite', name: 'utilisateur_creer_gite')]
+    #[Route('/creer', name: 'utilisateur_creer')]
     public function creer(
         Request $request,
-        EntityManagerInterface $entityManager,
-        UserPasswordHasherInterface $passwordHasher) {
+        EntityManagerInterface $entityManager
+    ) {
 
         $user = new User();
-        $context = null;
-        if($request->attributes->get('_route') === 'admin_utilisateur_creer_ecurie')
-        {
-            $context = 'ecurie';
-        } else {
-            $context = 'gite';
-        }
        
-        $createUserForm = $this->createForm(RegistrationAdminFormType::class, $user, ['context' => $context]);
+        $createUserForm = $this->createForm(AdminUserFormType::class, $user);
 
         $createUserForm->handleRequest($request);
 
         if($createUserForm->isSubmitted() && $createUserForm->isValid()) {
-
-            //récupère le mot de passe brut depuis le champ plainPassword ainsi que les roles
-            $inputPassword = $createUserForm->get('plainPassword')->getData();
-            $role = $createUserForm->get('roles')->getData();
-
-            //utilisise le service de hachage
-            $hashedPassword = $passwordHasher->hashPassword($user, plainPassword: $inputPassword);
-            //met à jour l'objet User avec le MDP haché
-            $user->setPassword($hashedPassword);
-            $user->setRoles($role);
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -115,6 +104,5 @@ class UserController extends AbstractController
         ]);
 
     }
-
 
 }

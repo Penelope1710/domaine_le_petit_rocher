@@ -55,7 +55,7 @@ class EcurieEventController extends AbstractController
         $events = $eventRepository->findSearch($data, $user);
         }
 
-        $pagination = $eventRepository->paginationQuery($request->query->get('page', 1));
+//        $pagination = $eventRepository->paginationQuery($request->query->get('page', 1));
 
         return $this->render('ecurie/prive/list_event.html.twig', [
             //je passe mes variables à la vue
@@ -64,7 +64,7 @@ class EcurieEventController extends AbstractController
             'currentDate' => $currentDate,
             'user' => $user,
             'searchFormType' => $searchFormType->createView(),
-            'pagination' => $pagination
+            //'pagination' => $pagination
         ]);
     }
 

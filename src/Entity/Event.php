@@ -40,10 +40,10 @@ class Event
     private ?string $eventDetails = null;
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventCustomer::class, cascade: ["persist"], orphanRemoval: true)]
-    private Collection $eventCustomer;
+    private Collection $eventCustomers;
 
 
-    #[ORM\ManyToOne(inversedBy: 'event')]
+    #[ORM\ManyToOne(inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
@@ -60,8 +60,7 @@ class Event
 
     public function __construct()
     {
-        $this->eventCustomer = new ArrayCollection();
-        $this->customer = new ArrayCollection();
+        $this->eventCustomers = new ArrayCollection();
         $this->status = self::OPENED_STATUS;
     }
 
@@ -122,15 +121,15 @@ class Event
     /**
      * @return Collection<int, EventCustomer>
      */
-    public function getEventCustomer(): Collection
+    public function getEventCustomers(): Collection
     {
-        return $this->eventCustomer;
+        return $this->eventCustomers;
     }
 
     public function addEventCustomer(EventCustomer $eventCustomer): static
     {
-        if (!$this->eventCustomer->contains($eventCustomer)) {
-            $this->eventCustomer->add($eventCustomer);
+        if (!$this->eventCustomers->contains($eventCustomer)) {
+            $this->eventCustomers->add($eventCustomer);
             $eventCustomer->setEvent($this);
         }
 
@@ -139,7 +138,7 @@ class Event
 
     public function removeEventCustomer(EventCustomer $eventCustomer): static
     {
-        if ($this->eventCustomer->removeElement($eventCustomer)) {
+        if ($this->eventCustomers->removeElement($eventCustomer)) {
             // set the owning side to null (unless already changed)
             if ($eventCustomer->getEvent() === $this) {
                 $eventCustomer->setEvent(null);
@@ -199,7 +198,7 @@ class Event
 
     public function isUserSubscribed(User $user): bool
     {
-        foreach ($this->eventCustomer as $eventCustomer) {
+        foreach ($this->eventCustomers as $eventCustomer) {
             if ($eventCustomer->getCustomer()->getUser() === $user) {
                 return true;
             }

@@ -53,15 +53,14 @@ class Customer
 
 
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: EventCustomer::class, orphanRemoval: true)]
-    private Collection $eventCustomer;
+    private Collection $eventCustomers;
 
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Reservation::class, orphanRemoval: true)]
     private Collection $reservations;
 
     public function __construct()
     {
-        $this->event = new ArrayCollection();
-        $this->eventCustomer = new ArrayCollection();
+        $this->eventCustomers = new ArrayCollection();
         $this->reservations = new ArrayCollection();
     }
 
@@ -184,15 +183,15 @@ class Customer
     /**
      * @return Collection<int, EventCustomer>
      */
-    public function getEventCustomer(): Collection
+    public function getEventCustomers(): Collection
     {
-        return $this->eventCustomer;
+        return $this->eventCustomers;
     }
 
     public function addEventCustomer(EventCustomer $eventCustomer): static
     {
-        if (!$this->eventCustomer->contains($eventCustomer)) {
-            $this->eventCustomer->add($eventCustomer);
+        if (!$this->eventCustomers->contains($eventCustomer)) {
+            $this->eventCustomers->add($eventCustomer);
             $eventCustomer->setCustomer($this);
         }
 
@@ -201,7 +200,7 @@ class Customer
 
     public function removeEventCustomer(EventCustomer $eventCustomer): static
     {
-        if ($this->eventCustomer->removeElement($eventCustomer)) {
+        if ($this->eventCustomers->removeElement($eventCustomer)) {
             // set the owning side to null (unless already changed)
             if ($eventCustomer->getCustomer() === $this) {
                 $eventCustomer->setCustomer(null);
