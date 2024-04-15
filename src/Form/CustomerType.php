@@ -56,6 +56,7 @@ class CustomerType extends AbstractType
             ->add('birthDate', BirthdayType::class, [
                 'label' => 'Date de naissance *',
                 'html5' => true,
+                'widget' => 'single_text',
                 'constraints' => [
                     new NotBlank(),
                 ],

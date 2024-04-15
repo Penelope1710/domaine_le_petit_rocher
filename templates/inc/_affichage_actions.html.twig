@@ -11,7 +11,9 @@
             {% if not event.isUserSubscribed(app.user) and event.status == constant('App\\Entity\\Event::OPENED_STATUS') %}
                 <a href="{{ path('ecurieevenement_inscrire', { id:event.id }) }}">M'inscrire</a>
             {% elseif event.isUserSubscribed(app.user) and event.status == constant('App\\Entity\\Event::OPENED_STATUS') %}
-                <a href="{{ path('ecurieevenement_desinscrire', {id:event.id}) }}"
+                {# Je crée une variable dans laquelle je stocke l'utilisateur connecté inscrit à un évènement #}
+                {% set subscribe = event.getUserSubscribe(app.user) %}
+                <a href="{{ path('ecurieevenement_desinscrire', {id:subscribe.id}) }}"
                    onClick="return window.confirm('Etes vous sûr de vouloir vous désinscrire ?')">Me désinscrire</a>
             {% endif %}
         {% endif %}

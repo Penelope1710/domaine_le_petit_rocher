@@ -207,4 +207,15 @@ class Event
         return false;
     }
 
+    public function getUserSubscribe(User $user): EventCustomer | null
+    {
+        foreach ($this->eventCustomers as $eventCustomer) {
+            if ($eventCustomer->getCustomer()->getUser() === $user) {
+                return $eventCustomer;
+            }
+        }
+
+        return null;
+    }
+
 }
