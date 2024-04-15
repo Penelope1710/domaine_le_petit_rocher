@@ -29,12 +29,14 @@ class EventRepository extends ServiceEntityRepository
      * récupère les évènements en lien avec une recherche
      * @return Event[]
      */
-    public function findSearch(SearchData $searchData, ?User $user): array
+    public function findSearch(SearchData $searchData, ?User $user, $page = 1)
     {
         $query = $this
             ->createQueryBuilder('e')
             ->select('c', 'e')
-            ->leftJoin('e.category', 'c');
+            ->leftJoin('e.category', 'c')
+            ->orderBy('e.status', 'DESC');
+
 
 
         if (!empty($searchData->q))
@@ -82,29 +84,19 @@ class EventRepository extends ServiceEntityRepository
                 ->andWhere('cust.user = :user')
                 ->setParameter('user', $this->security->getUser());
         }
-        return $query->getQuery()->getResult();
+        //return $query->getQuery()->getResult();
 
-    }
-
-    /*public function paginationQuery($page = 1)
-    {
-        $query = $this->createQueryBuilder('e')
-            ->select('e')
-            ->addSelect('CASE WHEN e.status = :opened THEN 1 ELSE 2 END AS HIDDEN statusOrder')
-            ->orderBy('statusOrder', 'ASC')
-            ->addOrderBy('e.deadLine', 'ASC')
-            ->setParameter('opened', Event::OPENED_STATUS)
-            ->getQuery()
-        ;
-
-        $pagination = $this->paginator->paginate(
+        return $this->paginator->paginate(
             $query,
             $page,
             10
         );
 
-        return $pagination;
-    }*/
+    }
+
+
+
+
 
 
 

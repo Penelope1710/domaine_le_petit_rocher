@@ -17,6 +17,7 @@ use App\Repository\EventRepository;
 use App\Security\EventCustomerVoter;
 use App\Security\EventVoter;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,13 +34,14 @@ class EcurieEventController extends AbstractController
     public function liste(
         Request $request,
         EventRepository $eventRepository,
-        CategoryRepository $categoryRepository): Response
+        CategoryRepository $categoryRepository,
+        PaginatorInterface $paginator): Response
     {
         $currentDate = new \DateTime();
         $user = $this->getUser();
 
         //je récupère tous les évènements et catégories dans la BDD
-        $events = $eventRepository->findBy([], ['startDate' => 'ASC']);
+
         $categories = $categoryRepository->findAll();
 
         //Récupérer le searchForm pour le filtre de recherche
@@ -51,11 +53,9 @@ class EcurieEventController extends AbstractController
         //j'envoie les données de la recherche
         if ($searchFormType->isSubmitted() && $searchFormType->isValid()) {
             $data = $searchFormType->getData();
-
-        $events = $eventRepository->findSearch($data, $user);
         }
 
-//        $pagination = $eventRepository->paginationQuery($request->query->get('page', 1));
+        $events = $eventRepository->findSearch($data, $user, $request->query->get('page', 1));
 
         return $this->render('ecurie/prive/list_event.html.twig', [
             //je passe mes variables à la vue
@@ -64,7 +64,6 @@ class EcurieEventController extends AbstractController
             'currentDate' => $currentDate,
             'user' => $user,
             'searchFormType' => $searchFormType->createView(),
-            //'pagination' => $pagination
         ]);
     }
 

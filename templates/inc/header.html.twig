@@ -2,9 +2,9 @@
 <header class="{% if app.request.get("_route") == 'main_home' %}main_header{% else %}sub_header{% endif %}">
     <div id="logo">
     {% if app.request.get('_route') == 'main_home' %}
-        <img src="{{ asset('img/logo/logo_lpr1.png') }}" alt="Logo page d'accueil">
+        <img src="{{ asset('images/logo/logo_lpr1.png') }}" alt="Logo page d'accueil">
     {% else %}
-        <img src="{{ asset('img/logo/logo_lpr2.png') }}" alt="Logo pages annexes">
+        <img src="{{ asset('images/logo/logo_lpr2.png') }}" alt="Logo pages annexes">
     {% endif %}
     </div>
 

@@ -24,7 +24,7 @@ head {
 
 body {
     font-family: 'Edu NSW ACT Foundation', cursive;
-    background-image: url("../../public/img/fond_image_site.png");
+    background-image: url("../../public/images/fond_image_site.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

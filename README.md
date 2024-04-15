@@ -7,11 +7,11 @@ Le ROLE_ECURIE hérite du ROLE_GITE et le ROLE_GITE est en bas de la hierarchie 
 Afin de vous permettre de tester l'application, vous pouvez entrer les identifiants de connexion suivants:
 
 Pour un ROLE_ECURIE:
-- adresse e-mail : gregoire.perrin@loiseau.fr
+- adresse e-mail : gomes.victor@dbmail.com
 - Mot de passe : 0000
 
 Pour un ROLE_GITE:
-- adresse e-mail : mary.juliette@hotmail.fr
+- adresse e-mail : yves38@fleury.net
 - Mot de passe : 0000
 
 Je vous souhaite une bonne visite.

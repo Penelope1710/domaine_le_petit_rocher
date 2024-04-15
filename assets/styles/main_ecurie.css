@@ -84,6 +84,113 @@ hr {
     box-shadow: 0 8px 12px #333333;
 }
 
+
+.presentation-photos {
+    margin: 60px;
+    padding-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.image-flottante {
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+
+hr {
+    text-align: center;
+    height: 1px;
+    width: 200px;
+    background-color: #787878;
+
+}
+
+.presentation-photos h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 60px;
+}
+
+.presentation-photos h2 {
+    font-size: 2em;
+    color: #242424;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.lien-instagram-ldc {
+    position: relative;
+    align-content: center;
+}
+
+.lien-hover {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    color: grey;
+    display: none;
+}
+
+.lien-instagram-ldc:hover .lien-hover {
+    display: flex;
+}
+
+.grid-photos-lame-dune-creative {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px 250px 250px;
+    gap: 15px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+.grid-photos-installations {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px 250px 250px;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.grid-photos-lame-dune-creative img,
+.grid-photos-installations img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lien-conteneur-photo {
+    position: relative;
+}
+
+.photo-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.lien-conteneur-photo:hover .photo-hover {
+    display: flex;
+}
+
 @media screen and (max-width: 768px) {
     .mes-infos, .mon-contrat, .mes-events {
         width: 30%;

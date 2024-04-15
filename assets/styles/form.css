@@ -347,6 +347,16 @@
     margin-bottom: 10px;
 }
 
+.resa-gpe ul {
+    padding: 0;
+}
+
+.resa-gpe li {
+    font-size: 0.8em;
+    color: red;
+    text-align: left;
+}
+
 .resa-input {
     width: 100%;
     padding: 10px;
@@ -378,20 +388,23 @@
 .btn-submit:hover,
 .btn-annuler:hover,
 .btn-creer-utilisateur:hover,
+.btn-modifier-utilisateur:hover,
 .btn-create-event-form-annuler:hover,
 .create-event-form .btn-plannifier:hover,
 .btns-divers .btn:hover,
 .btns-divers a:hover,
 .creer-utilisateur-form .btn-creer:hover,
 .btn-modifier,
-.btn-edit-event
+.btn-edit-event,
+.button-password-reset-form:hover
 {
     background-color: #969696;
     box-shadow: 0 8px 12px #333333;
 }
 
 /*Formulaire d'inscription*/
-.registration-form {
+.registration-form,
+.password-reset-form {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -403,7 +416,8 @@
     font-size: 1.3em;
 }
 
-.registration-form label {
+.registration-form label,
+.password-reset-form label {
     display: block;
 }
 
@@ -414,7 +428,8 @@
     padding: 5px;
 }
 
-.btn-annuler, .registration-form .btn-submit {
+.btn-annuler, .registration-form .btn-submit,
+.button-password-reset-form {
    text-align: center;
     font-size: 1.4em;
     padding: 10px 20px;
@@ -427,7 +442,8 @@
 
 .btn-annuler a,
 .registration-form .btn-submit,
-.creer-utilisateur-form .btn-creer  {
+.creer-utilisateur-form .btn-creer,
+.modifier-utilisateur-form .btn-modifier-utilisateur {
     color: #fff;
 }
 
@@ -520,6 +536,15 @@
     padding: 5px;
 }
 
+.edit-event-form ul {
+    padding: 0;
+}
+
+.edit-event-form li {
+    font-size: 0.6em;
+    color: red;
+}
+
 .create-event-form .btn-plannifier,
 .create-event-form .btn-create-event-form-annuler,
 .edit-event-form .btn-edit-event,
@@ -557,6 +582,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 5px;
+    font-size: 1.3em;
 }
 .form-infos input {
     margin-bottom: 15px;
@@ -670,7 +696,8 @@
 }
 
 
-.creer-utilisateur-form .btn-creer {
+.creer-utilisateur-form .btn-creer,
+.modifier-utilisateur-form .btn-modifier-utilisateur {
     width: 410px;
     margin-top: 40px;
     border: 1px solid #aaaaaa;
@@ -679,6 +706,50 @@
     height: 50px;
     cursor: pointer;
 }
+
+.reset-form .mail-reset  {
+    display: flex;
+    justify-content: center;
+    font-size: 1.4em;
+    margin-bottom: 40px ;
+}
+
+.reset-form p {
+    text-align: center;
+    font-size: 1.4em;
+    margin-top: 30px;
+}
+
+.reset-form .button-reset-mail {
+    text-align: center;
+}
+
+.reset-form label {
+    margin-right: 15px;
+}
+
+.reset-message p {
+    text-align: center;
+    font-size: 1.4em;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.password-reset-form {
+    max-width: 600px; /* Largeur maximale du formulaire */
+    margin: 0 auto; /* Centrer horizontalement */
+    padding: 20px; /* Espacement intérieur */
+}
+
+.password-reset-form input {
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+.password-reset-form .button-password-reset-form {
+    width: 250px;
+}
+
 
 @media screen and (max-width: 768px) {
     .section-contact {
