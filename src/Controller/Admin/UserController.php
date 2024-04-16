@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\Admin\AdminUserFormType;
-use App\Form\RegistrationAdminFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -19,9 +18,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class UserController extends AbstractController
 {
     #[Route('/liste', name: 'utilisateurs_liste')]
-    public function liste(UserRepository $userRepository, Request $request){
+    public function liste(UserRepository $userRepository, Request $request)
+    {
 
-    $pagination = $userRepository->paginationQuery($request->query->get('page', 1));
+        $pagination = $userRepository->paginationQuery($request->query->get('page', 1));
 
         return $this->render('admin/users/list.html.twig', [
             'pagination' => $pagination
@@ -31,10 +31,11 @@ class UserController extends AbstractController
     #[Route('/modifier/{id}', name: 'utilisateur_modifier')]
     #[IsGranted('ROLE_ADMIN')]
     public function modifier(
-        User $user,
+        User                   $user,
         EntityManagerInterface $entityManager,
-        Request $request,
-        MailerInterface $mailer) {
+        Request                $request,
+        MailerInterface        $mailer)
+    {
 
         $editUserForm = $this->createForm(AdminUserFormType::class, $user);
 
@@ -51,8 +52,8 @@ class UserController extends AbstractController
                 ->subject('Votre compte est à présent actif')
                 ->htmlTemplate('mails/activationCompte.html.twig')
                 ->context([
-                    'firstName'=> $user->getCustomer()->getFirstName(),
-                    'lastName'=> $user->getCustomer()->getLastName()
+                    'firstName' => $user->getCustomer()->getFirstName(),
+                    'lastName' => $user->getCustomer()->getLastName()
                 ]);
             $mailer->send($email);
 
@@ -64,45 +65,20 @@ class UserController extends AbstractController
         ]);
 
     }
+
     #[Route('/supprimer/{id}', name: 'utilisateur_supprimer')]
     public function supprimer(
-        User $user,
-        EntityManagerInterface $entityManager) {
+        User                   $user,
+        EntityManagerInterface $entityManager)
+    {
 
         try {
             $entityManager->remove($user);
             $entityManager->flush();
         } catch (\Exception $exception) {
-            $this->addFlash('danger', 'suppression impossible : ' .$exception->getMessage());
+            $this->addFlash('danger', 'suppression impossible : ' . $exception->getMessage());
         }
 
         return $this->redirectToRoute('admin_utilisateurs_liste');
     }
-
-   /* #[Route('/creer', name: 'utilisateur_creer')]
-    public function creer(
-        Request $request,
-        EntityManagerInterface $entityManager
-    ) {
-
-        $user = new User();
-       
-        $createUserForm = $this->createForm(AdminUserFormType::class, $user);
-
-        $createUserForm->handleRequest($request);
-
-        if($createUserForm->isSubmitted() && $createUserForm->isValid()) {
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_utilisateurs_liste');
-        }
-
-        return $this->render('admin/users/create.html.twig', [
-            'createUserForm' => $createUserForm->createView()
-        ]);
-
-    }*/
-
 }

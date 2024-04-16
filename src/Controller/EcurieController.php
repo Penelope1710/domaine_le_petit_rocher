@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+
 use App\Form\RemoveAccountFormType;
-use App\Repository\UserRepository;
 use App\Form\ProfilFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
