@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
-use App\Entity\Customer;
 use App\Entity\Event;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
