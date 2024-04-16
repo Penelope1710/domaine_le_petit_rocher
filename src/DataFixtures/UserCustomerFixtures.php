@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Contact;
 use App\Entity\Customer;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -10,7 +9,6 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
-use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
