@@ -79,7 +79,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('admin_utilisateurs_liste');
     }
 
-    #[Route('/creer', name: 'utilisateur_creer')]
+   /* #[Route('/creer', name: 'utilisateur_creer')]
     public function creer(
         Request $request,
         EntityManagerInterface $entityManager
@@ -103,6 +103,6 @@ class UserController extends AbstractController
             'createUserForm' => $createUserForm->createView()
         ]);
 
-    }
+    }*/
 
 }
