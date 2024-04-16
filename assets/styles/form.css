@@ -416,6 +416,15 @@
     font-size: 1.3em;
 }
 
+.registration-form ul {
+    padding: 0;
+}
+
+.registration-form li {
+    font-size: 0.7em;
+    color: red;
+}
+
 .registration-form label,
 .password-reset-form label {
     display: block;

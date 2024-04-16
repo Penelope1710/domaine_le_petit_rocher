@@ -58,15 +58,20 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+
             $mail = (new TemplatedEmail())
                 ->from($this->getParameter('mail_from'))
                 ->to($this->getParameter('mail_to'))
                 ->subject('Vous avez une nouvelle demande de validation de compte')
-                ->htmlTemplate('mails/registration.html.twig');
+                ->htmlTemplate('mails/registration.html.twig')
+                ->context([
+                'firstName'=> $user->getCustomer()->getFirstName(),
+                'lastName'=> $user->getCustomer()->getLastName()
+            ]);
 
             $mailer->send($mail);
 
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('success', 'votre compte a bien été créé, vous recevrez un e-mail lorsqu\'il sera activé!');
         }
 
         return $this->render('registration/register.html.twig', [
