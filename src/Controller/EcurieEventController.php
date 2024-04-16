@@ -3,16 +3,11 @@
 namespace App\Controller;
 
 use App\Data\SearchData;
-use App\Entity\Category;
-use App\Entity\Customer;
 use App\Entity\Event;
 use App\Entity\EventCustomer;
-use App\Entity\User;
 use App\Form\CreateEventFormType;
 use App\Form\SearchFormType;
 use App\Repository\CategoryRepository;
-use App\Repository\CustomerRepository;
-use App\Repository\EventCustomerRepository;
 use App\Repository\EventRepository;
 use App\Security\EventCustomerVoter;
 use App\Security\EventVoter;
@@ -22,7 +17,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
