@@ -41,6 +41,7 @@ class RegistrationController extends AbstractController
             if($context === 'gite'){
                 $user->setRoles(['ROLE_GITE']);
                 $user->setIsValid(true);
+                $this->addFlash('success', 'votre compte a bien été créé, vous pouvez dès à présent vous connecter!');
 
             } else {
                 $user->setRoles(['ROLE_ECURIE']);
@@ -56,7 +57,6 @@ class RegistrationController extends AbstractController
                     ]);
 
                     $mailer->send($mail);
-
                     $this->addFlash('success', 'votre compte a bien été créé, il sera activé au plus tard sous 24h!');
             }
 
@@ -71,9 +71,9 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            if($context === 'gite') {
-                return $this->redirectToRoute('app_login');
-            }
+
+            return $this->redirectToRoute('main_home');
+
         }
 
         return $this->render('registration/register.html.twig', [
