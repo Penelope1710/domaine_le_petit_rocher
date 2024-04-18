@@ -42,6 +42,10 @@ class UserController extends AbstractController
         $editUserForm->handleRequest($request);
 
         if ($editUserForm->isSubmitted() && $editUserForm->isValid()) {
+            $uow = $entityManager->getUnitOfWork();
+            $uow->computeChangeSets();
+            $changes = $uow->getEntityChangeSet($user);
+            dd($changes);
 
             $entityManager->persist($user);
             $entityManager->flush();
