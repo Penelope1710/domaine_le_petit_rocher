@@ -46,9 +46,11 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+
+
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('mail_from'))
-                ->to($this->getParameter('mail_to'))
+                ->to($user->getEmail())
                 ->subject('Votre compte est à présent actif')
                 ->htmlTemplate('mails/activationCompte.html.twig')
                 ->context([
@@ -68,7 +70,7 @@ class UserController extends AbstractController
 
     #[Route('/supprimer/{id}', name: 'utilisateur_supprimer')]
     public function supprimer(
-        User                   $user,
+        User $user,
         EntityManagerInterface $entityManager)
     {
 
