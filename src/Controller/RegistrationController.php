@@ -40,10 +40,25 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if($context === 'gite'){
                 $user->setRoles(['ROLE_GITE']);
+                $user->setIsValid(true);
+
             } else {
                 $user->setRoles(['ROLE_ECURIE']);
+                $user->setIsValid(false);
+                    $mail = (new TemplatedEmail())
+                        ->from($this->getParameter('mail_from'))
+                        ->to($this->getParameter('mail_to'))
+                        ->subject('Vous avez une nouvelle demande de validation de compte')
+                        ->htmlTemplate('mails/registration.html.twig')
+                        ->context([
+                        'firstName'=> $user->getCustomer()->getFirstName(),
+                        'lastName'=> $user->getCustomer()->getLastName()
+                    ]);
+
+                    $mailer->send($mail);
+
+                    $this->addFlash('success', 'votre compte a bien été créé, il sera activé au plus tard sous 24h!');
             }
-            $user->setIsValid(false);
 
             // encode the plain password
             $user->setPassword(
@@ -56,20 +71,9 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-
-            $mail = (new TemplatedEmail())
-                ->from($this->getParameter('mail_from'))
-                ->to($this->getParameter('mail_to'))
-                ->subject('Vous avez une nouvelle demande de validation de compte')
-                ->htmlTemplate('mails/registration.html.twig')
-                ->context([
-                'firstName'=> $user->getCustomer()->getFirstName(),
-                'lastName'=> $user->getCustomer()->getLastName()
-            ]);
-
-            $mailer->send($mail);
-
-            $this->addFlash('success', 'votre compte a bien été créé, vous recevrez un e-mail lorsqu\'il sera activé!');
+            if($context === 'gite') {
+                return $this->redirectToRoute('app_login');
+            }
         }
 
         return $this->render('registration/register.html.twig', [
