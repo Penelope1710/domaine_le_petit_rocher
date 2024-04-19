@@ -45,12 +45,15 @@ class UserController extends AbstractController
             $uow = $entityManager->getUnitOfWork();
             $uow->computeChangeSets();
             $changes = $uow->getEntityChangeSet($user);
-            dd($changes);
 
+            dd($changes['isValid']);
             $entityManager->persist($user);
             $entityManager->flush();
 
+            if(isset($changes['isValid']) && $changes['isValid'][0] === false) {
+                dd($changes);
 
+            }
 
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('mail_from'))
