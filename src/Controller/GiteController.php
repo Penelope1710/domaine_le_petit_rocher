@@ -68,6 +68,8 @@ class GiteController extends AbstractController
                     'lastName'=> $reservation->getCustomer()->getLastName()
                 ]);
             $mailer->send($email);
+
+            return $this->redirectToRoute('main_home');
         }
 
         return $this->render('gite/prive/reservation.form.html.twig', [

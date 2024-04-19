@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
                     ]);
 
                     $mailer->send($mail);
-                    $this->addFlash('success', 'votre compte a bien été créé, il sera activé au plus tard sous 24h!');
+                    $this->addFlash('success', 'votre compte a bien été créé, vous revevrez un e-mail sous 24h lorsque celui sera actif!');
             }
 
             // encode the plain password

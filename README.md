@@ -11,7 +11,7 @@ Pour un ROLE_ECURIE:
 - Mot de passe : 0000
 
 Pour un ROLE_GITE:
-- adresse e-mail : yves38@fleury.net
+- adresse e-mail : olivier34@pineau.com
 - Mot de passe : 0000
 
 Je vous souhaite une bonne visite.
