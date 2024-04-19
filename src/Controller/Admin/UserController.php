@@ -10,7 +10,6 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -44,16 +43,11 @@ class UserController extends AbstractController
         if ($editUserForm->isSubmitted() && $editUserForm->isValid()) {
             $uow = $entityManager->getUnitOfWork();
             $uow->computeChangeSets();
+            // Récupérer les changements détectés par UnitOfWork
             $changes = $uow->getEntityChangeSet($user);
 
-            dd($changes['isValid']);
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            if(isset($changes['isValid']) && $changes['isValid'][0] === false) {
-                dd($changes);
-
-            }
+            //si isValid exist et si la valeur de isValid a changé à true et qu'il était initialement à false
+            if(isset($changes['isValid']) && $changes['isValid'][0] === false && $changes['isValid'][1] === true) {
 
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('mail_from'))
@@ -65,6 +59,9 @@ class UserController extends AbstractController
                     'lastName' => $user->getCustomer()->getLastName()
                 ]);
             $mailer->send($email);
+            }
+
+            $entityManager->flush();
 
             return $this->redirectToRoute('admin_utilisateurs_liste');
         }
