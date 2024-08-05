@@ -50,9 +50,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     }
 
-    public function paginationQuery($page = 1)
+    public function userpaginationQuery($page = 1)
     {
-       $query = $this->createQueryBuilder('u')
+        $query = $this->createQueryBuilder('u')
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+        ;
+
+        $pagination = $this->paginator->paginate(
+            $query,
+            $page,
+            5
+        );
+
+        return $pagination;
+    }
+
+    public function userecuriepaginationQuery($page = 1)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.roles LIKE :role')
+            ->setParameter('role', '%ROLE_ECURIE%')
             ->orderBy('u.id', 'ASC')
             ->getQuery()
         ;

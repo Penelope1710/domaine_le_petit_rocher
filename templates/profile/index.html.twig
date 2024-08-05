@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">MON COMPTE</h2>
+    </div>
+    <h3>Mes Informations</h3>
+<div class="tableau-liste-infos">
+    <table class="informations-list">
+        <tbody>
+        <tr>
+            <th>Nom :</th>
+            <td>{{ app.user.customer.lastName }}</td>
+        </tr>
+        <tr>
+            <th>Prénom :</th>
+            <td>{{ app.user.customer.firstName }}</td>
+        </tr>
+        <tr>
+            <th>Adresse mail :</th>
+            <td>{{ app.user.email }}</td>
+        </tr>
+        <tr>
+            <th>Téléphone :</th>
+            <td>{{ app.user.customer.phoneNumber }}</td>
+        </tr>
+        <tr>
+            <th>Adresse :</th>
+            <td>{{ app.user.customer.address }}</td>
+        </tr>
+        <tr>
+            <th>Code postal :</th>
+            <td>{{ app.user.customer.zipCode }}</td>
+        </tr>
+        <tr>
+            <th>Ville :</th>
+            <td>{{ app.user.customer.city }}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance :</th>
+            <td>{{ app.user.customer.birthDate|date('d-m-Y') }}</td>
+        </tr>
+        <tr>
+            {% if app.user.customer.horseName is not null %}
+                <th>Nom du cheval</th>
+                <td>{{ app.user.customer.horseName }}</td>
+            {% endif %}
+        </tr>
+
+        </tbody>
+    </table>
+<div class="btn-container">
+    <div class="btn-informations-modifier">
+        <a href="{{ path('app_profile_edit_informations') }}" title="">Modifier mes informations</a>
+    </div>
+
+    <div class="btn-mdp-modifier">
+        <a href="{{ path('app_password_edit') }}" title="">Modifier mon mot de passe</a>
+    </div>
+</div>
+</div>
+
+{% endblock %}

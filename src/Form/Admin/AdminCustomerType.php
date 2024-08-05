@@ -5,6 +5,7 @@ namespace App\Form\Admin;
 use App\Entity\Customer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -57,11 +58,12 @@ class AdminCustomerType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                 ],
-            ]);
-            $builder->add('horseName', TextType::class, [
+            ])
+            ->add('horseName', TextType::class, [
                 'label' => 'Nom du cheval *',
                 'required' => false
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

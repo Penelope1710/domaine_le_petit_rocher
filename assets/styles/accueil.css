@@ -1,6 +1,5 @@
 .main_header {
     display: flex;
-    background: linear-gradient(to right,#333333, #cccccc);
     height: 250px;
     position: relative;
     justify-content: space-between;
@@ -12,6 +11,7 @@
     height: 210px;
     position: relative;
     justify-content: space-between;
+
     align-items: center;
 }
 
@@ -30,31 +30,33 @@
 }
 
 #banniere_image {
-    height: 180px;
     border-radius: 5px;
     position: relative;
-    box-shadow: 0px 4px 4px #1c1a19;
+
 }
 
 #citation {
-    color: #ffffff;
+    color: white;
     font-size: 1.5em;
     font-style: italic;
     position: absolute;
-    bottom: 10px;
-    left: 20px;
+    top: 150px;
+    left: 500px;
 }
 
 #banniere_image img {
     width: 100%;
-    height: 180px;
+    height: 200px;
+    box-shadow: 0px 4px 4px #1c1a19;
+    object-fit: cover;
+    object-position: center;
 }
 
 #banniere {
     height: 130px;
     border-radius: 5px;
     position: relative;
-    background: linear-gradient(to right,#333333, #cccccc);
+    background: linear-gradient(to right,#858383, #F7F7F7);
     box-shadow: 0px 8px 12px #333333;
 }
 
@@ -77,13 +79,12 @@
 .presentation1 .article1 {
     width: 450px;
     height: 300px;
-    background-color: #808080;
+    background-color: #5D5D5D;
     box-shadow: 0px 2px 5px #1c1a19;
     border-radius: 5px;
     padding: 10px 40px 40px 40px;
     color: white;
     font-size: 1.3em;
-    text-align: justify;
     overflow: scroll;
 }
 
@@ -95,21 +96,20 @@
 }
 
 .article1 img {
-    width: 80%;
-    height: auto;
-    margin: 20px 10%;
+    width: 360px;
+    height: 205px;
+    margin: 10px 10%;
 }
 
 .presentation1 .article2 {
     width: 450px;
     height: 300px;
-    background-color: #808080;
+    background-color: #5D5D5D;
     box-shadow: 0px 2px 5px #1c1a19;
     border-radius: 5px;
     padding: 10px 40px 40px 40px;
     color: white;
     font-size: 1.3em;
-    text-align: justify;
     overflow: scroll;
 }
 
@@ -121,9 +121,11 @@
 }
 
 .article2 img {
-    width: 80%;
-    height: auto;
-    margin: 20px 10%;
+    width: 360px;
+    height: 205px;
+    object-fit: cover;
+    object-position: top;
+    margin: 10px 10%;
 }
 
 .presentation2 {
@@ -197,7 +199,7 @@ h4 {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    background: linear-gradient(to right,#333333, #cccccc);
+    background: linear-gradient(to right, #858383, #F7F7F7);
     height: 200px;
     margin-top: 100px;
     padding: 20px;
@@ -258,12 +260,21 @@ h4 {
         flex-direction: column;
         align-items: center;
         align-content: center;
-        margin-top: 650px;
+        margin-top: 600px;
 
     }
 
-    .presentation2 img {
-        width: 40%;
+    .article1 img {
+        width: 80%;
+        height: auto;
+    }
+
+    .article2 img {
+        width: 80%;
+        height: auto;
+        object-fit: cover;
+        object-position: top;
+        margin: 10px 10%;
     }
 
     .carre1, .carre2, .carre3 {
@@ -303,6 +314,19 @@ h4 {
         margin-top: 10px;
     }
 
+    .article1 img {
+        width: 80%;
+        height: auto;
+    }
+
+    .article2 img {
+        width: 80%;
+        height: auto;
+        object-fit: cover;
+        object-position: top;
+        margin: 10px 10%;
+    }
+
     .presentation1 .article1{
         width: 80%;
         height: 600px;
@@ -315,8 +339,16 @@ h4 {
         overflow: scroll;
     }
 
+    .article2 {
+        margin-bottom: 250px;
+    }
+
     .presentation2 {
-        margin-top: 450px;
+        margin-top: 250px;
+    }
+
+    .carre1, .carre2, .carre3 {
+        width: 70%;
     }
 
     .main_footer {

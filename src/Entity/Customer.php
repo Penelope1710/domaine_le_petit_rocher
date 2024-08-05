@@ -58,10 +58,20 @@ class Customer
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Reservation::class, orphanRemoval: true)]
     private Collection $reservations;
 
+    /**
+     * @var Collection<int, Invoice>
+     */
+    #[ORM\OneToMany(mappedBy: 'Customer', targetEntity: Invoice::class)]
+    private Collection $invoices;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $contractFileName = null;
+
     public function __construct()
     {
         $this->eventCustomers = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
     }
 
 
@@ -236,6 +246,48 @@ class Customer
                 $reservation->setCustomer(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Invoice>
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): static
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices->add($invoice);
+            $invoice->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): static
+    {
+        if ($this->invoices->removeElement($invoice)) {
+            // set the owning side to null (unless already changed)
+            if ($invoice->getCustomer() === $this) {
+                $invoice->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getContractFileName(): ?string
+    {
+        return $this->contractFileName;
+    }
+
+    public function setContractFileName(?string $contractFileName): static
+    {
+        $this->contractFileName = $contractFileName;
 
         return $this;
     }

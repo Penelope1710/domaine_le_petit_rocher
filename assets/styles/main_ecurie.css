@@ -4,7 +4,6 @@
     margin-top: 0px;
     padding: 50px;
     font-size: 1.3em;
-    text-align: justify;
 }
 
 .presentation-ecuries p {
@@ -32,7 +31,7 @@ hr {
     background-color: #787878;
 }
 
-.ecurie-home {
+.ecurie-home, .dashboard {
     display: flex;
     margin-top: 80px;
     margin-bottom: 120px;
@@ -190,6 +189,29 @@ hr {
 .lien-conteneur-photo:hover .photo-hover {
     display: flex;
 }
+
+/*ADMINISTRATION*/
+
+.admin_infos, .liste-utilisateurs, .liste-evenements, .liste-factures, .liste-reservations {
+    display: flex;
+    background-color: #aaaaaa;
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.admin_infos a, .liste-utilisateurs a, .liste-evenements a, .liste-factures a, .liste-reservations a {
+    padding: 110px 22px;
+    color: white;
+}
+
+.admin_infos a:hover, .liste-utilisateurs a:hover, .liste-evenements a:hover, .liste-factures a:hover, .liste-reservations a:hover {
+    text-decoration: underline;
+}
+
 
 @media screen and (max-width: 768px) {
     .mes-infos, .mon-contrat, .mes-events {

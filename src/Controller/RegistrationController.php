@@ -26,6 +26,7 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        //je récupère la route qui a été appelée grace à la propriété attributes, si celle-ci est écurie alors nous utilisons le context ecurie
         if($request->attributes->get('_route') === 'app_register_ecurie')
         {
             $context = 'ecurie';
@@ -57,7 +58,10 @@ class RegistrationController extends AbstractController
                     ]);
 
                     $mailer->send($mail);
-                    $this->addFlash('success', 'votre compte a bien été créé, vous revevrez un e-mail sous 24h lorsque celui sera actif!');
+                    $this->addFlash(
+                        'success',
+                        'votre compte a bien été créé, vous revevrez un e-mail sous 24h lorsque celui sera actif!'
+                    );
             }
 
             // encode the plain password

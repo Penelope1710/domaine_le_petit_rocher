@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact_index')]
+    #[Route('/contact', name: 'app_contact_index')]
     public function index(Request $request, MailerInterface $mailer): Response
     {
 
@@ -38,7 +38,10 @@ class ContactController extends AbstractController
 
             try {
             $mailer->send($email);
-            $this->addFlash('success', 'Message envoyé !');
+            $this->addFlash(
+                'success',
+                'Message envoyé !'
+            );
             } catch (Exception $e) {
                 dd($e);
             }

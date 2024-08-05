@@ -1,0 +1,22 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">MON COMPTE</h2>
+    </div>
+    <section class="ecurie-home">
+        <div class="mes-infos">
+            <a href="{{ path('app_profile_index') }}">Mes Informations</a>
+        </div>
+        {% if is_granted('ROLE_ECURIE') %}
+            <div class="mon-contrat">
+                <a href="{{ path('app_account_home_index') }}">Mon Contrat</a>
+            </div>
+        {% endif %}
+        <div class="mes-infos">
+            <a href="{{ path('app_profile_index') }}">Mes Réservations</a>
+        </div>
+    </section>
+{% endblock %}

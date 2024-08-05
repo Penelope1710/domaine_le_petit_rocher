@@ -2,38 +2,55 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Customer;
 use App\Entity\User;
 use App\Form\Admin\AdminUserFormType;
 use App\Repository\UserRepository;
+use App\Services\FileUploadService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\Date;
 
-#[Route('/admin/utilisateurs', name: 'admin_')]
+
+#[Route('/admin', name: 'app_admin_')]
 class UserController extends AbstractController
 {
-    #[Route('/liste', name: 'utilisateurs_liste')]
-    public function liste(UserRepository $userRepository, Request $request)
+    #[Route('/home', name: 'user_home')]
+    public function home(): Response
+    {
+        $currentDate = new \DateTime();
+
+        return $this->render('admin/home/home.html.twig', [
+            'currentDate' => $currentDate
+        ]);
+    }
+
+    #[Route('/liste', name: 'users_list')]
+    public function list(UserRepository $userRepository, Request $request)
     {
 
-        $pagination = $userRepository->paginationQuery($request->query->get('page', 1));
+        $pagination = $userRepository->userpaginationQuery($request->query->get('page', 1));
 
         return $this->render('admin/users/list.html.twig', [
             'pagination' => $pagination
         ]);
     }
 
-    #[Route('/modifier/{id}', name: 'utilisateur_modifier')]
+    #[Route('/modifier/{id}', name: 'user_edit')]
     #[IsGranted('ROLE_ADMIN')]
-    public function modifier(
+    public function edit(
         User                   $user,
+        Customer               $customer,
         EntityManagerInterface $entityManager,
         Request                $request,
-        MailerInterface        $mailer)
+        MailerInterface        $mailer,
+        FileUploadService      $fileUploadService)
     {
 
         $editUserForm = $this->createForm(AdminUserFormType::class, $user);
@@ -41,6 +58,13 @@ class UserController extends AbstractController
         $editUserForm->handleRequest($request);
 
         if ($editUserForm->isSubmitted() && $editUserForm->isValid()) {
+            $brochureFile = $editUserForm->get('contractFileName')->getData();
+
+            if ($brochureFile) {
+                $brochureFileName = $fileUploadService->upload($brochureFile);
+                $user->getCustomer()->setContractFileName($brochureFileName);
+            }
+
             $uow = $entityManager->getUnitOfWork();
             $uow->computeChangeSets();
             // Récupérer les changements détectés par UnitOfWork
@@ -60,10 +84,12 @@ class UserController extends AbstractController
                 ]);
             $mailer->send($email);
             }
+            //fichier upload
 
+            $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_utilisateurs_liste');
+            return $this->redirectToRoute('app_admin_users_list');
         }
 
         return $this->render('admin/users/edit.html.twig', [
@@ -72,8 +98,8 @@ class UserController extends AbstractController
 
     }
 
-    #[Route('/supprimer/{id}', name: 'utilisateur_supprimer')]
-    public function supprimer(
+    #[Route('/supprimer/{id}', name: 'user_remove')]
+    public function remove(
         User $user,
         EntityManagerInterface $entityManager)
     {
@@ -85,6 +111,6 @@ class UserController extends AbstractController
             $this->addFlash('danger', 'suppression impossible : ' . $exception->getMessage());
         }
 
-        return $this->redirectToRoute('admin_utilisateurs_liste');
+        return $this->redirectToRoute('app_admin_users_list');
     }
 }

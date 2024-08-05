@@ -5,7 +5,7 @@
 {% block body %}
 
     <div id="banniere">
-        <h2 class="titre-secondaire">Liste des utilisateurs</h2>
+        <h2 class="titre-secondaire">LISTE DES UTILISATEURS</h2>
     </div>
 
     <div>
@@ -33,8 +33,8 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{{ path('admin_utilisateur_modifier', { id: user.id }) }}">Modifier - </a>
-                        <a href="{{ path('admin_utilisateur_supprimer', { id: user.id}) }}"
+                        <a href="{{ path('app_admin_user_edit', { id: user.id }) }}">Modifier - </a>
+                        <a href="{{ path('app_admin_user_remove', { id: user.id}) }}"
                            onClick="return window.confirm('Etes vous sûr de vouloir supprimer cet utilisateur?');">Supprimer</a>
                     </td>
                 </tr>
@@ -44,8 +44,5 @@
 
         {{ knp_pagination_render(pagination) }}
 
-        {#<div class="btn-creer-utilisateur">
-            <a href="{{ path('admin_utilisateur_creer') }}">Créer un nouvel utilisateur</a>
-        </div>#}
     </div>
 {% endblock %}

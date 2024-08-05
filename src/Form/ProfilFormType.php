@@ -27,7 +27,7 @@ class ProfilFormType extends AbstractType
                 ]
             ])
 
-            ->add('plainPassword', RepeatedType::class, [
+            /*->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
@@ -59,7 +59,7 @@ class ProfilFormType extends AbstractType
                         'message' => "Le mot de passe doit contenir au moins une lettre majuscule ou minuscule, un chiffre et un caractère spécial"
                     ])
                 ],
-            ])
+            ])*/
             ->add('customer', CustomerType::class, [
             'context' => $options['context']
             ])

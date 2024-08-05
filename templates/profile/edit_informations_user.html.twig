@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon compte{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">MON COMPTE</h2>
+    </div>
+    <h3>Modifier mes Informations</h3>
+    <section class="form-infos">
+
+        {{ form_start(profilForm) }}
+        {{ form_errors(profilForm) }}
+
+        {{ form_row(profilForm.customer.lastName) }}
+
+        {{ form_row(profilForm.customer.firstName) }}
+
+        {{ form_row(profilForm.email) }}
+
+        {{ form_row(profilForm.customer.phoneNumber) }}
+
+        {{ form_row(profilForm.customer.address) }}
+
+        {{ form_row(profilForm.customer.zipCode) }}
+
+        {{ form_row(profilForm.customer.city) }}
+
+        {{ form_row(profilForm.customer.birthDate) }}
+
+        {% if profilForm.customer.horseName is defined %}
+            {{ form_row(profilForm.customer.horseName) }}
+        {% endif %}
+
+
+        <div class="btns-divers">
+            <button type="submit" class="btn">Enregistrer</button>
+            {{ form_end(profilForm) }}
+
+            <li><a href="{{ path('app_profile_index') }}" title="annuler">Annuler</a></li>
+            <li><a href="{{ path('app_profile_remove_account') }}" title="supprimer">Supprimer</a></li>
+        </div>
+    </section>
+{% endblock %}
