@@ -8,7 +8,8 @@ nav  {
 ul {
     list-style-type: none;
     font-family: 'Edu NSW ACT Foundation', cursive;
-    font-size: 1.7em;
+    font-size: 1.9em;
+
     display: flex;
     gap: 35px;
 }
@@ -34,9 +35,13 @@ ul a {
     float: none;
     width: 100%;
     text-align: center;
+    height: auto;
+    margin: 0;
+    padding: 10px 0;
 }
 
 .submenu a {
+    display: block;
     border-bottom: none;
     color: white;
     font-size: 1.2rem;
@@ -44,34 +49,28 @@ ul a {
 
 .submenu a:hover {
     border-bottom: none;
-    color: #333333;
-    text-shadow: -1px -1px #333333, 0 -1px #333333;
+    color: white;
+    zoom: 150%;
 }
 
 .submenu {
     display: none;
     box-shadow: 0px 8px 12px #333333;
     background-color: #808080;
-    padding-right: 6px;
-    padding-left: 6px;
-    padding-bottom: 4px;
+    border-radius: 10px;
+    padding: 10px;
     position: absolute;
-    width: 150%;
+    width: auto;
     z-index: 1000;
+    min-width: 100px;
 }
 
 nav ul li {
-
     text-align: left;
-    position: relative;
-}
-
-.dropdown {
-    border-radius: 50px;
 }
 
 .dropdown a {
-    text-align: left;
+    text-align: center;
 }
 
 .header-burger {

@@ -8,7 +8,7 @@
 </div>
     <div class="titre-tertiaire">
         <h3>Réservation du gîte 4 personnes</h3>
-            <p>Date du jour : {{ currentDate|date("d/m/Y") }}</p>
+            <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
     </div>
 
 <section class="reservation-form">

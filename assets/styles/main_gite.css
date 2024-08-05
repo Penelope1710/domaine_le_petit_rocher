@@ -13,7 +13,6 @@
 
 .presentation-gite p {
     font-size: 1.4em;
-    text-align: justify;
 }
 
 .disponibilites .legend {
@@ -28,10 +27,6 @@
 
 .disponibilites a {
     color: grey;
-}
-
-.disponibilites a:hover {
-    color: purple;
 }
 
 .photos-gite {

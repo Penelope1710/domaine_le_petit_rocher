@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer mon compte{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">MON COMPTE</h2>
+    </div>
+    <h3>Supprimer mon compte</h3>
+    <p>Merci de bien vouloir renseigner votre mot de passe, votre compte sera ainsi définitivement supprimé :</p>
+
+    <section>
+        {{ form_start(removeAccountForm) }}
+        {{ form_errors(removeAccountForm) }}
+
+        {{ form_widget(removeAccountForm) }}
+
+        <button type="submit" class="btn">Je confirme</button>
+
+        {{ form_end(removeAccountForm) }}
+
+        <a href="{{ path('app_profile_index') }}" class="btn-modifier ml-16">J'annule</a>
+    </section>
+{% endblock %}

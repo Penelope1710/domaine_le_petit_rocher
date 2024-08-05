@@ -11,29 +11,29 @@
 <table class="details-form">
 
     <tr>
-        <th>Nom de l'évènement:</th>
+        <th>Nom de l'évènement :</th>
         <td>
             {{ event.name }}
         </td>
     </tr>
     <tr>
-        <th>Catégorie:</th>
+        <th>Catégorie :</th>
         <td>{{ event.category.name }}</td>
     </tr>
     <tr>
-        <th>Date de la sortie:</th>
+        <th>Date de la sortie :</th>
         <td>{{ event.startDate|date('d-m-y') }}</td>
     </tr>
     <tr>
-        <th>Heure de la sortie:</th>
+        <th>Heure de la sortie :</th>
         <td>{{ event.startTime.format('H:i') }}</td>
     </tr>
     <tr>
-        <th>Date limite d'inscription:</th>
+        <th>Date limite d'inscription :</th>
         <td>{{ event.deadLine|date('d-m-y') }}</td>
     </tr>
     <tr>
-        <th>Détails de l'évènement:</th>
+        <th>Détails de l'évènement :</th>
         <td class="description">
             <p>{{ event.eventDetails }}</p>
         </td>
@@ -45,16 +45,16 @@
             {% if event.createdBy.customer.id != app.user.id %}
             {% if not event.isUserSubscribed(app.user) %}
                 <button class="btn-inscription">
-                    <a href="{{ path('ecurieevenement_inscrire', { id:event.id }) }}">M'inscrire</a>
+                    <a href="{{ path('app_ecurie_event_subscribe', { id:event.id }) }}">M'inscrire</a>
                 </button>
             {% else %}
                 <button class="btn-desinscription">
-                    <a href="{{ path('ecurieevenement_desinscrire', {id:event.id}) }}">Me désinscrire</a>
+                    <a href="{{ path('app_ecurie_event_unsubscribe', {id:event.id}) }}">Me désinscrire</a>
                 </button>
             {% endif %}
             {% endif %}
         {% endif %}
-        <button class="btn-retour"><a href="{{ path('ecurieevenement_liste') }}">Retour</a></button>
+        <button class="btn-retour"><a href="{{ path('app_ecurie_event_index') }}">Retour</a></button>
     </div>
 
 {% endblock %}

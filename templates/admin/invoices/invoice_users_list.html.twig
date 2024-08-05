@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div id="banniere">
+        <h2 class="titre-secondaire">FACTURATION</h2>
+    </div>
+
+    <div>
+        <table class="admin-list">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>E-mail</th>
+                <th>Compte</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in pagination %}
+                <tr>
+                    <td>{{ user.customer.lastName }}</td>
+                    <td>{{ user.customer.firstName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% if user.isValid == 1 %}
+                            Actif
+                        {% else %}
+                            Inactif
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_invoice_users_list') }}">Liste - </a>
+                        <a href="{{ path('app_admin_invoice_create', { id: user.id}) }}">créer une facture</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{ knp_pagination_render(pagination) }}
+
+    </div>
+{% endblock %}

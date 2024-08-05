@@ -23,6 +23,7 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Event::class, orphanRemoval: true)]
     private Collection $events;
 
+    // le constructeur sera automatiquement appelé lors de l'instanciation de mon objet category et la propriété events sera initialisée en une collection prête à être utilisée
     public function __construct()
     {
         $this->events = new ArrayCollection();

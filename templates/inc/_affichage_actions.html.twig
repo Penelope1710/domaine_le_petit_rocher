@@ -1,19 +1,19 @@
 {# si l'utilisateur actuellement connecté est le même que celui qui a crée l'évènement alors... #}
         {% if event.createdBy.customer.id == app.user.id or is_granted('ROLE_ADMIN') %}
             {# je crée un lien vers une route avec l'id de l'évènement #}
-            <a href="{{ path('ecurieevenement_supprimer', { id:event.id }) }}"
+            <a href="{{ path('app_ecurie_event_remove', { id:event.id }) }}"
                onClick="return window.confirm('Etes vous sûr de vouloir supprimer l\'évènement ?')">Supprimer</a>
             {% if event.status == 'opened' %}
-            <a href="{{ path('ecurieevenement_modifier', { id:event.id }) }}">- Modifier</a>
+            <a href="{{ path('app_ecurie_event_edit', { id:event.id }) }}">- Modifier</a>
             {% endif %}
         {% else %}
             {# I l'utilisateur connecté n'est pas inscrit et n'est pas l'organisateur alors... #}
             {% if not event.isUserSubscribed(app.user) and event.status == constant('App\\Entity\\Event::OPENED_STATUS') %}
-                <a href="{{ path('ecurieevenement_inscrire', { id:event.id }) }}">M'inscrire</a>
+                <a href="{{ path('app_ecurie_event_subscribe', { id:event.id }) }}">M'inscrire</a>
             {% elseif event.isUserSubscribed(app.user) and event.status == constant('App\\Entity\\Event::OPENED_STATUS') %}
                 {# Je crée une variable dans laquelle je stocke l'utilisateur connecté inscrit à un évènement #}
                 {% set subscribe = event.getUserSubscribe(app.user) %}
-                <a href="{{ path('ecurieevenement_desinscrire', {id:subscribe.id}) }}"
+                <a href="{{ path('app_ecurie_event_unsubscribe', {id:subscribe.id}) }}"
                    onClick="return window.confirm('Etes vous sûr de vouloir vous désinscrire ?')">Me désinscrire</a>
             {% endif %}
         {% endif %}

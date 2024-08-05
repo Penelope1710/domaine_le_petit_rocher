@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">ADMINISTRATION</h2>
+</div>
+<div class="titre-tertiaire">
+    <h3>Dashboard</h3>
+    <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
+</div>
+    <section class="dashboard">
+        <div class="admin_infos">
+            <a href="{{ path('app_profile_index') }}">Mes infos</a>
+        </div>
+        <div class="liste-utilisateurs">
+            <a href="{{ path('app_admin_users_list') }}">Utilisateurs</a>
+        </div>
+        <div class="liste-evenements">
+             <a href="{{ path('app_ecurie_event_index') }}">Evènements</a>
+        </div>
+        <div class="liste-reservations">
+             <a href="#">Réservations</a>
+        </div>
+        <div class="liste-factures">
+            <a href="{{ path('app_admin_invoice_users_list') }}">Factures</a>
+        </div>
+    </section>
+{% endblock %}

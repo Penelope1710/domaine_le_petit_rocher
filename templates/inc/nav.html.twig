@@ -10,11 +10,9 @@
             <li><a href="{{ path('main_home') }}" title="">Accueil</a></li>
             <li class="dropdown"><a href="#">L'Ecurie</a>
                 <ul class="submenu">
-                    <li><a href="{{ path('ecurie_presentation') }}">Présentation</a></li>
-                    {% if app.user %}
-                        {% if is_granted('ROLE_ECURIE') %}
-                            <li><a href="{{ path('ecurie_home') }}" title="Compte">Mon Compte</a></li>
-                        {% endif %}
+                    <li><a href="{{ path('app_ecurie_home_index') }}">Présentation</a></li>
+                    {% if is_granted('ROLE_ECURIE') %}
+                        <li><a href="{{ path('app_ecurie_event_index') }}">Les évènements</a></li>
                     {% endif %}
                     {% if not app.user %}
                     <li><a href="{{ path('app_login') }}">Se connecter</a></li>
@@ -24,9 +22,9 @@
             </li>
              <li class="dropdown"><a href="#">Le Gîte</a>
                 <ul class="submenu">
-                    <li><a href="{{ path('gite_presentation') }}">Présentation</a></li>
-                    <li><a href="{{ path('gite_disponibilites') }}">Disponibilités</a></li>
-                    <li><a href="{{ path('gite_reservation') }}">Réserver</a></li>
+                    <li><a href="{{ path('app_gite_home_index') }}">Présentation</a></li>
+                    <li><a href="{{ path('app_gite_availabilities') }}">Disponibilités</a></li>
+                    <li><a href="{{ path('app_gite_reservation_create') }}">Réserver</a></li>
                     {% if not app.user %}
                         <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                         <li><a href="{{ path('app_register_gite') }}">S'inscrire</a></li>
@@ -34,17 +32,16 @@
                 </ul>
              </li>
             {% if is_granted('ROLE_ADMIN') %}
-                <li class="dropdown"><a href="#">Administration</a>
-                    <ul class="submenu">
-                        <li><a href="{{ path('admin_utilisateurs_liste') }}">Utilisateurs</a></li>
-                    </ul>
+                <li class="dropdown"><a href="{{ path('app_admin_user_home') }}">Administration</a>
                 </li>
             {% endif %}
             {% if not is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('contact_index') }}" title="">Contact</a></li>
+            <li><a href="{{ path('app_contact_index') }}" title="">Contact</a></li>
             {% endif %}
+
             {% if app.user %}
-            <li><a href="{{ path('app_logout') }}" title="Déconnexion">Se déconnecter</a></li>
+                <li><a href="{{ path('app_account_home_index') }}" title="Compte">Mon Compte</a></li>
+                <li><a href="{{ path('app_logout') }}" title="Déconnexion">Se déconnecter</a></li>
             {% endif %}
         </ul>
         </div>

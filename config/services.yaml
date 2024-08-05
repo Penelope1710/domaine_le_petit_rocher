@@ -6,6 +6,7 @@
 parameters:
     mail_to: "penelope.bourg@orange.fr"
     mail_from: "administrateur@domainelepetitrocher.com"
+    uploads_directory: '%kernel.project_dir%/var/uploads'
 
 services:
     # default configuration for services in *this* file
@@ -21,6 +22,10 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Services\FileUploadService:
+        arguments:
+            $targetDirectory: '%uploads_directory%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

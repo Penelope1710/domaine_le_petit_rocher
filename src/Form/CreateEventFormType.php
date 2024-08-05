@@ -34,9 +34,12 @@ class CreateEventFormType extends AbstractType
             ])
             ->add('startTime', TimeType::class, [
                 'label' => 'Heure de de l\'évènement *',
+                'placeholder' => [
+                    'hour' => 'Heures', 'minute' => 'Minutes'
+                ],
                 'constraints' => [
                     new NotBlank(),
-                ],
+                ]
             ])
             ->add('deadLine', DateType::class, [
                 'label' => 'Date limite d\'inscription *',

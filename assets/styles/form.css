@@ -44,6 +44,7 @@
 .contact-form input, textarea, .btn-contact-env {
     margin-bottom: 15px;
     font-size: 1.4em;
+    cursor: pointer;
     box-sizing: border-box;
     width: 100%;
 }
@@ -84,13 +85,13 @@
     width: 250px;
     padding: 20px;
     font-weight: bold;
-    color: darkviolet;
+    color: white;
     font-size: 1.4em;
     margin-right: auto;
     margin-left: auto;
     margin-top: 40px;
     border-radius: 5px;
-    background-color: #aaaaaa;
+    background-color: mediumseagreen;
     text-align: center;
 }
 /*Formulaire de login*/
@@ -186,13 +187,20 @@
     color: black;
 }
 
-.position-left, a:hover {
-    color: darkmagenta;
+.position-left a:visited {
+    color: mediumblue;
     font-weight: bold;
+
+
 }
 
-.events-list td, .events-list th, .admin-list td, .admin-list th {
+.events-list td, .events-list th, .admin-list th {
     border: 2px solid darkgrey;
+}
+
+.admin-list td {
+    border: 2px solid darkgrey;
+    padding: 10px;
 }
 
 .events-list th, .admin-list th {
@@ -225,29 +233,43 @@
 }
 
 /*Tableau détails évènements*/
-.details-form {
+.details-form, .informations-list {
     display: flex;
     margin-right: auto;
     margin-left: auto;
     margin-top: 50px;
-    width:60%;
     box-sizing: border-box;
-    border-spacing: 30px;
+    border-spacing: 20px;
 }
 
-.details-form th, td {
+.informations-list tbody, .details-form tbody {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.details-form th, .details-form td {
+    width: 100%;
     font-size: 1.3em;
     text-align: left;
     padding: 10px;
 }
 
-.details-form th {
+.informations-list th, .informations-list td {
+    width: 100%;
+    font-size: 1.3em;
+    text-align: left;
+    padding: 10px;
+}
+
+
+.details-form th, .informations-list th {
     display: inline-block;
     width: 180px;
     border: none;
 }
 
-.details-form td {
+.details-form td, .informations-list td {
     border: 2px solid darkgrey;
 }
 
@@ -261,12 +283,12 @@
 .btn-details-e a {
     color: white;
     font-size: 1.4em;
+    padding: 5px 20px;
 }
 
 .btn-inscription, .btn-desinscription, .btn-retour {
     width: 200px;
-    height: 50px;
-    padding: 10px;
+    padding: 18px 25px;
     border-radius: 5px;
     background-color: #aaaaaa;
 }
@@ -280,6 +302,15 @@
     overflow-y: scroll;
     max-height: 70px;
     margin: 0;
+}
+
+/*tableau liste informations profil*/
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+    margin-top: 30px;
 }
 
 /*Filtre*/
@@ -377,7 +408,7 @@
     background-color: #aaaaaa;
     color: #fff;
     font-size: 1.4em;
-    padding: 10px 20px;
+    padding: 18px 25px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -396,7 +427,10 @@
 .creer-utilisateur-form .btn-creer:hover,
 .btn-modifier,
 .btn-edit-event,
-.button-password-reset-form:hover
+.button-password-reset-form:hover,
+.tableau-liste-infos .btn-informations-modifier:hover,
+.tableau-liste-infos .btn-mdp-modifier:hover,
+#password_user_submit:hover
 {
     background-color: #969696;
     box-shadow: 0 8px 12px #333333;
@@ -404,25 +438,34 @@
 
 /*Formulaire d'inscription*/
 .registration-form,
-.password-reset-form {
+.password-reset-form
+ {
     display: flex;
     flex-direction: column;
     width: 70%;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
     font-size: 1.3em;
 }
 
-.registration-form ul {
-    padding: 0;
+#password_user_submit {
+    width: 100%;
+    padding: 18px 25px;
+    margin-top: 10px;
+    color: white;
+    background-color: #aaaaaa;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 .registration-form li {
     font-size: 0.7em;
     color: red;
+    text-align: left;
 }
 
 .registration-form label,
@@ -441,7 +484,7 @@
 .button-password-reset-form {
    text-align: center;
     font-size: 1.4em;
-    padding: 10px 20px;
+    padding: 18px 25px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -449,11 +492,55 @@
     margin-top: 15px;
 }
 
+.btn-annuler-mdf-mdp {
+    text-align: center;
+    font-size: 1.4em;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #aaaaaa;
+    box-sizing: border-box;
+    width: 31%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .btn-annuler a,
 .registration-form .btn-submit,
 .creer-utilisateur-form .btn-creer,
 .modifier-utilisateur-form .btn-modifier-utilisateur {
     color: #fff;
+}
+
+.registration-form .form-control {
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.disponibilites .btn-reservation-gite {
+    background-color: #aaaaaa;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 34%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    padding: 18px 25px;
+}
+
+.disponibilites .btn-reservation-gite a {
+    color: white;
+    font-size: 1.4em;
+    padding: 15px 40px;
+}
+
+.disponibilites .btn-reservation-gite:hover,
+.btn-annuler-mdf-mdp:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
 }
 
 /*liste utilisateurs admin*/
@@ -483,15 +570,23 @@
 }
  .btn-creer-utilisateur a,
  .btn-create-event-form-annuler a,
- .btn-edit-event a {
+ .btn-edit-event a,
+ .btn-annuler-mdf-mdp a
+ {
      color: white;
  }
+
+.tableau-liste-infos .btn-mdp-modifier a,
+.tableau-liste-infos .btn-informations-modifier a {
+    color: white;
+    padding: 18px 25px;
+}
 
  .pagination {
      text-align: center;
      margin: 15px 0;
      font-size: 1.2em;
-     color: darkmagenta;
+     color: mediumblue;
  }
 
  span.page, span.current {
@@ -561,7 +656,7 @@
     width: 470px;
     box-sizing: border-box;
     font-size: 1.4em;
-    padding: 10px 20px;
+    padding: 18px 25px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
@@ -570,7 +665,10 @@
     background-color: #aaaaaa;
     text-align: center;
     color: white;
+}
 
+.btn-create-event-form-annuler a {
+    padding: 10px 60px;
 }
 
 .create-event-form ul {
@@ -581,6 +679,23 @@
 
 
 /*Formulaire mes informations*/
+
+.tableau-liste-infos .btn-informations-modifier,
+.tableau-liste-infos .btn-mdp-modifier {
+    width: 470px;
+    box-sizing: border-box;
+    font-size: 1.4em;
+
+    padding: 18px 25px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: #aaaaaa;
+    text-align: center;
+    color: white;
+}
 
 .form-infos {
     display: flex;
@@ -652,7 +767,9 @@
     margin-left: auto;
     font-size: 1.3em;
 }
-
+.creer-utilisateur-form .btn-annuler {
+    box-sizing: border-box;
+}
 .creer-utilisateur-form .form-range,
 .modifier-utilisateur-form .form-range {
     width: 400px;
@@ -706,14 +823,20 @@
 
 
 .creer-utilisateur-form .btn-creer,
-.modifier-utilisateur-form .btn-modifier-utilisateur {
+.modifier-utilisateur-form .btn-modifier-utilisateur,
+.modifier-utilisateur-form .btn-annuler {
     width: 410px;
     margin-top: 40px;
     border: 1px solid #aaaaaa;
     border-radius: 5px;
     background-color: #aaaaaa ;
-    height: 50px;
     cursor: pointer;
+    padding: 18px 25px;
+}
+
+.modifier-utilisateur-form .btn-modifier-utilisateur,
+.modifier-utilisateur-form .btn-annuler {
+    font-size: 1.1em;
 }
 
 .reset-form .mail-reset  {
@@ -774,7 +897,9 @@
     }
 
     .create-event-form .btn-plannifier,
-    .create-event-form .btn-create-event-form-annuler {
+    .create-event-form .btn-create-event-form-annuler,
+    .tableau-liste-infos .btn-informations-modifier,
+    .tableau-liste-infos .btn-mdp-modifier {
         width: 650px;
     }
 }

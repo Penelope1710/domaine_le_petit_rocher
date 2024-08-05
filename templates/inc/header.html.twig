@@ -16,7 +16,11 @@
 
     <h1 class="titre-site">DOMAINE LE PETIT ROCHER</h1>
 
-    {% include'inc/nav.html.twig' %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {% include'inc/admin_nav.html.twig' %}
+    {% else %}
+        {% include'inc/nav.html.twig' %}
+    {% endif %}
 
 </header>
 

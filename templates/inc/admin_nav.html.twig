@@ -1,0 +1,43 @@
+<nav>
+    <div class="overlay-menu-mobile" onclick="closeMenuMobile()"></div>
+    <div class="nav-accueil">
+        <div class="header-nav-close" onclick="closeMenuMobile()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <ul>
+            <li class="dropdown"><a href="{{ path('main_home') }}" title="">Accueil</a>
+                <ul class="submenu">
+                    <li><a href="{{ path('app_ecurie_home_index') }}">l'écurie</a></li>
+                    <li><a href="{{ path('app_gite_home_index') }}">Le gîte</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown"><a href="{{ path('app_admin_user_home') }}">Administration</a></li>
+
+            {% if app.user %}
+                <li><a href="{{ path('app_logout') }}" title="Déconnexion">Se déconnecter</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<div class="header-burger" onclick="openMenuMobile()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+
+    {% block javascripts %}
+        <script>
+            function openMenuMobile() {
+                document.querySelector('.nav-accueil').classList.add('open');
+                document.querySelector('.overlay-menu-mobile').classList.add('open');
+
+            }function closeMenuMobile() {
+                document.querySelector('.nav-accueil').classList.remove('open');
+                document.querySelector('.overlay-menu-mobile').classList.remove('open');
+            }
+        </script>
+    {% endblock %}
+
+</div>

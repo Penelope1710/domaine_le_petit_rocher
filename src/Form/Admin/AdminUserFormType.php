@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -37,6 +38,13 @@ class AdminUserFormType extends AbstractType
                       'actif' => 1
                   ]*/
             ])
+            ->add('contractFileName', FileType::class, [
+                'label' => 'Contrat (PDF file)',
+                'mapped' => false,
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false
+            ])
             ->add('customer', AdminCustomerType::class)
         ;
     }
@@ -45,6 +53,7 @@ class AdminUserFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'allow_extra_fields' => true
         ]);
     }
 }
