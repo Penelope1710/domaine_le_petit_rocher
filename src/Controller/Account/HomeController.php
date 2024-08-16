@@ -2,25 +2,16 @@
 
 namespace App\Controller\Account;
 
-use App\Entity\Customer;
 use App\Entity\Reservation;
-use App\Form\ProfilFormType;
-use App\Form\RemoveAccountFormType;
 use App\Form\ReservationFormType;
 use App\Repository\ReservationRepository;
-use App\Security\ReservationVoter;
 use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 

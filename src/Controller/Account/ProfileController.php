@@ -29,7 +29,7 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profil/mes_informations/modifier', name: 'app_profile_edit_informations')]
-    public function modifierInformations(
+    public function editInformations(
         Request $request,
         EntityManagerInterface $entityManager,
         MailerService $mailerService): Response
@@ -72,7 +72,7 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profil/mes_informations/supprimer_mon_compte', name: 'app_profile_remove_account')]
-    public function supprimerCompte(
+    public function removeAccount (
         Request $request,
         TokenStorageInterface $tokenStorage,
         EntityManagerInterface $entityManager)
