@@ -24,7 +24,7 @@ class UserCustomerFixtures extends Fixture implements OrderedFixtureInterface
     {
         // User
         $user = new User();
-        $user->setEmail('penelope.bourg@orange.fr');
+        $user->setEmail('penelope.bourg@gmail.fr');
         $user->setPassword($this->userPasswordHasher->hashPassword($user, 'Nala1234&'));
 
         $customer = new Customer();
@@ -39,6 +39,7 @@ class UserCustomerFixtures extends Fixture implements OrderedFixtureInterface
 
         $user->setCustomer($customer);
         $user->setRoles(['ROLE_ADMIN']);
+        $user->setIsValid(true);
 
             $manager->persist($user);
 
@@ -61,6 +62,7 @@ class UserCustomerFixtures extends Fixture implements OrderedFixtureInterface
             //mélange les éléments d'un tableau
             shuffle($roles);
             $user->setRoles([$roles[0]]);
+            $user->setIsValid(true);
 
             //est ce que $userRoles contient le rôle ecurie
             $userRoles = $user->getRoles();
