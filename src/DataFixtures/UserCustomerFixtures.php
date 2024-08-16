@@ -24,7 +24,7 @@ class UserCustomerFixtures extends Fixture implements OrderedFixtureInterface
     {
         // User
         $user = new User();
-        $user->setEmail('penelope.bourg@gmail.fr');
+        $user->setEmail('penelope.bourg@gmail.com');
         $user->setPassword($this->userPasswordHasher->hashPassword($user, 'Nala1234&'));
 
         $customer = new Customer();

@@ -31,26 +31,16 @@ class RemoveAccountFormType extends AbstractType
                     ]],
                 'required' => true,
                 'first_options'  => [
-                    'label' => 'nouveau mot de passe *'
+                    'label' => 'Votre mot de passe *'
                 ],
                 'second_options' => [
-                    'label' => 'Confirmer le nouveau mot de passe *'
+                    'label' => 'Confirmer votre mot de passe *'
                 ],
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
                     ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                    new Regex ([
-                        'pattern' => "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&,.])[A-Za-z\d@$!%*#?&,.]+$/",
-                        'message' => "Le mot de passe doit contenir au moins une lettre majuscule ou minuscule, un chiffre et un caractère spécial"
-                    ])
                 ],
             ])
         ;
