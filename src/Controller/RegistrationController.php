@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +23,7 @@ class RegistrationController extends AbstractController
     public function register(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
-        MailerInterface $mailer,
+        MailerService $mailerService,
         EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -42,22 +43,31 @@ class RegistrationController extends AbstractController
             if($context === 'gite'){
                 $user->setRoles(['ROLE_GITE']);
                 $user->setIsValid(true);
+                $mailerService->send(
+                    $this->getParameter('mail_to'),
+                    'GÎTE: Vous avez une nouvelle création de compte',
+                    'mails/gite_registration.html.twig',
+                    [
+                        'firstName'=> $user->getCustomer()->getFirstName(),
+                        'lastName'=> $user->getCustomer()->getLastName()
+                    ]
+                );
+
                 $this->addFlash('success', 'votre compte a bien été créé, vous pouvez dès à présent vous connecter!');
 
             } else {
                 $user->setRoles(['ROLE_ECURIE']);
                 $user->setIsValid(false);
-                    $mail = (new TemplatedEmail())
-                        ->from($this->getParameter('mail_from'))
-                        ->to($this->getParameter('mail_to'))
-                        ->subject('Vous avez une nouvelle demande de validation de compte')
-                        ->htmlTemplate('mails/registration.html.twig')
-                        ->context([
+                $mailerService->send(
+                    $this->getParameter('mail_to'),
+                    'Vous avez une nouvelle demande de validation de compte',
+                    'mails/ecurie_registration.html.twig',
+                    [
                         'firstName'=> $user->getCustomer()->getFirstName(),
                         'lastName'=> $user->getCustomer()->getLastName()
-                    ]);
+                    ]
+                );
 
-                    $mailer->send($mail);
                     $this->addFlash(
                         'success',
                         'votre compte a bien été créé, vous revevrez un e-mail sous 24h lorsque celui sera actif!'

@@ -29,14 +29,8 @@
                     <img src="{{ asset('images/logo/logo_lpr2.png') }}" alt="Logo pages annexes">
                 {% endif %}
             </div>
-
-            {% if app.user %}
-                <div class="affichage-prenom">
-                    Bonjour {{ app.user.customer.firstName }} !
-                </div>
-            {% endif %}
-
             <h1 class="titre-site">DOMAINE LE PETIT ROCHER</h1>
+            {% include('inc/nav.html.twig') %}
         </header>
 
         <div id="banniere">
@@ -77,7 +71,10 @@
                 </button>
             </div>
         <div class="mdp-oublie">
-            <a href="{{ path('app_forgot_password_request') }}" title="reset password">Mot de passe oublié ?</a>
+            <a href="{{ path('app_forgot_password_request') }}" title="reset password">Mot de passe oublié ?</a><br>
+            <p>Vous ne possédez pas encore de compte ?</p>
+            <button><a href="{{ path('app_register_gite') }}">Pour les clients du gîte <br> inscrivez-vous ici</a></button><br>
+            <button><a href="{{ path('app_register_ecurie') }}">Pour les clients des écuries <br> inscrivez-vous ici</a></button>
         </div>
      </form>
      </section>

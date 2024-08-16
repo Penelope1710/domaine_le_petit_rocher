@@ -59,10 +59,14 @@ class AdminCustomerType extends AbstractType
                     new NotBlank(),
                 ],
             ])
-            ->add('horseName', TextType::class, [
-                'label' => 'Nom du cheval *',
-                'required' => false
+            ;
+
+            if($options['context'] === 'ecurie') {
+                $builder->add('horseName', TextType::class, [
+                    'label' => 'Nom du cheval',
+                    'required' => false,
             ]);
+        }
 
     }
 
@@ -70,6 +74,7 @@ class AdminCustomerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Customer::class,
+            'context' => null,
         ]);
     }
 }

@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
 use App\Entity\Reservation;
-use phpDocumentor\Reflection\Types\False_;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class ReservationFormType extends AbstractType
+class UnavailabilityFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -24,7 +22,7 @@ class ReservationFormType extends AbstractType
                 'constraints' => [
                     new GreaterThanOrEqual([
                         'value' => 'today',
-                        'message' => "La date d'arrivée doit être ultérieures à {{ value }}."
+                        'message' => "La date et l'heure de début doivent être ultérieures à {{ value }}."
                     ]),
                     new NotBlank()
                 ],
@@ -39,18 +37,6 @@ class ReservationFormType extends AbstractType
                     ]),
                     new NotBlank(),
                 ],
-            ])
-            ->add('horseNb', ChoiceType::class, [
-                'label' =>'Nb de chevaux : ',
-                'expanded' => false,
-                'multiple' => false,
-                'choices' => [
-                    'Aucun' => null,
-                    '1' => 1,
-                    '2' => 2,
-                    '3' => 3,
-                    '4' => 4,
-                ]
             ])
         ;
     }

@@ -142,6 +142,7 @@
     margin-right: 5px;
 }
 
+
 .btn-primary {
     background-color: #aaaaaa;
     color: #fff;
@@ -157,9 +158,25 @@
     box-shadow: 0 8px 12px #333333;
 }
 
-.mdp-oublie a {
+.mdp-oublie {
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: black;
+    gap: 5px;
+}
+
+.mdp-oublie a {
+    padding: 10px;
+}
+
+.mdp-oublie button {
+    padding: 10px;
+    font-size: 1.1em;
+}
+
+.mdp-oublie p {
+    font-size: 1.1em;
 }
 
 .titre-tertiaire p {
@@ -334,6 +351,16 @@
     font-size: 1.2em;
 }
 
+.categories1-wrapper input {
+    font-size: 1.2em;
+    padding: 15px;
+}
+
+.categories1-wrapper button {
+    padding: 10px;
+    cursor: pointer;
+}
+
 .categories2-wrapper {
     display: flex;
     width: 80%;
@@ -367,8 +394,14 @@
     border-radius: 5px;
 }
 
+.admin-user-filtre-affichage {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*Formulaire de réservation Gite*/
-.reservation-form {
+.reservation-form, .admin-mdf-resa, .unavailabilities-dates {
     max-width: 500px;
     margin: auto;
     padding: 20px;
@@ -383,9 +416,10 @@
 }
 
 .resa-gpe li {
-    font-size: 0.8em;
+    font-size: 1em;
     color: red;
     text-align: left;
+    list-style: none;
 }
 
 .resa-input {
@@ -466,6 +500,7 @@
     font-size: 0.7em;
     color: red;
     text-align: left;
+    list-style: none;
 }
 
 .registration-form label,
@@ -647,6 +682,7 @@
 .edit-event-form li {
     font-size: 0.6em;
     color: red;
+    list-style: none;
 }
 
 .create-event-form .btn-plannifier,
@@ -675,6 +711,7 @@
     font-size: 1em;
     color: red;
     padding: 0;
+    list-style: none;
 }
 
 
@@ -791,6 +828,10 @@
 
 }
 
+#admin_user_form_contractFileName {
+    padding: 8px 0;
+}
+
 #registration_admin_form_roles {
     display: flex;
     gap: 10px;
@@ -882,6 +923,20 @@
     width: 250px;
 }
 
+.liste-resa {
+   display: flex;
+    width: 100%;
+    flex-direction: column;
+
+}
+.liste-resa li {
+    list-style: none;
+}
+
+.liste-resa button {
+    padding: 10px;
+    margin-left: 15px;
+}
 
 @media screen and (max-width: 768px) {
     .section-contact {

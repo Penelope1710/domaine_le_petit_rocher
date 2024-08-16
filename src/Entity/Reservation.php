@@ -29,8 +29,10 @@ class Reservation
     private ?int $horseNb = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
+
+    #[ORM\Column]
+    private ?bool $isUnavailable = false;
 
     public function getId(): ?int
     {
@@ -84,4 +86,17 @@ class Reservation
 
         return $this;
     }
+
+    public function isUnavailable(): ?bool
+    {
+        return $this->isUnavailable;
+    }
+
+    public function setUnavailable(bool $isUnavailable): static
+    {
+        $this->isUnavailable = $isUnavailable;
+
+        return $this;
+    }
+
 }

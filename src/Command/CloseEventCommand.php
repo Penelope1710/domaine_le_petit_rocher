@@ -20,7 +20,7 @@ class CloseEventCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('coucou');
+        $output->writeln('fermeture des évènements dont la date est dépassée');
         $events = $this->eventRepository->findAll();
         foreach ($events as $event) {
           if ($event->getDeadLine() < new \DateTime()) {
@@ -29,6 +29,8 @@ class CloseEventCommand extends Command
        }
 
         $this->entityManager->flush();
+
+        $output->writeln('le traitement a été réalisé avec succès');
 
         return Command::SUCCESS;
     }

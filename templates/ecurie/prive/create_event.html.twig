@@ -13,6 +13,8 @@
 
     <section class="create-event-form">
         {{ form_start(createEventForm) }}
+        {{ form_errors(createEventForm) }}
+
         {{ form_row(createEventForm.name) }}
         {{ form_row(createEventForm.category) }}
         {{ form_row(createEventForm.startDate) }}
@@ -22,7 +24,6 @@
         <button class="btn-plannifier" type="submit">
             Plannifier
         </button>
-        {{ form_errors(createEventForm) }}
         {{ form_end(createEventForm) }}
         <div class="btn-create-event-form-annuler">
             <a href="{{ path('app_ecurie_event_index') }}" title="">Annuler</a>

@@ -23,43 +23,9 @@ class ProfilFormType extends AbstractType
             ->add('email', EmailType::class,[
                 'label' => 'Adresse mail *',
                 'attr' => [
-                    'readonly' => true,
+                    'readonly' => false,
                 ]
             ])
-
-            /*->add('plainPassword', RepeatedType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passe doivent être identiques',
-                'options' => [
-                    'attr' => [
-                        'class' => 'password-field'
-                    ]],
-                'required' => true,
-                'first_options'  => [
-                    'label' => 'Mot de passe *'
-                ],
-                'second_options' => [
-                    'label' => 'Confirmer le mot de passe *'
-                ],
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de bien vouloir entrer un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                    new Regex ([
-                        'pattern' => "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/",
-                        'message' => "Le mot de passe doit contenir au moins une lettre majuscule ou minuscule, un chiffre et un caractère spécial"
-                    ])
-                ],
-            ])*/
             ->add('customer', CustomerType::class, [
             'context' => $options['context']
             ])

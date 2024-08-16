@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Indisponibilités{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">LES INDISPONIBILITÉS DU GITE</h2>
+    </div>
+    <section class="unavailabilities">
+        {% if unavailabilities is empty %}
+            <p>Il n'y a aucune indisponibilité pour le moment.</p>
+        {% else %}
+            {% for unavailability in unavailabilities %}
+
+                <ul>
+                    <li>Date : du
+                        {{ unavailability.startDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
+                        au
+                        {{ unavailability.endDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
+                        <a href="{{ path('app_admin_reservations_unavailable_date_edit', {id:unavailability.id}) }}">Modifier</a>
+                        <a href="{{ path('app_admin_reservations_unavailable_date_remove', {id:unavailability.id}) }}"
+                           onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette plage d\'indisponibilité ?');">Supprimer</a>
+                    </li>
+                </ul>
+
+            {% endfor %}
+        {% endif %}
+            <div class="btn-unavailabilities">
+                <a href="{{ path('app_admin_reservations_list') }}">Annuler</a>
+                <a href="{{ path('app_admin_reservations_unavailable_dates') }}">Saisir une plage d'indisponibilité</a>
+            </div>
+    </section>
+{% endblock %}

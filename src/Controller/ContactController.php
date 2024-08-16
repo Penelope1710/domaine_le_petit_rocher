@@ -43,7 +43,6 @@ class ContactController extends AbstractController
                 'Message envoyé !'
             );
             } catch (Exception $e) {
-                dd($e);
             }
 
             return $this->redirectToRoute('contact_index');

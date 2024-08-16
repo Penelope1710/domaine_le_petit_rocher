@@ -18,10 +18,14 @@
             {{ form_row(editUserForm.customer.zipCode) }}
             {{ form_row(editUserForm.customer.city) }}
             {{ form_row(editUserForm.customer.birthDate) }}
-            {{ form_row(editUserForm.customer.horseName) }}
+            {% if editUserForm.customer.horseName is defined %}
+                {{ form_row(editUserForm.customer.horseName) }}
+            {% endif %}
+            {{ form_row(editUserForm.contractFileName) }}
             {{ form_row(editUserForm.roles) }}
             {{ form_row(editUserForm.isValid) }}
             {{ form_errors(editUserForm) }}
+
         <button type="submit" class="btn-modifier-utilisateur">Modifier</button
         {{ form_end(editUserForm) }}
         <div class="btn-annuler">

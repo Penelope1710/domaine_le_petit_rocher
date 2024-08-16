@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Data\SearchUserData;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,7 +36,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (!$user instanceof User) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
+            throw new Exception(sprintf('Instances of "%s" are not supported.', $user::class));
         }
 
         $user->setPassword($newHashedPassword);
@@ -46,21 +48,40 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             'user_username' => $user->getUsername(),
             'new_hashed_password' => $newHashedPassword,
         ]);
-
-
     }
 
-    public function userpaginationQuery($page = 1)
+    public function findUserSearch(SearchUserData $searchUserData, $page = 1): PaginationInterface
     {
         $query = $this->createQueryBuilder('u')
-            ->orderBy('u.id', 'ASC')
-            ->getQuery()
-        ;
+            ->orderBy('u.id', 'DESC');
+
+        if (!empty($searchUserData->q))
+        {
+            $query
+                ->leftJoin('u.customer', 'c')
+                ->Where('c.lastName LIKE :q')
+                ->orWhere('c.firstName LIKE :q')
+                ->orWhere('u.email LIKE :q')
+                ->setParameter('q', "%{$searchUserData->q}%");
+        }
+        if ($searchUserData->active !== null)
+        {
+            $query
+                ->andWhere('u.isValid = :active')
+                ->setParameter('active', $searchUserData->active);
+        }
+
+        if ($searchUserData->role !== null)
+        {
+            $query
+                ->andWhere('u.roles LIKE :role')
+                ->setParameter('role', "%{$searchUserData->role}%" );
+        }
 
         $pagination = $this->paginator->paginate(
             $query,
             $page,
-            5
+            10
         );
 
         return $pagination;

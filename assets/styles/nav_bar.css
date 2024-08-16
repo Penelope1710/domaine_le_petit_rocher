@@ -5,16 +5,15 @@ nav  {
     right: 20px;
 }
 
-ul {
+nav ul {
     list-style-type: none;
     font-family: 'Edu NSW ACT Foundation', cursive;
     font-size: 1.9em;
-
     display: flex;
     gap: 35px;
 }
 
-ul a {
+nav ul a {
     color: black;
     text-decoration: none;
 }
