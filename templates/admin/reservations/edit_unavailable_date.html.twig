@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Indisponibilités{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">LES INDISPONIBILITÉS DU GITE</h2>
+</div>
+
+    <div class="titre-tertiaire">
+        <h3>Modifier</h3>
+        {{ form_start(editForm) }}
+        {{ form_row(editForm.startDate) }}
+        {{ form_row(editForm.endDate) }}
+        <button type="submit">Modifier</button>
+        {{ form_end(editForm) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservations{% endblock %}
+
+{% block body %}
+    <div id="banniere">
+        <h2 class="titre-secondaire">LES RESERVATIONS DU GITE</h2>
+    </div>
+    <section class="admin-resa-list">
+        {% if reservations is empty %}
+            <p>Il n'y a aucune réservation pour le moment.</p>
+        {% else %}
+            {% for reservation in reservations %}
+
+                <ul>
+                    <li>Date : du
+                        {{ reservation.startDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
+                        au
+                        {{ reservation.endDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
+                         - Client :
+                        {{ reservation.customer.lastName }} {{ reservation.customer.firstName }} :
+                        <a href="{{ path('app_admin_reservation_edit', {id:reservation.id}) }}">Modifier</a>
+                        <a href="{{ path('app_admin_reservation_remove', {id:reservation.id}) }}"
+                           onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette réservation ?');">Supprimer</a>
+                        <br>
+                    {% if reservation.horseNb is not null and reservation.horseNb > 0 %}
+                        Nb de chevaux : {{ reservation.horseNb }}
+                    {% endif %}
+                </ul>
+
+            {% endfor %}
+        {% endif %}
+        <div class="btn-admin-resa-list">
+                <a href="{{ path('app_admin_user_home') }}">Annuler</a>
+                <a href="{{ path('app_admin_unavailabilities_list') }}">Voir la liste des indisponibilités</a>
+        </div>
+    </section>
+{% endblock %}

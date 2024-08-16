@@ -6,7 +6,10 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 
 class MailerService {
-    public function __construct(private readonly MailerInterface $mailer){}
+    public function __construct(
+        private string $from,
+        private readonly MailerInterface $mailer,
+        ){}
     public function send (
         string $to,
         string $subject,
@@ -14,9 +17,13 @@ class MailerService {
         array $context): void
     {
         $email = (new TemplatedEmail())
-            ->from('fabien@example.com')
-            ->to(new Address('ryan@example.com'))
-            ->subject('Thanks for signing up!');
+            ->from($this->from)
+            ->to($to)
+            ->subject($subject)
+            ->htmlTemplate($templateTwig)
+            ->context($context);
+
+        $this->mailer->send($email);
     }
 
 

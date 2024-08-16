@@ -7,6 +7,7 @@ use App\Entity\Event;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 
@@ -29,14 +30,12 @@ class EventRepository extends ServiceEntityRepository
      * récupère les évènements en lien avec une recherche
      * @return Event[]
      */
-    public function findSearch(SearchData $searchData, ?User $user, $page = 1)
+    public function findSearch(SearchData $searchData, ?User $user, $page = 1): PaginationInterface
     {
-        $query = $this
-            ->createQueryBuilder('e')
-            ->select('c', 'e')
+        $query = $this->createQueryBuilder('e')
             ->leftJoin('e.category', 'c')
-            ->orderBy('e.status', 'DESC');
-
+            ->orderBy('e.status', 'DESC')
+            ->addOrderBy('e.startDate', 'ASC');
 
 
         if (!empty($searchData->q))
@@ -84,7 +83,7 @@ class EventRepository extends ServiceEntityRepository
                 ->andWhere('cust.user = :user')
                 ->setParameter('user', $this->security->getUser());
         }
-        //return $query->getQuery()->getResult();
+
 
         return $this->paginator->paginate(
             $query,

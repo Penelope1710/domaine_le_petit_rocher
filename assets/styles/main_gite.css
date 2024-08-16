@@ -26,7 +26,7 @@
 }
 
 .disponibilites a {
-    color: grey;
+    color: #aaaaaa;
 }
 
 .photos-gite {
@@ -77,3 +77,34 @@
 .lien-conteneur-photo:hover .photo-hover {
     display: flex;
 }
+
+.liste-resa p {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.admin-resa-list a, .admin-mdf-resa a, .admin-mdf-resa button, .btn-unavailabilities a,
+.unavailabilities-dates a, .unavailabilities-dates button, .categories1-wrapper a {
+    display: inline-block;
+    font-size: 1.2em;
+    border: #aaaaaa solid 1px;
+    background-color: #aaaaaa;
+    padding: 5px;
+    color: #fff;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.admin-resa-list li {
+    margin-top: 25px;
+}
+
+.btn-admin-resa-list, .btn-unavailabilities {
+    text-align: center;
+    margin-top: 30px
+}
+
+.btn-admin-resa-list a, .btn-unavailabilities a {
+    padding: 20px;
+}
+

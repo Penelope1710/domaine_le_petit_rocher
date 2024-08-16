@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier réservation utilisateur{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">RÉSERVATION GITE</h2>
+</div>
+
+<div class="titre-tertiaire">
+    <h3>Modifier</h3>
+</div>
+<section class="admin-mdf-resa">
+    {{ form_start(editReservationForm) }}
+    {{ form_row(editReservationForm.startDate) }}
+    {{ form_row(editReservationForm.endDate) }}
+    {{ form_row(editReservationForm.horseNb) }}
+    <button type="submit">Modifier</button>
+    {{ form_end(editReservationForm) }}
+    <a href="{{ path('app_admin_reservations_list') }}">Annuler</a>
+</section>
+{% endblock %}

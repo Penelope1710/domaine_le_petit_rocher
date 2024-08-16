@@ -22,7 +22,9 @@ class CreateEventFormType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom de l\'évènement *',
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'message' => "Veuillez indiquer un nom pour l'évènement"
+                    ]),
                 ]
          ])
             ->add('startDate', DateType::class, [

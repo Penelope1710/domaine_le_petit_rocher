@@ -4,6 +4,7 @@ namespace App\Form\Admin;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -22,20 +23,20 @@ class AdminUserFormType extends AbstractType
             ->add('roles', ChoiceType::class,[
                 'label' => 'Rôles *',
                 'choices' => [
-                    'Ecurie' => 'ROLE_ECURIE',
                     'Gîte' => 'ROLE_GITE',
+                    'Ecurie' => 'ROLE_ECURIE',
                     'Admin' => 'ROLE_ADMIN',
                 ],
                 'expanded' => true,
-                'multiple' => true,
+                'multiple' => false,
             ])
             ->add('isValid', CheckboxType::class, [
-                'label' => 'Actif',
+                'label' => 'Activé',
                 'required' => false,
                 /*  'expanded' => true,
                   'multiple' => true,
                   'choices' => [
-                      'actif' => 1
+                      'activé' => 1
                   ]*/
             ])
             ->add('contractFileName', FileType::class, [
@@ -45,15 +46,30 @@ class AdminUserFormType extends AbstractType
                 // every time you edit the Product details
                 'required' => false
             ])
-            ->add('customer', AdminCustomerType::class)
-        ;
+            ->add('customer', AdminCustomerType::class,[
+            'context' => $options['context']
+        ]);
+        $builder->get('roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($rolesAsArray): string {
+                    if (empty($rolesAsArray) || null === $rolesAsArray) {
+                        return '';
+                    }
+                    return $rolesAsArray[0];
+                },
+                function ($rolesAsString): array {
+                    return (array)$rolesAsString;
+                }
+            ))
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'allow_extra_fields' => true
+            'allow_extra_fields' => true,
+            'context' => null,
         ]);
     }
 }

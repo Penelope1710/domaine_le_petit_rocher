@@ -1,0 +1,15 @@
+{{ form_start(searchUserForm, {'attr': {'class': 'filter-form'}}) }}
+<div class="categories1-wrapper">
+    {{ form_row(searchUserForm.q) }}
+    {{ form_row(searchUserForm.submit) }}
+    <a href="{{ path('app_admin_users_list') }}">Annuler</a>
+</div>
+<div class="categories2-wrapper">
+    <div class="checkbox-group">
+        {{ form_row(searchUserForm.active, {'label_attr': {'class': 'group-label'}, 'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="checkbox-group">
+        {{ form_row(searchUserForm.role, {'label_attr': {'class': 'group-label'}, 'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+{{ form_end(searchUserForm) }}

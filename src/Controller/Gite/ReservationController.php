@@ -5,6 +5,7 @@ namespace App\Controller\Gite;
 use App\Entity\Reservation;
 use App\Form\ReservationFormType;
 use App\Repository\ReservationRepository;
+use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use function App\Controller\implode;
 
 #[Route('/')]
 class ReservationController extends AbstractController
@@ -22,7 +22,7 @@ class ReservationController extends AbstractController
     public function create (
         Request $request,
         EntityManagerInterface $entityManager,
-        MailerInterface $mailer) : Response
+        MailerService $mailerService) : Response
     {
         $currentDate = new \DateTime();
 
@@ -42,20 +42,19 @@ class ReservationController extends AbstractController
 
             $this->addFlash('success', 'Votre demande de réservation a bien été envoyée');
 
-            $email = (new TemplatedEmail())
-                ->from($this->getParameter('mail_from'))
-                ->to($this->getParameter('mail_to'))
-                ->subject('Vous avez une nouvelle demande de réservation')
-                ->htmlTemplate('mails/reservations.html.twig')
-                ->context([
+            $mailerService->send(
+                $this->getParameter('mail_to'),
+                'Vous avez une nouvelle demande de réservation',
+                'mails/reservations.html.twig',
+                [
                     'dateStart'=> $reservation->getStartDate(),
                     'dateEnd'=> $reservation->getEndDate(),
                     'firstName'=> $reservation->getCustomer()->getFirstName(),
                     'lastName'=> $reservation->getCustomer()->getLastName()
-                ]);
-            $mailer->send($email);
+                ]
+            );
 
-            return $this->redirectToRoute('app_gite_home_index');
+            return $this->redirectToRoute('app_gite_availabilities');
         }
 
         return $this->render('gite/prive/reservation.form.html.twig', [
@@ -71,6 +70,7 @@ class ReservationController extends AbstractController
         $reservations = $reservationRepository->findAllDate();
         $dates = [];
 
+
         //itération sur chaque réservation
         foreach ($reservations as $reservation) {
             //startDate est un objet DateTime dans le tableau $reservation
@@ -82,6 +82,7 @@ class ReservationController extends AbstractController
 
             //Ajout dans le tableau
             $dates[] = $startDate . ':' . $endDate;
+
 
         }
 

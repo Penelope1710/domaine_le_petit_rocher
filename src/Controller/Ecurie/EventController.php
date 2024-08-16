@@ -78,7 +78,7 @@ class EventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
-            $this->addFlash('success', 'votre évènement a bien été créé!');
+            $this->addFlash('success', 'votre évènement a bien été créé !');
 
             return $this->redirectToRoute('app_ecurie_event_index');
         }
@@ -120,7 +120,7 @@ class EventController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre évènement a bien été modifié');
+            $this->addFlash('success', 'Votre évènement a bien été modifié !');
 
             return $this->redirectToRoute('app_ecurie_event_index');
         }
@@ -139,6 +139,9 @@ class EventController extends AbstractController
 
         $entityManager->remove($event);
         $entityManager->flush();
+
+        $this->addFlash('success', 'votre évènement a bien été supprimé !');
+
         return $this->redirectToRoute('app_ecurie_event_index');
     }
 
@@ -161,6 +164,8 @@ class EventController extends AbstractController
         $entityManager->persist($eventCustomer);
         $entityManager->flush();
 
+        $this->addFlash('success', 'votre inscription a bien été prise en compte !');
+
         return $this->redirectToRoute('app_ecurie_event_index');
     }
 
@@ -173,6 +178,8 @@ class EventController extends AbstractController
 
         $entityManager->remove($eventCustomer);
         $entityManager->flush();
+
+        $this->addFlash('success', 'votre désinscription a bien été prise en compte !');
 
         return $this->redirectToRoute('app_ecurie_event_index');
     }

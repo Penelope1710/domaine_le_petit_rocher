@@ -102,7 +102,7 @@ class EventVoter extends Voter
                 $isSubscribe = true;
             }
         }
-
+        //quand le statut est ouvert et utilisateur non inscrit
         if (
             $event->getStatus() === Event::OPENED_STATUS &&
             !$isSubscribe

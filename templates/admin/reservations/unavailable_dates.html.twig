@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dates indisponibles{% endblock %}
+
+{% block body %}
+<div id="banniere">
+    <h2 class="titre-secondaire">LES RESERVATIONS DU GITE</h2>
+</div>
+
+    <div class="titre-tertiaire">
+        <h3>Saisir une plage d'indisponibilité</h3>
+    </div>
+        <section class="unavailabilities-dates">
+            {{ form_start(form) }}
+                {{ form_row(form.startDate) }}
+                {{ form_row(form.endDate) }}
+            <button type="submit">Valider</button>
+            {{ form_end(form) }}
+            <a href="{{ path('app_admin_unavailabilities_list') }}">Annuler</a>
+        </section>
+
+{% endblock %}

@@ -44,8 +44,10 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/prive/ecurie, role: ROLE_ECURIE }
         - { path: ^/profil, role: ROLE_GITE }
+        - { path: ^/compte, role: ROLE_GITE }
         - { path: ^/prive/gite, roles: ROLE_GITE }
         - { path: ^/, roles: PUBLIC_ACCESS }
 
