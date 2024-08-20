@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class PasswordController extends AbstractController
 {
@@ -27,7 +28,7 @@ class PasswordController extends AbstractController
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
         MailerService $mailerService,
-        User $user): Response
+        UserInterface $user): Response
     {
         $user = $this->getUser();
 

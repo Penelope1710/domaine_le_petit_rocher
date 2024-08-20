@@ -17,23 +17,23 @@ class UnavailabilityFormType extends AbstractType
     {
         $builder
             ->add('startDate', DateType::class, [
-                'label' => 'Date d\'arrivée * :',
+                'label' => 'Date de début * :',
                 'widget' => 'single_text',
                 'constraints' => [
                     new GreaterThanOrEqual([
                         'value' => 'today',
-                        'message' => "La date et l'heure de début doivent être ultérieures à {{ value }}."
+                        'message' => "La date de début doit être ultérieure à {{ value }}."
                     ]),
                     new NotBlank()
                 ],
             ])
             ->add('endDate', DateType::class, [
-                'label' => 'Date de départ * : ',
+                'label' => 'Date de fin * : ',
                 'widget' => 'single_text',
                 'constraints' => [
                     new GreaterThanOrEqual([
                         'propertyPath' => "parent.all[startDate].data",
-                        'message' => 'La date de fin doit être ultérieure à la date d\'arrivée.'
+                        'message' => 'La date de fin doit être ultérieure à la date de début.'
                     ]),
                     new NotBlank(),
                 ],
