@@ -40,7 +40,7 @@ class ContactType extends AbstractType
                 ],
             ])
             ->add('captcha', Recaptcha3Type::class, [
-                'constraints' => new Recaptcha3(),
+                'constraints' => new Recaptcha3(['message' => 'Une erreur est survenue lors de la validation du captcha : {{ errorCodes }}']),
                 'action_name' => 'contact',
             ])
         ;

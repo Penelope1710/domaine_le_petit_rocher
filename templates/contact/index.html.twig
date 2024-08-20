@@ -15,6 +15,7 @@
 
        <div class="contact-form">
           {{ form_start(contactForm) }}
+           {{ form_errors(contactForm) }}
            <div class="contact-form-nom-email">
                <div class="contact-form-column">
                 {{ form_row(contactForm.fullName) }}

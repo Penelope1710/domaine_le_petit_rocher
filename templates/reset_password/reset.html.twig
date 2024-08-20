@@ -10,6 +10,7 @@
 
         {{ form_row(resetForm.plainPassword.first) }}
         {{ form_row(resetForm.plainPassword.second) }}
+            {{ form_errors(resetForm) }}
 
         <button class="button-password-reset-form">Réinitialiser</button>
         {{ form_end(resetForm) }}
