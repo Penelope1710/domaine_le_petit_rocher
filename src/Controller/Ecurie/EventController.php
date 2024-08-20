@@ -34,8 +34,6 @@ class EventController extends AbstractController
         $currentDate = new \DateTime();
         $user = $this->getUser();
 
-        //je récupère tous les évènements et catégories dans la BDD
-
         $categories = $categoryRepository->findAll();
 
         //Récupérer le searchForm pour le filtre de recherche
@@ -43,7 +41,6 @@ class EventController extends AbstractController
         $searchFormType = $this->createForm(SearchFormType::class, $data);
 
         $searchFormType->handleRequest($request);
-//        dd($data);
         //j'envoie les données de la recherche
         if ($searchFormType->isSubmitted() && $searchFormType->isValid()) {
             $data = $searchFormType->getData();

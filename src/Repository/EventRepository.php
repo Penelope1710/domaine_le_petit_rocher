@@ -21,7 +21,10 @@ use Symfony\Bundle\SecurityBundle\Security;
  */
 class EventRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry, private Security $security, private PaginatorInterface $paginator)
+    public function __construct(
+        ManagerRegistry $registry,
+        private Security $security,
+        private PaginatorInterface $paginator)
     {
         parent::__construct($registry, Event::class);
     }
@@ -78,7 +81,6 @@ class EventRepository extends ServiceEntityRepository
         {
             $query
                 ->leftJoin('e.eventCustomers', 'ec')
-                // ->addSelect('ec');
                 ->leftJoin('ec.customer', 'cust')
                 ->andWhere('cust.user = :user')
                 ->setParameter('user', $this->security->getUser());

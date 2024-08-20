@@ -45,7 +45,7 @@ class ContactController extends AbstractController
             } catch (Exception $e) {
             }
 
-            return $this->redirectToRoute('contact_index');
+            return $this->redirectToRoute('main_home');
         }
 
         return $this->render('contact/index.html.twig', [
