@@ -17,7 +17,6 @@ class ReservationVoter extends Voter
     {
         $this->security = $security;
     }
-
     protected function supports(string $attribute, mixed $subject): bool
     {
         // if the attribute isn't one we support, return false
@@ -32,7 +31,6 @@ class ReservationVoter extends Voter
 
         return true;
     }
-
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         //on récupère le User via le token
@@ -51,7 +49,6 @@ class ReservationVoter extends Voter
 
         };
     }
-
     private function canEdit(Reservation $reservation, User $user)
     {
         if ($this->security->isGranted('ROLE_ADMIN'))

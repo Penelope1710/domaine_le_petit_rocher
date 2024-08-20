@@ -91,7 +91,6 @@ class HomeController extends AbstractController
         ]);
 
     }
-
     #[Route('/compte/mon_compte/mes_reservations/supprimer/{id}', name: 'app_account_home_reservationList_remove')]
     #[IsGranted('delete', 'reservation')]
     public function remove(
