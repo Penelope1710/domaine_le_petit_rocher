@@ -28,8 +28,7 @@ class EventController extends AbstractController
     public function index(
         Request $request,
         EventRepository $eventRepository,
-        CategoryRepository $categoryRepository,
-        PaginatorInterface $paginator): Response
+        CategoryRepository $categoryRepository): Response
     {
         $currentDate = new \DateTime();
         $user = $this->getUser();
