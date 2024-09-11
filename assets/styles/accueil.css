@@ -4,6 +4,7 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(to right, #575555, #F7F7F7);
 }
 
 .sub_header {
@@ -199,7 +200,7 @@ h4 {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    background: linear-gradient(to right, #858383, #F7F7F7);
+    background: linear-gradient(to right, #575555, #F7F7F7);
     height: 200px;
     margin-top: 100px;
     padding: 20px;

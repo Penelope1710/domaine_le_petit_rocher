@@ -26,12 +26,18 @@ class Event
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotBlank(message: "Veuillez indiquer une date de début")]
-    #[Assert\GreaterThanOrEqual("today", message: "La date et l'heure de début doivent être ultérieures à la date actuelle.")]
+    #[Assert\GreaterThanOrEqual(
+        "today",
+        message: "La date et l'heure de début doivent être ultérieures à la date actuelle."
+    )]
     private ?\DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotBlank(message: "Veuillez indiquer une date limite")]
-    #[Assert\LessThanOrEqual(propertyPath: "startDate", message: "La date limite de participation doit être antérieure à celle du début de l'évènement.")]
+    #[Assert\LessThanOrEqual(
+        propertyPath: "startDate",
+        message: "La date limite de participation doit être antérieure à celle du début de l'évènement."
+    )]
     private ?\DateTimeInterface $deadLine = null;
 
 
