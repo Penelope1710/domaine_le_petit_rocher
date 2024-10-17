@@ -5,9 +5,9 @@
 {% block body %}
 
     <div id="banniere">
-        <h2 class="titre-secondaire">MODIFIER UN UTILISATEUR</h2>
+        <h2 class="titre_secondaire">MODIFIER UN UTILISATEUR</h2>
     </div>
-    <div class="modifier-utilisateur-form">
+    <div class="info-display-form modifier-utilisateur-form">
         {{ form_start(editUserForm) }}
             {{ form_widget(editUserForm._token) }}
             {{ form_row(editUserForm.customer.lastName) }}
@@ -25,12 +25,12 @@
             {{ form_row(editUserForm.roles) }}
             {{ form_row(editUserForm.isValid) }}
             {{ form_errors(editUserForm) }}
-
-        <button type="submit" class="btn-modifier-utilisateur">Modifier</button
+            <div class="button-gpe">
+                <a href="{{ path('app_admin_users_list') }}" role="button" class="btn">Annuler</a>
+                <button type="submit" class="btn">Modifier</button
+            </div>
         {{ form_end(editUserForm) }}
-        <div class="btn-annuler">
-            <a href="{{ path('app_admin_users_list') }}">Annuler</a>
-        </div>
+    </div>
     </div>
 
 {% endblock %}

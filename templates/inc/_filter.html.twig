@@ -1,10 +1,10 @@
-
+<div class="form-filter user-filter">
 {{ form_start(searchFormType, {'attr': {'class': 'filter-form'}}) }}
 <div class="categories1-wrapper">
     {{ form_row(searchFormType.q, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(searchFormType.dateDebut, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(searchFormType.dateFin, {'attr': {'class': 'form-control'}}) }}
-    <button type="submit" class="btn-filtre">Rechercher</button>
+    <button type="submit" class="button-gpe btn-filtre">Rechercher</button>
 </div>
 <div class="categories2-wrapper">
     <div class="checkbox-group">
@@ -15,3 +15,4 @@
     </div>
 </div>
 {{ form_end(searchFormType) }}
+</div>

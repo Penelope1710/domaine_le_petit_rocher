@@ -8,15 +8,13 @@ import './bootstrap.js';
 
 // any CSS you import will output into a single css file (app.css in this case)
 /* CSS files */
-import './styles/nav_bar.css'
-import './styles/accueil.css'
+import './styles/variables.css'
 import './styles/main.css'
-import './styles/normalize.css'
-import './styles/sub_accueil.css'
 import './styles/form.css'
 import './styles/app.scss'
 import './styles/main_ecurie.css'
 import './styles/main_gite.css'
+import './styles/table.css'
 import './styles/load.css'
 import './styles/calendar.css'
 import './styles/tooltip.css'

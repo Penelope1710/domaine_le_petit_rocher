@@ -68,10 +68,7 @@ class PasswordUserType extends AbstractType
                     ])
                 ],
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => "Mettre à jour mon nouveau mot de passe",
-                'attr' => ['class' => 'form-control']
-            ])
+
             //j'ajoute un écouteur d'évènement concernant la vérification du mdp actuel au moment du submit (je compare le mdp actuel entré et celui qui est en bdd)
             ->addEventListener(FormEvents::SUBMIT, function(FormEvent $formEvent) {
 

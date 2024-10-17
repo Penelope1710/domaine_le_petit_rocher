@@ -4,16 +4,16 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="{% if app.request.get("_route") == 'app_register_ecurie' %}titre-secondaire{% endif %}">
+        <h2 class="{% if app.request.get("_route") == 'app_register_ecurie' %}titre_secondaire{% endif %}">
             {% if app.request.get("_route") == 'app_register_ecurie' %}ECURIE{% endif %}
         </h2>
-        <h2 class="{% if app.request.get("_route") == 'app_register_gite' %}titre-secondaire{% endif %}">
+        <h2 class="{% if app.request.get("_route") == 'app_register_gite' %}titre_secondaire{% endif %}">
             {% if app.request.get("_route") == 'app_register_gite' %}GITE{% endif %}
         </h2>
     </div>
-    <h3>Mon compte</h3>
+    <h3 class="titre_tertiaire">Mon compte</h3>
 
-<div class="registration-form">
+<div class="info-display-form registration-form">
     {{ form_errors(registrationForm) }}
 
         {{ form_start(registrationForm) }}
@@ -33,12 +33,12 @@
         {{ form_row(registrationForm.plainPassword.first) }}
         {{ form_row(registrationForm.plainPassword.second) }}
 
+        <div class="button-gpe">
+                <a href="{{ path('main_home') }}" role="button" class="btn">Annuler</a>
+                <button type="submit">Créer</button>
+        </div>
         {{ form_errors(registrationForm) }}
-
-        <button type="submit" class="btn-submit">Créer</button>
     {{ form_end(registrationForm) }}
-    <div class="btn-annuler">
-        <a href="{{ path('main_home') }}">Annuler</a>
-    </div>
+
 </div>
 {% endblock %}

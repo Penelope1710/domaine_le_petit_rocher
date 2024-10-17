@@ -1,8 +1,9 @@
+<div class="form-filter admin-filter">
 {{ form_start(searchUserForm, {'attr': {'class': 'filter-form'}}) }}
 <div class="categories1-wrapper">
     {{ form_row(searchUserForm.q) }}
-    {{ form_row(searchUserForm.submit) }}
-    <a href="{{ path('app_admin_users_list') }}">Annuler</a>
+    <button type="submit" class="btn btn-annuler-filtre">Rechercher</button>
+    <a href="{{ path('app_admin_users_list') }}" role="button" class=" btn btn-annuler-filtre">Annuler</a>
 </div>
 <div class="categories2-wrapper">
     <div class="checkbox-group">
@@ -13,3 +14,4 @@
     </div>
 </div>
 {{ form_end(searchUserForm) }}
+</div>

@@ -1,20 +1,20 @@
 {% extends 'base.html.twig'  %}
 
-{% block title %}Présentation de l'Ecurie!{% endblock %}
+{% block title %}Les évènements{% endblock %}
 
 {% block body %}
 <div id="banniere">
-    <h2 class="titre-secondaire">L'ECURIE</h2>
+    <h2 class="titre_secondaire">L'ECURIE</h2>
 </div>
-    <div class="titre-tertiaire">
-        <h3>Les évènements aux Ecuries</h3>
-        <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
-    </div>
+
+    <h3 class="titre_tertiaire">Les évènements aux Ecuries</h3>
+        <p class="sous-titre">Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
+
 
 <section class="event-filtre-affichage">
 
     {% include 'inc/_filter.html.twig' %}
-
+    <div class="events-list-container">
     <table class="events-list">
         <thead>
         <tr>
@@ -34,7 +34,7 @@
             <tr>
                 <td>
                 <div class="position-left">
-                    <a href="{{ path('app_ecurie_event_details', {'id': event.id}) }}">
+                    <a href="{{ path('app_ecurie_event_details', {'id': event.id}) }}" role="button" class="clickable-link">
                         {{ event.name }}
                     </a>
                 </div>
@@ -66,11 +66,11 @@
         {% endfor %}
         </tbody>
     </table>
-
+    </div>
      {{ knp_pagination_render(events) }}
 
-    <div class="btn-event-plan">
-        <a href="{{ path('app_ecurie_event_create') }}">Plannifier un évènement</a>
-    </div>
+
+        <a href="{{ path('app_ecurie_event_create') }}" role="button" class="btn">Plannifier un évènement</a>
+
 </section>
 {% endblock %}

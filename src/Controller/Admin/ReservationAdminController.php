@@ -38,6 +38,8 @@ class ReservationAdminController extends AbstractController
         {
             $entityManager->flush();
 
+            $this->addFlash('success', 'La réservation a bien été modifiée');
+
             return $this->redirectToRoute('app_admin_reservations_list');
         }
 
@@ -51,6 +53,8 @@ class ReservationAdminController extends AbstractController
     {
         $entityManager->remove($reservation);
         $entityManager->flush();
+
+        $this->addFlash('success', 'La réservation a bien été supprimée');
 
         return $this->redirectToRoute('app_admin_reservations_list');
     }
@@ -80,7 +84,10 @@ class ReservationAdminController extends AbstractController
             $entityManager->persist($unavailability);
             $entityManager->flush();
 
+            $this->addFlash('success', "La date d'indisponibilité a bien été ajoutée");
+
             return $this->redirectToRoute('app_admin_unavailabilities_list');
+
         }
 
         return $this->render('admin/reservations/unavailable_dates.html.twig', [
@@ -98,6 +105,8 @@ class ReservationAdminController extends AbstractController
         {
             $entityManager->flush();
 
+            $this->addFlash('success', "La date d'indisponibilité a bien été modifiée");
+
             return $this->redirectToRoute('app_admin_unavailabilities_list');
         }
 
@@ -112,6 +121,8 @@ class ReservationAdminController extends AbstractController
     {
         $entityManager->remove($reservation);
         $entityManager->flush();
+
+        $this->addFlash('success', "La date d'indisponibilité a bien été supprimée");
 
         return $this->redirectToRoute('app_admin_unavailabilities_list');
     }

@@ -5,13 +5,13 @@
 {% block body %}
 
     <div id="banniere">
-        <h2 class="titre-secondaire">LISTE DES UTILISATEURS</h2>
+        <h2 class="titre_secondaire">LISTE DES UTILISATEURS</h2>
     </div>
     <section class="admin-user-filtre-affichage">
        {% include 'inc/_admin_users_filter.html.twig' %}
     </section>
 
-        <div>
+        <div class="users-list-container">
             <table class="admin-list">
                 <thead>
                 <tr>
@@ -50,9 +50,9 @@
                         </td>
 
                         <td>
-                            <a href="{{ path('app_admin_user_edit', { id: user.id }) }}">Modifier - </a>
+                            <a href="{{ path('app_admin_user_edit', { id: user.id }) }}" role="button" class="clickable-link">Modifier - </a>
                             <a href="{{ path('app_admin_user_remove', { id: user.id}) }}"
-                               onClick="return window.confirm('Etes vous sûr de vouloir supprimer cet utilisateur?');">Supprimer</a>
+                               onClick="return window.confirm('Etes vous sûr de vouloir supprimer cet utilisateur?');" role="button" class="clickable-link">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}

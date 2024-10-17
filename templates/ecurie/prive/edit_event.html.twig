@@ -4,10 +4,10 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">ECURIE</h2>
+        <h2 class="titre_secondaire">ECURIE</h2>
     </div>
-    <h3>Modifier un évènement</h3>
-    <section class="edit-event-form">
+    <h3 class="titre_tertiaire">Modifier un évènement</h3>
+    <div class=" info-display-form edit-event-form">
         {{ form_start(editEventForm) }}
         {{ form_row(editEventForm.name) }}
         {{ form_row(editEventForm.category) }}
@@ -15,14 +15,16 @@
         {{ form_row(editEventForm.startTime) }}
         {{ form_row(editEventForm.deadLine) }}
         {{ form_row(editEventForm.eventDetails) }}
-        <button class="btn-modifier" type="submit">
-            Modifier
-        </button>
+        <div class="button-gpe">
+            <a href="{{ path('app_ecurie_event_index') }}" class="btn" role="button">Annuler</a>
+            <button class="btn-modifier" type="submit">
+                Modifier
+            </button>
+        </div>
         {{ form_errors(editEventForm) }}
         {{ form_end(editEventForm) }}
-        <div class="btn-edit-event">
-            <a href="{{ path('app_ecurie_event_index') }}" title="">Annuler</a>
-        </div>
-    </section>
+
+
+    </div>
 
 {% endblock %}

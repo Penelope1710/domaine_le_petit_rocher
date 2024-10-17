@@ -32,7 +32,7 @@ class EventFixtures extends Fixture implements OrderedFixtureInterface
                 $event = new Event();
                 $event->setCreatedBy($user);
                 $event->setName($this->faker->words(3, 5));
-                $startDate = $this->faker->dateTimeBetween('2024-06-06', '2024-10-20');
+                $startDate = $this->faker->dateTimeBetween('2024-10-17', '2024-12-31');
                 $event->setStartDate($startDate);
                 $deadLine = clone $startDate;
                 $daysDifference = rand(2, 4);

@@ -4,33 +4,45 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">LE GITE</h2>
+        <h2 class="titre_secondaire">LE GITE</h2>
     </div>
-    <div class="titre-tertiaire">
-        <h3>Mes réservations</h3>
+    <h3 class="titre_tertiaire">Mes réservations</h3>
+        <p class="sous-titre">Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
 
-        <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
-    </div>
 
     <section class="liste-resa">
         {% if reservations is empty %}
             <p>Vous n'avez aucune réservation pour le moment.</p>
         {% else %}
-            {% for reservation in reservations %}
+                <table class="admin-table user-reservation-list">
+                    <thead>
+                    <tr>
+                        <th>Du</th>
+                        <th>au</th>
+                        <th>Nb de chevaux</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.startDate|date('d-m-y') }}</td>
+                            <td>{{ reservation.endDate|date('d-m-y') }}</td>
+                            <td>{{ reservation.horseNb }}</td>
+                            <td>
+                                <a href="{{ path('app_account_home_reservationList_edit', { id:reservation.id }) }}" role="button" class="clickable-link">Modifier - </a>
+                                <a href="{{ path('app_account_home_reservationList_remove', { id:reservation.id }) }}"
+                                   onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette réservation ?');" role="button" class="clickable-link">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-                <ul>
-                    <li>Date : du {{ reservation.startDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }} au {{ reservation.endDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
-                        <button><a href="{{ path('app_account_home_reservationList_edit', { id:reservation.id }) }}">Modifier</a></button>
-                        <button><a href="{{ path('app_account_home_reservationList_remove', { id:reservation.id }) }}"
-                                   onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette réservation ?');"> Supprimer</a></button>
-                    </li>
-                    {% if reservationForm.horseNd is defined %}
-                    <li>Nb de chevaux : {{ reservation.horseNb }}</li>
-                    {% endif %}
-                </ul>
-
-                {% endfor %}
         {% endif %}
+        <div class="button-gpe">
+            <a href="{{ path('app_account_home_index') }}" class="btn" role="button">Annuler</a>
+        </div>
 
     </section>
 {% endblock %}

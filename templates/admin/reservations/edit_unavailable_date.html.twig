@@ -4,16 +4,18 @@
 
 {% block body %}
 <div id="banniere">
-    <h2 class="titre-secondaire">LES INDISPONIBILITÉS DU GITE</h2>
+    <h2 class="titre_secondaire">LES INDISPONIBILITES DU GITE</h2>
 </div>
-
-    <div class="titre-tertiaire">
-        <h3>Modifier</h3>
-        {{ form_start(editForm) }}
-        {{ form_row(editForm.startDate) }}
-        {{ form_row(editForm.endDate) }}
+<h3 class="titre_tertiaire">Modifier</h3>
+<div class="info-display-form">
+    {{ form_start(editForm) }}
+    {{ form_row(editForm.startDate) }}
+    {{ form_row(editForm.endDate) }}
+    <div class="button-gpe">
+        <a href="{{ path('app_admin_reservations_list') }}" role="button" class="btn">Annuler</a>
         <button type="submit">Modifier</button>
-        {{ form_end(editForm) }}
     </div>
+    {{ form_end(editForm) }}
+</div>
 
 {% endblock %}

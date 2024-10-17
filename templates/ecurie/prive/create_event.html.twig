@@ -4,14 +4,13 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">ECURIE</h2>
+        <h2 class="titre_secondaire">ECURIE</h2>
     </div>
-    <div class="titre-tertiaire">
-        <h3>Plannifier un évènement</h3>
-        <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
-    </div>
+    <h3 class="titre_tertiaire">Plannifier un évènement</h3>
+        <p class="sous-titre">Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
 
-    <section class="create-event-form">
+
+    <div class="info-display-form create-event-form">
         {{ form_start(createEventForm) }}
         {{ form_errors(createEventForm) }}
 
@@ -21,13 +20,13 @@
         {{ form_row(createEventForm.startTime) }}
         {{ form_row(createEventForm.deadLine) }}
         {{ form_row(createEventForm.eventDetails) }}
-        <button class="btn-plannifier" type="submit">
-            Plannifier
-        </button>
-        {{ form_end(createEventForm) }}
-        <div class="btn-create-event-form-annuler">
-            <a href="{{ path('app_ecurie_event_index') }}" title="">Annuler</a>
+        <div class="button-gpe">
+            <a href="{{ path('app_ecurie_event_index') }}" role="button" class="btn">Annuler</a>
+            <button type="submit">Plannifier</button>
         </div>
-    </section>
+        {{ form_end(createEventForm) }}
+
+
+    </div>
 
 {% endblock %}

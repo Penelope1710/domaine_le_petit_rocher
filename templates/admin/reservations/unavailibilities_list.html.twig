@@ -4,30 +4,39 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">LES INDISPONIBILITÉS DU GITE</h2>
+        <h2 class="titre_secondaire">LES INDISPONIBILITES DU GITE</h2>
     </div>
     <section class="unavailabilities">
         {% if unavailabilities is empty %}
             <p>Il n'y a aucune indisponibilité pour le moment.</p>
         {% else %}
-            {% for unavailability in unavailabilities %}
+                <table class="admin-table admin-reservation-list">
+                    <thead>
+                    <tr>
+                        <th>Du</th>
+                        <th>au</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for unavailability in unavailabilities %}
+                        <tr>
+                            <td>{{ unavailability.startDate|date('d-m-y') }}</td>
+                            <td>{{ unavailability.endDate|date('d-m-y') }}</td>
+                            <td>
+                                <a href="{{ path('app_admin_reservations_unavailable_date_edit', {id:unavailability.id}) }}" role="button" class="clickable-link">Modifier - </a>
+                                <a href="{{ path('app_admin_reservations_unavailable_date_remove', {id:unavailability.id}) }}"
+                                   onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette plage d\'indisponibilité ?');" role="button" class="clickable-link">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-                <ul>
-                    <li>Date : du
-                        {{ unavailability.startDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
-                        au
-                        {{ unavailability.endDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
-                        <a href="{{ path('app_admin_reservations_unavailable_date_edit', {id:unavailability.id}) }}">Modifier</a>
-                        <a href="{{ path('app_admin_reservations_unavailable_date_remove', {id:unavailability.id}) }}"
-                           onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette plage d\'indisponibilité ?');">Supprimer</a>
-                    </li>
-                </ul>
-
-            {% endfor %}
         {% endif %}
-            <div class="btn-unavailabilities">
-                <a href="{{ path('app_admin_reservations_list') }}">Annuler</a>
-                <a href="{{ path('app_admin_reservations_unavailable_dates') }}">Saisir une plage d'indisponibilité</a>
+            <div class="button-gpe">
+                <a href="{{ path('app_admin_reservations_list') }}" role="button" class="btn">Annuler</a>
+                <a href="{{ path('app_admin_reservations_unavailable_dates') }}" role="button" class="btn">Saisir une plage d'indisponibilité</a>
             </div>
     </section>
 {% endblock %}

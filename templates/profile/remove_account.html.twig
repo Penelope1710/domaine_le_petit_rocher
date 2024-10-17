@@ -4,21 +4,22 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">MON COMPTE</h2>
+        <h2 class="titre_secondaire">MON COMPTE</h2>
     </div>
-    <h3>Supprimer mon compte</h3>
+    <h3 class="titre_tertiaire">Supprimer mon compte</h3>
+    <div class="account-delete-form">
     <p>Merci de bien vouloir renseigner votre mot de passe, votre compte sera ainsi définitivement supprimé :</p>
+        <div class="info-display-form">
+            {{ form_start(removeAccountForm) }}
+            {{ form_errors(removeAccountForm) }}
 
-    <section>
-        {{ form_start(removeAccountForm) }}
-        {{ form_errors(removeAccountForm) }}
+            {{ form_widget(removeAccountForm) }}
+            <div class="button-gpe">
+                <a href="{{ path('app_profile_index') }}" role="button" class="btn">J'annule</a>
+                <button type="submit" class="btn">Je confirme</button>
+            </div>
 
-        {{ form_widget(removeAccountForm) }}
-
-        <button type="submit" class="btn">Je confirme</button>
-
-        {{ form_end(removeAccountForm) }}
-
-        <a href="{{ path('app_profile_index') }}" class="btn-modifier ml-16">J'annule</a>
-    </section>
+            {{ form_end(removeAccountForm) }}
+        </div>
+</div>
 {% endblock %}
