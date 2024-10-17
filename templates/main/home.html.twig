@@ -2,114 +2,128 @@
 
 {% block body %}
 
-    <main>
-        <div id="banniere_image">
+
+        <div id="banniere_main">
             <img src="{{ asset('images/IMG_1931.jpeg') }}" alt="maison d'habitation">
             <div id="citation">Pat Parelli : On ne peut prétendre maîtriser un cheval tant qu'on ne se maîtrise pas soi-même.</div>
         </div>
-        <section class="presentation1">
+    <main>
+        <div class="presentations_container">
+        <section class="article_presentation">
             <article>
-                <div class="article1">
-                    <h1 class="besoins-chevaux">Les besoins fondamentaux des chevaux</h1>
-                    <img src="{{ asset('images/troupeau.jpeg') }}" alt="Photo du troupeau" id="photo_du_troupeau">
-                    <h2>L'alimentation</h2>
-                    <p>Le cheval est un herbivore; son alimentation doit principalement être constituée de fourrages
-                        (herbe et/ou foin). Il est généralement recommandé d'apporter 1.5kg de matière sèche (aliment,
-                        foin, herbe) pour 100 kg de poids vif. Pour exemple, un cheval de 600kg doit ingérer au minimum
-                        10.5kg de foin par jour.<br>
-                        A l'état naturel, le cheval passe en moyenne 16 heures par jour à manger. Il a également la
-                        particularité d'avoir un petit estomac non élastique qui doit être rempli très régulièrement
-                        afin d'éviter que l'acidité endommage la paroi de l'estomac et provoque des ulcères. Ainsi, le
-                        cheval doit disposer de fourrage à volonté.</p>
-                    <p>L'ajout d'une pierre à sel lui permet également d'apporter des éléments minéraux qui manquent à
-                        son alimentation.</p>
+                <div class="article1 article_container" tabindex="0">
+                    <div class="article">
+                        <img src="{{ asset('images/troupeau.jpeg') }}" alt="Photo d'un troupeau de chevaux au bord de l'eau" id="photo_du_troupeau">
+                        <div class="article_content">
+                            <h2 class="besoins_chevaux">Les besoins fondamentaux des chevaux</h2>
+                            <h3>L'alimentation</h3>
+                            <p>Le cheval est un herbivore; son alimentation doit principalement être constituée de fourrages
+                                (herbe et/ou foin). Il est généralement recommandé d'apporter 1.5kg de matière sèche (aliment,
+                                foin, herbe) pour 100 kg de poids vif. Pour exemple, un cheval de 600kg doit ingérer au minimum
+                                10.5kg de foin par jour.<br>
+                                A l'état naturel, le cheval passe en moyenne 16 heures par jour à manger. Il a également la
+                                particularité d'avoir un petit estomac non élastique qui doit être rempli très régulièrement
+                                afin d'éviter que l'acidité endommage la paroi de l'estomac et provoque des ulcères. Ainsi, le
+                                cheval doit disposer de fourrage à volonté.</p>
+                            <p>L'ajout d'une pierre à sel lui permet également d'apporter des éléments minéraux qui manquent à
+                                son alimentation.</p>
 
-                    <h2>Les déplacements</h2>
-                    <p>A l'état naturel, et selon la disposition des ressources dans son environnement, le cheval
-                        parcourt en moyenne une quinzaine de kilomètres par jour. Il a donc besoin de se déplacer pour
-                        sa santé mentale d'une part, mais également pour sa santé physique.<br> En effet, le déplacement
-                        permet au cheval de stimuler sa circulation sanguine et lymphatique.
-                    </p>
-                    <p>Au club, en plus des leçons, le cheval est parfois lâché en liberté, au pré, au paddock ou dans
-                        le manège pour se défouler.</p>
+                            <h3>Les déplacements</h3>
+                            <p>A l'état naturel, et selon la disposition des ressources dans son environnement, le cheval
+                                parcourt en moyenne une quinzaine de kilomètres par jour. Il a donc besoin de se déplacer pour
+                                sa santé mentale d'une part, mais également pour sa santé physique.<br> En effet, le déplacement
+                                permet au cheval de stimuler sa circulation sanguine et lymphatique.
+                            </p>
+                            <p>Au club, en plus des leçons, le cheval est parfois lâché en liberté, au pré, au paddock ou dans
+                                le manège pour se défouler.</p>
+                        </div>
+                    </div>
                 </div>
             </article>
             <article>
-                <div class="article2">
-                    <h1 class="relation-homme-cheval">La relation <br> Homme-Cheval
-                    </h1>
-                    <img src="{{ asset('images/penelope_et_murk.jpg') }}" alt="Photo de Murk et Penelope">
-                    <p>
-                        Le cheval est un animal herbivore de type « proie », ce qui le rend particulièrement vulnérable
-                        dans son milieu naturel. Il est donc très peureux de nature et a besoin, pour sa survie,
-                        d’accorder sa confiance (généralement au leader du troupeau) à partir du moment où nous le
-                        respectons dans sa nature profonde et que nous lui assurons soins, nourriture, sécurité et
-                        plaisir.<br>
-                        Ainsi il est très facile d’établir une relation de confiance avec lui. Une confiance sans
-                        laquelle nous ne pourrons travailler efficacement.
-                    </p>
-                    <p>
-                        Le cheval est un animal grégaire. Dans chaque troupeau, nous pouvons observer une hiérarchie
-                        très bien établie, source de cohésion sociale. Chaque membre a sa place au sein du troupeau et
-                        respecte les règles établies par la hiérarchie. Il y a également des règles à respecter afin
-                        d’aborder les chevaux en toute sécurité.<br>
-                        Par ailleurs, nous devons accepter et respecter chaque cheval tel qu’il est et adapter notre
-                        comportement en fonction de son caractère. Il nous permet ainsi de développer nos capacités
-                        d’adaptation, qualité très recherchée dans le monde de l’entreprise.
-                    </p>
-                    <p>
-                        Le système émotionnel du cheval est similaire au notre (le système limbique). Il possède tout
-                        comme nous 4 émotions de survie (la joie, la tristesse, la peur et la colère) qui ont chacune
-                        leur raison d’être. Les chevaux les expriment naturellement et sainement contrairement à nous
-                        car nous avons oublié en quoi elles nous sont utiles : notre survie. En apprenant à les gérer,
-                        nous évitons tout débordement émotionnel.
-                    </p>
-                    <p>
-                        Le cheval ne comprend que la communication non verbale, il fonctionne par mimétisme, tout comme
-                        nous. Il ne suffit pas de vouloir que le cheval nous fasse confiance pour que ça arrive. Nous
-                        devons lui montrer l’exemple en portant toute notre attention sur ce que nous souhaitons obtenir
-                        (dans ce cas précis, il s’agit de la confiance : j’engage donc ma poitrine, je m’ouvre, ma tête
-                        est droite et je me redresse, je suis calme et prêt à développer une relation avec le cheval
-                        basée sur le respect).<br>
-                        L’information part du cerveau et entraine l’attitude corporelle adéquate.
-                        Nous devons garder à l’esprit que le cerveau a la particularité de grossir ce sur quoi il porte
-                        son attention. Si nous punissons un cheval car il ne se comporte pas comme nous le souhaitons,
-                        nous amplifions ce comportement. Il n’a pas le recul, tout comme l’enfant et l’adolescent, pour
-                        se rendre compte qu’il a mal agit. La punition sera donc vécue comme une injustice et aura pour
-                        conséquence la perte de confiance.
-                        Sans confiance, nous ne pouvons rien construire !<br>
-                        En résumé, je me concentre sur ce que je veux et j’ignore ce que je ne veux pas.
-                    </p>
+                <div class="article2 article_container" tabindex="0">
+                    <div class="article">
+                        <img src="{{ asset('images/penelope_et_murk.jpg') }}" alt="Photo de Murk et Penelope">
+                        <div class="article_content">
+                            <h2 class="relation_homme_cheval">La relation Homme-Cheval</h2>
+                            <p>
+                                Le cheval est un animal herbivore de type « proie », ce qui le rend particulièrement vulnérable
+                                dans son milieu naturel. Il est donc très peureux de nature et a besoin, pour sa survie,
+                                d’accorder sa confiance (généralement au leader du troupeau) à partir du moment où nous le
+                                respectons dans sa nature profonde et que nous lui assurons soins, nourriture, sécurité et
+                                plaisir.<br>
+                                Ainsi il est très facile d’établir une relation de confiance avec lui. Une confiance sans
+                                laquelle nous ne pourrons travailler efficacement.
+                            </p>
+                            <p>
+                                Le cheval est un animal grégaire. Dans chaque troupeau, nous pouvons observer une hiérarchie
+                                très bien établie, source de cohésion sociale. Chaque membre a sa place au sein du troupeau et
+                                respecte les règles établies par la hiérarchie. Il y a également des règles à respecter afin
+                                d’aborder les chevaux en toute sécurité.<br>
+                                Par ailleurs, nous devons accepter et respecter chaque cheval tel qu’il est et adapter notre
+                                comportement en fonction de son caractère. Il nous permet ainsi de développer nos capacités
+                                d’adaptation, qualité très recherchée dans le monde de l’entreprise.
+                            </p>
+                            <p>
+                                Le système émotionnel du cheval est similaire au notre (le système limbique). Il possède tout
+                                comme nous 4 émotions de survie (la joie, la tristesse, la peur et la colère) qui ont chacune
+                                leur raison d’être. Les chevaux les expriment naturellement et sainement contrairement à nous
+                                car nous avons oublié en quoi elles nous sont utiles : notre survie. En apprenant à les gérer,
+                                nous évitons tout débordement émotionnel.
+                            </p>
+                            <p>
+                                Le cheval ne comprend que la communication non verbale, il fonctionne par mimétisme, tout comme
+                                nous. Il ne suffit pas de vouloir que le cheval nous fasse confiance pour que ça arrive. Nous
+                                devons lui montrer l’exemple en portant toute notre attention sur ce que nous souhaitons obtenir
+                                (dans ce cas précis, il s’agit de la confiance : j’engage donc ma poitrine, je m’ouvre, ma tête
+                                est droite et je me redresse, je suis calme et prêt à développer une relation avec le cheval
+                                basée sur le respect).<br>
+                                L’information part du cerveau et entraine l’attitude corporelle adéquate.
+                                Nous devons garder à l’esprit que le cerveau a la particularité de grossir ce sur quoi il porte
+                                son attention. Si nous punissons un cheval car il ne se comporte pas comme nous le souhaitons,
+                                nous amplifions ce comportement. Il n’a pas le recul, tout comme l’enfant et l’adolescent, pour
+                                se rendre compte qu’il a mal agit. La punition sera donc vécue comme une injustice et aura pour
+                                conséquence la perte de confiance.
+                                Sans confiance, nous ne pouvons rien construire !<br>
+                                En résumé, je me concentre sur ce que je veux et j’ignore ce que je ne veux pas.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </article>
         </section>
-        <section class="presentation2">
-                <div class="carre1">
-                    <h2>Chevaux<br>à Vendre</h2>
-                    <div>
-                        <img src="{{ asset('images/lulu.jpeg') }}" alt="Chevaux à Vendre">
-                    </div>
-                    <h4>Il n'y a pas de chevaux<br>à vendre pour le moment</h4>
-                    <a href="" class="cta">Chevaux à vendre</a>
-                </div>
-                <div class="carre2">
-                    <h2>Tarifs<br>Pension</h2>
-                    <div>
-                        <img src="{{ asset('images/bella.jpeg') }}"  alt="Tarifs Pension">
-                    </div>
-                    <h4>190 € / mois<br>
-                        150 € / mois</h4>
-                    <a href="" class="cta">Prix des pensions</a>
-                </div>
-                <div class="carre3">
-                    <h2>Tarifs<br>Gîte Equestre</h2>
-                    <div>
-                        <img src="{{ asset('images/gite_face.jpeg') }}" alt="Tarifs Gîte">
-                    </div>
-                    <h4>460 € / semaine<br>
-                        115 € / week-end</h4>
-                    <a href="" class="cta">Prix du gîte</a>
-                </div>
+         <section class="cards_presentation">
+             <div class="card card1">
+                 <img src="{{ asset('images/lulu.jpeg') }}" alt="Photo d'un poney avec sa maman">
+                 <div class="card_content">
+                     <h2>Chevaux à Vendre</h2>
+                     <p>Il n'y a pas de chevaux<br>à vendre pour le moment</p>
+                     <a href="" role="button" class="link">Chevaux à vendre</a>
+                 </div>
+             </div>
+             <div class="card card2">
+                 <img src="{{ asset('images/bella.jpeg') }}"  alt="image d'une jument à la fenêtre d'une maison">
+                 <div class="card_content">
+                     <h2>Tarifs Pension</h2>
+                     <ul>
+                         <li>190 € / mois</li>
+                         <li>150 € / mois</li>
+                     </ul>
+                     <a href="{{ path('app_ecurie_home_index') }}" role="button" class="link">Prix des pensions</a>
+                 </div>
+             </div>
+             <div class="card card3">
+                 <img src="{{ asset('images/gite_face.jpeg') }}" alt="photo de la façade du gite">
+                 <div class="card_content">
+                     <h2>Tarifs Gîte Equestre</h2>
+                     <ul>
+                         <li>460 € / semaine</li>
+                         <li>115 € / week-end</li>
+                     </ul>
+                    <a href="{{ path('app_gite_home_index') }}" role="button" class="link">Prix du gîte</a>
+                 </div>
+             </div>
         </section>
+        </div>
     </main>
 {% endblock %}

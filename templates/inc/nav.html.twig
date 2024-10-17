@@ -1,70 +1,71 @@
 <nav>
-    <div class="overlay-menu-mobile" onclick="closeMenuMobile()"></div>
+
     <div class="nav-accueil">
-        <div class="header-nav-close" onclick="closeMenuMobile()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-        </div>
             <ul>
-            <li><a href="{{ path('main_home') }}" title="">Accueil</a></li>
-            <li class="dropdown"><a href="#">L'Ecurie</a>
-                <ul class="submenu">
+            <li><a href="{{ path('main_home') }}" class="nav_link">Accueil</a></li>
+            <li class="dropdown"><a href="#" class="nav_link" tabindex="0" aria-haspopup="true">L'Ecurie</a>
+                <ul class="submenu" role="menu">
                     <li><a href="{{ path('app_ecurie_home_index') }}">Présentation</a></li>
                     {% if is_granted('ROLE_ECURIE') %}
                         <li><a href="{{ path('app_ecurie_event_index') }}">Les évènements</a></li>
                     {% endif %}
                     {% if not app.user %}
-                    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                     <li><a href="{{ path('app_register_ecurie') }}">S'inscrire</a></li>
                     {% endif %}
                 </ul>
             </li>
-             <li class="dropdown"><a href="#">Le Gîte</a>
-                <ul class="submenu">
+             <li class="dropdown"><a href="#" class="nav_link" tabindex="0" aria-haspopup="true">Le Gîte</a>
+                <ul class="submenu" role="menu">
                     <li><a href="{{ path('app_gite_home_index') }}">Présentation</a></li>
                     <li><a href="{{ path('app_gite_availabilities') }}">Disponibilités</a></li>
                     <li><a href="{{ path('app_gite_reservation_create') }}">Réserver</a></li>
                     {% if not app.user %}
-                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                         <li><a href="{{ path('app_register_gite') }}">S'inscrire</a></li>
                     {% endif %}
                 </ul>
              </li>
             {% if is_granted('ROLE_ADMIN') %}
-                <li class="dropdown"><a href="{{ path('app_admin_user_home') }}">Administration</a>
+                <li class="dropdown"><a href="{{ path('app_admin_user_home') }}" class="nav_link">Administration</a>
                 </li>
             {% endif %}
             {% if not is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('app_contact_index') }}" title="">Contact</a></li>
+                <li><a href="{{ path('app_contact_index') }}" class="nav_link">Contact</a></li>
+            {% endif %}
+            {% if not app.user %}
+                <li><a href="{{ path('app_login') }}" class="nav_link">Se connecter</a></li>
             {% endif %}
 
             {% if app.user %}
-                <li><a href="{{ path('app_account_home_index') }}" title="Compte">Mon Compte</a></li>
-                <li><a href="{{ path('app_logout') }}" title="Déconnexion">Se déconnecter</a></li>
+                <li><a href="{{ path('app_account_home_index') }}" class="nav_link" title="Compte">Mon Compte</a></li>
+                <li><a href="{{ path('app_logout') }}" class="nav_link" title="Déconnexion">Se déconnecter</a></li>
             {% endif %}
         </ul>
-        </div>
-    </nav>
-<div class="header-burger" onclick="openMenuMobile()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-    </svg>
+    </div>
+
+</nav>
+
+            <button aria-label="toggle curtain navigation" class="nav-toggler">
+                <span class="line l1"></span>
+                <span class="line l2"></span>
+                <span class="line l3"></span>
+                <span class="line l4"></span>
+            </button>
 
     {% block javascripts %}
         <script>
-            function openMenuMobile() {
-                document.querySelector('.nav-accueil').classList.add('open');
-                document.querySelector('.overlay-menu-mobile').classList.add('open');
+            const hamburgerButton = document.querySelector(".nav-toggler")
+            const navigation = document.querySelector(".nav-accueil")
 
-            }function closeMenuMobile() {
-                document.querySelector('.nav-accueil').classList.remove('open');
-                document.querySelector('.overlay-menu-mobile').classList.remove('open');
+            hamburgerButton.addEventListener("click", toggleNav)
+
+            function toggleNav(){
+                hamburgerButton.classList.toggle("active")
+                navigation.classList.toggle("active")
             }
         </script>
     {% endblock %}
 
-</div>
+
 
 
 

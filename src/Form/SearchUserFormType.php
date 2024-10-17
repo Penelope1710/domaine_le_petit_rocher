@@ -46,11 +46,6 @@ class SearchUserFormType extends AbstractType
                 ],
                 'label' => 'Rôles',
             ])
-
-            ->add('submit', SubmitType::class, [
-                'label' => "Rechercher",
-                'attr' => ['class' => 'form-control']
-            ])
         ;
     }
 

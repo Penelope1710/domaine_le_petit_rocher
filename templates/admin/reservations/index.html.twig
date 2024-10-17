@@ -4,35 +4,47 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">LES RESERVATIONS DU GITE</h2>
+        <h2 class="titre_secondaire">LES RESERVATIONS DU GITE</h2>
     </div>
     <section class="admin-resa-list">
         {% if reservations is empty %}
             <p>Il n'y a aucune réservation pour le moment.</p>
         {% else %}
-            {% for reservation in reservations %}
-
-                <ul>
-                    <li>Date : du
-                        {{ reservation.startDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
-                        au
-                        {{ reservation.endDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}
-                         - Client :
-                        {{ reservation.customer.lastName }} {{ reservation.customer.firstName }} :
-                        <a href="{{ path('app_admin_reservation_edit', {id:reservation.id}) }}">Modifier</a>
-                        <a href="{{ path('app_admin_reservation_remove', {id:reservation.id}) }}"
-                           onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette réservation ?');">Supprimer</a>
-                        <br>
-                    {% if reservation.horseNb is not null and reservation.horseNb > 0 %}
-                        Nb de chevaux : {{ reservation.horseNb }}
-                    {% endif %}
-                </ul>
-
+        <div class="admin-resa-list-container">
+                <table class="admin-table admin-reservation-list">
+                    <thead>
+                    <tr>
+                        <th>Arrivée</th>
+                        <th>Départ</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Nb de chevaux</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.startDate|date('d-m-y') }}</td>
+                            <td>{{ reservation.endDate|date('d-m-y') }}</td>
+                            <td>{{ reservation.customer.lastName }}</td>
+                            <td>{{ reservation.customer.firstName }}</td>
+                            <td>{{ reservation.horseNb }}</td>
+                            <td>
+                                <a href="{{ path('app_admin_reservation_edit', {id:reservation.id}) }}" role="button" class="clickable-link">Modifier - </a>
+                                <a href="{{ path('app_admin_reservation_remove', {id:reservation.id}) }}"
+                                   onClick="return window.confirm('Etes vous sûr de vouloir supprimer cette réservation ?');" role="button" class="clickable-link">Supprimer</a>
+                            </td>
+                        </tr>
             {% endfor %}
+                    </tbody>
+                </table>
         {% endif %}
-        <div class="btn-admin-resa-list">
-                <a href="{{ path('app_admin_user_home') }}">Annuler</a>
-                <a href="{{ path('app_admin_unavailabilities_list') }}">Voir la liste des indisponibilités</a>
+
+        <div class="button-gpe">
+                <a href="{{ path('app_admin_user_home') }}" role="button" class="btn">Annuler</a>
+                <a href="{{ path('app_admin_unavailabilities_list') }}" role="button" class="btn">Voir la liste des indisponibilités</a>
+
         </div>
     </section>
 {% endblock %}

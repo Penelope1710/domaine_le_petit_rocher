@@ -4,13 +4,13 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">LE GITE</h2>
+        <h2 class="titre_secondaire">LE GITE</h2>
     </div>
-    <h3>Présentation</h3>
+    <h3 class="titre_tertiaire">Présentation</h3>
     <section class="presentation-gite">
-        <p class="image-flottante">
-            <img src="{{ asset('images/hortensia1.jpeg') }}" alt="hortensia">
-        </p>
+        <div class="image-flottante">
+            <img src="{{ asset('images/hortensia1.jpeg') }}" alt="un hortensia en fleur">
+        </div>
         <p>
             Nous vous accueillons dans un écrin de verdure au calme, à 30 minutes du centre de Nantes et à 1 heure des
             plages.
@@ -37,45 +37,63 @@
     </section>
     <hr>
     <section class="photos-gite">
-        <h2>La Galerie Photos</h2>
-        <div class="grid-photos-gite">
-            <a href="{{ asset('images/facade_gite.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/facade_gitepf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/gite1.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/gite1pf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/gite2.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/gite2pf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/gite3.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/gite3pf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/gite4.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/gite4pf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/gite5.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/gite5pf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/hortensia.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/hortensiapf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/presentation_gite.jpg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/presentation_gitepf.jpg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-            <a href="{{ asset('images/gite_presentation2.jpeg') }}" class="lien-conteneur-photo">
-                <img src="{{ asset('images/vignettes/gite/gite_presentation2pf.jpeg') }}" alt="gite-face">
-                <div class="photo-hover">Voir la photo</div>
-            </a>
-        </div>
+        <h3>La Galerie Photos</h3>
+        <ul class="gallery grid-photos-gite">
+            <li>
+                <a href="{{ asset('images/facade_gite.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/facade_gitepf.jpeg') }}" alt="la façade du gite">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/gite1.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/gite1pf.jpeg') }}" alt="le jardinet du gite">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/gite2.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/gite2pf.jpeg') }}" alt="la cuisine du gite">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/gite3.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/gite3pf.jpeg') }}" alt="la salle à manger">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/gite4.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/gite4pf.jpeg') }}" alt="une chambre du gite">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/gite5.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/gite5pf.jpeg') }}" alt="la salle de bain">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/hortensia.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/hortensiapf.jpeg') }}" alt="un hortensia en fleur">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/presentation_gite.jpg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/presentation_gitepf.jpg') }}" alt="le jardin du domaine">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('images/gite_presentation2.jpeg') }}" class="lien-conteneur-photo">
+                    <img src="{{ asset('images/vignettes/gite/gite_presentation2pf.jpeg') }}" alt="le portail d'entrée">
+                    <div class="photo-hover">Voir la photo</div>
+                </a>
+            </li>
+        </ul>
     </section>
 {% endblock %}
 

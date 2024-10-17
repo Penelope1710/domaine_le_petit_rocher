@@ -1,420 +1,265 @@
-/*Formulaire de contact*/
-.section-contact {
-    text-align: center;
+/****************************************
+               FORMS
+*****************************************/
+
+.info-display-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.info-display-form input, .info-display-form label, .info-display-form textarea {
+    display: block;
+}
+.info-display-form input, .info-display-form textarea {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-22-th-label-nav);
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #6b6969;
+    border-radius: 5px;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #000000;
+    box-shadow: var(--shadow-presentation-secondary);
 }
 
-.section-contact h3 {
-    color: black;
-    font-size: 2em;
+.info-display-form input {
+    min-height: 50px;
+    margin-bottom: 10px;
+}
+.info-display-form textarea {
+    min-height: 150px;
+}
+.info-display-form label {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-22-th-label-nav);
+    margin-bottom: 5px;
+}
+button, .btn {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-26);
+    color: var(--black-color);
+    background-color: var(--bg-button);
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+}
+button:hover, button:focus,
+.btn:hover, .btn:focus {
+    outline: none;
+    background-color: var(--bg-button-hover);
+    box-shadow: 0 8px 12px #333333;
+}
+.button-gpe {
+    display: flex;
+    gap: 25px;
+    margin-top: 40px;
+}
+a.btn {
+    display: block;
     text-align: center;
+}
+.btn-annuler {
+    order: 1;
+}
+.btn-modifier {
+    order: 2;
+}
+
+/****************************************
+               CONTACT-FORM
+*****************************************/
+
+.section-contact h3 {
     margin-bottom: 50px;
     margin-top: 50px;
 }
-
-.contact-form {
+.contact-form  {
     display: flex;
     flex-direction: column;
     max-width: 1000px;
     margin: auto;
     color: black;
     font-size: 1em;
+    gap: 20px;
 }
-
 .contact-form label {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     font-size: 1.3rem;
-    margin-bottom: 10px;
 }
-
 .contact-form-nom-email {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
 }
-
 .contact-form-column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
 }
-
-.contact-form input, textarea, .btn-contact-env {
-    margin-bottom: 15px;
-    font-size: 1.4em;
+.contact-form input, .contact-form textarea {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-22-th-label-nav);
     cursor: pointer;
-    box-sizing: border-box;
     width: 100%;
-}
-
-.contact-form input, textarea {
+    border: none;
+    background-color: #aaaaaa;
+    min-height: 50px;
+    margin-bottom: 10px;
     padding: 15px;
-    border-radius: 3px;
-    border: none;
+    border-radius: 5px;
+}
+.btn-contact-env {
     background-color: #aaaaaa;
 }
-
 .contact-form textarea {
-    height: 150px;
     margin-bottom: 30px;
+    min-height: 150px;
 }
-
 .contact-form button {
-    font-size: 1.5em;
-    color: #fff;
-    background-color: #aaaaaa;
     padding: 10px;
-    border-radius: 3px;
-    border: none;
 }
-
-.contact-form button:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-/* Ajustement de la largeur pour aligner avec la somme de "Nom Prénom" et "E-mail" */
-.contact-form .contact-form-column:nth-child(3) textarea,
-.contact-form .contact-form-column:nth-child(4) button {
-    width: calc(100% - 20px);
-}
-
 .flash-success {
-    width: 250px;
+    width: 350px;
     padding: 20px;
-    font-weight: bold;
-    color: white;
+    color: black;
     font-size: 1.4em;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 40px;
+    margin: 40px auto 0 auto;
     border-radius: 5px;
     background-color: mediumseagreen;
     text-align: center;
 }
-/*Formulaire de login*/
-.section-connexion .login-form{
-  margin-right: auto;
-  margin-left: auto;
-}
+
+/****************************************
+               LOGIN-FORM
+*****************************************/
 
 .section-connexion h3 {
-    color: black;
-    font-size: 2em;
-    text-align: center;
     margin-bottom: 40px;
-    margin-top: 60px;
 }
-
-.login-form {
-    width: 300px;
-    margin: 20px;
-    padding: 20px;
-    font-size: 1.2em;
+.form-check input, .form-check label {
+    display: inline;
 }
-
-.form-connexion {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-con-group {
-    margin-bottom: 16px;
-}
-
-.form-con-group label {
-    margin-bottom: 8px;
-}
-
-.form-con-group input {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.form-check {
-    margin-bottom: 16px;
-}
-
 .form-check input {
-    margin-right: 5px;
+    width: 25px;
+    min-height: 25px;
+    margin-right: 10px;
+    margin-bottom: 20px;
 }
-
-
-.btn-primary {
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.5em;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+.btn-connexion {
+    width: 100%;
 }
-
-.btn-primary:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
 .mdp-oublie {
-    display: flex;
-    flex-direction: column;
+    display: block;
     text-decoration: none;
     color: black;
-    gap: 5px;
+    margin-top: 10px;
 }
-
 .mdp-oublie a {
     padding: 10px;
+    font-size: var(--fs-22-th-label-nav);
 }
-
 .mdp-oublie button {
     padding: 10px;
     font-size: 1.1em;
 }
-
 .mdp-oublie p {
-    font-size: 1.1em;
+    font-size: var(--fs-22-th-label-nav);
+    margin: 20px 0 10px 0;
 }
-
-.titre-tertiaire p {
-    font-size: 1.3em;
-}
-/*tableau liste des évènements*/
-
-.event-filtre-affichage {
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.events-list {
+.btn-inscription-groupe a {
+    display: block;
     text-align: center;
-    align-content: center;
-    border-collapse: collapse;
-    width: 100%;
-    color: black;
+    margin-bottom: 20px;
+}
+.titre_tertiaire p {
+    font-size: var(--fs-20);
 }
 
-.position-left, a {
+/****************************************
+            REGISTRATION-FORM
+*****************************************/
+
+.registration-form li {
+    font-size: var(--fs-16);
+    color: red;
     text-align: left;
-    text-decoration: none;
-    color: black;
+    list-style: none;
 }
 
-.position-left a:visited {
-    color: mediumblue;
-    font-weight: bold;
+/****************************************
+               FILTERS
+*****************************************/
 
-
-}
-
-.events-list td, .events-list th, .admin-list th {
-    border: 2px solid darkgrey;
-}
-
-.admin-list td {
-    border: 2px solid darkgrey;
-    padding: 10px;
-}
-
-.events-list th, .admin-list th {
-    font-size: 1.3em;
-    padding: 10px;
-}
-
-.events-list td {
-    padding: 15px 10px;
-    font-size: 1.1em;
-}
-
-.btn-event-plan {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.btn-event-plan a {
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.5em;
-    padding: 25px 40px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-.btn-event-plan a:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-/*Tableau détails évènements*/
-.details-form, .informations-list {
-    display: flex;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 50px;
-    box-sizing: border-box;
-    border-spacing: 20px;
-}
-
-.informations-list tbody, .details-form tbody {
-    width: 50%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.details-form th, .details-form td {
-    width: 100%;
-    font-size: 1.3em;
-    text-align: left;
-    padding: 10px;
-}
-
-.informations-list th, .informations-list td {
-    width: 100%;
-    font-size: 1.3em;
-    text-align: left;
-    padding: 10px;
-}
-
-
-.details-form th, .informations-list th {
-    display: inline-block;
-    width: 180px;
-    border: none;
-}
-
-.details-form td, .informations-list td {
-    border: 2px solid darkgrey;
-}
-
-.btn-details-e {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.btn-details-e a {
-    color: white;
-    font-size: 1.4em;
-    padding: 5px 20px;
-}
-
-.btn-inscription, .btn-desinscription, .btn-retour {
-    width: 200px;
-    padding: 18px 25px;
-    border-radius: 5px;
-    background-color: #aaaaaa;
-}
-
-.btn-inscription:hover, .btn-desinscription:hover, .btn-retour:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-.description p {
-    overflow-y: scroll;
-    max-height: 70px;
-    margin: 0;
-}
-
-/*tableau liste informations profil*/
-
-.btn-container {
-    display: flex;
-    flex-direction: column;
-   align-items: center;
-    margin-top: 30px;
-}
-
-/*Filtre*/
 .filter-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
-    margin: 50px 0;
+    margin-top: 100px;
 }
-
-.categories1-wrapper {
-    display: flex;
-    width: 80%;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-bottom: 15px;
+.user-filter .filter-form {
+    margin-top: 40px;
 }
-
-.categories1-wrapper label {
-    font-size: 1.2em;
-}
-
-.categories1-wrapper input {
-    font-size: 1.2em;
-    padding: 15px;
-}
-
-.categories1-wrapper button {
+.filter-form .form-control {
     padding: 10px;
-    cursor: pointer;
 }
-
+.categories1-wrapper,
 .categories2-wrapper {
     display: flex;
-    width: 80%;
-    justify-content: space-evenly;
-    padding-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
-
-.categories2-wrapper label {
-    font-size: 1.2em;
+.categories1-wrapper input {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-22-th-label-nav);
+    min-height: 60px;
+    width: 280px;
+    padding: 10px;
+}
+.categories2-wrapper label,
+.categories1-wrapper label {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-22-th-label-nav);
     padding: 5px;
     margin-right: 10px;
 }
 .categories2-wrapper .checkbox-group{
     align-content: flex-start;
 }
-
-
-#categories label, #activite label {
-    font-size: 1em;
-}
-
-.categories2-wrapper .form-control {
-    padding-top: 20px;
-}
-
 .btn-filtre {
-    width: 150px;
+    width: 160px;
     margin: 0;
     padding: 10px;
     cursor: pointer;
     border-radius: 5px;
 }
-
 .admin-user-filtre-affichage {
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+}
+.btn-annuler-filtre {
+    width: 180px;
+    height: 60px;
 }
 
-/*Formulaire de réservation Gite*/
-.reservation-form, .admin-mdf-resa, .unavailabilities-dates {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-}
+/****************************************
+            RESERVATION-FORM
+*****************************************/
 
-.resa-gpe {
-    margin-bottom: 10px;
+.sous-titre {
+    text-align: center;
+    font-size: var(--fs-22-th-label-nav);
+    margin-bottom: 30px;
 }
-
 .resa-gpe ul {
     padding: 0;
 }
-
 .resa-gpe li {
     font-size: 1em;
     color: red;
@@ -422,291 +267,32 @@
     list-style: none;
 }
 
-.resa-input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    background-color: #fff;
-}
-
-.resa-lab {
-    display: block;
-    font-weight: bold;
-    font-size: 1.3em;
-    margin-bottom: 5px;
-}
-
-.reservation-form .btn-submit {
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.4em;
-    padding: 18px 25px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 500px;
-}
-
-.btn-submit:hover,
-.btn-annuler:hover,
-.btn-creer-utilisateur:hover,
-.btn-modifier-utilisateur:hover,
-.btn-create-event-form-annuler:hover,
-.create-event-form .btn-plannifier:hover,
-.btns-divers .btn:hover,
-.btns-divers a:hover,
-.creer-utilisateur-form .btn-creer:hover,
-.btn-modifier,
-.btn-edit-event,
-.button-password-reset-form:hover,
-.tableau-liste-infos .btn-informations-modifier:hover,
-.tableau-liste-infos .btn-mdp-modifier:hover,
-#password_user_submit:hover
-{
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-/*Formulaire d'inscription*/
-.registration-form,
-.password-reset-form
- {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    align-items: center;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    font-size: 1.3em;
-}
-
-#password_user_submit {
-    width: 100%;
-    padding: 18px 25px;
-    margin-top: 10px;
-    color: white;
-    background-color: #aaaaaa;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.registration-form li {
-    font-size: 0.7em;
-    color: red;
-    text-align: left;
-    list-style: none;
-}
-
-.registration-form label,
-.password-reset-form label {
-    display: block;
-}
-
-.btn-annuler, #registration_form_customer_birthDate, .registration-form input, .registration-form .btn-submit {
-    margin-bottom: 15px;
-    width: 400px;
-    box-sizing: border-box;
-    padding: 5px;
-}
-
-.btn-annuler, .registration-form .btn-submit,
-.button-password-reset-form {
-   text-align: center;
-    font-size: 1.4em;
-    padding: 18px 25px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #aaaaaa;
-    margin-top: 15px;
-}
-
-.btn-annuler-mdf-mdp {
-    text-align: center;
-    font-size: 1.4em;
-    padding: 18px 25px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #aaaaaa;
-    box-sizing: border-box;
-    width: 31%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.btn-annuler a,
-.registration-form .btn-submit,
-.creer-utilisateur-form .btn-creer,
-.modifier-utilisateur-form .btn-modifier-utilisateur {
-    color: #fff;
-}
-
-.registration-form .form-control {
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-
-.disponibilites .btn-reservation-gite {
-    background-color: #aaaaaa;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 34%;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-    padding: 18px 25px;
-}
-
-.disponibilites .btn-reservation-gite a {
-    color: white;
-    font-size: 1.4em;
-    padding: 15px 40px;
-}
-
-.disponibilites .btn-reservation-gite:hover,
-.btn-annuler-mdf-mdp:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-/*liste utilisateurs admin*/
-.admin-list {
-    text-align: center;
-    border-collapse: collapse;
-    width: 80%;
-    margin-top: 50px;
-    margin-right: auto;
-    margin-left: auto;
-    height: 200px;
-    color: black;
-    overflow: scroll;
-}
-.btn-creer-utilisateur {
-    text-align: center;
-    font-size: 1.4em;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #aaaaaa;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-}
- .btn-creer-utilisateur a,
- .btn-create-event-form-annuler a,
- .btn-edit-event a,
- .btn-annuler-mdf-mdp a
- {
-     color: white;
- }
-
-.tableau-liste-infos .btn-mdp-modifier a,
-.tableau-liste-infos .btn-informations-modifier a {
-    color: white;
-    padding: 18px 25px;
-}
-
- .pagination {
-     text-align: center;
-     margin: 15px 0;
-     font-size: 1.2em;
-     color: mediumblue;
- }
-
- span.page, span.current {
-     padding: 4px;
- }
-
- .pagination a:visited {
-     color: black;
- }
-
- /*formulaire création évènement*/
-.create-event-form,
-.form-infos,
-.edit-event-form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    align-items: center;
-}
-.create-event-form label, .edit-event-form label {
-    display: block;
-    font-size: 1.3em;
-    padding-bottom: 10px;
-}
-
-.create-event-form input,
-.create-event-form textarea,
-.edit-event-form input,
-.edit-event-form textarea {
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    width: 470px;
-    font-size: 1.3em;
-    padding: 5px;
-}
-.create-event-form textarea,
-.edit-event-form textarea {
-    height: 100px;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid black;
-}
+/****************************************
+            CREATE EVENT-FORM
+*****************************************/
 
 .create-event-form select,
-.edit-event-form select {
-    box-sizing: border-box;
-    width: 235px;
-    height: 40px;
+.edit-event-form select,
+.resa-gpe select,
+.admin-mdf-resa select{
+    font-family: var(--font-family-text);
+    width: 100%;
+    height: 50px;
     margin-bottom: 15px;
     font-size: 1.3em;
-    padding: 5px;
+    padding: 10px;
 }
-
+#create_event_form_startTime {
+    display: flex;
+}
 .edit-event-form ul {
     padding: 0;
 }
-
 .edit-event-form li {
-    font-size: 0.6em;
+    font-size: var(--fs-16);
     color: red;
     list-style: none;
 }
-
-.create-event-form .btn-plannifier,
-.create-event-form .btn-create-event-form-annuler,
-.edit-event-form .btn-edit-event,
-.edit-event-form .btn-modifier {
-    width: 470px;
-    box-sizing: border-box;
-    font-size: 1.4em;
-    padding: 18px 25px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    background-color: #aaaaaa;
-    text-align: center;
-    color: white;
-}
-
-.btn-create-event-form-annuler a {
-    padding: 10px 60px;
-}
-
 .create-event-form ul {
     font-size: 1em;
     color: red;
@@ -714,250 +300,108 @@
     list-style: none;
 }
 
+/****************************************
+          ADMIN-EDIT-FORM USERS
+*****************************************/
 
-/*Formulaire mes informations*/
-
-.tableau-liste-infos .btn-informations-modifier,
-.tableau-liste-infos .btn-mdp-modifier {
-    width: 470px;
-    box-sizing: border-box;
-    font-size: 1.4em;
-
-    padding: 18px 25px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    background-color: #aaaaaa;
-    text-align: center;
-    color: white;
-}
-
-.form-infos {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-infos label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-    font-size: 1.3em;
-}
-.form-infos input {
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    width: 400px;
-    font-size: 1.3em;
-    padding: 5px;
-}
-
-.form-infos select {
-    box-sizing: border-box;
-    width: 100px;
-    font-size: 1.2em;
-    padding: 2px;
-    margin-bottom: 15px;
-}
-
-.btns-divers {
-    margin-top: 20px;
-}
-
-.btns-divers .btn {
-    display: inline-block;
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.4em;
-    padding: 18px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    margin-right: 12px;
-}
-
-.btns-divers li {
-    display: inline;
-    margin-right: 12px;
-
-}
-.btns-divers a {
-    border: 1px solid #aaaaaa;
-    border-radius: 5px;
-    background-color: #aaaaaa ;
-    font-size: 1.4em;
-    padding: 15px 25px;
-    color: white;
-}
-
-/*Formulaire création utilisateur*/
-.creer-utilisateur-form,
 .modifier-utilisateur-form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-items: center;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: 1.3em;
+    margin-top: 50px;
 }
-.creer-utilisateur-form .btn-annuler {
-    box-sizing: border-box;
-}
-.creer-utilisateur-form .form-range,
-.modifier-utilisateur-form .form-range {
-    width: 400px;
-}
-
-.creer-utilisateur-form form,
-.modifier-utilisateur-form form {
-    width: 405px;
-    justify-content: center;
-    box-sizing: border-box;
-    font-size: 1.3em;
-}
-.creer-utilisateur-form label,
-.modifier-utilisateur-form label {
-    display: flex;
-    width: 400px;
-    margin-top: 10px;
-    padding-bottom: 5px;
-
-}
-
 #admin_user_form_contractFileName {
     padding: 8px 0;
 }
-
 #registration_admin_form_roles {
     display: flex;
     gap: 10px;
     font-size: 1em;
 }
-
-
-.creer-utilisateur-form input,
-.modifier-utilisateur-form input {
-    width: 400px;
-    height: 30px;
-}
-
 .admin-checkbox {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
 #admin_user_form_roles {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
 .is-valid-admin-checkbox label, #admin_user_form_isValid {
-    width: 50px;
-    margin-bottom: 10px;
+    width: 40px;
+    margin: 10px 0 0 40px;
 }
 
+/****************************************
+               MAIL-RESET
+*****************************************/
 
-.creer-utilisateur-form .btn-creer,
-.modifier-utilisateur-form .btn-modifier-utilisateur,
-.modifier-utilisateur-form .btn-annuler {
-    width: 410px;
-    margin-top: 40px;
-    border: 1px solid #aaaaaa;
-    border-radius: 5px;
-    background-color: #aaaaaa ;
-    cursor: pointer;
-    padding: 18px 25px;
+.mail-reset input {
+    font-family: var(--font-family-text);
+    font-size: var(--fs-22-th-label-nav);
+    height: 50px;
+    padding: 10px;
+    margin-top: 20px;
 }
-
-.modifier-utilisateur-form .btn-modifier-utilisateur,
-.modifier-utilisateur-form .btn-annuler {
-    font-size: 1.1em;
-}
-
-.reset-form .mail-reset  {
-    display: flex;
-    justify-content: center;
-    font-size: 1.4em;
-    margin-bottom: 40px ;
-}
-
 .reset-form p {
-    text-align: center;
     font-size: 1.4em;
     margin-top: 30px;
 }
-
-.reset-form .button-reset-mail {
-    text-align: center;
-}
-
 .reset-form label {
     margin-right: 15px;
 }
-
-.reset-message p {
-    text-align: center;
+.reset-message p,
+.account-delete-form p {
     font-size: 1.4em;
-    margin-right: 30px;
-    margin-left: 30px;
+    margin: 40px 20px;
+}
+.password-reset-form .btn,
+.reset-form .btn {
+    margin-top: 20px;
 }
 
-.password-reset-form {
-    max-width: 600px; /* Largeur maximale du formulaire */
-    margin: 0 auto; /* Centrer horizontalement */
-    padding: 20px; /* Espacement intérieur */
-}
+/****************************************
+              MEDIA-QUERIES
+*****************************************/
 
-.password-reset-form input {
-    width: 250px;
-    margin-bottom: 20px;
+@media screen and (max-width: 1300px) {
+    .categories1-wrapper,
+    .categories2-wrapper {
+        display: block;
+        text-align: center;
+    }
+    .categories1-wrapper label, .categories1-wrapper input {
+        display: block;
+        margin: 10px auto 0 auto;
+    }
+    .categories1-wrapper .btn-filtre,
+    .categories1-wrapper .btn-annuler-filtre {
+        margin: 30px auto 0 auto;
+    }
+    .categories1-wrapper input {
+        margin-top: 10px;
+    }
 }
-
-.password-reset-form .button-password-reset-form {
-    width: 250px;
-}
-
-.liste-resa {
-   display: flex;
-    width: 100%;
-    flex-direction: column;
-
-}
-.liste-resa li {
-    list-style: none;
-}
-
-.liste-resa button {
-    padding: 10px;
-    margin-left: 15px;
-}
-
 @media screen and (max-width: 768px) {
     .section-contact {
-        margin-right: 10px;
-        margin-left: 10px;
+        margin: 0 10px;
     }
-
     .create-event-form input,
     .create-event-form textarea,
     .edit-event-form input,
     .edit-event-form textarea {
         width: 650px;
     }
-
     .create-event-form .btn-plannifier,
     .create-event-form .btn-create-event-form-annuler,
     .tableau-liste-infos .btn-informations-modifier,
     .tableau-liste-infos .btn-mdp-modifier {
         width: 650px;
     }
+    .contact-form-nom-email {
+        display: block;
+    }
 }
+
+
 
 
 

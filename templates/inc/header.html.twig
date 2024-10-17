@@ -1,20 +1,17 @@
 {#condition pour modifier le style et l'image du header selon la page sur laquelle nous nous trouvons#}
-<header class="{% if app.request.get("_route") == 'main_home' %}main_header{% else %}sub_header{% endif %}">
-    <div id="logo">
-    {% if app.request.get('_route') == 'main_home' %}
-        <img src="{{ asset('images/logo/logo_lpr1.png') }}" alt="Logo page d'accueil">
-    {% else %}
-        <img src="{{ asset('images/logo/logo_lpr2.png') }}" alt="Logo pages annexes">
-    {% endif %}
-    </div>
+<header>
 
-    {% if app.user %}
-        <div class="affichage-prenom">
-            Bonjour {{ app.user.customer.firstName }} !
+    <div id="header_container">
+        <div class="header_logo">
+            <img src="{{ asset('images/logo/logo_solo_copie2.png') }}" alt="Logo page d'accueil">
         </div>
-    {% endif %}
-
-    <h1 class="titre-site">DOMAINE LE PETIT ROCHER</h1>
+         <h1 class="titre_site">DOMAINE LE PETIT ROCHER</h1>
+        {% if app.user %}
+            <div class="affichage_prenom">
+                Bonjour {{ app.user.customer.firstName }} !
+            </div>
+        {% endif %}
+    </div>
 
     {% if is_granted('ROLE_ADMIN') %}
         {% include'inc/admin_nav.html.twig' %}

@@ -4,10 +4,10 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">MON COMPTE</h2>
+        <h2 class="titre_secondaire">MON COMPTE</h2>
     </div>
-    <h3>Mes Informations</h3>
-<div class="tableau-liste-infos">
+    <h3 class="titre_tertiaire">Mes Informations</h3>
+<div class=" table tableau-liste-infos">
     <table class="informations-list">
         <tbody>
         <tr>
@@ -44,22 +44,20 @@
         </tr>
         <tr>
             {% if app.user.customer.horseName is not null %}
-                <th>Nom du cheval</th>
+                <th>Nom du cheval : </th>
                 <td>{{ app.user.customer.horseName }}</td>
             {% endif %}
         </tr>
 
         </tbody>
     </table>
-<div class="btn-container">
-    <div class="btn-informations-modifier">
-        <a href="{{ path('app_profile_edit_informations') }}" title="">Modifier mes informations</a>
+    <div class="button-gpe">
+        <a href="{{ path('app_profile_edit_informations') }}" class="btn" role="button">Modifier mes informations</a>
+        <a href="{{ path('app_password_edit') }}" class="btn" role="button">Modifier mon mot de passe</a>
     </div>
-
-    <div class="btn-mdp-modifier">
-        <a href="{{ path('app_password_edit') }}" title="">Modifier mon mot de passe</a>
+    <div class="button-gpe">
+        <a href="{{ path('app_account_home_index') }}" class="btn" role="button">Annuler</a>
     </div>
-</div>
 </div>
 
 {% endblock %}

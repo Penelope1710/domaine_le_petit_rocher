@@ -1,0 +1,181 @@
+.table {
+    display: block;
+    width: 70%;
+    margin: 50px auto 0 auto;
+}
+/****************************************
+               EVENT-TABLE
+*****************************************/
+
+.event-filtre-affichage,
+.admin-resa-list,
+.unavailabilities,
+.liste-resa {
+    width: 95%;
+    margin: 0 auto;
+}
+.events-list,
+.admin-table {
+    text-align: center;
+    align-content: center;
+    border-collapse: collapse;
+    width: 100%;
+    color: black;
+}
+.position-left, a {
+    text-align: left;
+    text-decoration: none;
+    color: black;
+}
+.position-left a:visited {
+    color: mediumblue;
+    font-weight: bold;
+}
+.events-list td, .events-list th, .admin-list th, .admin-list td,
+.admin-table th, .admin-table td {
+    border: 1px solid #6b6969;
+    font-size: 17px;
+    padding: 15px 5px;
+}
+.btn-event-plan {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.btn-event-plan a {
+    background-color: #aaaaaa;
+    color: #fff;
+    padding: 25px 40px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.btn-event-plan a:hover {
+    background-color: #969696;
+    box-shadow: 0 8px 12px #333333;
+}
+
+/****************************************
+           DETAILS-EVENT-TABLE
+*****************************************/
+
+.details-form, .informations-list {
+    border-spacing: 20px;
+}
+.details-form th, .details-form td, .informations-list td {
+    width: 100%;
+    font-size: 1.3em;
+    text-align: left;
+    padding: 10px;
+}
+.details-form th, .informations-list th {
+    display: inline-block;
+    width: 300px;
+    border: none;
+    font-size: 1.3em;
+    text-align: right;
+    padding: 15px;
+}
+.details-form td, .informations-list td {
+    border: 1px solid #6b6969;
+}
+.description p {
+    overflow-y: scroll;
+    max-height: 70px;
+    margin: 0;
+}
+
+/****************************************
+        PROFIL-INFORMATION-TABLE
+*****************************************/
+
+.btn-container {
+    display: inline-block;
+    text-align: center;
+}
+.tableau-liste-infos .btn {
+    margin-bottom: 20px;
+}
+
+/****************************************
+         ADMIN-USERS-LIST-TABLE
+*****************************************/
+
+.admin-list {
+    text-align: center;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 10px auto 0 auto;
+    height: 200px;
+    color: black;
+    overflow: scroll;
+    font-size: var(--fs-18);
+}
+.admin-list th {
+    font-size: var(--fs-18);
+}
+.pagination {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 1.2em;
+    color: mediumblue;
+}
+span.page, span.current {
+    padding: 4px;
+}
+.pagination a:visited {
+    color: black;
+}
+
+/****************************************
+         ADMIN-RESA-LIST-TABLE
+*****************************************/
+
+.admin-resa-list,
+.unavailabilities {
+    margin-top: 100px;
+}
+.admin-resa-list p,
+.unavailabilities p,
+.liste-resa p {
+    font-size: var(--fs-22-th-label-nav);
+    text-align: center;
+}
+
+.clickable-link:focus {
+    outline: none;
+    font-weight: bold;
+    zoom: 1.3;
+}
+
+/****************************************
+         MEDIA-QUERIES
+*****************************************/
+
+@media screen and (max-width: 1300px) {
+    .events-list-container,
+    .users-list-container,
+    .admin-resa-list-container {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+@media screen and (max-width: 900px){
+    .table {
+        width: 100%;
+    }
+    .details-form,
+    .informations-list,
+    .liste-resa,
+    .admin-list,
+    .admin-resa-list {
+        width: 100%;
+    }
+    .table th, .table td {
+        display: block;
+        text-align: left;
+    }
+    .button-gpe {
+        flex-direction: column;
+    }
+}
+

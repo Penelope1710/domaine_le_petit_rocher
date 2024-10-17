@@ -4,43 +4,34 @@
 
 {% block body %}
 <div id="banniere">
-    <h2 class="titre-secondaire">LE GITE</h2>
+    <h2 class="titre_secondaire">LE GITE</h2>
 </div>
-    <div class="titre-tertiaire">
-        <h3>Réservation du gîte 4 personnes</h3>
-            <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
-    </div>
 
-<section class="reservation-form">
+    <h3 class="titre_tertiaire">Réservation du gîte 4 personnes</h3>
+    <p class="sous-titre">Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
+
+
+<div class="info-display-form reservation-form">
 {{ form_start(reservationForm) }}
     <div id="calendar" style="display: none;">
     </div>
     <div id="loader"></div>
     <div class="resa-gpe">
-        {{ form_row(reservationForm.startDate, {
-            'attr': {'class': 'resa-input'},
-            'label_attr': {'class': 'resa-lab'}
-        }) }}
+        {{ form_row(reservationForm.startDate) }}
     </div>
     <div class="resa-gpe">
-    {{ form_row(reservationForm.endDate, {
-        'attr': {'class': 'resa-input'},
-        'label_attr': {'class': 'resa-lab'}
-    }) }}
+    {{ form_row(reservationForm.endDate) }}
     </div>
     <div class="resa-gpe">
-    {{ form_row(reservationForm.horseNb, {
-        'attr': {'class': 'resa-input'},
-        'label_attr': {'class': 'resa-lab'}
-    }) }}
+    {{ form_row(reservationForm.horseNb) }}
     </div>
     {{ form_errors(reservationForm) }}
-
-    <button class="btn-submit" type="submit">
-        Réserver
-    </button>
+    <div class="button-gpe">
+        <a href="{{ path('app_gite_home_index') }}" role="button" class="btn">Annuler</a>
+        <button class="btn-submit" type="submit">Réserver</button>
+    </div>
 {{ form_end(reservationForm) }}
-</section>
+</div>
 
 {% endblock %}
 

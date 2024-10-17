@@ -1,221 +1,140 @@
-.presentation-ecuries {
-    margin: 40px;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    padding: 50px;
-    font-size: 1.3em;
-}
+/****************************************
+         ACCUEIL-ECURIE
+*****************************************/
 
+.presentation-ecuries {
+    margin: 0 40px 20px 40px;
+    padding: 20px;
+    font-size: var(--fs-22-th-label-nav);
+}
 .presentation-ecuries p {
     margin-bottom: 20px;
 }
-
-.presentation-photos {
-    margin: 60px;
-    padding-top: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 50px;
-}
-
-.image-flottante {
-    float: left;
-    margin-right: 40px;
-    margin-bottom: 10px;
-}
-
-hr {
-    text-align: center;
-    height: 1px;
-    width: 200px;
-    background-color: #787878;
-}
-
 .ecurie-home, .dashboard {
     display: flex;
-    margin-top: 80px;
-    margin-bottom: 120px;
-    margin-right: auto;
-    margin-left: auto;
-    height: 250px;
+    flex-wrap: wrap;
+    margin: 80px auto 120px auto;
     justify-content: space-evenly;
-
+    gap: 20px;
 }
-
-.mes-infos, .mon-contrat, .mes-events {
-    display: flex;
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.5rem;
-    text-decoration: none;
-    width: 15%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-}
-.mes-infos a {
-    padding: 110px 22px;
-    color: white;
-}
-
-.mes-infos a:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-.mon-contrat a {
-    padding: 110px 40px;
-    color: white;
-}
-
-.mon-contrat a:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-.mes-events a {
-    padding: 110px 24px;
-    color: white;
-}
-
-.mes-events a:hover {
-    background-color: #969696;
-    box-shadow: 0 8px 12px #333333;
-}
-
-
 .presentation-photos {
-    margin: 60px;
-    padding-top: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 50px;
+    padding: 0 50px;
 }
-
 .image-flottante {
     float: left;
     margin-right: 40px;
     margin-bottom: 10px;
 }
-
 hr {
-    text-align: center;
-    height: 1px;
-    width: 200px;
-    background-color: #787878;
-
+    border: var(--hr);
+    width: 300px;
+    margin: 0 auto;
+}
+.presentation-photos h3 {
+    margin: 40px 0;
 }
 
-.presentation-photos h1 {
-    text-align: center;
-    font-size: 3em;
-    margin-bottom: 60px;
-}
-
-.presentation-photos h2 {
-    font-size: 2em;
-    color: #242424;
+.presentation-photos h4 {
+    font-size: var(--fs-26);
     text-align: left;
     margin-bottom: 20px;
     margin-top: 0px;
+    padding: 0 15px;
 }
 
 .lien-instagram-ldc {
     position: relative;
     align-content: center;
 }
-
 .lien-hover {
     position: absolute;
     top: 10px;
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3em;
     color: grey;
     display: none;
 }
-
 .lien-instagram-ldc:hover .lien-hover {
     display: flex;
 }
-
-.grid-photos-lame-dune-creative {
+.gallery {
+    max-width: 1300px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 250px 250px 250px;
-    gap: 15px;
-    padding-bottom: 50px;
-    padding-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
 }
-
-.grid-photos-installations {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 250px 250px 250px;
-    gap: 15px;
-    margin-top: 50px;
+.gallery li {
+    list-style: none;
 }
-
-.grid-photos-lame-dune-creative img,
-.grid-photos-installations img {
+.gallery li img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
-.lien-conteneur-photo {
-    position: relative;
+.grid-photos-lame-dune-creative {
+    padding-bottom: 50px;
+    padding-top: 20px;
 }
-
+.gallery li  {
+    position: relative;
+    overflow: hidden;
+}
 .photo-hover {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
     font-size: 1.5em;
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
-    display: none;
+    transition: opacity 0.3s ease-in-out;
 }
-
 .lien-conteneur-photo:hover .photo-hover {
-    display: flex;
+    opacity: 1;
 }
 
-/*ADMINISTRATION*/
+/****************************************
+               MEDIA QUERIES
+*****************************************/
 
-.admin_infos, .liste-utilisateurs, .liste-evenements, .liste-factures, .liste-reservations {
-    display: flex;
-    background-color: #aaaaaa;
-    color: #fff;
-    font-size: 1.5rem;
-    text-decoration: none;
-    width: 15%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
+/* taille max du titre au delà de 1300px */
+@media(min-width: 1145px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
-.admin_infos a, .liste-utilisateurs a, .liste-evenements a, .liste-factures a, .liste-reservations a {
-    padding: 110px 22px;
-    color: white;
-}
-
-.admin_infos a:hover, .liste-utilisateurs a:hover, .liste-evenements a:hover, .liste-factures a:hover, .liste-reservations a:hover {
-    text-decoration: underline;
-}
-
-
 @media screen and (max-width: 768px) {
     .mes-infos, .mon-contrat, .mes-events {
         width: 30%;
+    }
+    .presentation-photos {
+        padding: 0;
+    }
+    .presentation-ecuries {
+        margin: 20px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .presentation-photos h1 {
+        font-size: 2em;
+    }
+    .presentation-photos h2 {
+        font-size: 1.2em;
+    }
+}
+@media screen and (max-width: 480px) {
+    .presentation-ecuries {
+        margin: 15px;
     }
 }
 

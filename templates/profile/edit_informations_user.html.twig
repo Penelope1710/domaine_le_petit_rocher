@@ -4,41 +4,31 @@
 
 {% block body %}
     <div id="banniere">
-        <h2 class="titre-secondaire">MON COMPTE</h2>
+        <h2 class="titre_secondaire">MON COMPTE</h2>
     </div>
-    <h3>Modifier mes Informations</h3>
-    <section class="form-infos">
+    <h3 class="titre_tertiaire">Modifier mes Informations</h3>
 
+    <div class="info-display-form form-infos">
         {{ form_start(profilForm) }}
         {{ form_errors(profilForm) }}
 
         {{ form_row(profilForm.customer.lastName) }}
-
         {{ form_row(profilForm.customer.firstName) }}
-
         {{ form_row(profilForm.email) }}
-
         {{ form_row(profilForm.customer.phoneNumber) }}
-
         {{ form_row(profilForm.customer.address) }}
-
         {{ form_row(profilForm.customer.zipCode) }}
-
         {{ form_row(profilForm.customer.city) }}
-
         {{ form_row(profilForm.customer.birthDate) }}
-
         {% if profilForm.customer.horseName is defined %}
             {{ form_row(profilForm.customer.horseName) }}
         {% endif %}
 
-
-        <div class="btns-divers">
+        <div class="button-gpe">
+            <a href="{{ path('app_profile_index') }}" class="btn" role="button">Annuler</a>
+            <a href="{{ path('app_profile_remove_account') }}" class="btn" role="button">Supprimer</a>
             <button type="submit" class="btn">Enregistrer</button>
             {{ form_end(profilForm) }}
-
-            <li><a href="{{ path('app_profile_index') }}" title="annuler">Annuler</a></li>
-            <li><a href="{{ path('app_profile_remove_account') }}" title="supprimer">Supprimer</a></li>
         </div>
-    </section>
+    </div>
 {% endblock %}

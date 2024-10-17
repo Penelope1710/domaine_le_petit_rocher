@@ -4,10 +4,10 @@
 
 {% block body %}
 <div id="banniere">
-    <h2 class="titre-secondaire">L'ECURIE</h2>
+    <h2 class="titre_secondaire">L'ECURIE</h2>
 </div>
-<h3>Détails de l'évènement</h3>
-
+<h3 class="titre_tertiaire">Détails de l'évènement</h3>
+<div class="table">
 <table class="details-form">
 
     <tr>
@@ -40,21 +40,26 @@
     </tr>
 </table>
 
-    <div class="btn-details-e">
+    <div class="button-gpe">
         {% if app.user %}
             {% if event.createdBy.customer.id != app.user.id %}
-            {% if not event.isUserSubscribed(app.user) %}
-                <button class="btn-inscription">
-                    <a href="{{ path('app_ecurie_event_subscribe', { id:event.id }) }}">M'inscrire</a>
-                </button>
+                {% if not event.isUserSubscribed(app.user) %}
+                    <a href="{{ path('app_ecurie_event_subscribe', { id:event.id }) }}" class="btn btn-modifier" role="button">M'inscrire</a>
+                {% else %}
+                    {% set subscribe = event.getUserSubscribe(app.user) %}
+                    <a href="{{ path('app_ecurie_event_unsubscribe', {id:subscribe.id}) }}"
+                       onClick="return window.confirm('Etes vous sûr de vouloir vous désinscrire ?')" class="btn btn-modifier" role="button">Me désinscrire</a>
+                {% endif %}
             {% else %}
-                <button class="btn-desinscription">
-                    <a href="{{ path('app_ecurie_event_unsubscribe', {id:event.id}) }}">Me désinscrire</a>
-                </button>
+                <a href="{{ path('app_ecurie_event_edit', { id:event.id }) }}" class="btn btn-modifier" role="button">Modifier</a>
             {% endif %}
+            {% if is_granted('ROLE_ADMIN') and event.status == 'opened' %}
+                <a href="{{ path('app_ecurie_event_remove', { id:event.id }) }}"
+                   onClick="return window.confirm('Etes vous sûr de vouloir supprimer l\'évènement ?')" class="btn btn-modifier" role="button">Supprimer</a>
+                <a href="{{ path('app_ecurie_event_edit', { id:event.id }) }}" class="btn btn-modifier" role="button">Modifier</a>
             {% endif %}
         {% endif %}
-        <button class="btn-retour"><a href="{{ path('app_ecurie_event_index') }}">Retour</a></button>
+        <a href="{{ path('app_ecurie_event_index') }}" class="btn btn-annuler" role="button">Retour</a>
     </div>
-
+</div>
 {% endblock %}

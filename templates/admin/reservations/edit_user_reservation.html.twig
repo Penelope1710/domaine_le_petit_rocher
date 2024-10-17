@@ -4,19 +4,19 @@
 
 {% block body %}
 <div id="banniere">
-    <h2 class="titre-secondaire">RÉSERVATION GITE</h2>
+    <h2 class="titre_secondaire">RESERVATION GITE</h2>
 </div>
+    <h3 class="titre_tertiaire">Modifier</h3>
 
-<div class="titre-tertiaire">
-    <h3>Modifier</h3>
-</div>
-<section class="admin-mdf-resa">
+<div class="info-display-form admin-mdf-resa">
     {{ form_start(editReservationForm) }}
     {{ form_row(editReservationForm.startDate) }}
     {{ form_row(editReservationForm.endDate) }}
     {{ form_row(editReservationForm.horseNb) }}
-    <button type="submit">Modifier</button>
+    <div class="button-gpe">
+        <a href="{{ path('app_admin_reservations_list') }}" role="button" class="btn">Annuler</a>
+        <button type="submit" class="btn" role="button">Modifier</button>
+    </div>
     {{ form_end(editReservationForm) }}
-    <a href="{{ path('app_admin_reservations_list') }}">Annuler</a>
-</section>
+</div>
 {% endblock %}

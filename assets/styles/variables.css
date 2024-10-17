@@ -1,0 +1,60 @@
+:root {
+
+    /* Fonts */
+    --font-family-main-title: 'Refanea';
+    --font-family-text: Quicksand, sans-serif;
+
+    /* Font-size */
+    --fs-12: 0.75rem;
+    --fs-14: 0.875rem;
+    --fs-16: 1rem;
+    --fs-18: 1.125rem;
+    --fs-20: 1.25rem;
+    --fs-22-th-label-nav: 1.375rem;
+    --fs-24-button: 1.5rem;
+    --fs-26: 1.625rem;
+    --fs-27: 1.687rem;
+    --fs-28: 1.75rem;
+    --fs-30-third-title: 1.875rem;
+    --fs-32: 2rem;
+    --fs-40-secondary-title: 2.5rem;
+    --fs-42: 2.625rem;
+    --fs-50: 3.125rem;
+    --fs-56: 3.5rem;
+    --fs-64: 4rem;
+    --fs-72: 4.5rem;
+
+    /* Font-colors*/
+    --black-color: #0e0e0e;
+    --light-color: #F9F8F8;
+    --visited-color: #0000cd;
+    --error: #ff0000;
+
+    /* Backgrounds */
+    --bg-grey-green: rgba(132, 137, 130, 0.8);
+    --bg-dark-grey: #555555e6;
+    --bg-medium-grey: #c5c4c4;
+    --bg-button: var(--bg-medium-grey);
+    --bg-button-hover: #969696;
+    --bg-button-cards: linear-gradient(to right, #546473, #83929e);
+    --bg-button-cards-hover: linear-gradient(to right, #43505c, #657381);
+    --bg-gradient-header-footer: linear-gradient(to right, #868484, #F3F3F3);
+    --bg-gradient-header-footer-2: linear-gradient(to right, #858383, #F7F7F7);
+    --bg-sucess: #3cb371;
+
+    /* borders */
+    --border-grey-array: 2px solid #a9a9a9;
+    --border-grey-main: 2px solid #797979;
+
+    /* border-radius */
+    --border-radius-btn: 3px;
+    --border-radius-cards: 5px;
+
+
+    /* shadows */
+    --shadow-main: 0px 8px 12px #333333;
+    --shadow-presentation-secondary: 0px 10px 10px rgba(28, 26, 25, 0.2);
+
+    /* horizontal rule */
+    --hr: 1px solid #797979;
+}

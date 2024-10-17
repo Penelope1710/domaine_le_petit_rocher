@@ -4,24 +4,24 @@
 
 {% block body %}
 <div id="banniere">
-    <h2 class="titre-secondaire">ADMINISTRATION</h2>
+    <h2 class="titre_secondaire">ADMINISTRATION</h2>
 </div>
-<div class="titre-tertiaire">
+<div class="titre_tertiaire">
     <h3>Dashboard</h3>
     <p>Date du jour : {{ currentDate|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</p>
 </div>
     <section class="dashboard">
-        <div class="admin_infos">
-            <a href="{{ path('app_profile_index') }}">Mes infos</a>
+        <div class="infos-container">
+            <a href="{{ path('app_profile_index') }}" role="button">Mes infos</a>
         </div>
-        <div class="liste-utilisateurs">
-            <a href="{{ path('app_admin_users_list') }}">Utilisateurs</a>
+        <div class="infos-container">
+            <a href="{{ path('app_admin_users_list') }}" role="button">Utilisateurs</a>
         </div>
-        <div class="liste-evenements">
-             <a href="{{ path('app_ecurie_event_index') }}">Evènements</a>
+        <div class="infos-container">
+             <a href="{{ path('app_ecurie_event_index') }}" role="button">Evènements</a>
         </div>
-        <div class="liste-reservations">
-             <a href="{{ path('app_admin_reservations_list') }}">Réservations</a>
+        <div class="infos-container">
+             <a href="{{ path('app_admin_reservations_list') }}" role="button">Réservations</a>
         </div>
     </section>
 {% endblock %}
