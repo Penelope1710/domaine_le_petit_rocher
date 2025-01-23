@@ -236,7 +236,7 @@ a.btn {
 }
 
 .registration-form .input-group .alert {
-    display: block;
+    display: none;
     width: 80%;
     position: absolute;
     top: 100%;
