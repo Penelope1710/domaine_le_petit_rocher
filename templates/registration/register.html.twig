@@ -16,29 +16,127 @@
 <div class="info-display-form registration-form">
     {{ form_errors(registrationForm) }}
 
-        {{ form_start(registrationForm) }}
+         {{ form_start(registrationForm, { 'attr': { 'id': 'registration-form' } }) }}
+        <div class="input-group" id="lastName-group">
+            {{ form_label(registrationForm.customer.lastName) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.lastName) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Choisissez un nom contenant au moins 2 caractères.</span>
+        </div>
 
-        {{ form_row(registrationForm.customer.lastName) }}
-        {{ form_row(registrationForm.customer.firstName) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.customer.phoneNumber) }}
-        {{ form_row(registrationForm.customer.address) }}
-        {{ form_row(registrationForm.customer.zipCode) }}
-        {{ form_row(registrationForm.customer.city) }}
-        {{ form_row(registrationForm.customer.birthDate) }}
+        <div class="input-group" id="firstName-group">
+            {{ form_label(registrationForm.customer.firstName) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.firstName) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Choisissez un prénom contenant au moins 2 caractères.</span>
+        </div>
+
+        <div class="input-group" id="email-group">
+            {{ form_label(registrationForm.email) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.email) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Rentrez un email valide.</span>
+        </div>
+
+        <div class="input-group" id="phoneNumber-group">
+            {{ form_label(registrationForm.customer.phoneNumber) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.phoneNumber) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Rentrez un numéro de téléphone valide</span>
+        </div>
+
+        <div class="input-group" id="address-group">
+            {{ form_label(registrationForm.customer.address) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.address) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+                </div>
+            <span class="error-msg">Choisissez une adresse contenant au moins 2 caractères.</span>
+        </div>
+
+        <div class="input-group" id="zipCode-group">
+            {{ form_label(registrationForm.customer.zipCode) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.zipCode) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Choisissez un code postal valide.</span>
+        </div>
+
+        <div class="input-group" id="city-group">
+            {{ form_label(registrationForm.customer.city) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.city) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Choisissez une ville contenant au moins 2 caractères.</span>
+        </div>
+
+        <div class="input-group" id="birthDate-group">
+            {{ form_label(registrationForm.customer.birthDate) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.customer.birthDate) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Veuillez entrer une date de naissance valide.</span>
+        </div>
+
 {#        test si la variable existe et si oui je l'affiche#}
         {% if registrationForm.customer.horseName is defined %}
-            {{ form_row(registrationForm.customer.horseName) }}
+            <div class="input-group" id="horseName-group">
+                {{ form_label(registrationForm.customer.horseName) }}
+                <div class="icon-input-container">
+                    {{ form_widget(registrationForm.customer.horseName) }}
+                    <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif-horse">
+                </div>
+                <span class="error-msg-horse">Veuillez entrer un nom de cheval contenant au moins 2 caractères.</span>
+            </div>
         {% endif %}
-        {{ form_row(registrationForm.plainPassword.first) }}
-        {{ form_row(registrationForm.plainPassword.second) }}
+
+         <div class="input-group" id="password-group">
+            {{ form_label(registrationForm.plainPassword.first) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.plainPassword.first) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <div class="alert">
+                <strong>Le mot de passe doit contenir au moins  :</strong>
+                <ul>
+                    <li class="password-alert error" >8 caractères</li>
+                    <li class="password-alert error" >1 majuscule</li>
+                    <li class="password-alert error" >1 minuscule</li>
+                    <li class="password-alert error" >1 chiffre</li>
+                    <li class="password-alert error" >1 caractère spécial</li>
+                </ul>
+            </div>
+            <span class="error-msg">Merci de rentrer un mot de passe valide.</span>
+        </div>
+
+         <div class="input-group" id="confirmPassword-group">
+            {{ form_label(registrationForm.plainPassword.second) }}
+            <div class="icon-input-container">
+                {{ form_widget(registrationForm.plainPassword.second) }}
+                <img src="{{ asset('images/form/icons8-coche.svg') }}" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Les mots de passe doivent être identiques.</span>
+        </div>
 
         <div class="button-gpe">
                 <a href="{{ path('main_home') }}" role="button" class="btn">Annuler</a>
-                <button type="submit">Créer</button>
+                <button id="submit-button" type="submit" disabled>Créer</button>
         </div>
         {{ form_errors(registrationForm) }}
     {{ form_end(registrationForm) }}
 
 </div>
+
+
 {% endblock %}

@@ -12,11 +12,13 @@
     margin-right: 40px;
     margin-bottom: 10px;
 }
-.disponibilites .legend {
+.disponibilites .legend,
+.reservation-form .legend {
     font-size: 1.2em;
     font-style: italic;
 }
-.disponibilites p {
+.disponibilites p,
+.reservation-form p {
     text-align: center;
     font-size: var(--fs-22-th-label-nav);
     margin-top: 20px;

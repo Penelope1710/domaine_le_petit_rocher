@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             settings: {
                 range: {
                     disabled: [result],
-                    min: '2023-01-01',
-                    max: '2025-01-01'
+                    min: '2025-01-01',
+                    max: '2026-01-01'
                 },
                 lang: 'fr-FR',
             },
@@ -22,5 +22,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('loader').style.display = 'none'
         document.getElementById('calendar').style.display = 'block'
     }
-})
+});
 
