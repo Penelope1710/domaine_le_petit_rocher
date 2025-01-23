@@ -16,6 +16,12 @@
     <div id="calendar" style="display: none;">
     </div>
     <div id="loader"></div>
+
+    <p class="legend">
+            Dates en noir : indisponible <br>
+            Dates en blanc : disponible
+        </p>
+        
     <div class="resa-gpe">
         {{ form_row(reservationForm.startDate) }}
     </div>
@@ -49,8 +55,8 @@
                 settings: {
                     range: {
                         disabled: [result],
-                        min: '2023-01-01',
-                        max: '2025-01-01'
+                        min: '2025-01-01',
+                        max: '2026-01-01'
                     },
                     lang: 'fr-FR',
                 },

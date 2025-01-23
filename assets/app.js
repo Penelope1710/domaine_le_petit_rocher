@@ -19,7 +19,8 @@ import './styles/load.css'
 import './styles/calendar.css'
 import './styles/tooltip.css'
 import './js/calendar.js'
-console.log('coucou')
+import './js/registration_form.js'
+
 
 
 
