@@ -33,15 +33,15 @@ Hierarchie des rôles:
 Afin de vous permettre de tester l'application, vous pouvez entrer les identifiants de connexion suivants:
 
 Pour un ROLE_ADMIN:
-- adresse e-mail : aalves@dupont.org
+- adresse e-mail : xavier.jacques@collin.com
 - Mot de passe : 0000
 
 Pour un ROLE_ECURIE:
-- adresse e-mail : hoareau.lucy@berger.fr
+- adresse e-mail : georges.laine@tele2.fr
 - Mot de passe : 0000
 
 Pour un ROLE_GITE:
-- adresse e-mail : nchevallier@lucas.com
+- adresse e-mail : gilles.cecile@levy.org
 - Mot de passe : 0000
 
 Je vous souhaite une bonne visite.
