@@ -33,15 +33,15 @@ Hierarchie des rôles:
 Afin de vous permettre de tester l'application, vous pouvez entrer les identifiants de connexion suivants:
 
 Pour un ROLE_ADMIN:
-- adresse e-mail : xavier.jacques@collin.com
+- adresse e-mail : jeanne74@dbmail.com
 - Mot de passe : 0000
 
 Pour un ROLE_ECURIE:
-- adresse e-mail : georges.laine@tele2.fr
+- adresse e-mail : alexandre.alfred@pons.com
 - Mot de passe : 0000
 
 Pour un ROLE_GITE:
-- adresse e-mail : gilles.cecile@levy.org
+- adresse e-mail : tessier.manon@foucher.fr
 - Mot de passe : 0000
 
 Je vous souhaite une bonne visite.
