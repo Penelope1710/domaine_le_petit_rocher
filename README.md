@@ -1,8 +1,7 @@
 Bonjour,
 
-Je vous souhaite la bienvenue sur le site internet, Le petit Rocher (écurie de propriétaires) que j'ai réalisé lors de mon stage 
+Je vous souhaite la bienvenue sur le site internet-démo, Le petit Rocher (écurie de propriétaires) que j'ai réalisé lors de mon stage. 
 et que j'améliore au fur et à mesure des jours.
-En effet, le site est en cours de refonte pour une optimisation du code, une meilleur maintenabilité et accessibilité numérique.
 
 Résumé du projet:
 
@@ -33,15 +32,15 @@ Hierarchie des rôles:
 Afin de vous permettre de tester l'application, vous pouvez entrer les identifiants de connexion suivants:
 
 Pour un ROLE_ADMIN:
-- adresse e-mail : jeanne74@dbmail.com
+- adresse e-mail : agnes.marques@wanadoo.fr
 - Mot de passe : 0000
 
 Pour un ROLE_ECURIE:
-- adresse e-mail : alexandre.alfred@pons.com
+- adresse e-mail : bazin.david@club-internet.fr
 - Mot de passe : 0000
 
 Pour un ROLE_GITE:
-- adresse e-mail : tessier.manon@foucher.fr
+- adresse e-mail : faure.suzanne@tele2.fr
 - Mot de passe : 0000
 
 Je vous souhaite une bonne visite.
