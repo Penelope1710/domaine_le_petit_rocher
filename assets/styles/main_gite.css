@@ -5,7 +5,7 @@
 .presentation-gite {
     margin: 40px;
     padding: 20px;
-    font-size: var(--fs-22-th-label-nav);
+    font-size: clamp(14px, 1.2vw + 10px, 22px);
 }
 .image-flottante {
     float: left;
@@ -14,14 +14,19 @@
 }
 .disponibilites .legend,
 .reservation-form .legend {
-    font-size: 1.2em;
+    font-size: clamp(14px, 1.2vw + 10px, 22px);
     font-style: italic;
 }
 .disponibilites p,
 .reservation-form p {
     text-align: center;
-    font-size: var(--fs-22-th-label-nav);
+    font-size: clamp(14px, 1.2vw + 10px, 22px);
     margin-top: 20px;
+}
+.reservation-form label,
+.reservation-form input,
+.reservation-form select {
+    font-size: clamp(14px, 1.2vw + 10px, 22px);
 }
 .disponibilites a {
     font-size: var(--fs-24-button);
@@ -52,6 +57,20 @@ margin: 40px 0;
 @media screen and (max-width: 768px) {
     .presentation-gite{
         margin: 20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .presentation-gite {
+        padding: 0;
+    }
+    .presentation-gite .image-flottante {
+        width: 100%;
+    }
+    .presentation-gite .image-flottante img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
     }
 }
 @media screen and (max-width: 480px) {

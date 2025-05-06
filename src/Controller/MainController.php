@@ -16,4 +16,9 @@ class MainController extends AbstractController
         return $this->render('main/home.html.twig');
     }
 
+    #[Route('/mentions-legales', name: 'legal_informations')]
+    public function mentionsLegales(): Response
+    {
+        return $this->render('legal_informations.html.twig');
+    }
 }

@@ -137,7 +137,7 @@ span.page, span.current {
 .admin-resa-list p,
 .unavailabilities p,
 .liste-resa p {
-    font-size: var(--fs-22-th-label-nav);
+    font-size: clamp(14px, 1.2vw + 10px, 22px);
     text-align: center;
 }
 
@@ -173,6 +173,7 @@ span.page, span.current {
     .table th, .table td {
         display: block;
         text-align: left;
+        font-size: clamp(14px, 1.2vw + 10px, 22px);
     }
     .button-gpe {
         flex-direction: column;

@@ -5,7 +5,7 @@
 .presentation-ecuries {
     margin: 0 40px 20px 40px;
     padding: 20px;
-    font-size: var(--fs-22-th-label-nav);
+    font-size: clamp(14px, 1.2vw + 10px, 22px);
 }
 .presentation-ecuries p {
     margin-bottom: 20px;
@@ -132,9 +132,20 @@ hr {
         font-size: 1.2em;
     }
 }
+
 @media screen and (max-width: 480px) {
     .presentation-ecuries {
         margin: 15px;
+        padding: 0;
+    }
+    .presentation-ecuries .image-flottante {
+        width: 100%;
+    }
+    .presentation-ecuries .image-flottante img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+       
     }
 }
 
