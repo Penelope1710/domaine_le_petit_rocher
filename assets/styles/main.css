@@ -390,6 +390,10 @@ footer {
     position: relative;
     justify-content: center;
 }
+.adresse-lpr a {
+    text-decoration: underline;
+}
+
 .liens-divers {
     display: flex;
     gap: 10px;
