@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
-use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3Validator;
 use PHPUnit\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

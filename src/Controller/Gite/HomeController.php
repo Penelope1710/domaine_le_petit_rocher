@@ -5,7 +5,6 @@ namespace App\Controller\Gite;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use function App\Controller\implode;
 
 #[Route('/')]
 class HomeController extends AbstractController
