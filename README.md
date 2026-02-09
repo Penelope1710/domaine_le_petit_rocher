@@ -31,10 +31,6 @@ Hierarchie des rôles:
 
 Afin de vous permettre de tester l'application, vous pouvez entrer les identifiants de connexion suivants:
 
-Pour un ROLE_ADMIN:
-- adresse e-mail : henri22@deschamps.com
-- Mot de passe : 0000
-
 Pour un ROLE_ECURIE:
 - adresse e-mail : teixeira.timothee@aubert.fr
 - Mot de passe : 0000
